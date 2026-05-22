@@ -4,26 +4,26 @@
   --vm-font-display: "Syne", system-ui, sans-serif;
   --vm-font-body: "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --vm-bg: #ffffff;
-  --vm-surface: #f7f4ff;
-  --vm-thumb-1: #f0ebff;
-  --vm-thumb-2: #ede8fc;
-  --vm-thumb-3: #eae5fa;
-  --vm-border: #ede9f8;
-  --vm-border-2: #e4dff5;
-  --vm-violet: #6d4fc2;
-  --vm-violet-dark: #3d2b8a;
-  --vm-body: #6a5880;
-  --vm-secondary: #8070a8;
-  --vm-muted: #a090c8;
-  --vm-nav: #8878b0;
-  --vm-title: #1a1030;
-  --vm-gold: #c9a84c;
-  --vm-gold-dark: #7a5e1a;
-  --vm-gold-light: #e8c97a;
-  --vm-gold-bg: rgba(201, 168, 76, 0.1);
-  --vm-gold-border: rgba(201, 168, 76, 0.35);
-  --vm-shadow: 0 18px 54px rgba(42, 27, 92, 0.1);
-  --vm-shadow-deep: 0 26px 86px rgba(42, 27, 92, 0.16);
+  --vm-surface: #f7faf9;
+  --vm-thumb-1: #eef6f4;
+  --vm-thumb-2: #e7f0ee;
+  --vm-thumb-3: #dce9e6;
+  --vm-border: #dfe8e5;
+  --vm-border-2: #cfdcd8;
+  --vm-violet: #1f6f6b;
+  --vm-violet-dark: #153f42;
+  --vm-body: #465f5d;
+  --vm-secondary: #607672;
+  --vm-muted: #8b9b98;
+  --vm-nav: #4e6461;
+  --vm-title: #142323;
+  --vm-gold: #b8904b;
+  --vm-gold-dark: #715727;
+  --vm-gold-light: #d8bd78;
+  --vm-gold-bg: rgba(184, 144, 75, 0.1);
+  --vm-gold-border: rgba(184, 144, 75, 0.3);
+  --vm-shadow: 0 18px 54px rgba(21, 63, 66, 0.1);
+  --vm-shadow-deep: 0 26px 86px rgba(21, 63, 66, 0.14);
 }
 
 html {
@@ -32,9 +32,8 @@ html {
 
 body {
   background:
-    radial-gradient(circle at 50% -12%, rgba(109, 79, 194, 0.13), transparent 34rem),
-    radial-gradient(circle at 88% 18%, rgba(201, 168, 76, 0.08), transparent 28rem),
-    var(--vm-bg) !important;
+    radial-gradient(circle at 50% -10%, rgba(31, 111, 107, 0.08), transparent 32rem),
+    linear-gradient(180deg, #ffffff 0%, #f8fbfa 100%) !important;
   color: var(--vm-title) !important;
   font-family: var(--vm-font-body) !important;
   font-size: 13.5px !important;
@@ -171,9 +170,8 @@ nav a:hover,
 .hero-section,
 .hero-wrap {
   background:
-    radial-gradient(circle at 22% 12%, rgba(201, 168, 76, 0.12), transparent 20rem),
-    radial-gradient(circle at 74% 18%, rgba(109, 79, 194, 0.16), transparent 24rem),
-    linear-gradient(180deg, rgba(247, 244, 255, 0.86), rgba(255, 255, 255, 0.98)) !important;
+    radial-gradient(circle at 78% 12%, rgba(31, 111, 107, 0.075), transparent 26rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 250, 0.96)) !important;
 }
 
 .hero-badge,
@@ -203,14 +201,14 @@ nav a:hover,
 .btn-cta,
 .nav-cta,
 button[type="submit"] {
-  background: linear-gradient(135deg, var(--vm-violet), var(--vm-violet-dark)) !important;
-  border: 1px solid rgba(109, 79, 194, 0.18) !important;
+  background: linear-gradient(135deg, var(--vm-violet-dark), var(--vm-violet)) !important;
+  border: 1px solid rgba(21, 63, 66, 0.18) !important;
   border-radius: 14px !important;
   font-family: var(--vm-font-display) !important;
   font-size: 12px !important;
   font-weight: 600 !important;
   letter-spacing: 0 !important;
-  box-shadow: 0 16px 36px rgba(109, 79, 194, 0.22) !important;
+  box-shadow: 0 16px 36px rgba(21, 63, 66, 0.2) !important;
   color: #fff !important;
   font-weight: 600 !important;
 }
@@ -221,7 +219,7 @@ button[type="submit"] {
 .nav-cta:hover,
 button[type="submit"]:hover {
   transform: translateY(-1px);
-  box-shadow: 0 18px 42px rgba(109, 79, 194, 0.28) !important;
+  box-shadow: 0 18px 42px rgba(21, 63, 66, 0.25) !important;
 }
 
 .btn-ghost,
@@ -255,7 +253,7 @@ button[type="submit"]:hover {
 .product-mock,
 .mini-screen,
 .install-bar {
-  background: rgba(247, 244, 255, 0.72) !important;
+  background: rgba(247, 250, 249, 0.88) !important;
   border: 1px solid var(--vm-border) !important;
   border-radius: 16px !important;
   box-shadow: var(--vm-shadow) !important;
@@ -307,8 +305,8 @@ button[type="submit"]:hover {
 .metric-card:hover,
 .bridge-card:hover,
 .pricing-card:hover {
-  border-color: rgba(109, 79, 194, 0.32) !important;
-  box-shadow: 0 24px 70px rgba(42, 27, 92, 0.14) !important;
+  border-color: rgba(31, 111, 107, 0.28) !important;
+  box-shadow: 0 24px 70px rgba(21, 63, 66, 0.12) !important;
   transform: translateY(-2px);
 }
 
@@ -318,9 +316,9 @@ button[type="submit"]:hover {
 .product-card.primary,
 .product-card.featured {
   background:
-    radial-gradient(circle at 88% 0%, rgba(201, 168, 76, 0.18), transparent 12rem),
+    radial-gradient(circle at 88% 0%, rgba(31, 111, 107, 0.08), transparent 12rem),
     linear-gradient(135deg, #ffffff 0%, var(--vm-surface) 100%) !important;
-  border-color: rgba(109, 79, 194, 0.24) !important;
+  border-color: rgba(31, 111, 107, 0.22) !important;
   box-shadow: var(--vm-shadow-deep) !important;
 }
 
@@ -343,7 +341,7 @@ button[type="submit"]:hover {
 .material-thumb-active,
 .thumb-featured {
   background:
-    linear-gradient(135deg, rgba(109, 79, 194, 0.14), rgba(201, 168, 76, 0.14)),
+    linear-gradient(135deg, rgba(31, 111, 107, 0.12), rgba(184, 144, 75, 0.12)),
     var(--vm-thumb-1) !important;
   border-bottom: 1px solid var(--vm-border-2) !important;
 }
@@ -419,9 +417,9 @@ cite {
 
 .product-card.featured {
   background:
-    radial-gradient(circle at 88% 6%, rgba(201, 168, 76, 0.16), transparent 13rem),
+    radial-gradient(circle at 88% 6%, rgba(31, 111, 107, 0.08), transparent 13rem),
     linear-gradient(135deg, #ffffff, var(--vm-surface)) !important;
-  border-color: rgba(109, 79, 194, 0.24) !important;
+  border-color: rgba(31, 111, 107, 0.22) !important;
 }
 
 .app-banner,
@@ -430,7 +428,7 @@ cite {
 .clinical-bridge,
 .cta-band {
   background:
-    radial-gradient(circle at 88% 14%, rgba(201, 168, 76, 0.16), transparent 11rem),
+    radial-gradient(circle at 88% 14%, rgba(31, 111, 107, 0.08), transparent 11rem),
     linear-gradient(135deg, #ffffff, var(--vm-surface)) !important;
   border: 1px solid var(--vm-border) !important;
   border-radius: 16px !important;
@@ -456,9 +454,9 @@ cite {
 .app-banner-icon,
 .product-icon,
 .material-icon {
-  background: linear-gradient(135deg, var(--vm-violet), var(--vm-violet-dark)) !important;
+  background: linear-gradient(135deg, var(--vm-violet-dark), var(--vm-violet)) !important;
   border-radius: 14px !important;
-  box-shadow: 0 14px 34px rgba(109, 79, 194, 0.22) !important;
+  box-shadow: 0 14px 34px rgba(21, 63, 66, 0.18) !important;
 }
 
 .product-card.featured .product-title,
@@ -469,8 +467,8 @@ cite {
 .product-tags span,
 .tag,
 .badge-soft {
-  background: rgba(109, 79, 194, 0.08) !important;
-  border: 1px solid rgba(109, 79, 194, 0.14) !important;
+  background: rgba(31, 111, 107, 0.08) !important;
+  border: 1px solid rgba(31, 111, 107, 0.14) !important;
   border-radius: 40px !important;
   color: var(--vm-violet-dark) !important;
 }
@@ -488,26 +486,20 @@ cite {
   background: #fff !important;
   border-color: var(--vm-border-2) !important;
   border-radius: 18px !important;
-  box-shadow: 0 28px 90px rgba(42, 27, 92, 0.15) !important;
+  box-shadow: 0 28px 90px rgba(21, 63, 66, 0.14) !important;
 }
 
 .demo-shell::after,
 .product-mock::after,
 .mock-window::after {
-  background: radial-gradient(circle, rgba(201, 168, 76, 0.14), transparent 58%);
-  bottom: -42px;
-  content: "";
-  height: 150px;
-  pointer-events: none;
-  position: absolute;
-  right: -42px;
-  width: 150px;
+  display: none !important;
+  content: none !important;
 }
 
 .demo-topbar,
 .mock-topbar,
 .window-bar {
-  background: linear-gradient(90deg, var(--vm-violet-dark), #2a1d65) !important;
+  background: linear-gradient(90deg, var(--vm-violet-dark), #1f6f6b) !important;
   color: rgba(255, 255, 255, 0.78) !important;
 }
 
@@ -528,7 +520,7 @@ cite {
 .bar,
 .progress-bar,
 .progress-fill {
-  background: linear-gradient(90deg, var(--vm-violet), var(--vm-gold)) !important;
+  background: linear-gradient(90deg, var(--vm-violet-dark), var(--vm-violet)) !important;
 }
 
 .alert,
@@ -560,8 +552,8 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: rgba(109, 79, 194, 0.45) !important;
-  box-shadow: 0 0 0 4px rgba(109, 79, 194, 0.1) !important;
+  border-color: rgba(31, 111, 107, 0.42) !important;
+  box-shadow: 0 0 0 4px rgba(31, 111, 107, 0.1) !important;
   outline: none !important;
 }
 
@@ -582,14 +574,14 @@ aside a {
 .sidebar a.active,
 aside a.active,
 .active {
-  background: rgba(109, 79, 194, 0.1) !important;
+  background: rgba(31, 111, 107, 0.1) !important;
   color: var(--vm-violet-dark) !important;
 }
 
 footer {
   background:
-    radial-gradient(circle at 14% 16%, rgba(109, 79, 194, 0.14), transparent 18rem),
-    #1a1030 !important;
+    radial-gradient(circle at 14% 16%, rgba(31, 111, 107, 0.16), transparent 18rem),
+    #132526 !important;
   color: rgba(255, 255, 255, 0.74) !important;
 }
 
@@ -639,4 +631,225 @@ footer a {
   .nav-cta {
     min-height: 44px;
   }
+}
+
+/* Ajuste final de direção visual: clínico, claro e sem ruído roxo/vinho. */
+:root {
+  --vm-accent: #1f6f6b;
+  --vm-accent-dark: #153f42;
+  --vm-accent-soft: #eef6f4;
+  --vm-accent-line: #cfdcd8;
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% -8%, rgba(31, 111, 107, 0.07), transparent 34rem),
+    linear-gradient(180deg, #ffffff 0%, #f8faf9 100%) !important;
+}
+
+.hero,
+.hero-section,
+.hero-wrap,
+.landing-hero {
+  background:
+    radial-gradient(circle at 78% 10%, rgba(31, 111, 107, 0.06), transparent 30rem),
+    linear-gradient(180deg, #ffffff 0%, #f8faf9 100%) !important;
+}
+
+h1,
+.hero h1,
+.headline,
+.display-title {
+  color: #152323 !important;
+  letter-spacing: 0 !important;
+}
+
+h1 em,
+.hero h1 em,
+.accent,
+.highlight {
+  color: var(--vm-accent) !important;
+}
+
+.btn,
+.btn-primary,
+.btn-cta,
+.nav-cta,
+button[type="submit"],
+.button-primary {
+  background: linear-gradient(135deg, var(--vm-accent-dark), var(--vm-accent)) !important;
+  border-color: rgba(21, 63, 66, 0.18) !important;
+  box-shadow: 0 16px 34px rgba(21, 63, 66, 0.18) !important;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-cta:hover,
+.nav-cta:hover {
+  box-shadow: 0 18px 42px rgba(21, 63, 66, 0.24) !important;
+}
+
+.btn-ghost,
+.btn-white,
+.secondary,
+.outline,
+.product-cta.secondary {
+  background: #ffffff !important;
+  color: var(--vm-accent-dark) !important;
+  border-color: var(--vm-border-2) !important;
+}
+
+.card,
+.material-card,
+.product-card,
+.feature-card,
+.metric-card,
+.panel-card,
+.demo-card,
+.bridge-card,
+.pricing-card,
+.faq-item,
+.form-card,
+.insight-card,
+.patient-row,
+.app-card,
+.mockup,
+.demo-shell,
+.product-mock,
+.mini-screen,
+.install-bar,
+.platform-preview,
+.panel-preview,
+.browser-mockup {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: var(--vm-border) !important;
+  color: var(--vm-title) !important;
+}
+
+.card-thumb,
+.material-thumb,
+.thumbnail,
+.icon-box,
+.icon,
+.app-banner-icon,
+.product-icon,
+.material-icon {
+  background: #ffffff !important;
+  border: 1px solid var(--vm-border-2) !important;
+  box-shadow: none !important;
+  color: var(--vm-accent-dark) !important;
+}
+
+.card-thumb svg,
+.material-thumb svg,
+.thumbnail svg,
+.icon-box svg,
+.icon svg,
+.app-banner-icon svg,
+.product-icon svg,
+.material-icon svg {
+  color: var(--vm-accent-dark) !important;
+  stroke: currentColor !important;
+}
+
+.demo-sidebar,
+.mock-sidebar,
+.sidebar-preview,
+.side-preview {
+  background: #f8faf9 !important;
+  color: var(--vm-title) !important;
+  border-right: 1px solid var(--vm-border) !important;
+}
+
+.demo-sidebar *,
+.mock-sidebar *,
+.sidebar-preview *,
+.side-preview *,
+.demo-shell *,
+.product-mock *,
+.mock-window *,
+.mini-screen *,
+.platform-preview *,
+.panel-preview *,
+.browser-mockup * {
+  color: var(--vm-title) !important;
+  text-shadow: none !important;
+}
+
+.demo-shell .muted,
+.product-mock .muted,
+.mock-window .muted,
+.mini-screen .muted,
+.platform-preview .muted,
+.panel-preview .muted,
+.demo-shell small,
+.product-mock small,
+.mock-window small {
+  color: var(--vm-secondary) !important;
+}
+
+.demo-topbar,
+.mock-topbar,
+.window-bar {
+  background: linear-gradient(90deg, var(--vm-accent-dark), var(--vm-accent)) !important;
+}
+
+.demo-topbar *,
+.mock-topbar *,
+.window-bar * {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.chart-bar,
+.bar,
+.progress-bar,
+.progress-fill,
+.switch-on,
+.toggle-on {
+  background: linear-gradient(90deg, var(--vm-accent-dark), var(--vm-accent)) !important;
+}
+
+.hero::before,
+.hero::after,
+.hero-section::before,
+.hero-section::after,
+.hero-wrap::before,
+.hero-wrap::after,
+.demo-shell::after,
+.product-mock::after,
+.mock-window::after,
+.decorative-icon,
+.floating-icon,
+.hero-orb,
+.orb,
+.bubble,
+.blob,
+.install-prompt,
+.pwa-install,
+#installPrompt {
+  display: none !important;
+  content: none !important;
+}
+
+.product-tags span,
+.tag,
+.badge-soft,
+.pill,
+.chip {
+  background: rgba(31, 111, 107, 0.08) !important;
+  border-color: rgba(31, 111, 107, 0.16) !important;
+  color: var(--vm-accent-dark) !important;
+}
+
+.hero-badge,
+.section-badge,
+.sec-eyebrow,
+.eyebrow {
+  background: var(--vm-gold-bg) !important;
+  border-color: var(--vm-gold-border) !important;
+  color: var(--vm-gold-dark) !important;
+}
+
+footer {
+  background: #153f42 !important;
 }
