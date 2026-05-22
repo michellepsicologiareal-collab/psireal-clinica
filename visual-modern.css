@@ -1,0 +1,642 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Instrument+Sans:wght@300;400;500&display=swap");
+
+:root {
+  --vm-font-display: "Syne", system-ui, sans-serif;
+  --vm-font-body: "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --vm-bg: #ffffff;
+  --vm-surface: #f7f4ff;
+  --vm-thumb-1: #f0ebff;
+  --vm-thumb-2: #ede8fc;
+  --vm-thumb-3: #eae5fa;
+  --vm-border: #ede9f8;
+  --vm-border-2: #e4dff5;
+  --vm-violet: #6d4fc2;
+  --vm-violet-dark: #3d2b8a;
+  --vm-body: #6a5880;
+  --vm-secondary: #8070a8;
+  --vm-muted: #a090c8;
+  --vm-nav: #8878b0;
+  --vm-title: #1a1030;
+  --vm-gold: #c9a84c;
+  --vm-gold-dark: #7a5e1a;
+  --vm-gold-light: #e8c97a;
+  --vm-gold-bg: rgba(201, 168, 76, 0.1);
+  --vm-gold-border: rgba(201, 168, 76, 0.35);
+  --vm-shadow: 0 18px 54px rgba(42, 27, 92, 0.1);
+  --vm-shadow-deep: 0 26px 86px rgba(42, 27, 92, 0.16);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% -12%, rgba(109, 79, 194, 0.13), transparent 34rem),
+    radial-gradient(circle at 88% 18%, rgba(201, 168, 76, 0.08), transparent 28rem),
+    var(--vm-bg) !important;
+  color: var(--vm-title) !important;
+  font-family: var(--vm-font-body) !important;
+  font-size: 13.5px !important;
+  letter-spacing: 0 !important;
+}
+
+body,
+p,
+li,
+a,
+button,
+input,
+select,
+textarea,
+.hero-sub,
+.sec-sub,
+.card-desc,
+.product-copy,
+.stat-l,
+.nav a,
+.small,
+.muted,
+.lead,
+.demo-note {
+  font-family: var(--vm-font-body) !important;
+  font-size: 13.5px !important;
+  letter-spacing: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+.brand,
+.brand-name,
+.nav-brand,
+.logo,
+.btn,
+.nav-cta,
+.hero-badge,
+.section-badge,
+.sec-eyebrow,
+.card-title,
+.product-title,
+.product-kicker,
+.metric-value,
+.metric-card,
+.panel-title,
+.sidebar-title,
+.menu-item,
+.pill,
+.chip,
+.tag,
+.badge,
+.product-tags span,
+.btn-primary,
+.btn-ghost,
+.btn-white {
+  font-family: var(--vm-font-display) !important;
+  letter-spacing: 0 !important;
+}
+
+h1,
+.hero h1 {
+  color: var(--vm-title) !important;
+  font-size: clamp(2.25rem, 4.4vw, 3rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.14 !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0.06em !important;
+  text-wrap: balance;
+}
+
+h1 em,
+.hero h1 em {
+  color: var(--vm-violet) !important;
+  font-style: normal !important;
+  letter-spacing: 0 !important;
+  margin-inline: 0.08em;
+}
+
+h2 {
+  color: var(--vm-title) !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-wrap: balance;
+}
+
+h3 {
+  color: var(--vm-title) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+
+p,
+.hero-sub,
+.sec-sub {
+  color: var(--vm-body) !important;
+  font-weight: 300 !important;
+  line-height: 1.72 !important;
+}
+
+header,
+nav,
+.topbar,
+.site-header {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-bottom: 1px solid var(--vm-border) !important;
+  backdrop-filter: blur(16px);
+}
+
+nav a,
+.nav a {
+  color: var(--vm-nav) !important;
+  font-weight: 400 !important;
+}
+
+nav a:hover,
+.nav a:hover {
+  color: var(--vm-violet-dark) !important;
+}
+
+.brand,
+.brand-name,
+.logo {
+  color: var(--vm-title) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+
+.hero,
+.hero-section,
+.hero-wrap {
+  background:
+    radial-gradient(circle at 22% 12%, rgba(201, 168, 76, 0.12), transparent 20rem),
+    radial-gradient(circle at 74% 18%, rgba(109, 79, 194, 0.16), transparent 24rem),
+    linear-gradient(180deg, rgba(247, 244, 255, 0.86), rgba(255, 255, 255, 0.98)) !important;
+}
+
+.hero-badge,
+.section-badge,
+.sec-eyebrow,
+.eyebrow,
+.pill,
+.chip,
+.badge {
+  background: var(--vm-gold-bg) !important;
+  border: 1px solid var(--vm-gold-border) !important;
+  border-radius: 40px !important;
+  color: var(--vm-gold-dark) !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+}
+
+.hero-badge-dot,
+.dot {
+  background: var(--vm-gold) !important;
+}
+
+.btn,
+.btn-primary,
+.btn-cta,
+.nav-cta,
+button[type="submit"] {
+  background: linear-gradient(135deg, var(--vm-violet), var(--vm-violet-dark)) !important;
+  border: 1px solid rgba(109, 79, 194, 0.18) !important;
+  border-radius: 14px !important;
+  font-family: var(--vm-font-display) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  box-shadow: 0 16px 36px rgba(109, 79, 194, 0.22) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-cta:hover,
+.nav-cta:hover,
+button[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 42px rgba(109, 79, 194, 0.28) !important;
+}
+
+.btn-ghost,
+.btn-white,
+.secondary,
+.outline,
+.product-cta.secondary {
+  background: #fff !important;
+  border: 1px solid var(--vm-border-2) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  color: var(--vm-violet-dark) !important;
+}
+
+.card,
+.material-card,
+.product-card,
+.feature-card,
+.metric-card,
+.panel-card,
+.demo-card,
+.bridge-card,
+.pricing-card,
+.faq-item,
+.form-card,
+.insight-card,
+.patient-row,
+.app-card,
+.mockup,
+.demo-shell,
+.product-mock,
+.mini-screen,
+.install-bar {
+  background: rgba(247, 244, 255, 0.72) !important;
+  border: 1px solid var(--vm-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--vm-shadow) !important;
+}
+
+.cards-grid,
+.products-grid,
+.feature-grid,
+.materials-grid,
+.benefits-grid,
+.steps-grid {
+  gap: clamp(1rem, 2vw, 1.35rem) !important;
+}
+
+.card,
+.material-card,
+.product-card,
+.feature-card,
+.metric-card,
+.panel-card,
+.demo-card,
+.bridge-card,
+.pricing-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before,
+.material-card::before,
+.product-card::before,
+.feature-card::before,
+.metric-card::before,
+.panel-card::before,
+.demo-card::before,
+.bridge-card::before,
+.pricing-card::before {
+  background: linear-gradient(90deg, var(--vm-gold), var(--vm-gold-light)) !important;
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.material-card:hover,
+.product-card:hover,
+.feature-card:hover,
+.metric-card:hover,
+.bridge-card:hover,
+.pricing-card:hover {
+  border-color: rgba(109, 79, 194, 0.32) !important;
+  box-shadow: 0 24px 70px rgba(42, 27, 92, 0.14) !important;
+  transform: translateY(-2px);
+}
+
+.card-featured,
+.material-card.featured,
+.hero-card,
+.product-card.primary,
+.product-card.featured {
+  background:
+    radial-gradient(circle at 88% 0%, rgba(201, 168, 76, 0.18), transparent 12rem),
+    linear-gradient(135deg, #ffffff 0%, var(--vm-surface) 100%) !important;
+  border-color: rgba(109, 79, 194, 0.24) !important;
+  box-shadow: var(--vm-shadow-deep) !important;
+}
+
+.card-thumb,
+.material-thumb,
+.thumbnail,
+.icon-box,
+.icon,
+.demo-sidebar,
+.mock-sidebar {
+  background:
+    radial-gradient(circle at 24% 16%, rgba(255, 255, 255, 0.55), transparent 1.4rem),
+    linear-gradient(135deg, var(--vm-thumb-1), var(--vm-thumb-3)) !important;
+  border: 1px solid var(--vm-border-2) !important;
+  border-radius: 14px !important;
+  color: var(--vm-violet) !important;
+}
+
+.card-thumb-active,
+.material-thumb-active,
+.thumb-featured {
+  background:
+    linear-gradient(135deg, rgba(109, 79, 194, 0.14), rgba(201, 168, 76, 0.14)),
+    var(--vm-thumb-1) !important;
+  border-bottom: 1px solid var(--vm-border-2) !important;
+}
+
+.card-thumb-label,
+.label-rose,
+.product-flag,
+.material-label {
+  background: var(--vm-gold-bg) !important;
+  border: 1px solid var(--vm-gold-border) !important;
+  border-radius: 40px !important;
+  color: var(--vm-gold-dark) !important;
+  font-family: var(--vm-font-display) !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+
+.card-title,
+.material-title,
+.product-title,
+.app-banner-title {
+  color: var(--vm-title) !important;
+  font-family: var(--vm-font-display) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.35 !important;
+}
+
+.product-title,
+.hero-card h2,
+.card-featured h2,
+.material-card.featured h2 {
+  font-size: 18px !important;
+  line-height: 1.35 !important;
+}
+
+.card-desc,
+.material-desc,
+.product-copy,
+.app-banner-desc {
+  color: var(--vm-body) !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+}
+
+.card-cta,
+.product-cta,
+.app-banner-arrow {
+  color: var(--vm-violet-dark) !important;
+  font-family: var(--vm-font-display) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+
+.reference,
+.material-ref,
+.card-ref,
+cite {
+  font-family: var(--vm-font-body) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+}
+
+.metric-value,
+.stat-value,
+.number {
+  font-family: var(--vm-font-display) !important;
+  letter-spacing: 0 !important;
+}
+
+.product-card.featured {
+  background:
+    radial-gradient(circle at 88% 6%, rgba(201, 168, 76, 0.16), transparent 13rem),
+    linear-gradient(135deg, #ffffff, var(--vm-surface)) !important;
+  border-color: rgba(109, 79, 194, 0.24) !important;
+}
+
+.app-banner,
+.platform-bridge,
+.product-bridge,
+.clinical-bridge,
+.cta-band {
+  background:
+    radial-gradient(circle at 88% 14%, rgba(201, 168, 76, 0.16), transparent 11rem),
+    linear-gradient(135deg, #ffffff, var(--vm-surface)) !important;
+  border: 1px solid var(--vm-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--vm-shadow) !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.app-banner::before,
+.platform-bridge::before,
+.product-bridge::before,
+.clinical-bridge::before,
+.cta-band::before {
+  background: linear-gradient(90deg, var(--vm-gold), var(--vm-gold-light)) !important;
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.app-banner-icon,
+.product-icon,
+.material-icon {
+  background: linear-gradient(135deg, var(--vm-violet), var(--vm-violet-dark)) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 14px 34px rgba(109, 79, 194, 0.22) !important;
+}
+
+.product-card.featured .product-title,
+.product-card.featured h3 {
+  color: var(--vm-title) !important;
+}
+
+.product-tags span,
+.tag,
+.badge-soft {
+  background: rgba(109, 79, 194, 0.08) !important;
+  border: 1px solid rgba(109, 79, 194, 0.14) !important;
+  border-radius: 40px !important;
+  color: var(--vm-violet-dark) !important;
+}
+
+.product-card.featured .product-tags span:nth-child(odd),
+.gold-chip {
+  background: var(--vm-gold-bg) !important;
+  border-color: var(--vm-gold-border) !important;
+  color: var(--vm-gold-dark) !important;
+}
+
+.demo-shell,
+.product-mock,
+.mock-window {
+  background: #fff !important;
+  border-color: var(--vm-border-2) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 28px 90px rgba(42, 27, 92, 0.15) !important;
+}
+
+.demo-shell::after,
+.product-mock::after,
+.mock-window::after {
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.14), transparent 58%);
+  bottom: -42px;
+  content: "";
+  height: 150px;
+  pointer-events: none;
+  position: absolute;
+  right: -42px;
+  width: 150px;
+}
+
+.demo-topbar,
+.mock-topbar,
+.window-bar {
+  background: linear-gradient(90deg, var(--vm-violet-dark), #2a1d65) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.metric-card,
+.demo-metric,
+.mock-card {
+  background: #fff !important;
+  border-color: var(--vm-border) !important;
+}
+
+.metric-value,
+.stat-n,
+.demo-number {
+  color: var(--vm-title) !important;
+}
+
+.chart-bar,
+.bar,
+.progress-bar,
+.progress-fill {
+  background: linear-gradient(90deg, var(--vm-violet), var(--vm-gold)) !important;
+}
+
+.alert,
+.insight,
+.notice,
+.callout {
+  background: rgba(201, 168, 76, 0.1) !important;
+  border: 1px solid rgba(201, 168, 76, 0.28) !important;
+  border-radius: 14px !important;
+  color: var(--vm-gold-dark) !important;
+}
+
+table,
+.table,
+.list,
+.row {
+  border-color: var(--vm-border) !important;
+}
+
+input,
+select,
+textarea {
+  background: #fff !important;
+  border: 1px solid var(--vm-border-2) !important;
+  border-radius: 14px !important;
+  color: var(--vm-title) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(109, 79, 194, 0.45) !important;
+  box-shadow: 0 0 0 4px rgba(109, 79, 194, 0.1) !important;
+  outline: none !important;
+}
+
+.sidebar,
+aside {
+  background: #fff !important;
+  border-color: var(--vm-border) !important;
+}
+
+.menu-item,
+.sidebar a,
+aside a {
+  border-radius: 14px !important;
+  color: var(--vm-body) !important;
+}
+
+.menu-item.active,
+.sidebar a.active,
+aside a.active,
+.active {
+  background: rgba(109, 79, 194, 0.1) !important;
+  color: var(--vm-violet-dark) !important;
+}
+
+footer {
+  background:
+    radial-gradient(circle at 14% 16%, rgba(109, 79, 194, 0.14), transparent 18rem),
+    #1a1030 !important;
+  color: rgba(255, 255, 255, 0.74) !important;
+}
+
+footer a {
+  color: #fff !important;
+}
+
+@media (max-width: 820px) {
+  h1,
+  .hero h1 {
+    font-size: clamp(2rem, 9.8vw, 2.65rem) !important;
+    line-height: 1.16 !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0.04em !important;
+  }
+
+  .hero,
+  .hero-section,
+  .hero-wrap {
+    padding-top: 5.5rem !important;
+  }
+
+  .card,
+  .material-card,
+  .product-card,
+  .feature-card,
+  .metric-card,
+  .panel-card,
+  .demo-card,
+  .bridge-card,
+  .pricing-card,
+  .product-mock,
+  .demo-shell {
+    border-radius: 14px !important;
+  }
+
+  .nav,
+  nav {
+    gap: 0.55rem !important;
+  }
+
+  .btn,
+  .btn-primary,
+  .btn-cta,
+  .btn-ghost,
+  .btn-white,
+  .nav-cta {
+    min-height: 44px;
+  }
+}
