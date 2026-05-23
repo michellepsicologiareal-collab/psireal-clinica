@@ -1445,7 +1445,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
 
     <div class="nav-section" id="adminNavSection" style="display:none">
       <div class="nav-label">Admin</div>
-      <div class="nav-item" onclick="showScreen('admin', this)">
+      <div class="nav-item" onclick="showScreen('admin', this); loadAdminPsis();">
         <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L3 5v4c0 3.5 2.5 6.7 6 7.5 3.5-.8 6-4 6-7.5V5L9 2z"/></svg>
         Admin
       </div>
@@ -3972,12 +3972,7 @@ async function adminToggleAtiva(userId, atual) {
   } catch(e) { showToast('Erro: '+e.message, true); }
 }
 
-// Carrega dados admin quando entra na tela
-const _origShowScreen = showScreen;
-function showScreen(id, el) {
-  _origShowScreen(id, el);
-  if (id==='admin' && window.PSI_IS_ADMIN) loadAdminPsis();
-}
+// Carrega dados admin quando entra na tela admin — chamado pelo onclick do nav
 
 </script>
 </body>
