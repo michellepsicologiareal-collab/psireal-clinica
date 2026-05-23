@@ -423,10 +423,27 @@ body {
 .status-pausa    {background:var(--lilac4);color:var(--brown3);border-color:var(--lilac3)}
 .status-inativo  {background:var(--bg2);color:var(--ink3);border-color:var(--border)}
 .generated-link{
-  margin-top:16px;padding:14px;border-radius:16px;background:var(--bg2);border:1px solid var(--border);display:none;
+  margin-top:0; padding:20px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-surface);
+  display:none;
 }
 .generated-link.open{display:block}
-.generated-link code{display:block;word-break:break-all;font-size:12px;color:var(--ink2);margin-bottom:10px}
+.generated-link-label{
+  font-size:11px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--ink3);
+  font-family:'Syne',sans-serif;margin-bottom:10px;
+}
+.generated-link code{
+  display:block;word-break:break-all;
+  font-size:13px;color:var(--primary);
+  background:rgba(109,79,194,.06);
+  border:1px solid var(--border);
+  border-radius:10px;padding:12px 14px;
+  margin-bottom:14px;line-height:1.5;
+  font-family:'Instrument Sans',monospace;
+}
+.generated-link-actions{display:flex;gap:10px;flex-wrap:wrap}
 .toast{
   position:fixed;right:22px;bottom:22px;z-index:500;
   min-width:240px;max-width:min(360px,calc(100vw - 32px));
@@ -2640,10 +2657,12 @@ body{background:var(--bg) !important;color:var(--ink) !important}
       <button class="btn btn-primary" onclick="createApplication()">Cadastrar e gerar link</button>
     </div>
     <div class="generated-link" id="generatedLinkBox">
+      <div class="generated-link-label">Link gerado ✓</div>
       <code id="generatedLinkText"></code>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <div class="generated-link-actions">
         <button class="btn btn-ghost" onclick="copyGeneratedLink()">Copiar link</button>
         <a class="btn btn-primary" id="generatedWhatsappLink" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+        <button class="btn btn-ghost" onclick="closeApplicationModal()">Fechar</button>
       </div>
     </div>
   </div>
@@ -3180,6 +3199,8 @@ function updateInstrHelp() {
 }
 
 async function createApplication() {
+  const btn = document.querySelector('#applicationModal .btn-primary');
+  if (btn) { btn.disabled = true; btn.textContent = 'Gerando...'; }
   const name = document.getElementById('newPatientName').value.trim();
   const whatsapp = document.getElementById('newPatientWhatsapp')?.value.trim() || '';
   const selected = document.querySelector('.instr-option.selected');
@@ -3214,11 +3235,11 @@ async function createApplication() {
     await callRpc('upsert_patient_status', { p_patient_name: name, p_status: 'ativo' });
     await refreshPanelData();
   } catch (error) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Cadastrar e gerar link'; }
+    const errorBox = document.getElementById('applicationError');
     if (errorBox) {
-      errorBox.textContent = 'Não foi possível cadastrar e gerar o link. Verifique se a psi está cadastrada/ativa no Supabase e se a função create_patient_link foi criada.';
+      errorBox.textContent = 'Não foi possível gerar o link. Tente novamente.';
       errorBox.style.display = 'block';
-    } else {
-      alert('Não foi possível gerar o link. Verifique se a sessão está ativa e tente novamente.');
     }
   }
 }
