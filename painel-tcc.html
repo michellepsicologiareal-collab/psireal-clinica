@@ -748,7 +748,71 @@ body{
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
 
-/* ── PALETA PSIREAL CLÍNICA — overrides finais ── */
+/* ── ANDROID / MOBILE CHROME ── */
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+input, select, textarea {
+  font-size: 16px !important; /* evita zoom automático no Android */
+}
+@media (max-width:760px){
+  /* esconde topbar desktop no mobile */
+  .topbar{ display:none !important }
+
+  /* stat cards mais compactos */
+  .stat-card{
+    min-height:auto !important;
+    padding:16px !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    gap:14px !important;
+  }
+  .stat-card::after{ display:none !important } /* remove borda colorida lateral no mobile */
+  .stat-icon{
+    order:-1 !important;
+    width:40px !important;
+    height:40px !important;
+    flex-shrink:0 !important;
+    opacity:.5 !important;
+  }
+  .stat-label{
+    font-size:10px !important;
+    margin-top:0 !important;
+    letter-spacing:.06em !important;
+    white-space:nowrap !important;
+  }
+  .stat-value{ font-size:28px !important }
+  .stat-note{ font-size:12px !important }
+
+  /* hero mais compacto */
+  .hero-title{ font-size:26px !important }
+  .hero-sub{ font-size:14px !important }
+  .dashboard-hero{ padding:18px !important }
+
+  /* botões — área de toque mínima 48px */
+  .btn{
+    min-height:48px !important;
+    padding:0 16px !important;
+    font-size:14px !important;
+  }
+  .nav-item{ min-height:52px !important }
+
+  /* conteúdo sem overflow lateral */
+  .content{ padding:12px 12px 80px !important }
+
+  /* cards com sombra suave */
+  .card,.stat-card,.inv-card,.evo-card{
+    box-shadow:0 2px 12px rgba(109,79,194,.06) !important;
+  }
+
+  /* modal sobe como sheet nativo */
+  .modal-card{
+    border-radius:24px 24px 0 0 !important;
+    padding:24px 20px !important;
+  }
+}
 
 /* Tipografia global */
 html,body,button,input,select,textarea,a,div,span,p,h1,h2,h3,h4,h5,h6{
