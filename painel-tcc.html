@@ -2809,16 +2809,15 @@ async function supabaseSelect(path) {
 }
 
 async function bootstrapAuthenticatedApp() {
-  const [profiles, links, responses, pacientes, adminCheck] = await Promise.all([
+  const [profiles, links, responses, pacientes] = await Promise.all([
     supabaseSelect('psis?select=nome,plano,ativa'),
     supabaseSelect('patient_links?select=id,token,patient_name,instrumento,status,created_at,expires_at&order=created_at.desc'),
     supabaseSelect('respostas_clinicas?select=id,paciente_nome,instrumento,formulario,score_total,scores,status,created_at&order=created_at.desc'),
-    supabaseSelect('pacientes?select=id,nome,status&order=created_at.desc').catch(() => []),
-    supabaseSelect('admin_users?select=user_id&limit=1').catch(() => [])
+    supabaseSelect('pacientes?select=id,nome,status&order=created_at.desc').catch(() => [])
   ]);
   window.PACIENTES_DB = pacientes || [];
 
-  // Verifica se é admin — precisa ter registro na tabela admin_users
+  // Verifica se é admin
   let adminCheck = [];
   try {
     adminCheck = await supabaseSelect('admin_users?select=user_id&limit=1');
@@ -2833,7 +2832,6 @@ async function bootstrapAuthenticatedApp() {
 
   PSI_PROFILE = profiles[0];
   if (!PSI_PROFILE || !PSI_PROFILE.ativa) {
-    // Admin sem perfil de psi ainda consegue entrar
     if (window.PSI_IS_ADMIN) {
       PSI_PROFILE = { nome: 'Admin', plano: 'admin', ativa: true };
     } else {
