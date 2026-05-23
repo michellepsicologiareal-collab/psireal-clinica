@@ -5,24 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Perfil Clínico | PsiReal Clínica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FDFAF8;--bg2:#F8F2F4;--bg3:#F2E4D4;
-  --surface:#FFFFFF;--border:#E8D8DC;
-  --ink:#1E1014;--ink2:#5A3A42;--ink3:#9A7A84;
-  --brown:#3D2028;--brown2:#7A4A55;--brown3:#B08090;
-  --lilac:#7A4A55;--lilac2:#B08090;--lilac3:#EEE0E4;--lilac4:#F8F2F4;
-  --teal:#A0703A;--teal2:#C8956A;--teal3:#E7ECE5;
-  --amber:#9E765A;--amber2:#D8B08F;--amber3:#F5E9DD;
-  --green:#73856E;--green2:#AAB8A5;--green3:#EDF2EB;
-  --coral:#8E4856;--coral3:#FAE8EC;
+  --bg:#faf8ff;--bg2:#f7f4ff;--bg3:#f0ebff;
+  --surface:#FFFFFF;--border:#ede9f8;
+  --ink:#1a1030;--ink2:#6a5880;--ink3:#8070a8;
+  --brown:#3d2b8a;--brown2:#6d4fc2;--brown3:#8070a8;
+  --lilac:#6d4fc2;--lilac2:#8070a8;--lilac3:rgba(109,79,194,0.08);--lilac4:#f7f4ff;
+  --teal:#c9a84c;--teal2:#e8c97a;--teal3:#E7ECE5;
+  --amber:#c9a84c;--amber2:#e8c97a;--amber3:rgba(201,168,76,0.10);
+  --green:#6d4fc2;--green2:#8b6fd4;--green3:#eaf3de;
+  --coral:#854f0b;--coral3:#FAE8EC;
   --sidebar-w:220px;--radius:10px;--radius-lg:16px;
-  --shadow:0 2px 12px rgba(90,48,64,.06),0 1px 3px rgba(90,48,64,.04);
-  --shadow-md:0 12px 40px rgba(90,48,64,.12),0 4px 12px rgba(90,48,64,.06);
+  --shadow:0 2px 12px rgba(61,43,138,.06),0 1px 3px rgba(61,43,138,.04);
+  --shadow-md:0 12px 40px rgba(61,43,138,.12),0 4px 12px rgba(61,43,138,.06);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55;min-height:100vh;display:flex}
+body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55;min-height:100vh;display:flex}
 
 /* SIDEBAR */
 .sidebar{width:var(--sidebar-w);min-height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100}
@@ -249,10 +249,10 @@ const CONFIGS = {
     title:'GAD-7 — Ansiedade Generalizada', field:'Ansiedade', max:21,
     fonte:'Spitzer RL, Kroenke K, Williams JBW, Löwe B. Arch Intern Med. 2006;166(10):1092–1097. Domínio público (Pfizer Inc., 2010).',
     levels:[
-      {min:0,max:4,label:'Mínima',css:'level-minima',color:'#73856E'},
-      {min:5,max:9,label:'Leve',css:'level-leve',color:'#A0703A'},
-      {min:10,max:14,label:'Moderada',css:'level-moderada',color:'#8E4856'},
-      {min:15,max:21,label:'Grave',css:'level-grave',color:'#3D2028'}
+      {min:0,max:4,label:'Mínima',css:'level-minima',color:'#6d4fc2'},
+      {min:5,max:9,label:'Leve',css:'level-leve',color:'#c9a84c'},
+      {min:10,max:14,label:'Moderada',css:'level-moderada',color:'#854f0b'},
+      {min:15,max:21,label:'Grave',css:'level-grave',color:'#3d2b8a'}
     ],
     recos:{
       'Mínima':['Manutenção de autocuidado e regulação emocional.','Continuidade do acompanhamento para consolidar ganhos.','Reaplicação periódica para monitoramento.'],
@@ -265,11 +265,11 @@ const CONFIGS = {
     title:'PHQ-9 — Depressão', field:'Depressão', max:27,
     fonte:'Kroenke K, Spitzer RL, Williams JBW. J Gen Intern Med. 2001;16(9):606–613. Domínio público (Pfizer Inc., 2010).',
     levels:[
-      {min:0,max:4,label:'Mínima',css:'level-minima',color:'#73856E'},
-      {min:5,max:9,label:'Leve',css:'level-leve',color:'#A0703A'},
-      {min:10,max:14,label:'Moderada',css:'level-moderada',color:'#8E4856'},
+      {min:0,max:4,label:'Mínima',css:'level-minima',color:'#6d4fc2'},
+      {min:5,max:9,label:'Leve',css:'level-leve',color:'#c9a84c'},
+      {min:10,max:14,label:'Moderada',css:'level-moderada',color:'#854f0b'},
       {min:15,max:19,label:'Moderadamente grave',css:'level-moderada',color:'#7A2A3A'},
-      {min:20,max:27,label:'Grave',css:'level-grave',color:'#3D2028'}
+      {min:20,max:27,label:'Grave',css:'level-grave',color:'#3d2b8a'}
     ],
     recos:{
       'Mínima':['Monitoramento periódico.','Manutenção de atividades prazerosas e autocuidado.'],
@@ -362,7 +362,7 @@ function drawLineChart(canvasId, labels, scores, cfg) {
     const y=pad.top+h-(val/max)*h;
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(pad.left+w,y);
     ctx.strokeStyle='rgba(168,136,152,.15)';ctx.lineWidth=1;ctx.stroke();
-    ctx.fillStyle='#9A7A84';ctx.font='500 10px Inter,sans-serif';
+    ctx.fillStyle='#8070a8';ctx.font='500 10px Inter,sans-serif';
     ctx.textAlign='right';ctx.textBaseline='middle';
     ctx.fillText(val,pad.left-4,y);
   });
@@ -374,7 +374,7 @@ function drawLineChart(canvasId, labels, scores, cfg) {
 
   const step = w/Math.max(scores.length-1,1);
   labels.forEach((lbl,i)=>{
-    ctx.fillStyle='#9A7A84';ctx.font='500 10px Inter,sans-serif';
+    ctx.fillStyle='#8070a8';ctx.font='500 10px Inter,sans-serif';
     ctx.textAlign='center';ctx.textBaseline='top';
     ctx.fillText(lbl,pad.left+i*step,H-pad.bottom+6);
   });
@@ -387,7 +387,7 @@ function drawLineChart(canvasId, labels, scores, cfg) {
 
   ctx.beginPath();
   scores.forEach((s,i)=>{const x=pad.left+i*step,y=pad.top+h-(s/max)*h; i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)});
-  ctx.strokeStyle='#B08090';ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
+  ctx.strokeStyle='#8070a8';ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
 
   ctx.beginPath();
   scores.forEach((s,i)=>{const x=pad.left+i*step,y=pad.top+h-(s/max)*h; i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)});
@@ -427,7 +427,7 @@ function drawGauge(canvasId, score, color, cfg) {
 
   cfg.levels.map(l=>l.min).concat([cfg.max]).forEach(val=>{
     const a=start+(val/total)*Math.PI;
-    ctx.fillStyle='#9A7A84';ctx.font='500 9px Inter,sans-serif';
+    ctx.fillStyle='#8070a8';ctx.font='500 9px Inter,sans-serif';
     ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillText(val,cx+(R+13)*Math.cos(a),cy+(R+13)*Math.sin(a));
   });
