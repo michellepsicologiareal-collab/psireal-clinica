@@ -3207,8 +3207,8 @@ async function createApplication() {
       })
     });
     const data = await res.json();
-    if (!res.ok || !data?.[0]?.token) throw new Error('Falha ao gerar link');
-    const token = encodeURIComponent(data[0].token);
+    if (!res.ok || (!data?.token && !data?.[0]?.token)) throw new Error('Falha ao gerar link');
+    const token = encodeURIComponent(data?.token || data?.[0]?.token);
     const link = `${location.origin}${location.pathname.replace(/painel-tcc\.html$/, '')}${page}.html?token=${token}&nome=${encodeURIComponent(name)}`;
     document.getElementById('generatedLinkText').textContent = link;
     document.getElementById('generatedWhatsappLink').href = buildWhatsappUrl(whatsapp, name, link);
