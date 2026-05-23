@@ -117,26 +117,25 @@ body {
 }
 
 .logo {
-  padding: 24px 20px 20px;
+  padding: 20px 20px 18px;
   border-bottom: 1px solid var(--border);
 }
 .logo-mark {
   display: flex; align-items: center; gap: 10px;
 }
 .logo-icon {
-  width: 40px; height: 40px; border-radius: 999px;
+  width: 32px; height: 32px; border-radius: 8px;
   background: url("logo-psicologia-real.png") center / contain no-repeat;
-  flex: 0 0 40px;
+  flex: 0 0 32px;
 }
 .logo-text {
-  font-family:'Instrument Sans',system-ui,-apple-system,sans-serif;
-  font-size: 18px; font-weight: 600; color: var(--ink);
-  letter-spacing: -0.3px; line-height: 1.1;
+  font-family:'Syne',system-ui,sans-serif;
+  font-size: 16px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.3px; line-height: 1;
+  white-space: nowrap;
 }
 .logo-sub {
-  font-size: 10px; color: var(--ink3); font-weight: 400;
-  font-family:'Instrument Sans',system-ui,-apple-system,sans-serif; letter-spacing: .08em;
-  margin-top: 2px;
+  display: none;
 }
 
 .nav { padding: 16px 12px; flex: 1; }
@@ -787,12 +786,14 @@ body{background:var(--bg) !important;color:var(--ink) !important}
 /* Sidebar */
 .sidebar{width:260px !important;background:var(--bg-sidebar) !important;border-right:1px solid var(--border) !important;box-shadow:none !important}
 .main{margin-left:260px !important;background:var(--bg-surface) !important}
-.logo-wrap{height:102px !important;border-bottom:1px solid var(--border) !important;padding:24px 20px !important}
-.logo-mark{width:34px !important;height:34px !important;border-radius:10px !important;background:url('logo-psicologia-real.png') center/contain no-repeat !important;box-shadow:none !important}
-.logo-text{font-size:20px !important;font-weight:700 !important;color:var(--ink) !important}
-.nav{padding:28px 20px !important;overflow:auto !important}
+.logo-wrap{height:auto !important;border-bottom:1px solid var(--border) !important;padding:20px 20px 18px !important}
+.logo-mark{gap:10px !important}
+.logo-icon,.logo-mark{width:32px !important;height:32px !important;flex-basis:32px !important;border-radius:8px !important;background:url('logo-psicologia-real.png') center/contain no-repeat !important;box-shadow:none !important}
+.logo-text{font-family:'Syne',sans-serif !important;font-size:16px !important;font-weight:700 !important;color:var(--ink) !important;white-space:nowrap !important}
+.logo-sub{display:none !important}
+.nav{padding:20px 16px !important;overflow:auto !important}
 .nav-label{font-size:11px !important;font-weight:600 !important;letter-spacing:.1em !important;color:var(--ink4) !important;margin:0 0 10px 6px !important}
-.nav-section{margin-bottom:28px !important}
+.nav-section{margin-bottom:20px !important}
 .nav-item{min-height:44px !important;border-radius:14px !important;padding:0 14px !important;font-size:14px !important;font-weight:500 !important;color:var(--nav-link) !important;gap:10px !important}
 .nav-item:hover{background:var(--primary-subtle) !important;color:var(--ink) !important}
 .nav-item.active{background:var(--primary-subtle) !important;color:var(--primary-dark) !important;box-shadow:none !important}
