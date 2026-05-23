@@ -2818,8 +2818,15 @@ async function bootstrapAuthenticatedApp() {
   ]);
   window.PACIENTES_DB = pacientes || [];
 
-  // Verifica se é admin
-  window.PSI_IS_ADMIN = adminCheck && adminCheck.length > 0;
+  // Verifica se é admin — precisa ter registro na tabela admin_users
+  let adminCheck = [];
+  try {
+    adminCheck = await supabaseSelect('admin_users?select=user_id&limit=1');
+  } catch(e) { adminCheck = []; }
+  
+  window.PSI_IS_ADMIN = Array.isArray(adminCheck) && adminCheck.length > 0 
+    && adminCheck[0].user_id !== undefined;
+    
   if (window.PSI_IS_ADMIN) {
     document.getElementById('adminNavSection').style.display = 'block';
   }
