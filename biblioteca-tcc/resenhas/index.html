@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resenhas de Livros â€” Biblioteca Psi Real</title>
+  <title>Resenhas de Livros — Biblioteca Psi Real</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -218,6 +223,188 @@
       .results-bar { padding: 1rem 1.5rem 0; }
     }
   </style>
+
+<style id="psireal-layout-refresh">
+  :root{
+    --ps-bg:#FAF8F5;
+    --ps-surface:#FFFFFF;
+    --ps-ink:#171321;
+    --ps-muted:#686174;
+    --ps-soft:#A090C8;
+    --ps-border:#E8E2EC;
+    --ps-violet:#5B3DF5;
+    --ps-violet-dark:#2C1A69;
+    --ps-violet-soft:#EEE9FF;
+    --ps-shadow:0 18px 48px rgba(23,19,33,.08);
+    --ps-radius:22px;
+  }
+
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ps-bg)!important;
+    color:var(--ps-ink)!important;
+    font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif!important;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4,
+  .hero-title,.section-title,.material-title,.review-title,
+  .nav-logo-text,.card-title{
+    font-family:'Manrope', system-ui, sans-serif!important;
+    letter-spacing:-.045em!important;
+    color:var(--ps-ink)!important;
+  }
+
+  p,li,.subtitle,.description,.lead{
+    color:var(--ps-muted)!important;
+  }
+
+  nav,header,.topbar,.navbar{
+    background:rgba(250,248,245,.9)!important;
+    border-bottom:1px solid var(--ps-border)!important;
+    backdrop-filter:blur(18px)!important;
+  }
+
+  .nav-logo img,
+  .nav-real-logo{
+    width:42px!important;
+    height:42px!important;
+    border-radius:50%!important;
+    object-fit:contain!important;
+  }
+
+  .nav-logo-icon{
+    display:none!important;
+  }
+
+  .nav-logo{
+    gap:12px!important;
+  }
+
+  a{
+    color:inherit;
+  }
+
+  a:hover{
+    color:var(--ps-violet)!important;
+  }
+
+  .btn,
+  .button,
+  .cta,
+  .primary,
+  .btn-primary,
+  .hero-cta,
+  button,
+  a[class*="btn"]{
+    border-radius:14px!important;
+    font-weight:800!important;
+  }
+
+  .btn-primary,
+  .primary,
+  .cta,
+  .hero-cta,
+  button.primary,
+  a.primary,
+  a.btn-primary{
+    background:var(--ps-violet)!important;
+    color:#fff!important;
+    border-color:var(--ps-violet)!important;
+    box-shadow:0 16px 34px rgba(91,61,245,.18)!important;
+  }
+
+  .btn-primary:hover,
+  .primary:hover,
+  .cta:hover,
+  .hero-cta:hover,
+  a.primary:hover,
+  a.btn-primary:hover{
+    background:#4B30DA!important;
+    color:#fff!important;
+    transform:translateY(-1px);
+  }
+
+  .btn-secondary,
+  .secondary,
+  a.secondary{
+    background:#fff!important;
+    color:var(--ps-ink)!important;
+    border:1px solid var(--ps-border)!important;
+  }
+
+  .pill,.badge,.tag,.category,.label{
+    background:var(--ps-violet-soft)!important;
+    color:var(--ps-violet-dark)!important;
+    border:1px solid var(--ps-border)!important;
+    border-radius:999px!important;
+    font-weight:800!important;
+    letter-spacing:.06em!important;
+  }
+
+  .card,
+  .material-card,
+  .resource-card,
+  .review-card,
+  article,
+  .content-card,
+  .panel{
+    background:#fff!important;
+    border:1px solid var(--ps-border)!important;
+    border-radius:var(--ps-radius)!important;
+    box-shadow:0 8px 26px rgba(23,19,33,.045)!important;
+  }
+
+  .card:hover,
+  .material-card:hover,
+  .resource-card:hover,
+  .review-card:hover{
+    box-shadow:var(--ps-shadow)!important;
+    border-color:#D8D0E5!important;
+  }
+
+  .material-card .card-visual,
+  .card-visual,
+  .visual,
+  .gradient-card,
+  .cover{
+    background:linear-gradient(135deg,#171321 0%,#5B3DF5 100%)!important;
+  }
+
+  .toc,
+  .sidebar,
+  aside{
+    background:transparent!important;
+  }
+
+  .toc a.active,
+  .toc .active,
+  .sidebar .active,
+  .nav-links .active,
+  .active{
+    background:var(--ps-violet-soft)!important;
+    color:var(--ps-violet-dark)!important;
+    border-radius:12px!important;
+  }
+
+  hr,.divider{
+    border-color:var(--ps-border)!important;
+  }
+
+  #install-prompt,
+  .install-prompt,
+  .pwa-install,
+  .pwa-prompt,
+  .install-banner,
+  .app-install-banner,
+  [data-install-prompt]{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+</style>
+
 </head>
 <body>
 
@@ -229,17 +416,17 @@
     <span class="nav-logo-text">Biblioteca Psi<span>Real</span></span>
   </a>
   <div class="nav-links">
-    <a href="/index.html">Voltar ao site</a>
+    <a href="https://michelledonegaterapia.com.br/" target="_blank" rel="noopener">Voltar ao site</a>
     <a href="../../index.html#materiais">Materiais</a>
     <a href="#" class="active">Resenhas</a>
-    <a href="https://psireal.app/" target="_blank" class="nav-cta">psireal.app</a>
-    <a href="https://wa.me/5511947388423" target="_blank">WhatsApp</a>
+    <a href="https://psireal.app/" target="_blank" rel="noopener" target="_blank" class="nav-cta">psireal.app</a>
+    <a href="https://wa.me/5511947388423" target="_blank" rel="noopener" target="_blank">WhatsApp →</a>
   </div>
 </nav>
 
 <div class="page-header">
   <div class="page-eyebrow">Arsenal de leituras</div>
-  <h1>Livros que fazem<br>vocÃª <em>pensar melhor</em></h1>
+  <h1>Livros que fazem<br>você <em>pensar melhor</em></h1>
   <p>Resenhas honestas para psis em formação. Cada livro avaliado com uma pergunta em mente: <strong>isso vai me ajudar na prática agora?</strong></p>
 </div>
 
@@ -294,14 +481,14 @@
         <span class="book-tag">Fundamentos TCC</span>
       </div>
       <div class="book-title">Terapia Cognitivo-Comportamental: Teoria e Prática</div>
-      <div class="book-author">Judith S. Beck Â· 3Âª edição, 2021</div>
-      <p class="book-desc">O livro de referÃªncia da TCC. Judith Beck ensina o modelo cognitivo do zero, com sessões anotadas e exemplos clínicos reais. É o livro que vocÃª vai abrir na véspera de toda supervisão.</p>
+      <div class="book-author">Judith S. Beck · 3ª edição, 2021</div>
+      <p class="book-desc">O livro de referência da TCC. Judith Beck ensina o modelo cognitivo do zero, com sessões anotadas e exemplos clínicos reais. É o livro que você vai abrir na véspera de toda supervisão.</p>
       <div class="book-info">
         <div class="book-info-row">
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="book-info-text"><strong>Por onde começar:</strong> Capítulos 1 a 4 primeiro. Eles explicam o modelo cognitivo que fundamenta tudo o que vocÃª vai aprender depois.</div>
+          <div class="book-info-text"><strong>Por onde começar:</strong> Capítulos 1 a 4 primeiro. Eles explicam o modelo cognitivo que fundamenta tudo o que você vai aprender depois.</div>
         </div>
         <div class="book-info-row">
           <div class="book-info-icon">
@@ -317,7 +504,7 @@
   <article class="book-card"
     data-tema="ansiedade"
     data-nivel="iniciante"
-    data-titulo="Vencendo o PÃ¢nico"
+    data-titulo="Vencendo o Pânico"
     data-autor="Salkovskis">
     <div class="book-thumb" style="background: linear-gradient(135deg, #4A2840 0%, #8A5070 50%, #C090A8 100%);">
       <span class="book-thumb-level">
@@ -332,21 +519,21 @@
       <div class="book-tags">
         <span class="book-tag">Ansiedade</span>
       </div>
-      <div class="book-title">Vencendo o Transtorno do PÃ¢nico</div>
-      <div class="book-author">David Clark & Paul Salkovskis Â· 2021</div>
-      <p class="book-desc">Um guia clínico direto para tratar pÃ¢nico com TCC. Explica o modelo cognitivo do pÃ¢nico de forma que faz sentido para o terapeuta e para o paciente. Cheio de exemplos de diálogo socrático.</p>
+      <div class="book-title">Vencendo o Transtorno do Pânico</div>
+      <div class="book-author">David Clark & Paul Salkovskis · 2021</div>
+      <p class="book-desc">Um guia clínico direto para tratar pânico com TCC. Explica o modelo cognitivo do pânico de forma que faz sentido para o terapeuta e para o paciente. Cheio de exemplos de diálogo socrático.</p>
       <div class="book-info">
         <div class="book-info-row">
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="book-info-text"><strong>Por onde começar:</strong> O capítulo sobre o modelo do círculo vicioso do pÃ¢nico. VocÃª vai querer usar na psicoeducação do paciente imediatamente.</div>
+          <div class="book-info-text"><strong>Por onde começar:</strong> O capítulo sobre o modelo do círculo vicioso do pânico. Você vai querer usar na psicoeducação do paciente imediatamente.</div>
         </div>
         <div class="book-info-row">
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
-          <div class="book-info-text"><strong>Leia depois de:</strong> Judith Beck (2021). O modelo cognitivo geral precisa estar claro antes de estudar o pÃ¢nico especificamente.</div>
+          <div class="book-info-text"><strong>Leia depois de:</strong> Judith Beck (2021). O modelo cognitivo geral precisa estar claro antes de estudar o pânico especificamente.</div>
         </div>
       </div>
     </div>
@@ -372,20 +559,20 @@
         <span class="book-tag">Formulação</span>
       </div>
       <div class="book-title">A Abordagem de Formulação de Caso em TCC</div>
-      <div class="book-author">Jacqueline Persons Â· 2008</div>
+      <div class="book-author">Jacqueline Persons · 2008</div>
       <p class="book-desc">O guia definitivo para aprender a montar uma formulação de caso coerente. Persons mostra como conectar queixa, história de vida, crenças e comportamentos num mapa clínico funcional.</p>
       <div class="book-info">
         <div class="book-info-row">
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="book-info-text"><strong>Por onde começar:</strong> Os trÃªs primeiros capítulos, que mostram o que é uma formulação e por que ela muda o tratamento.</div>
+          <div class="book-info-text"><strong>Por onde começar:</strong> Os três primeiros capítulos, que mostram o que é uma formulação e por que ela muda o tratamento.</div>
         </div>
         <div class="book-info-row">
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
-          <div class="book-info-text"><strong>Leia depois de:</strong> Judith Beck (2021). VocÃª precisa ter o modelo cognitivo na cabeça para aproveitar o livro de formulação.</div>
+          <div class="book-info-text"><strong>Leia depois de:</strong> Judith Beck (2021). Você precisa ter o modelo cognitivo na cabeça para aproveitar o livro de formulação.</div>
         </div>
       </div>
     </div>
@@ -411,8 +598,8 @@
         <span class="book-tag">Depressão</span>
       </div>
       <div class="book-title">Terapia Cognitiva da Depressão</div>
-      <div class="book-author">Aaron Beck, Rush, Shaw & Emery Â· 1979</div>
-      <p class="book-desc">O livro que deu origem Ã  TCC. Leitura obrigatória não por ser fácil â€” é denso â€” mas porque entender de onde vieram as técnicas muda a forma como vocÃª as aplica. ReferÃªncia que qualquer supervisor vai citar.</p>
+      <div class="book-author">Aaron Beck, Rush, Shaw & Emery · 1979</div>
+      <p class="book-desc">O livro que deu origem Ã  TCC. Leitura obrigatória não por ser fácil — é denso — mas porque entender de onde vieram as técnicas muda a forma como você as aplica. Referência que qualquer supervisor vai citar.</p>
       <div class="book-info">
         <div class="book-info-row">
           <div class="book-info-icon">
@@ -424,7 +611,7 @@
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
-          <div class="book-info-text"><strong>Leia depois de:</strong> Judith Beck (2021) e de ter pelo menos 6 meses de prática clínica. A densidade compensa quando vocÃª já tem contexto.</div>
+          <div class="book-info-text"><strong>Leia depois de:</strong> Judith Beck (2021) e de ter pelo menos 6 meses de prática clínica. A densidade compensa quando você já tem contexto.</div>
         </div>
       </div>
     </div>
@@ -450,7 +637,7 @@
         <span class="book-tag">Ansiedade</span>
       </div>
       <div class="book-title">Terapia Cognitiva para Transtornos de Ansiedade</div>
-      <div class="book-author">Clark & Beck Â· 2012</div>
+      <div class="book-author">Clark & Beck · 2012</div>
       <p class="book-desc">Cobre todos os principais transtornos de ansiedade com modelos específicos para cada um. Especialmente útil para fobia social, TAG e TEPT. A seção sobre vulnerabilidade cognitiva é um dos melhores capítulos da literatura em TCC.</p>
       <div class="book-info">
         <div class="book-info-row">
@@ -463,7 +650,7 @@
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
-          <div class="book-info-text"><strong>Leia depois de:</strong> Judith Beck (2021) e, idealmente, do livro de pÃ¢nico de Clark & Salkovskis â€” vocÃª começa a ver os padrões entre os transtornos.</div>
+          <div class="book-info-text"><strong>Leia depois de:</strong> Judith Beck (2021) e, idealmente, do livro de pânico de Clark & Salkovskis — você começa a ver os padrões entre os transtornos.</div>
         </div>
       </div>
     </div>
@@ -489,20 +676,20 @@
         <span class="book-tag">Supervisão</span>
       </div>
       <div class="book-title">Supervisão em Terapia Cognitivo-Comportamental</div>
-      <div class="book-author">Liese & Beck Â· 1997</div>
-      <p class="book-desc">O guia para entender o que acontece â€” e o que deveria acontecer â€” numa supervisão de TCC. Ãštil tanto para o supervisionando quanto para quem está aprendendo a supervisionar. Ajuda a extrair mais de cada sessão de supervisão.</p>
+      <div class="book-author">Liese & Beck · 1997</div>
+      <p class="book-desc">O guia para entender o que acontece — e o que deveria acontecer — numa supervisão de TCC. Ãštil tanto para o supervisionando quanto para quem está aprendendo a supervisionar. Ajuda a extrair mais de cada sessão de supervisão.</p>
       <div class="book-info">
         <div class="book-info-row">
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="book-info-text"><strong>Por onde começar:</strong> O capítulo sobre o papel do supervisionando â€” o que vocÃª pode pedir, como apresentar casos, como aproveitar o feedback.</div>
+          <div class="book-info-text"><strong>Por onde começar:</strong> O capítulo sobre o papel do supervisionando — o que você pode pedir, como apresentar casos, como aproveitar o feedback.</div>
         </div>
         <div class="book-info-row">
           <div class="book-info-icon">
             <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
-          <div class="book-info-text"><strong>Leia depois de:</strong> Ter pelo menos 1 ano de supervisão ativa. As discussões fazem muito mais sentido quando vocÃª já tem experiÃªncia para comparar.</div>
+          <div class="book-info-text"><strong>Leia depois de:</strong> Ter pelo menos 1 ano de supervisão ativa. As discussões fazem muito mais sentido quando você já tem experiência para comparar.</div>
         </div>
       </div>
     </div>
@@ -517,7 +704,7 @@
 
 <footer>
   <div class="footer-logo">Biblioteca Psi<span>Real</span></div>
-  <p>Recursos clínicos em TCC Â· <a href="../../index.html">Voltar Ã  biblioteca</a></p>
+  <p>Recursos clínicos em TCC · <a href="../../index.html">Voltar Ã  biblioteca</a></p>
 </footer>
 
 <script>

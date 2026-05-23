@@ -6,7 +6,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exposição e Prevenção de Rituais â€” Foa & Kozak | Biblioteca Psi Real</title>
+  <title>Exposição e Prevenção de Rituais — Foa & Kozak | Biblioteca Psi Real</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -161,7 +166,7 @@
     }
     .hl-row strong { font-weight: 500; color: var(--rose); }
 
-    /* Hierarquia de exposição â€” escada visual com SUDS */
+    /* Hierarquia de exposição — escada visual com SUDS */
     .ladder { list-style: none; margin: 1.25rem 0; }
     .ladder-rung {
       display: grid;
@@ -241,9 +246,9 @@
       padding: 5px 0; border-bottom: 1px dashed var(--border);
     }
     .question-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .question-item::before { content: "â€” "; color: var(--rose-mid); }
+    .question-item::before { content: "— "; color: var(--rose-mid); }
 
-    /* Manejo de rituais â€” linha com destaque */
+    /* Manejo de rituais — linha com destaque */
     .ritual-row {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 12px; margin: 5px 0;
@@ -278,6 +283,188 @@
   <link rel="apple-touch-icon" href="../../icons/icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="../../icons/icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="../../icons/icon-512.png" />
+
+<style id="psireal-layout-refresh">
+  :root{
+    --ps-bg:#FAF8F5;
+    --ps-surface:#FFFFFF;
+    --ps-ink:#171321;
+    --ps-muted:#686174;
+    --ps-soft:#A090C8;
+    --ps-border:#E8E2EC;
+    --ps-violet:#5B3DF5;
+    --ps-violet-dark:#2C1A69;
+    --ps-violet-soft:#EEE9FF;
+    --ps-shadow:0 18px 48px rgba(23,19,33,.08);
+    --ps-radius:22px;
+  }
+
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ps-bg)!important;
+    color:var(--ps-ink)!important;
+    font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif!important;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4,
+  .hero-title,.section-title,.material-title,.review-title,
+  .nav-logo-text,.card-title{
+    font-family:'Manrope', system-ui, sans-serif!important;
+    letter-spacing:-.045em!important;
+    color:var(--ps-ink)!important;
+  }
+
+  p,li,.subtitle,.description,.lead{
+    color:var(--ps-muted)!important;
+  }
+
+  nav,header,.topbar,.navbar{
+    background:rgba(250,248,245,.9)!important;
+    border-bottom:1px solid var(--ps-border)!important;
+    backdrop-filter:blur(18px)!important;
+  }
+
+  .nav-logo img,
+  .nav-real-logo{
+    width:42px!important;
+    height:42px!important;
+    border-radius:50%!important;
+    object-fit:contain!important;
+  }
+
+  .nav-logo-icon{
+    display:none!important;
+  }
+
+  .nav-logo{
+    gap:12px!important;
+  }
+
+  a{
+    color:inherit;
+  }
+
+  a:hover{
+    color:var(--ps-violet)!important;
+  }
+
+  .btn,
+  .button,
+  .cta,
+  .primary,
+  .btn-primary,
+  .hero-cta,
+  button,
+  a[class*="btn"]{
+    border-radius:14px!important;
+    font-weight:800!important;
+  }
+
+  .btn-primary,
+  .primary,
+  .cta,
+  .hero-cta,
+  button.primary,
+  a.primary,
+  a.btn-primary{
+    background:var(--ps-violet)!important;
+    color:#fff!important;
+    border-color:var(--ps-violet)!important;
+    box-shadow:0 16px 34px rgba(91,61,245,.18)!important;
+  }
+
+  .btn-primary:hover,
+  .primary:hover,
+  .cta:hover,
+  .hero-cta:hover,
+  a.primary:hover,
+  a.btn-primary:hover{
+    background:#4B30DA!important;
+    color:#fff!important;
+    transform:translateY(-1px);
+  }
+
+  .btn-secondary,
+  .secondary,
+  a.secondary{
+    background:#fff!important;
+    color:var(--ps-ink)!important;
+    border:1px solid var(--ps-border)!important;
+  }
+
+  .pill,.badge,.tag,.category,.label{
+    background:var(--ps-violet-soft)!important;
+    color:var(--ps-violet-dark)!important;
+    border:1px solid var(--ps-border)!important;
+    border-radius:999px!important;
+    font-weight:800!important;
+    letter-spacing:.06em!important;
+  }
+
+  .card,
+  .material-card,
+  .resource-card,
+  .review-card,
+  article,
+  .content-card,
+  .panel{
+    background:#fff!important;
+    border:1px solid var(--ps-border)!important;
+    border-radius:var(--ps-radius)!important;
+    box-shadow:0 8px 26px rgba(23,19,33,.045)!important;
+  }
+
+  .card:hover,
+  .material-card:hover,
+  .resource-card:hover,
+  .review-card:hover{
+    box-shadow:var(--ps-shadow)!important;
+    border-color:#D8D0E5!important;
+  }
+
+  .material-card .card-visual,
+  .card-visual,
+  .visual,
+  .gradient-card,
+  .cover{
+    background:linear-gradient(135deg,#171321 0%,#5B3DF5 100%)!important;
+  }
+
+  .toc,
+  .sidebar,
+  aside{
+    background:transparent!important;
+  }
+
+  .toc a.active,
+  .toc .active,
+  .sidebar .active,
+  .nav-links .active,
+  .active{
+    background:var(--ps-violet-soft)!important;
+    color:var(--ps-violet-dark)!important;
+    border-radius:12px!important;
+  }
+
+  hr,.divider{
+    border-color:var(--ps-border)!important;
+  }
+
+  #install-prompt,
+  .install-prompt,
+  .pwa-install,
+  .pwa-prompt,
+  .install-banner,
+  .app-install-banner,
+  [data-install-prompt]{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+</style>
+
 </head>
 <body>
 <!-- PWA Install Banner -->
@@ -297,7 +484,7 @@
   <a class="nav-back" href="../../index.html">
     <span class="nav-back-arrow">â†</span> Biblioteca Psi Real
   </a>
-  <span class="nav-title">EPR Â· Foa & Kozak</span>
+  <span class="nav-title">EPR · Foa & Kozak</span>
 </nav>
 
 <div class="layout">
@@ -313,7 +500,7 @@
       <li><a href="#s7"><span class="toc-num">07</span>Prevenção de rituais</a></li>
       <li><a href="#s8"><span class="toc-num">08</span>EPR nos transtornos de ansiedade</a></li>
       <li><a href="#s9"><span class="toc-num">09</span>Dificuldades e manejo</a></li>
-      <li><a href="#s10"><span class="toc-num">10</span>ReferÃªncias</a></li>
+      <li><a href="#s10"><span class="toc-num">10</span>Referências</a></li>
     </ul>
   </aside>
 
@@ -327,10 +514,10 @@
         <span class="doc-tag tag-prot">Protocolo</span>
       </div>
       <h1 class="doc-title">Exposição e Prevenção<br>de Rituais</h1>
-      <p class="doc-intro">Protocolo EPR para TOC e transtornos de ansiedade: fundamentos teóricos, construção da hierarquia, graduação das exposições e manejo clínico dos rituais â€” baseado em Foa & Kozak.</p>
+      <p class="doc-intro">Protocolo EPR para TOC e transtornos de ansiedade: fundamentos teóricos, construção da hierarquia, graduação das exposições e manejo clínico dos rituais — baseado em Foa & Kozak.</p>
       <div class="doc-meta">
-        <div class="doc-meta-item"><strong>ReferÃªncias:</strong> Foa & Kozak, 1986 Â· Foa et al., 2012</div>
-        <div class="doc-meta-item"><strong>Ãrea:</strong> TCC / Transtornos de Ansiedade / TOC</div>
+        <div class="doc-meta-item"><strong>Referências:</strong> Foa & Kozak, 1986 · Foa et al., 2012</div>
+        <div class="doc-meta-item"><strong>Área:</strong> TCC / Transtornos de Ansiedade / TOC</div>
         <div class="doc-meta-item"><strong>Seções:</strong> 10</div>
       </div>
     </div>
@@ -339,18 +526,18 @@
     <div class="doc-section" id="s1">
       <div class="sec-eyebrow">Seção 01</div>
       <h2 class="sec-title">Foa, Kozak e o modelo do processamento emocional</h2>
-      <p class="body">Edna B. Foa é professora na Universidade da PensilvÃ¢nia e uma das pesquisadoras mais influentes no campo dos transtornos de ansiedade e TEPT. Michael J. Kozak, seu colaborador, é pesquisador especializado em psicofisiologia do medo e mecanismos de mudança terapÃªutica.</p>
-      <p class="body">Em 1986, Foa e Kozak publicaram o artigo seminal <em>Emotional Processing of Fear: Exposure to Corrective Information</em>, que estabeleceu as bases teóricas para compreender como a exposição funciona â€” e por que a prevenção de rituais é indispensável no tratamento do TOC. Esse modelo orientou décadas de pesquisa e o desenvolvimento dos protocolos de EPR mais eficazes disponíveis hoje.</p>
+      <p class="body">Edna B. Foa é professora na Universidade da Pensilvânia e uma das pesquisadoras mais influentes no campo dos transtornos de ansiedade e TEPT. Michael J. Kozak, seu colaborador, é pesquisador especializado em psicofisiologia do medo e mecanismos de mudança terapêutica.</p>
+      <p class="body">Em 1986, Foa e Kozak publicaram o artigo seminal <em>Emotional Processing of Fear: Exposure to Corrective Information</em>, que estabeleceu as bases teóricas para compreender como a exposição funciona — e por que a prevenção de rituais é indispensável no tratamento do TOC. Esse modelo orientou décadas de pesquisa e o desenvolvimento dos protocolos de EPR mais eficazes disponíveis hoje.</p>
       <div class="callout">
-        <p><strong>Contribuição central:</strong> Foa e Kozak propõem que o medo é armazenado em uma estrutura de memória que contém informações sobre o estímulo temido, as respostas de medo e o significado atribuído. Para que a mudança ocorra, essa estrutura precisa ser ativada <em>e</em> receber informações corretivas â€” o que a evitação permanentemente impede.</p>
+        <p><strong>Contribuição central:</strong> Foa e Kozak propõem que o medo é armazenado em uma estrutura de memória que contém informações sobre o estímulo temido, as respostas de medo e o significado atribuído. Para que a mudança ocorra, essa estrutura precisa ser ativada <em>e</em> receber informações corretivas — o que a evitação permanentemente impede.</p>
       </div>
     </div>
 
     <!-- S2 -->
     <div class="doc-section" id="s2">
       <div class="sec-eyebrow">Seção 02</div>
-      <h2 class="sec-title">O ciclo do TOC â€” o que mantém o problema</h2>
-      <p class="body">Antes de planejar qualquer exposição, é essencial que o terapeuta â€” e o paciente â€” compreendam o mecanismo que mantém o TOC. O ciclo obsessivo-compulsivo é autoalimentado: cada ritual oferece alívio imediato e, ao mesmo tempo, fortalece a crença de que o ritual era necessário.</p>
+      <h2 class="sec-title">O ciclo do TOC — o que mantém o problema</h2>
+      <p class="body">Antes de planejar qualquer exposição, é essencial que o terapeuta — e o paciente — compreendam o mecanismo que mantém o TOC. O ciclo obsessivo-compulsivo é autoalimentado: cada ritual oferece alívio imediato e, ao mesmo tempo, fortalece a crença de que o ritual era necessário.</p>
 
       <div class="cycle-grid">
         <div class="cycle-node cycle-node-neutral">
@@ -370,40 +557,40 @@
         <div class="cycle-arrow">→</div>
         <div class="cycle-node">
           <div class="cycle-label">Compulsão</div>
-          <div class="cycle-text">Ritual que reduz a ansiedade â€” mas mantém e reforça o ciclo</div>
+          <div class="cycle-text">Ritual que reduz a ansiedade — mas mantém e reforça o ciclo</div>
         </div>
       </div>
 
       <h3 class="sub-title">Por que o ritual mantém o TOC</h3>
-      <div class="hl-row"><strong>Alívio imediato:</strong> O ritual reduz a ansiedade rapidamente â€” reforço negativo potente que garante que o comportamento se repita.</div>
+      <div class="hl-row"><strong>Alívio imediato:</strong> O ritual reduz a ansiedade rapidamente — reforço negativo potente que garante que o comportamento se repita.</div>
       <div class="hl-row"><strong>Confirmação da ameaça:</strong> Ao realizar o ritual, o paciente confirma implicitamente que o perigo era real e que o ritual era necessário. A crença ameaçadora nunca é desconfirmada.</div>
-      <div class="hl-row"><strong>Impedimento da habituação:</strong> A ansiedade nunca tem tempo de diminuir naturalmente â€” o ritual interrompe o processo antes que o sistema nervoso aprenda que o estímulo é seguro.</div>
+      <div class="hl-row"><strong>Impedimento da habituação:</strong> A ansiedade nunca tem tempo de diminuir naturalmente — o ritual interrompe o processo antes que o sistema nervoso aprenda que o estímulo é seguro.</div>
       <div class="hl-row"><strong>Ampliação do repertório:</strong> Com o tempo, mais situações ativam o ciclo, o ritual se torna mais elaborado e o paciente investe mais tempo e energia na compulsão.</div>
 
       <div class="callout callout-amber">
-        <p><strong>Para psicoeducar o paciente:</strong> "O ritual é exatamente o que mantém o problema. Ele funciona como um extintor que apaga um incÃªndio â€” mas o incÃªndio nunca desaparece de verdade porque o extintor nunca deixa o fogo aprender que vai se apagar sozinho. O tratamento ensina o sistema nervoso que não precisa do extintor."</p>
+        <p><strong>Para psicoeducar o paciente:</strong> "O ritual é exatamente o que mantém o problema. Ele funciona como um extintor que apaga um incêndio — mas o incêndio nunca desaparece de verdade porque o extintor nunca deixa o fogo aprender que vai se apagar sozinho. O tratamento ensina o sistema nervoso que não precisa do extintor."</p>
       </div>
     </div>
 
     <!-- S3 -->
     <div class="doc-section" id="s3">
       <div class="sec-eyebrow">Seção 03</div>
-      <h2 class="sec-title">O que é EPR â€” Exposição e Prevenção de Rituais</h2>
-      <p class="body">A Exposição e Prevenção de Rituais (EPR) é o tratamento de primeira linha para o TOC, com sólida base em evidÃªncias. Consiste em dois componentes interdependentes e igualmente essenciais.</p>
+      <h2 class="sec-title">O que é EPR — Exposição e Prevenção de Rituais</h2>
+      <p class="body">A Exposição e Prevenção de Rituais (EPR) é o tratamento de primeira linha para o TOC, com sólida base em evidências. Consiste em dois componentes interdependentes e igualmente essenciais.</p>
 
       <div class="two-col">
         <div class="info-box">
           <div class="info-box-label">Exposição (E)</div>
-          <p>Contato deliberado e sistemático com o estímulo temido â€” situação, objeto, pensamento ou imagem que dispara a obsessão. A exposição é gradual, planejada e prolongada o suficiente para permitir a habituação.</p>
+          <p>Contato deliberado e sistemático com o estímulo temido — situação, objeto, pensamento ou imagem que dispara a obsessão. A exposição é gradual, planejada e prolongada o suficiente para permitir a habituação.</p>
         </div>
         <div class="info-box">
           <div class="info-box-label">Prevenção de Rituais (PR)</div>
-          <p>Abstenção completa do comportamento compulsivo durante e após a exposição. Sem a PR, a exposição não produz aprendizado corretivo â€” o alívio do ritual confirma a ameaça em vez de desconfirmá-la.</p>
+          <p>Abstenção completa do comportamento compulsivo durante e após a exposição. Sem a PR, a exposição não produz aprendizado corretivo — o alívio do ritual confirma a ameaça em vez de desconfirmá-la.</p>
         </div>
       </div>
 
       <div class="callout callout-warm">
-        <p><strong>Princípio inegociável:</strong> Exposição sem prevenção de rituais é parcialmente eficaz na melhor das hipóteses. Os dois componentes são necessários. Um paciente que se expõe mas realiza rituais após cada exposição não está fazendo EPR â€” está praticando um ciclo modificado de compulsão.</p>
+        <p><strong>Princípio inegociável:</strong> Exposição sem prevenção de rituais é parcialmente eficaz na melhor das hipóteses. Os dois componentes são necessários. Um paciente que se expõe mas realiza rituais após cada exposição não está fazendo EPR — está praticando um ciclo modificado de compulsão.</p>
       </div>
 
       <h3 class="sub-title">EPR intensiva vs. gradual</h3>
@@ -414,7 +601,7 @@
             <li>Começa por itens de SUDS baixo a moderado</li>
             <li>Progride conforme habituação acontece</li>
             <li>Permite ao paciente construir confiança</li>
-            <li>Mais tolerável â€” maior adesão a longo prazo</li>
+            <li>Mais tolerável — maior adesão a longo prazo</li>
             <li>Padrão para a maioria dos casos ambulatoriais</li>
           </ul>
         </div>
@@ -424,8 +611,8 @@
             <li>Sessões diárias ou múltiplas sessões por semana</li>
             <li>Começa em itens de dificuldade moderada a alta</li>
             <li>Eficaz em casos graves ou com tempo limitado</li>
-            <li>Exige maior suporte terapÃªutico e motivação</li>
-            <li>Base de evidÃªncias robusta â€” resultados rápidos</li>
+            <li>Exige maior suporte terapêutico e motivação</li>
+            <li>Base de evidências robusta — resultados rápidos</li>
           </ul>
         </div>
       </div>
@@ -435,11 +622,11 @@
     <div class="doc-section" id="s4">
       <div class="sec-eyebrow">Seção 04</div>
       <h2 class="sec-title">Habituação, extinção e aprendizado inibitório</h2>
-      <p class="body">A EPR opera por meio de mecanismos psicofisiológicos bem documentados. CompreendÃª-los permite ao terapeuta conduzir as exposições de forma tecnicamente precisa e explicar o processo ao paciente de maneira convincente.</p>
+      <p class="body">A EPR opera por meio de mecanismos psicofisiológicos bem documentados. Compreendê-los permite ao terapeuta conduzir as exposições de forma tecnicamente precisa e explicar o processo ao paciente de maneira convincente.</p>
 
       <h3 class="sub-title">Habituação</h3>
-      <p class="body">Quando o organismo é exposto repetidamente a um estímulo aversivo sem consequÃªncias nocivas, a resposta de ansiedade diminui progressivamente. Isso ocorre em dois tempos:</p>
-      <div class="hl-row"><strong>Habituação dentro da sessão:</strong> A ansiedade sobe ao contato com o estímulo, atinge um pico e começa a cair â€” geralmente em 20 a 45 minutos â€” quando o ritual é impedido. O paciente aprende experiencialmente que a ansiedade diminui por si mesma.</div>
+      <p class="body">Quando o organismo é exposto repetidamente a um estímulo aversivo sem consequências nocivas, a resposta de ansiedade diminui progressivamente. Isso ocorre em dois tempos:</p>
+      <div class="hl-row"><strong>Habituação dentro da sessão:</strong> A ansiedade sobe ao contato com o estímulo, atinge um pico e começa a cair — geralmente em 20 a 45 minutos — quando o ritual é impedido. O paciente aprende experiencialmente que a ansiedade diminui por si mesma.</div>
       <div class="hl-row"><strong>Habituação entre sessões:</strong> A cada nova exposição ao mesmo estímulo, o pico de ansiedade é menor e a queda é mais rápida. O aprendizado se consolida ao longo do tempo.</div>
 
       <div class="habit-chart">
@@ -471,7 +658,7 @@
           <!-- Ponto de pico -->
           <circle cx="130" cy="14" r="4" fill="#8B4A52"/>
           <text x="134" y="11" font-size="10" fill="#8B4A52" font-weight="500">Pico</text>
-          <!-- Ãrea de habituação -->
+          <!-- Área de habituação -->
           <text x="310" y="72" font-size="10" fill="#8B4A52">habituação</text>
           <!-- Legenda -->
           <line x1="52" y1="20" x2="76" y2="20" stroke="#8B4A52" stroke-width="2.5"/>
@@ -481,10 +668,10 @@
         </svg>
       </div>
 
-      <h3 class="sub-title">Aprendizado inibitório â€” modelo mais recente</h3>
-      <p class="body">Craske e colaboradores propuseram uma atualização ao modelo de habituação: a exposição não apaga a memória de medo â€” cria uma nova memória de segurança que compete com a antiga. O objetivo não é reduzir a ansiedade durante a exposição, mas maximizar o aprendizado de que o estímulo é seguro.</p>
+      <h3 class="sub-title">Aprendizado inibitório — modelo mais recente</h3>
+      <p class="body">Craske e colaboradores propuseram uma atualização ao modelo de habituação: a exposição não apaga a memória de medo — cria uma nova memória de segurança que compete com a antiga. O objetivo não é reduzir a ansiedade durante a exposição, mas maximizar o aprendizado de que o estímulo é seguro.</p>
       <div class="callout callout-blue">
-        <p><strong>Implicação clínica:</strong> Pelo modelo inibitório, uma exposição bem-sucedida não é necessariamente aquela em que a ansiedade caiu muito â€” é aquela em que o paciente permaneceu no contato com o estímulo temido sem realizar o ritual, desconfirmando a ameaça esperada. A violação de expectativas é o mecanismo central.</p>
+        <p><strong>Implicação clínica:</strong> Pelo modelo inibitório, uma exposição bem-sucedida não é necessariamente aquela em que a ansiedade caiu muito — é aquela em que o paciente permaneceu no contato com o estímulo temido sem realizar o ritual, desconfirmando a ameaça esperada. A violação de expectativas é o mecanismo central.</p>
       </div>
     </div>
 
@@ -492,19 +679,19 @@
     <div class="doc-section" id="s5">
       <div class="sec-eyebrow">Seção 05</div>
       <h2 class="sec-title">Avaliação e construção da hierarquia</h2>
-      <p class="body">A hierarquia de exposição â€” lista ordenada de situações temidas por grau de angústia â€” é o instrumento que organiza todo o protocolo EPR. Uma hierarquia bem construída é pré-requisito para exposições eficazes.</p>
+      <p class="body">A hierarquia de exposição — lista ordenada de situações temidas por grau de angústia — é o instrumento que organiza todo o protocolo EPR. Uma hierarquia bem construída é pré-requisito para exposições eficazes.</p>
 
       <h3 class="sub-title">Avaliação das obsessões e compulsões</h3>
       <div class="comp-grid">
         <div class="comp-card">
           <div class="comp-n">Mapear</div>
           <div class="comp-name">Estímulos temidos</div>
-          <div class="comp-desc">Todos os objetos, situações, pensamentos e imagens que disparam obsessões â€” internos e externos.</div>
+          <div class="comp-desc">Todos os objetos, situações, pensamentos e imagens que disparam obsessões — internos e externos.</div>
         </div>
         <div class="comp-card">
           <div class="comp-n">Identificar</div>
           <div class="comp-name">Conteúdo das obsessões</div>
-          <div class="comp-desc">O que exatamente o paciente teme que aconteça? A ameaça específica â€” não apenas "tenho medo de contaminação" mas "tenho medo de transmitir doença para minha família".</div>
+          <div class="comp-desc">O que exatamente o paciente teme que aconteça? A ameaça específica — não apenas "tenho medo de contaminação" mas "tenho medo de transmitir doença para minha família".</div>
         </div>
         <div class="comp-card">
           <div class="comp-n">Listar</div>
@@ -514,7 +701,7 @@
         <div class="comp-card">
           <div class="comp-n">Mapear</div>
           <div class="comp-name">Comportamentos de evitação</div>
-          <div class="comp-desc">Situações que o paciente evita completamente â€” frequentemente não mencionadas espontaneamente.</div>
+          <div class="comp-desc">Situações que o paciente evita completamente — frequentemente não mencionadas espontaneamente.</div>
         </div>
         <div class="comp-card">
           <div class="comp-n">Medir</div>
@@ -524,20 +711,20 @@
         <div class="comp-card">
           <div class="comp-n">Aplicar</div>
           <div class="comp-name">Y-BOCS</div>
-          <div class="comp-desc">Yale-Brown Obsessive Compulsive Scale â€” linha de base quantitativa de gravidade. Reaplicar periodicamente para monitorar progresso.</div>
+          <div class="comp-desc">Yale-Brown Obsessive Compulsive Scale — linha de base quantitativa de gravidade. Reaplicar periodicamente para monitorar progresso.</div>
         </div>
       </div>
 
-      <h3 class="sub-title">Construindo a hierarquia â€” passo a passo</h3>
+      <h3 class="sub-title">Construindo a hierarquia — passo a passo</h3>
       <ul class="steps">
-        <li><div class="step-dot">1</div><div>Introduzir a escala SUDS (0â€“100) e calibrar com o paciente: pedir dois exemplos â€” uma situação de SUDS 0 e uma de SUDS 100 â€” para garantir que a escala está ancorada na experiÃªncia real dele.</div></li>
+        <li><div class="step-dot">1</div><div>Introduzir a escala SUDS (0–100) e calibrar com o paciente: pedir dois exemplos — uma situação de SUDS 0 e uma de SUDS 100 — para garantir que a escala está ancorada na experiência real dele.</div></li>
         <li><div class="step-dot">2</div><div>Listar todas as situações evitadas e todos os gatilhos de obsessão, sem ordenar ainda. Quanto mais exaustiva a lista, melhor a hierarquia.</div></li>
-        <li><div class="step-dot">3</div><div>Atribuir SUDS a cada item. Para cada situação: "Se vocÃª estivesse nessa situação agora, sem poder realizar o ritual, qual seria sua angústia de 0 a 100?"</div></li>
-        <li><div class="step-dot">4</div><div>Ordenar os itens do menor para o maior SUDS. Verificar se há itens em cada faixa (20â€“40, 40â€“60, 60â€“80, 80â€“100) â€” lacunas grandes dificultam a progressão.</div></li>
-        <li><div class="step-dot">5</div><div>Para cada item, registrar o ritual associado â€” qual compulsão o paciente realiza ou sente impulso de realizar nessa situação. A PR é planejada junto com a exposição.</div></li>
+        <li><div class="step-dot">3</div><div>Atribuir SUDS a cada item. Para cada situação: "Se você estivesse nessa situação agora, sem poder realizar o ritual, qual seria sua angústia de 0 a 100?"</div></li>
+        <li><div class="step-dot">4</div><div>Ordenar os itens do menor para o maior SUDS. Verificar se há itens em cada faixa (20–40, 40–60, 60–80, 80–100) — lacunas grandes dificultam a progressão.</div></li>
+        <li><div class="step-dot">5</div><div>Para cada item, registrar o ritual associado — qual compulsão o paciente realiza ou sente impulso de realizar nessa situação. A PR é planejada junto com a exposição.</div></li>
       </ul>
 
-      <h3 class="sub-title">Exemplo de hierarquia â€” TOC de contaminação</h3>
+      <h3 class="sub-title">Exemplo de hierarquia — TOC de contaminação</h3>
       <ul class="ladder">
         <li class="ladder-rung">
           <span class="suds-badge s90">90</span>
@@ -585,26 +772,26 @@
     <!-- S6 -->
     <div class="doc-section" id="s6">
       <div class="sec-eyebrow">Seção 06</div>
-      <h2 class="sec-title">Protocolo EPR â€” passo a passo</h2>
-      <p class="body">O protocolo EPR segue uma estrutura clara, mas exige adaptação clínica cuidadosa. A sequÃªncia abaixo reflete as diretrizes de Foa e colaboradores para aplicação em contexto ambulatorial.</p>
+      <h2 class="sec-title">Protocolo EPR — passo a passo</h2>
+      <p class="body">O protocolo EPR segue uma estrutura clara, mas exige adaptação clínica cuidadosa. A sequência abaixo reflete as diretrizes de Foa e colaboradores para aplicação em contexto ambulatorial.</p>
 
-      <h3 class="sub-title">Fase 1 â€” Psicoeducação (sessões 1â€“2)</h3>
+      <h3 class="sub-title">Fase 1 — Psicoeducação (sessões 1–2)</h3>
       <ul class="steps">
-        <li><div class="step-dot">1</div><div>Explicar o modelo cognitivo-comportamental do TOC â€” o ciclo obsessão → ansiedade → ritual → alívio → reforço. Usar exemplos do próprio paciente.</div></li>
+        <li><div class="step-dot">1</div><div>Explicar o modelo cognitivo-comportamental do TOC — o ciclo obsessão → ansiedade → ritual → alívio → reforço. Usar exemplos do próprio paciente.</div></li>
         <li><div class="step-dot">2</div><div>Explicar a lógica da EPR: como a habituação funciona e por que o ritual impede o aprendizado. A metáfora do extintor ou da "conta bancária da ansiedade" costuma ser útil.</div></li>
-        <li><div class="step-dot">3</div><div>Apresentar a escala SUDS e a hierarquia construída juntos â€” revisá-la e validar com o paciente. Ele deve reconhecer a hierarquia como precisa.</div></li>
-        <li><div class="step-dot">4</div><div>Esclarecer expectativas: a ansiedade vai subir no início de cada exposição. Isso não é sinal de perigo â€” é evidÃªncia de que o protocolo está funcionando.</div></li>
+        <li><div class="step-dot">3</div><div>Apresentar a escala SUDS e a hierarquia construída juntos — revisá-la e validar com o paciente. Ele deve reconhecer a hierarquia como precisa.</div></li>
+        <li><div class="step-dot">4</div><div>Esclarecer expectativas: a ansiedade vai subir no início de cada exposição. Isso não é sinal de perigo — é evidência de que o protocolo está funcionando.</div></li>
       </ul>
 
-      <h3 class="sub-title">Fase 2 â€” Exposições graduadas (sessões 3 em diante)</h3>
+      <h3 class="sub-title">Fase 2 — Exposições graduadas (sessões 3 em diante)</h3>
       <ul class="steps">
-        <li><div class="step-dot">1</div><div><strong>Selecionar o item inicial:</strong> Começar por um item de SUDS 25â€“35 â€” desafiador o suficiente para gerar aprendizado, mas tolerável o suficiente para garantir que o paciente consiga prevenir o ritual.</div></li>
+        <li><div class="step-dot">1</div><div><strong>Selecionar o item inicial:</strong> Começar por um item de SUDS 25–35 — desafiador o suficiente para gerar aprendizado, mas tolerável o suficiente para garantir que o paciente consiga prevenir o ritual.</div></li>
         <li><div class="step-dot">2</div><div><strong>Registrar SUDS antes:</strong> Pedir ao paciente que avalie a ansiedade antes do contato com o estímulo. Serve de linha de base para comparação.</div></li>
-        <li><div class="step-dot">3</div><div><strong>Iniciar o contato com o estímulo:</strong> Exposição ao vivo sempre que possível â€” em imaginação apenas quando a situação real não pode ser reproduzida na sessão. A exposição ao vivo é mais eficaz.</div></li>
-        <li><div class="step-dot">4</div><div><strong>Monitorar SUDS durante a exposição:</strong> Pedir ao paciente que avalie sua ansiedade a cada 5â€“10 minutos. Registrar os valores â€” a curva de habituação é dado clínico e pedagógico.</div></li>
-        <li><div class="step-dot">5</div><div><strong>Manter a exposição até habituação:</strong> Continuar até a ansiedade reduzir pelo menos 50% do pico, ou até atingir SUDS â‰¤ 30. Nunca encerrar a exposição no pico â€” isso reforça a evitação.</div></li>
+        <li><div class="step-dot">3</div><div><strong>Iniciar o contato com o estímulo:</strong> Exposição ao vivo sempre que possível — em imaginação apenas quando a situação real não pode ser reproduzida na sessão. A exposição ao vivo é mais eficaz.</div></li>
+        <li><div class="step-dot">4</div><div><strong>Monitorar SUDS durante a exposição:</strong> Pedir ao paciente que avalie sua ansiedade a cada 5–10 minutos. Registrar os valores — a curva de habituação é dado clínico e pedagógico.</div></li>
+        <li><div class="step-dot">5</div><div><strong>Manter a exposição até habituação:</strong> Continuar até a ansiedade reduzir pelo menos 50% do pico, ou até atingir SUDS â‰¤ 30. Nunca encerrar a exposição no pico — isso reforça a evitação.</div></li>
         <li><div class="step-dot">6</div><div><strong>Prevenir o ritual:</strong> Durante e após a exposição, o ritual é completamente impedido. Ver seção 07 para estratégias de manejo da PR.</div></li>
-        <li><div class="step-dot">7</div><div><strong>Processar após a exposição:</strong> "O que aconteceu? O que vocÃª esperava que fosse acontecer? O que de fato aconteceu?" â€” a violação da expectativa é explorada verbalmente.</div></li>
+        <li><div class="step-dot">7</div><div><strong>Processar após a exposição:</strong> "O que aconteceu? O que você esperava que fosse acontecer? O que de fato aconteceu?" — a violação da expectativa é explorada verbalmente.</div></li>
         <li><div class="step-dot">8</div><div><strong>Prescrever exposição como tarefa:</strong> A mesma exposição realizada na sessão deve ser repetida em casa pelo menos uma vez por dia, até o próximo encontro.</div></li>
       </ul>
 
@@ -616,24 +803,24 @@
     <!-- S7 -->
     <div class="doc-section" id="s7">
       <div class="sec-eyebrow">Seção 07</div>
-      <h2 class="sec-title">Prevenção de rituais â€” o componente mais difícil</h2>
+      <h2 class="sec-title">Prevenção de rituais — o componente mais difícil</h2>
       <p class="body">A Prevenção de Rituais é frequentemente o maior desafio clínico da EPR. O terapeuta precisa preparar o paciente, planejar estratégias concretas e antecipar as situações em que o impulso compulsivo será mais intenso.</p>
 
       <h3 class="sub-title">Tipos de rituais e como abordar cada um</h3>
 
       <div class="ritual-row">
         <div class="ritual-cell">
-          <div class="ritual-cell-label label-evitar">Ritual aberto â€” lavar / limpar</div>
+          <div class="ritual-cell-label label-evitar">Ritual aberto — lavar / limpar</div>
           Não realizar a lavagem. Se necessário, limitar progressivamente (ex: 1 lavagem breve, depois nenhuma). Planejar o que fazer com as mãos durante o impulso.
         </div>
         <div class="ritual-cell">
           <div class="ritual-cell-label label-fazer">Alternativa funcional</div>
-          Manter contato com o estímulo após a exposição â€” "contaminar" outros objetos e superfícies deliberadamente para ampliar o aprendizado corretivo.
+          Manter contato com o estímulo após a exposição — "contaminar" outros objetos e superfícies deliberadamente para ampliar o aprendizado corretivo.
         </div>
       </div>
       <div class="ritual-row">
         <div class="ritual-cell">
-          <div class="ritual-cell-label label-evitar">Ritual aberto â€” verificar</div>
+          <div class="ritual-cell-label label-evitar">Ritual aberto — verificar</div>
           Não retornar para verificar. Registrar a ansiedade e permanecer com a incerteza. Planejar uma atividade imediatamente após sair do ambiente.
         </div>
         <div class="ritual-cell">
@@ -643,44 +830,44 @@
       </div>
       <div class="ritual-row">
         <div class="ritual-cell">
-          <div class="ritual-cell-label label-evitar">Ritual encoberto â€” neutralização mental</div>
+          <div class="ritual-cell-label label-evitar">Ritual encoberto — neutralização mental</div>
           Não realizar o pensamento neutralizador, a oração compulsiva ou a contagem. Esses rituais são mais difíceis de prevenir porque são invisíveis.
         </div>
         <div class="ritual-cell">
           <div class="ritual-cell-label label-fazer">Alternativa funcional</div>
-          Notar o impulso de neutralizar sem agir sobre ele. Usar defusão cognitiva: "Estou tendo o pensamento de que devo neutralizar" â€” observar sem obedecer.
+          Notar o impulso de neutralizar sem agir sobre ele. Usar defusão cognitiva: "Estou tendo o pensamento de que devo neutralizar" — observar sem obedecer.
         </div>
       </div>
       <div class="ritual-row">
         <div class="ritual-cell">
           <div class="ritual-cell-label label-evitar">Busca de reasseguramento</div>
-          Não perguntar a familiares, ao terapeuta ou a fontes externas se o perigo é real. O reasseguramento é um ritual relacional â€” funciona como compulsão.
+          Não perguntar a familiares, ao terapeuta ou a fontes externas se o perigo é real. O reasseguramento é um ritual relacional — funciona como compulsão.
         </div>
         <div class="ritual-cell">
           <div class="ritual-cell-label label-fazer">Alternativa funcional</div>
-          Tolerar a incerteza sem resolução. Dizer a si mesmo: "Talvez seja verdade, talvez não seja. Vou conviver com a dúvida." â€” a tolerÃ¢ncia Ã  incerteza é a habilidade central.
+          Tolerar a incerteza sem resolução. Dizer a si mesmo: "Talvez seja verdade, talvez não seja. Vou conviver com a dúvida." — a tolerância Ã  incerteza é a habilidade central.
         </div>
       </div>
 
       <h3 class="sub-title">Estratégias de manejo durante o impulso compulsivo</h3>
       <div class="question-block">
         <div class="question-block-label">O que o paciente pode fazer no momento do impulso</div>
-        <div class="question-item">Registrar o SUDS e observar â€” "minha ansiedade está em 70. Vou esperar 5 minutos e registrar de novo"</div>
-        <div class="question-item">Surfar a onda â€” imaginar a ansiedade como uma onda que vai subir e descer sem precisar de ação</div>
-        <div class="question-item">Nomear o processo â€” "isso é TOC me dizendo para realizar o ritual. Não é perigo real."</div>
-        <div class="question-item">Atrasar o ritual progressivamente â€” se não conseguir prevenir completamente, atrasar 5, 10, 15 minutos como estratégia de fading</div>
-        <div class="question-item">Engajar-se em atividade incompatível com o ritual â€” telefonar para alguém, caminhar, fazer qualquer tarefa que ocupe as mãos ou a mente</div>
+        <div class="question-item">Registrar o SUDS e observar — "minha ansiedade está em 70. Vou esperar 5 minutos e registrar de novo"</div>
+        <div class="question-item">Surfar a onda — imaginar a ansiedade como uma onda que vai subir e descer sem precisar de ação</div>
+        <div class="question-item">Nomear o processo — "isso é TOC me dizendo para realizar o ritual. Não é perigo real."</div>
+        <div class="question-item">Atrasar o ritual progressivamente — se não conseguir prevenir completamente, atrasar 5, 10, 15 minutos como estratégia de fading</div>
+        <div class="question-item">Engajar-se em atividade incompatível com o ritual — telefonar para alguém, caminhar, fazer qualquer tarefa que ocupe as mãos ou a mente</div>
       </div>
 
       <div class="callout callout-warm">
-        <p><strong>Sobre o reasseguramento na terapia:</strong> O terapeuta também pode se tornar fonte de reasseguramento â€” ao responder perguntas do tipo "vocÃª acha que vai dar certo?", "isso é realmente perigoso?", "quantas vezes mais vou precisar fazer isso?". A resposta clínica correta é apontar o padrão: "Percebo que vocÃª está me pedindo reasseguramento â€” o que acontece quando não fico em paz com a incerteza?"</div>
+        <p><strong>Sobre o reasseguramento na terapia:</strong> O terapeuta também pode se tornar fonte de reasseguramento — ao responder perguntas do tipo "você acha que vai dar certo?", "isso é realmente perigoso?", "quantas vezes mais vou precisar fazer isso?". A resposta clínica correta é apontar o padrão: "Percebo que você está me pedindo reasseguramento — o que acontece quando não fico em paz com a incerteza?"</div>
     </div>
 
     <!-- S8 -->
     <div class="doc-section" id="s8">
       <div class="sec-eyebrow">Seção 08</div>
       <h2 class="sec-title">EPR nos transtornos de ansiedade</h2>
-      <p class="body">O protocolo de exposição com prevenção de resposta â€” em suas variações â€” é o núcleo do tratamento baseado em evidÃªncias para todos os transtornos de ansiedade. Os princípios são os mesmos; a aplicação técnica varia conforme o transtorno.</p>
+      <p class="body">O protocolo de exposição com prevenção de resposta — em suas variações — é o núcleo do tratamento baseado em evidências para todos os transtornos de ansiedade. Os princípios são os mesmos; a aplicação técnica varia conforme o transtorno.</p>
 
       <table class="proto-table">
         <thead>
@@ -701,17 +888,17 @@
           <tr>
             <td>Fobia específica</td>
             <td>Objeto ou situação fóbica (altura, sangue, animal, etc.)</td>
-            <td>Não escapar nem evitar â€” permanecer no contato</td>
+            <td>Não escapar nem evitar — permanecer no contato</td>
             <td>Habituação frequentemente rápida; exposição ao vivo preferível; sessão única pode ser suficiente em casos simples</td>
           </tr>
           <tr>
             <td>Ansiedade social (TAS)</td>
             <td>Situações sociais temidas; observação dos outros; avaliação negativa</td>
             <td>Não usar comportamentos de segurança (evitar contato visual, falar baixo, preparar excessivamente)</td>
-            <td>Eliminar comportamentos de segurança é essencial; vídeo-feedback útil; exposição em grupo tem evidÃªncias adicionais</td>
+            <td>Eliminar comportamentos de segurança é essencial; vídeo-feedback útil; exposição em grupo tem evidências adicionais</td>
           </tr>
           <tr>
-            <td>Transtorno de pÃ¢nico com agorafobia</td>
+            <td>Transtorno de pânico com agorafobia</td>
             <td>Situações agorafóbicas + sensações físicas internas (exposição interoceptiva)</td>
             <td>Não escapar, não usar objetos de segurança (celular, água, companhia)</td>
             <td>Exposição interoceptiva (hiperventilação, girar em cadeira) expõe Ã s sensações temidas diretamente</td>
@@ -720,7 +907,7 @@
             <td>TEPT</td>
             <td>Memórias traumáticas (exposição prolongada em imaginação) e situações evitadas (in vivo)</td>
             <td>Não interromper o relato, não mudar assunto, não dissociar</td>
-            <td>Protocolo de Exposição Prolongada de Foa â€” 90 min de imaginação com processamento emocional; exige formação específica</td>
+            <td>Protocolo de Exposição Prolongada de Foa — 90 min de imaginação com processamento emocional; exige formação específica</td>
           </tr>
           <tr>
             <td>TAG</td>
@@ -737,27 +924,27 @@
       <div class="sec-eyebrow">Seção 09</div>
       <h2 class="sec-title">Dificuldades clínicas e manejo</h2>
       <div class="hl-row"><strong>Recusa da exposição:</strong> O paciente entende a lógica mas recusa iniciar. Revisar a psicoeducação, explorar os custos do TOC, verificar se a hierarquia começa baixa o suficiente. Considerar motivational interviewing antes da EPR.</div>
-      <div class="hl-row"><strong>Abandono no pico de ansiedade:</strong> O paciente encerra a exposição quando a ansiedade está no pico â€” o pior momento possível. Reforça a evitação. Planejar a duração mínima da exposição com antecedÃªncia e combinar como lidar com o impulso de escapar.</div>
-      <div class="hl-row"><strong>Rituais encobertos durante a exposição:</strong> O paciente se expõe ao estímulo mas neutraliza mentalmente ao mesmo tempo â€” a exposição não produz aprendizado. Identificar os rituais mentais na avaliação e incluí-los explicitamente na prevenção de rituais.</div>
+      <div class="hl-row"><strong>Abandono no pico de ansiedade:</strong> O paciente encerra a exposição quando a ansiedade está no pico — o pior momento possível. Reforça a evitação. Planejar a duração mínima da exposição com antecedência e combinar como lidar com o impulso de escapar.</div>
+      <div class="hl-row"><strong>Rituais encobertos durante a exposição:</strong> O paciente se expõe ao estímulo mas neutraliza mentalmente ao mesmo tempo — a exposição não produz aprendizado. Identificar os rituais mentais na avaliação e incluí-los explicitamente na prevenção de rituais.</div>
       <div class="hl-row"><strong>Família como facilitadora do TOC:</strong> Familiares que realizam rituais pelo paciente, fornecem reasseguramento ou modificam a rotina para acomodar as compulsões. Sessões de psicoeducação familiar e orientação sobre como deixar de participar do ciclo são essenciais.</div>
       <div class="hl-row"><strong>Insight pobre:</strong> Pacientes com baixo insight acreditam fortemente que o perigo é real e a compulsão é necessária. EPR ainda é indicada, mas exige mais psicoeducação, progressão mais lenta e atenção Ã  aliança.</div>
       <div class="hl-row"><strong>Comorbidade com depressão grave:</strong> Depressão intensa reduz a motivação e prejudica o aprendizado durante a exposição. Considerar tratamento da depressão em paralelo (farmacológico ou ativação comportamental) antes ou junto com a EPR.</div>
       <div class="hl-row"><strong>Progresso estagnado:</strong> Quando o paciente não avança na hierarquia após várias semanas. Revisar a hierarquia, verificar rituais não identificados, explorar comportamentos de segurança ocultos, avaliar se as tarefas de casa estão sendo realizadas.</div>
 
       <div class="callout callout-blue">
-        <p><strong>Sobre recaídas:</strong> Recaídas são parte esperada do processo â€” não indicam falha do tratamento. Ao encerrar a EPR, dedicar sessões Ã  prevenção de recaídas: identificar situações de risco, criar plano de resposta a futuros aumentos de sintoma e normalizar flutuações ao longo do tempo.</p>
+        <p><strong>Sobre recaídas:</strong> Recaídas são parte esperada do processo — não indicam falha do tratamento. Ao encerrar a EPR, dedicar sessões Ã  prevenção de recaídas: identificar situações de risco, criar plano de resposta a futuros aumentos de sintoma e normalizar flutuações ao longo do tempo.</p>
       </div>
     </div>
 
     <!-- S10 -->
     <div class="doc-section" id="s10">
       <div class="sec-eyebrow">Seção 10</div>
-      <h2 class="sec-title">ReferÃªncias</h2>
-      <div class="ref-item">Foa, E. B., & Kozak, M. J. (1986). Emotional processing of fear: Exposure to corrective information. <em>Psychological Bulletin, 99</em>(1), 20â€“35.</div>
-      <div class="ref-item">Foa, E. B., Yadin, E., & Lichner, T. K. (2012). <em>Exposure and Response (Ritual) Prevention for Obsessive-Compulsive Disorder: Therapist Guide</em> (2Âª ed.). Oxford University Press.</div>
-      <div class="ref-item">Foa, E. B., & McLean, C. P. (2016). The efficacy of exposure therapy for anxiety-related disorders and its underlying mechanisms. <em>Annual Review of Clinical Psychology, 12</em>, 1â€“28.</div>
-      <div class="ref-item">Craske, M. G., Treanor, M., Conway, C. C., Zbozinek, T., & Vervliet, B. (2014). Maximizing exposure therapy: An inhibitory learning approach. <em>Behaviour Research and Therapy, 58</em>, 10â€“23.</div>
-      <div class="ref-item">Abramowitz, J. S., Taylor, S., & McKay, D. (2009). Obsessive-compulsive disorder. <em>The Lancet, 374</em>(9688), 491â€“499.</div>
+      <h2 class="sec-title">Referências</h2>
+      <div class="ref-item">Foa, E. B., & Kozak, M. J. (1986). Emotional processing of fear: Exposure to corrective information. <em>Psychological Bulletin, 99</em>(1), 20–35.</div>
+      <div class="ref-item">Foa, E. B., Yadin, E., & Lichner, T. K. (2012). <em>Exposure and Response (Ritual) Prevention for Obsessive-Compulsive Disorder: Therapist Guide</em> (2ª ed.). Oxford University Press.</div>
+      <div class="ref-item">Foa, E. B., & McLean, C. P. (2016). The efficacy of exposure therapy for anxiety-related disorders and its underlying mechanisms. <em>Annual Review of Clinical Psychology, 12</em>, 1–28.</div>
+      <div class="ref-item">Craske, M. G., Treanor, M., Conway, C. C., Zbozinek, T., & Vervliet, B. (2014). Maximizing exposure therapy: An inhibitory learning approach. <em>Behaviour Research and Therapy, 58</em>, 10–23.</div>
+      <div class="ref-item">Abramowitz, J. S., Taylor, S., & McKay, D. (2009). Obsessive-compulsive disorder. <em>The Lancet, 374</em>(9688), 491–499.</div>
       <div class="ref-item">Foa, E. B., Huppert, J. D., & Cahill, S. P. (2006). Emotional processing theory: An update. Em B. O. Rothbaum (Ed.), <em>Pathological Anxiety: Emotional Processing in Etiology and Treatment.</em> Guilford Press.</div>
       <div class="ref-item">Clark, D. A., & Beck, A. T. (2010). <em>Cognitive Therapy of Anxiety Disorders: Science and Practice.</em> Guilford Press.</div>
     </div>
@@ -791,7 +978,7 @@
 
   // Install prompt (A2HS banner)
   let deferredPrompt = null;
-  window.addEventListener('beforeinstallprompt', (e) => {
+  window.addEventListener('beforeinstallprompt_disabled', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     const banner = document.getElementById('pwa-install-banner');

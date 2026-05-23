@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Monitoramento de Progresso em TCC | Biblioteca Psi Real</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -220,6 +225,188 @@
   <meta name="theme-color" content="#8B3A4A" />
   <link rel="apple-touch-icon" href="../../icons/icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="../../icons/icon-192.png" />
+
+<style id="psireal-layout-refresh">
+  :root{
+    --ps-bg:#FAF8F5;
+    --ps-surface:#FFFFFF;
+    --ps-ink:#171321;
+    --ps-muted:#686174;
+    --ps-soft:#A090C8;
+    --ps-border:#E8E2EC;
+    --ps-violet:#5B3DF5;
+    --ps-violet-dark:#2C1A69;
+    --ps-violet-soft:#EEE9FF;
+    --ps-shadow:0 18px 48px rgba(23,19,33,.08);
+    --ps-radius:22px;
+  }
+
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ps-bg)!important;
+    color:var(--ps-ink)!important;
+    font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif!important;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4,
+  .hero-title,.section-title,.material-title,.review-title,
+  .nav-logo-text,.card-title{
+    font-family:'Manrope', system-ui, sans-serif!important;
+    letter-spacing:-.045em!important;
+    color:var(--ps-ink)!important;
+  }
+
+  p,li,.subtitle,.description,.lead{
+    color:var(--ps-muted)!important;
+  }
+
+  nav,header,.topbar,.navbar{
+    background:rgba(250,248,245,.9)!important;
+    border-bottom:1px solid var(--ps-border)!important;
+    backdrop-filter:blur(18px)!important;
+  }
+
+  .nav-logo img,
+  .nav-real-logo{
+    width:42px!important;
+    height:42px!important;
+    border-radius:50%!important;
+    object-fit:contain!important;
+  }
+
+  .nav-logo-icon{
+    display:none!important;
+  }
+
+  .nav-logo{
+    gap:12px!important;
+  }
+
+  a{
+    color:inherit;
+  }
+
+  a:hover{
+    color:var(--ps-violet)!important;
+  }
+
+  .btn,
+  .button,
+  .cta,
+  .primary,
+  .btn-primary,
+  .hero-cta,
+  button,
+  a[class*="btn"]{
+    border-radius:14px!important;
+    font-weight:800!important;
+  }
+
+  .btn-primary,
+  .primary,
+  .cta,
+  .hero-cta,
+  button.primary,
+  a.primary,
+  a.btn-primary{
+    background:var(--ps-violet)!important;
+    color:#fff!important;
+    border-color:var(--ps-violet)!important;
+    box-shadow:0 16px 34px rgba(91,61,245,.18)!important;
+  }
+
+  .btn-primary:hover,
+  .primary:hover,
+  .cta:hover,
+  .hero-cta:hover,
+  a.primary:hover,
+  a.btn-primary:hover{
+    background:#4B30DA!important;
+    color:#fff!important;
+    transform:translateY(-1px);
+  }
+
+  .btn-secondary,
+  .secondary,
+  a.secondary{
+    background:#fff!important;
+    color:var(--ps-ink)!important;
+    border:1px solid var(--ps-border)!important;
+  }
+
+  .pill,.badge,.tag,.category,.label{
+    background:var(--ps-violet-soft)!important;
+    color:var(--ps-violet-dark)!important;
+    border:1px solid var(--ps-border)!important;
+    border-radius:999px!important;
+    font-weight:800!important;
+    letter-spacing:.06em!important;
+  }
+
+  .card,
+  .material-card,
+  .resource-card,
+  .review-card,
+  article,
+  .content-card,
+  .panel{
+    background:#fff!important;
+    border:1px solid var(--ps-border)!important;
+    border-radius:var(--ps-radius)!important;
+    box-shadow:0 8px 26px rgba(23,19,33,.045)!important;
+  }
+
+  .card:hover,
+  .material-card:hover,
+  .resource-card:hover,
+  .review-card:hover{
+    box-shadow:var(--ps-shadow)!important;
+    border-color:#D8D0E5!important;
+  }
+
+  .material-card .card-visual,
+  .card-visual,
+  .visual,
+  .gradient-card,
+  .cover{
+    background:linear-gradient(135deg,#171321 0%,#5B3DF5 100%)!important;
+  }
+
+  .toc,
+  .sidebar,
+  aside{
+    background:transparent!important;
+  }
+
+  .toc a.active,
+  .toc .active,
+  .sidebar .active,
+  .nav-links .active,
+  .active{
+    background:var(--ps-violet-soft)!important;
+    color:var(--ps-violet-dark)!important;
+    border-radius:12px!important;
+  }
+
+  hr,.divider{
+    border-color:var(--ps-border)!important;
+  }
+
+  #install-prompt,
+  .install-prompt,
+  .pwa-install,
+  .pwa-prompt,
+  .install-banner,
+  .app-install-banner,
+  [data-install-prompt]{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+</style>
+
 </head>
 <body>
 
@@ -246,7 +433,7 @@
       <li><a href="#graficos"><span class="toc-num">07</span>Gráficos</a></li>
       <li><a href="#protocolo"><span class="toc-num">08</span>Protocolo</a></li>
       <li><a href="#armadilhas"><span class="toc-num">09</span>Armadilhas</a></li>
-      <li><a href="#referencias"><span class="toc-num">10</span>ReferÃªncias</a></li>
+      <li><a href="#referencias"><span class="toc-num">10</span>Referências</a></li>
     </ul>
   </aside>
 
@@ -262,7 +449,7 @@
         <span class="doc-tag tag-new">âœ¦ Novo</span>
       </div>
       <h1 class="doc-title">Monitoramento de<br>Progresso em TCC</h1>
-      <p class="doc-intro">Uso sistemático de medidas de desfecho â€” inventários, escalas e gráficos de progresso â€” como parte integrante da prática clínica baseada em evidÃªncias.</p>
+      <p class="doc-intro">Uso sistemático de medidas de desfecho — inventários, escalas e gráficos de progresso — como parte integrante da prática clínica baseada em evidências.</p>
       <div class="doc-meta">
         <div class="doc-meta-item"><strong>Base:</strong> Lambert, Beck, Persons, Barlow, Hofmann</div>
         <div class="doc-meta-item"><strong>Atualizado:</strong> 2025</div>
@@ -272,13 +459,13 @@
 
     <!-- SEÇÃƒO 1: POR QUE MEDIR -->
     <section class="doc-section" id="introducao">
-      <div class="sec-eyebrow">01 Â· Fundamentação</div>
+      <div class="sec-eyebrow">01 · Fundamentação</div>
       <h2 class="sec-title">Por que medir o progresso sistematicamente?</h2>
 
-      <p class="body">Na TCC baseada em evidÃªncias, a mensuração contínua de desfechos não é opcional â€” é parte integrante do processo terapÃªutico. Ela serve tanto ao terapeuta quanto ao paciente, funcionando como bússola clínica e instrumento de engajamento colaborativo.</p>
+      <p class="body">Na TCC baseada em evidências, a mensuração contínua de desfechos não é opcional — é parte integrante do processo terapêutico. Ela serve tanto ao terapeuta quanto ao paciente, funcionando como bússola clínica e instrumento de engajamento colaborativo.</p>
 
       <div class="callout">
-        <p><strong>Barlow (2004):</strong> Terapeutas eficazes monitoram desfechos como médicos monitoram pressão arterial â€” de forma rotineira e objetiva, não apenas quando percebem dificuldade.</p>
+        <p><strong>Barlow (2004):</strong> Terapeutas eficazes monitoram desfechos como médicos monitoram pressão arterial — de forma rotineira e objetiva, não apenas quando percebem dificuldade.</p>
       </div>
 
       <ul class="step-list" style="margin-top:1.5rem;">
@@ -292,22 +479,22 @@
         <li class="step-item">
           <div class="step-num">2</div>
           <div class="step-body">
-            <div class="step-title">Aliança terapÃªutica fortalecida</div>
-            <div class="step-text">Revisar os escores juntos ao paciente aumenta transparÃªncia, colaboração e senso de agÃªncia â€” pilares da TCC. Padesky & Mooney (2012) enfatizam que mostrar o gráfico de progresso transforma o dado em ferramenta de empoderamento.</div>
+            <div class="step-title">Aliança terapêutica fortalecida</div>
+            <div class="step-text">Revisar os escores juntos ao paciente aumenta transparência, colaboração e senso de agência — pilares da TCC. Padesky & Mooney (2012) enfatizam que mostrar o gráfico de progresso transforma o dado em ferramenta de empoderamento.</div>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">3</div>
           <div class="step-body">
             <div class="step-title">Responsabilidade científica</div>
-            <div class="step-text">A TCC nasce de uma tradição empírica. Hofmann (2012) argumenta que o comprometimento com dados objetivos diferencia a TCC de abordagens menos estruturadas â€” e o monitoramento é a expressão mais visível desse compromisso no dia a dia clínico.</div>
+            <div class="step-text">A TCC nasce de uma tradição empírica. Hofmann (2012) argumenta que o comprometimento com dados objetivos diferencia a TCC de abordagens menos estruturadas — e o monitoramento é a expressão mais visível desse compromisso no dia a dia clínico.</div>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">4</div>
           <div class="step-body">
             <div class="step-title">Supervisão qualificada</div>
-            <div class="step-text">Dados objetivos permitem ao supervisor identificar padrões, marcos terapÃªuticos e pontos de impasse com muito mais precisão do que relatos narrativos. Uma curva estagnada na sessão 8 diz mais do que trÃªs supervisões descritivas.</div>
+            <div class="step-text">Dados objetivos permitem ao supervisor identificar padrões, marcos terapêuticos e pontos de impasse com muito mais precisão do que relatos narrativos. Uma curva estagnada na sessão 8 diz mais do que três supervisões descritivas.</div>
           </div>
         </li>
       </ul>
@@ -325,47 +512,47 @@
         </div>
         <div class="info-box">
           <div class="info-box-label">Boa prática</div>
-          <p>Combine pelo menos uma medida <strong>nomotética</strong> (padrão, ex: PHQ-9) com uma <strong>idiográfica</strong> (personalizada para o caso específico). A primeira garante comparabilidade; a segunda garante relevÃ¢ncia clínica para aquele paciente.</p>
+          <p>Combine pelo menos uma medida <strong>nomotética</strong> (padrão, ex: PHQ-9) com uma <strong>idiográfica</strong> (personalizada para o caso específico). A primeira garante comparabilidade; a segunda garante relevância clínica para aquele paciente.</p>
         </div>
       </div>
     </section>
 
     <!-- SEÇÃƒO 2: VISÃƒO GERAL DOS INSTRUMENTOS -->
     <section class="doc-section" id="instrumentos">
-      <div class="sec-eyebrow">02 Â· Instrumentos</div>
+      <div class="sec-eyebrow">02 · Instrumentos</div>
       <h2 class="sec-title">Mapa dos instrumentos em TCC</h2>
 
-      <p class="body">A seleção de instrumentos deve ser guiada pela conceitualização do caso (Persons, 2008), não pela conveniÃªncia. Cada instrumento tem um propósito e uma janela temporal ideal de uso.</p>
+      <p class="body">A seleção de instrumentos deve ser guiada pela conceitualização do caso (Persons, 2008), não pela conveniência. Cada instrumento tem um propósito e uma janela temporal ideal de uso.</p>
 
       <div class="freq-grid">
         <div class="freq-card">
           <div class="freq-val">PHQ-9</div>
-          <div class="freq-desc">Depressão â€” 9 itens</div>
+          <div class="freq-desc">Depressão — 9 itens</div>
           <div class="freq-badge">Sessão a sessão</div>
         </div>
         <div class="freq-card">
           <div class="freq-val">GAD-7</div>
-          <div class="freq-desc">Ansiedade â€” 7 itens</div>
+          <div class="freq-desc">Ansiedade — 7 itens</div>
           <div class="freq-badge">Sessão a sessão</div>
         </div>
         <div class="freq-card">
           <div class="freq-val">BDI-II</div>
-          <div class="freq-desc">Depressão â€” 21 itens</div>
+          <div class="freq-desc">Depressão — 21 itens</div>
           <div class="freq-badge">Quinzenal</div>
         </div>
         <div class="freq-card">
           <div class="freq-val">BAI</div>
-          <div class="freq-desc">Ansiedade â€” 21 itens</div>
+          <div class="freq-desc">Ansiedade — 21 itens</div>
           <div class="freq-badge">Quinzenal</div>
         </div>
         <div class="freq-card">
           <div class="freq-val">ORS</div>
-          <div class="freq-desc">Bem-estar â€” 4 itens</div>
+          <div class="freq-desc">Bem-estar — 4 itens</div>
           <div class="freq-badge">Cada sessão</div>
         </div>
         <div class="freq-card">
           <div class="freq-val">SRS</div>
-          <div class="freq-desc">Aliança â€” 4 itens</div>
+          <div class="freq-desc">Aliança — 4 itens</div>
           <div class="freq-badge">Fim da sessão</div>
         </div>
       </div>
@@ -377,7 +564,7 @@
 
     <!-- SEÇÃƒO 3: DEPRESSÃƒO -->
     <section class="doc-section" id="depressao">
-      <div class="sec-eyebrow">03 Â· Depressão</div>
+      <div class="sec-eyebrow">03 · Depressão</div>
       <h2 class="sec-title">Escalas para monitoramento de depressão</h2>
 
       <div class="two-col">
@@ -392,14 +579,14 @@
             </div>
           </div>
           <div class="scale-card-body">
-            <p class="scale-card-desc">9 itens baseados nos critérios diagnósticos do DSM. Autoaplicável. Validado para TCC â€” amplamente usado por Hofmann (2012) e em todos os grandes ensaios clínicos randomizados modernos. Detecta mudanças semana a semana com alta sensibilidade.</p>
+            <p class="scale-card-desc">9 itens baseados nos critérios diagnósticos do DSM. Autoaplicável. Validado para TCC — amplamente usado por Hofmann (2012) e em todos os grandes ensaios clínicos randomizados modernos. Detecta mudanças semana a semana com alta sensibilidade.</p>
             <div class="scale-tags">
-              <span class="scale-tag stag-pts">0â€“27 pontos</span>
+              <span class="scale-tag stag-pts">0–27 pontos</span>
               <span class="scale-tag stag-freq">Sessão a sessão</span>
               <span class="scale-tag stag-rose">Autoaplicável</span>
             </div>
             <div class="range-bar">
-              <div class="range-label"><span>Mínimo (0â€“4)</span><span>Leve</span><span>Moderado</span><span>Grave</span></div>
+              <div class="range-label"><span>Mínimo (0–4)</span><span>Leve</span><span>Moderado</span><span>Grave</span></div>
               <div class="range-track"><div class="seg-g"></div><div class="seg-y"></div><div class="seg-o"></div><div class="seg-r"></div></div>
               <div class="range-ticks"><span>0</span><span>5</span><span>10</span><span>15</span><span>27</span></div>
             </div>
@@ -419,7 +606,7 @@
           <div class="scale-card-body">
             <p class="scale-card-desc">21 itens desenvolvidos por Aaron Beck e revisados por Judith Beck (1996). Padrão ouro em TCC clássica. Avalia tanto aspectos cognitivos quanto somáticos da depressão. Ideal para uso quinzenal e para a conceitualização de crenças nucleares associadas ao humor.</p>
             <div class="scale-tags">
-              <span class="scale-tag stag-pts">0â€“63 pontos</span>
+              <span class="scale-tag stag-pts">0–63 pontos</span>
               <span class="scale-tag stag-freq">Quinzenal</span>
               <span class="scale-tag stag-rose">21 itens</span>
             </div>
@@ -433,13 +620,13 @@
       </div>
 
       <div class="callout callout-warm" style="margin-top:1rem;">
-        <p><strong>Dica clínica (Padesky):</strong> Ao revisar o BDI-II, pergunte ao paciente qual item mudou mais desde a última sessão. Esse item costuma revelar o foco terapÃªutico mais produtivo da sessão corrente.</p>
+        <p><strong>Dica clínica (Padesky):</strong> Ao revisar o BDI-II, pergunte ao paciente qual item mudou mais desde a última sessão. Esse item costuma revelar o foco terapêutico mais produtivo da sessão corrente.</p>
       </div>
     </section>
 
     <!-- SEÇÃƒO 4: ANSIEDADE -->
     <section class="doc-section" id="ansiedade">
-      <div class="sec-eyebrow">04 Â· Ansiedade</div>
+      <div class="sec-eyebrow">04 · Ansiedade</div>
       <h2 class="sec-title">Escalas para monitoramento de ansiedade</h2>
 
       <div class="two-col">
@@ -456,7 +643,7 @@
           <div class="scale-card-body">
             <p class="scale-card-desc">7 itens para triagem e monitoramento de TAG. Muito sensível a mudanças semana a semana. Indicado por Barlow (2014) nos protocolos unificados para transtornos emocionais. Também detecta ansiedade em contextos de saúde geral.</p>
             <div class="scale-tags">
-              <span class="scale-tag stag-pts">0â€“21 pontos</span>
+              <span class="scale-tag stag-pts">0–21 pontos</span>
               <span class="scale-tag stag-freq">Sessão a sessão</span>
               <span class="scale-tag stag-rose">7 itens</span>
             </div>
@@ -481,7 +668,7 @@
           <div class="scale-card-body">
             <p class="scale-card-desc">21 sintomas físicos e cognitivos de ansiedade. Distingue ansiedade de depressão com maior especificidade do que escalas combinadas (Beck & Steer, 1993). Ãštil quando o componente somático da ansiedade é proeminente no quadro do paciente.</p>
             <div class="scale-tags">
-              <span class="scale-tag stag-pts">0â€“63 pontos</span>
+              <span class="scale-tag stag-pts">0–63 pontos</span>
               <span class="scale-tag stag-freq">Quinzenal</span>
               <span class="scale-tag stag-rose">21 itens</span>
             </div>
@@ -497,10 +684,10 @@
 
     <!-- SEÇÃƒO 5: FUNCIONAMENTO -->
     <section class="doc-section" id="funcionamento">
-      <div class="sec-eyebrow">05 Â· Funcionamento & Qualidade de vida</div>
+      <div class="sec-eyebrow">05 · Funcionamento & Qualidade de vida</div>
       <h2 class="sec-title">ORS, SRS e medidas de funcionamento global</h2>
 
-      <p class="body">Sintomas melhoram antes do funcionamento â€” monitorar apenas sintomas pode dar uma visão parcial do progresso real. Instrumentos de funcionamento capturam mudanças que as escalas sintomáticas perdem.</p>
+      <p class="body">Sintomas melhoram antes do funcionamento — monitorar apenas sintomas pode dar uma visão parcial do progresso real. Instrumentos de funcionamento capturam mudanças que as escalas sintomáticas perdem.</p>
 
       <div class="two-col">
         <div class="scale-card">
@@ -514,9 +701,9 @@
             </div>
           </div>
           <div class="scale-card-body">
-            <p class="scale-card-desc">4 itens de 0â€“10 cada, completados em 1 minuto no início de cada sessão. Avalia bem-estar individual, interpessoal, social e geral. Escores abaixo de 25 (total) sinalizam dificuldade clínica significativa. Criado por Miller & Duncan (2000).</p>
+            <p class="scale-card-desc">4 itens de 0–10 cada, completados em 1 minuto no início de cada sessão. Avalia bem-estar individual, interpessoal, social e geral. Escores abaixo de 25 (total) sinalizam dificuldade clínica significativa. Criado por Miller & Duncan (2000).</p>
             <div class="scale-tags">
-              <span class="scale-tag stag-pts">0â€“40 total</span>
+              <span class="scale-tag stag-pts">0–40 total</span>
               <span class="scale-tag stag-freq">Cada sessão</span>
               <span class="scale-tag" style="background:#EDFAF4;color:#1E7040;">4 domínios</span>
             </div>
@@ -534,9 +721,9 @@
             </div>
           </div>
           <div class="scale-card-body">
-            <p class="scale-card-desc">4 itens de 0â€“10 cada, completados ao final da sessão. Avalia a aliança terapÃªutica de forma estruturada e não intrusiva. Escores abaixo de 36 (total) indicam que algum aspecto da sessão não funcionou para o paciente â€” abre espaço para reparação imediata.</p>
+            <p class="scale-card-desc">4 itens de 0–10 cada, completados ao final da sessão. Avalia a aliança terapêutica de forma estruturada e não intrusiva. Escores abaixo de 36 (total) indicam que algum aspecto da sessão não funcionou para o paciente — abre espaço para reparação imediata.</p>
             <div class="scale-tags">
-              <span class="scale-tag stag-pts">0â€“40 total</span>
+              <span class="scale-tag stag-pts">0–40 total</span>
               <span class="scale-tag stag-freq">Fim da sessão</span>
               <span class="scale-tag" style="background:#EDFAF4;color:#1E7040;">Aliança</span>
             </div>
@@ -545,7 +732,7 @@
       </div>
 
       <h3 class="sub-title">WHOQOL-BREF</h3>
-      <p class="body">26 itens distribuídos em 4 domínios â€” físico, psicológico, relações sociais e ambiente. Ferramenta da OMS validada para uso clínico. Ideal para avaliações de início, meio e fim de tratamento, especialmente quando o objetivo terapÃªutico inclui qualidade de vida ampliada (não apenas redução sintomática).</p>
+      <p class="body">26 itens distribuídos em 4 domínios — físico, psicológico, relações sociais e ambiente. Ferramenta da OMS validada para uso clínico. Ideal para avaliações de início, meio e fim de tratamento, especialmente quando o objetivo terapêutico inclui qualidade de vida ampliada (não apenas redução sintomática).</p>
 
       <div class="callout callout-green">
         <p><strong>Indicação de uso:</strong> Inclua o WHOQOL-BREF quando o paciente apresentar queixa funcional ampla ("minha vida toda está errada"), quando o tratamento for prolongado (mais de 20 sessões), ou quando a meta for prevenção de recaída e manutenção de ganhos.</p>
@@ -554,7 +741,7 @@
 
     <!-- SEÇÃƒO 6: ESPECÃFICOS -->
     <section class="doc-section" id="especificos">
-      <div class="sec-eyebrow">06 Â· Específicos por diagnóstico</div>
+      <div class="sec-eyebrow">06 · Específicos por diagnóstico</div>
       <h2 class="sec-title">Escalas específicas ao transtorno</h2>
 
       <p class="body">Conforme a conceitualização do caso (Persons, 2008), adicione ao menos uma medida específica ao problema-alvo. Essas escalas capturam nuances que instrumentos genéricos não alcançam.</p>
@@ -562,40 +749,40 @@
       <div class="three-col">
         <div class="info-box">
           <div class="info-box-label">TOC</div>
-          <p><strong>Y-BOCS</strong> â€” Yale-Brown Obsessive Compulsive Scale. Avalia obsessões e compulsões separadamente. Padrão ouro para monitorar resposta ao tratamento EPR.</p>
+          <p><strong>Y-BOCS</strong> — Yale-Brown Obsessive Compulsive Scale. Avalia obsessões e compulsões separadamente. Padrão ouro para monitorar resposta ao tratamento EPR.</p>
         </div>
         <div class="info-box">
           <div class="info-box-label">TEPT</div>
-          <p><strong>PCL-5</strong> â€” PTSD Checklist. 20 itens baseados no DSM-5. Sensível a mudanças ao longo do protocolo de processamento traumático.</p>
+          <p><strong>PCL-5</strong> — PTSD Checklist. 20 itens baseados no DSM-5. Sensível a mudanças ao longo do protocolo de processamento traumático.</p>
         </div>
         <div class="info-box">
-          <div class="info-box-label">Transtorno do PÃ¢nico</div>
-          <p><strong>PDSS</strong> â€” Panic Disorder Severity Scale. 7 itens que avaliam frequÃªncia de ataques, ansiedade antecipatória e evitação agorafóbica.</p>
+          <div class="info-box-label">Transtorno do Pânico</div>
+          <p><strong>PDSS</strong> — Panic Disorder Severity Scale. 7 itens que avaliam frequência de ataques, ansiedade antecipatória e evitação agorafóbica.</p>
         </div>
         <div class="info-box">
           <div class="info-box-label">Fobia Social</div>
-          <p><strong>SPIN</strong> â€” Social Phobia Inventory. 17 itens. Detecta medo, evitação e desconforto fisiológico em situações sociais.</p>
+          <p><strong>SPIN</strong> — Social Phobia Inventory. 17 itens. Detecta medo, evitação e desconforto fisiológico em situações sociais.</p>
         </div>
         <div class="info-box">
-          <div class="info-box-label">InsÃ´nia</div>
-          <p><strong>ISI</strong> â€” Insomnia Severity Index. 7 itens. Essencial em casos com insÃ´nia comórbida, frequente em depressão e TAG.</p>
+          <div class="info-box-label">Insônia</div>
+          <p><strong>ISI</strong> — Insomnia Severity Index. 7 itens. Essencial em casos com insônia comórbida, frequente em depressão e TAG.</p>
         </div>
         <div class="info-box">
           <div class="info-box-label">Transt. Alimentares</div>
-          <p><strong>EAT-26</strong> â€” Eating Attitudes Test. 26 itens que avaliam atitudes e comportamentos alimentares problemáticos.</p>
+          <p><strong>EAT-26</strong> — Eating Attitudes Test. 26 itens que avaliam atitudes e comportamentos alimentares problemáticos.</p>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃƒO 7: GRÃFICOS -->
+    <!-- SEÇÃƒO 7: GRÁFICOS -->
     <section class="doc-section" id="graficos">
-      <div class="sec-eyebrow">07 Â· Gráficos de Progresso</div>
+      <div class="sec-eyebrow">07 · Gráficos de Progresso</div>
       <h2 class="sec-title">Visualizando o progresso clínico</h2>
 
-      <p class="body">Gráficos de progresso são ferramentas terapÃªuticas, não apenas administrativas. Apresentados ao paciente, ativam o processamento emocional positivo da mudança â€” o que Padesky (2012) chama de "revisão de evidÃªncias de força".</p>
+      <p class="body">Gráficos de progresso são ferramentas terapêuticas, não apenas administrativas. Apresentados ao paciente, ativam o processamento emocional positivo da mudança — o que Padesky (2012) chama de "revisão de evidências de força".</p>
 
-      <h3 class="sub-title">Trajetória de sintomas â€” caso clínico ilustrativo</h3>
-      <p class="body">Paciente com depressão moderada e ansiedade comórbida, 16 sessões de TCC. Notar a queda mais rápida nos primeiros 8 encontros, seguida de platÃ´ e retomada após reformulação de crenças nucleares.</p>
+      <h3 class="sub-title">Trajetória de sintomas — caso clínico ilustrativo</h3>
+      <p class="body">Paciente com depressão moderada e ansiedade comórbida, 16 sessões de TCC. Notar a queda mais rápida nos primeiros 8 encontros, seguida de platô e retomada após reformulação de crenças nucleares.</p>
 
       <div class="chart-legend">
         <div class="chart-legend-item"><div class="legend-dot" style="background:#C4607A;"></div> PHQ-9 (Depressão)</div>
@@ -605,37 +792,37 @@
         <canvas id="chart-progress" role="img" aria-label="Gráfico de linha mostrando queda progressiva dos escores PHQ-9 e GAD-7 ao longo de 16 sessões">PHQ-9 caiu de 18 para 5; GAD-7 caiu de 14 para 3.</canvas>
       </div>
 
-      <h3 class="sub-title">Progresso por meta terapÃªutica (abordagem Persons)</h3>
+      <h3 class="sub-title">Progresso por meta terapêutica (abordagem Persons)</h3>
       <p class="body">Metas operacionalizadas como indicadores mensuráveis permitem ao terapeuta e supervisor visualizar avanços diferenciais por área de vida do paciente.</p>
       <div class="chart-wrap-sm">
-        <canvas id="chart-goals" role="img" aria-label="Gráfico de barras horizontais mostrando progresso em 5 áreas terapÃªuticas">Progresso de 40% a 82% nas 5 áreas.</canvas>
+        <canvas id="chart-goals" role="img" aria-label="Gráfico de barras horizontais mostrando progresso em 5 áreas terapêuticas">Progresso de 40% a 82% nas 5 áreas.</canvas>
       </div>
 
       <div class="callout" style="margin-top:1.5rem;">
-        <p><strong>Como usar o gráfico com o paciente:</strong> Mostre a curva e pergunte "O que esse gráfico te diz sobre vocÃª?" antes de interpretar. A resposta do paciente revela crenças sobre si mesmo mais rapidamente do que qualquer técnica de questionamento direto.</p>
+        <p><strong>Como usar o gráfico com o paciente:</strong> Mostre a curva e pergunte "O que esse gráfico te diz sobre você?" antes de interpretar. A resposta do paciente revela crenças sobre si mesmo mais rapidamente do que qualquer técnica de questionamento direto.</p>
       </div>
     </section>
 
     <!-- SEÇÃƒO 8: PROTOCOLO -->
     <section class="doc-section" id="protocolo">
-      <div class="sec-eyebrow">08 Â· Protocolo Clínico</div>
+      <div class="sec-eyebrow">08 · Protocolo Clínico</div>
       <h2 class="sec-title">Fluxo de monitoramento na prática</h2>
 
-      <p class="body">O monitoramento sistemático funciona quando integrado Ã  estrutura das sessões â€” não como tarefa adicional, mas como parte do ritual terapÃªutico.</p>
+      <p class="body">O monitoramento sistemático funciona quando integrado Ã  estrutura das sessões — não como tarefa adicional, mas como parte do ritual terapêutico.</p>
 
       <ul class="step-list">
         <li class="step-item">
           <div class="step-num">1</div>
           <div class="step-body">
-            <div class="step-title">Avaliação inicial â€” sessões 1 e 2</div>
-            <div class="step-text">Aplicar bateria completa: BDI-II + BAI (ou PHQ-9 + GAD-7) + medida específica ao diagnóstico + ORS. Usar escores como linha de base na conceitualização do caso. Guardar os resultados no prontuário â€” serão a Ã¢ncora comparativa de todo o tratamento.</div>
+            <div class="step-title">Avaliação inicial — sessões 1 e 2</div>
+            <div class="step-text">Aplicar bateria completa: BDI-II + BAI (ou PHQ-9 + GAD-7) + medida específica ao diagnóstico + ORS. Usar escores como linha de base na conceitualização do caso. Guardar os resultados no prontuário — serão a âncora comparativa de todo o tratamento.</div>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">2</div>
           <div class="step-body">
             <div class="step-title">Monitoramento sessão a sessão</div>
-            <div class="step-text">ORS no início de cada sessão (1 minuto). PHQ-9 e/ou GAD-7 antes de cada sessão â€” pode ser via app ou papel na sala de espera. SRS ao final. Registrar os trÃªs dados no sistema. Todo o processo leva menos de 3 minutos por sessão.</div>
+            <div class="step-text">ORS no início de cada sessão (1 minuto). PHQ-9 e/ou GAD-7 antes de cada sessão — pode ser via app ou papel na sala de espera. SRS ao final. Registrar os três dados no sistema. Todo o processo leva menos de 3 minutos por sessão.</div>
           </div>
         </li>
         <li class="step-item">
@@ -648,7 +835,7 @@
         <li class="step-item">
           <div class="step-num">4</div>
           <div class="step-body">
-            <div class="step-title">Supervisão â€” compartilhamento de dados</div>
+            <div class="step-title">Supervisão — compartilhamento de dados</div>
             <div class="step-text">Com autorização do paciente (LGPD), o terapeuta compartilha dashboard com o supervisor. O supervisor pode comentar diretamente na linha do tempo dos escores, identificando pontos de impasse e sugerindo ajustes no protocolo sem precisar de extensas narrativas do caso.</div>
           </div>
         </li>
@@ -663,7 +850,7 @@
           <div class="step-num">6</div>
           <div class="step-body">
             <div class="step-title">Alta e seguimento</div>
-            <div class="step-text">Reaplicar bateria completa na sessão de alta. Programar follow-up aos 3 e 6 meses com PHQ-9 remoto. Comparar com a linha de base â€” esse dado é poderoso tanto para o paciente quanto para o desenvolvimento clínico do terapeuta.</div>
+            <div class="step-text">Reaplicar bateria completa na sessão de alta. Programar follow-up aos 3 e 6 meses com PHQ-9 remoto. Comparar com a linha de base — esse dado é poderoso tanto para o paciente quanto para o desenvolvimento clínico do terapeuta.</div>
           </div>
         </li>
       </ul>
@@ -671,12 +858,12 @@
 
     <!-- SEÇÃƒO 9: ARMADILHAS -->
     <section class="doc-section" id="armadilhas">
-      <div class="sec-eyebrow">09 Â· Riscos & Armadilhas</div>
+      <div class="sec-eyebrow">09 · Riscos & Armadilhas</div>
       <h2 class="sec-title">O que evitar no monitoramento</h2>
 
       <div class="two-col">
         <div class="callout callout-warm">
-          <p><strong>Falácia do número:</strong> O escore não substitui o julgamento clínico â€” ele informa. Hofmann (2012) alerta que instrumentos mal interpretados podem levar a intervenções prematuras ou Ã  conclusão equivocada de que "o paciente não está respondendo ao tratamento".</p>
+          <p><strong>Falácia do número:</strong> O escore não substitui o julgamento clínico — ele informa. Hofmann (2012) alerta que instrumentos mal interpretados podem levar a intervenções prematuras ou Ã  conclusão equivocada de que "o paciente não está respondendo ao tratamento".</p>
         </div>
         <div class="callout callout-warm">
           <p><strong>Sobre-testagem:</strong> Aplicar muitos instrumentos sobrecarrega o paciente e dilui o significado clínico. Hays (2009) recomenda no máximo 3 instrumentos ativos por caso. A simplicidade é mais sustentável clinicamente.</p>
@@ -685,51 +872,51 @@
           <p><strong>Ignorar deterioração:</strong> Yang & Hofmann (2020) mostram que cerca de 8% dos casos pioram durante a TCC. O monitoramento é a principal ferramenta para detecção precoce. Nunca minimizar um escore crescente sem investigação.</p>
         </div>
         <div class="callout callout-warm">
-          <p><strong>Monitoramento sem devolutiva:</strong> Coletar dados sem discuti-los com o paciente é paternalista e perde o maior benefício â€” o impacto terapÃªutico da reflexão sobre o próprio progresso. Cada escore deve ter uma conversa.</p>
+          <p><strong>Monitoramento sem devolutiva:</strong> Coletar dados sem discuti-los com o paciente é paternalista e perde o maior benefício — o impacto terapêutico da reflexão sobre o próprio progresso. Cada escore deve ter uma conversa.</p>
         </div>
       </div>
     </section>
 
     <!-- SEÇÃƒO 10: REFERÃŠNCIAS -->
     <section class="doc-section" id="referencias">
-      <div class="sec-eyebrow">10 Â· ReferÃªncias</div>
+      <div class="sec-eyebrow">10 · Referências</div>
       <h2 class="sec-title">Base bibliográfica</h2>
 
       <div class="ref-item">
         <div class="ref-author">Beck, J. S. (2011)</div>
-        <div class="ref-work">Cognitive Behavior Therapy: Basics and Beyond (2nd ed.). Guilford Press. â€” Base do protocolo de monitoramento sessão a sessão em TCC estruturada.</div>
+        <div class="ref-work">Cognitive Behavior Therapy: Basics and Beyond (2nd ed.). Guilford Press. — Base do protocolo de monitoramento sessão a sessão em TCC estruturada.</div>
       </div>
       <div class="ref-item">
         <div class="ref-author">Padesky, C. A. & Mooney, K. A. (2012)</div>
-        <div class="ref-work">Strengths-Based Cognitive-Behavioural Therapy. Clinical Psychology & Psychotherapy. â€” Uso do feedback de progresso para empoderar o paciente e fortalecer a aliança.</div>
+        <div class="ref-work">Strengths-Based Cognitive-Behavioural Therapy. Clinical Psychology & Psychotherapy. — Uso do feedback de progresso para empoderar o paciente e fortalecer a aliança.</div>
       </div>
       <div class="ref-item">
         <div class="ref-author">Persons, J. B. (2008)</div>
-        <div class="ref-work">The Case Formulation Approach to Cognitive-Behavior Therapy. Guilford. â€” Integração de medidas idiográficas e nomotéticas na conceitualização de caso.</div>
+        <div class="ref-work">The Case Formulation Approach to Cognitive-Behavior Therapy. Guilford. — Integração de medidas idiográficas e nomotéticas na conceitualização de caso.</div>
       </div>
       <div class="ref-item">
         <div class="ref-author">Barlow, D. H. et al. (2014)</div>
-        <div class="ref-work">Unified Protocol for Transdiagnostic Treatment of Emotional Disorders. Oxford University Press. â€” Uso de PHQ-9 e GAD-7 como medidas de desfecho primárias no protocolo unificado.</div>
+        <div class="ref-work">Unified Protocol for Transdiagnostic Treatment of Emotional Disorders. Oxford University Press. — Uso de PHQ-9 e GAD-7 como medidas de desfecho primárias no protocolo unificado.</div>
       </div>
       <div class="ref-item">
         <div class="ref-author">Hofmann, S. G. (2012)</div>
-        <div class="ref-work">An Introduction to Modern CBT. Wiley-Blackwell. â€” Princípios de mensuração baseada em evidÃªncias e sua integração na prática clínica.</div>
+        <div class="ref-work">An Introduction to Modern CBT. Wiley-Blackwell. — Princípios de mensuração baseada em evidências e sua integração na prática clínica.</div>
       </div>
       <div class="ref-item">
         <div class="ref-author">Hays, P. A. (2009)</div>
-        <div class="ref-work">Integrating Evidence-Based Practice, Cognitive-Behavior Therapy, and Multicultural Therapy. Professional Psychology: Research and Practice. â€” Seleção criteriosa de instrumentos culturalmente sensíveis.</div>
+        <div class="ref-work">Integrating Evidence-Based Practice, Cognitive-Behavior Therapy, and Multicultural Therapy. Professional Psychology: Research and Practice. — Seleção criteriosa de instrumentos culturalmente sensíveis.</div>
       </div>
       <div class="ref-item">
         <div class="ref-author">Yang, Z. & Hofmann, S. G. (2020)</div>
-        <div class="ref-work">Monitoring treatment outcomes in CBT: A systematic review. Behaviour Research and Therapy. â€” EvidÃªncias para detecção precoce de deterioração em psicoterapia.</div>
+        <div class="ref-work">Monitoring treatment outcomes in CBT: A systematic review. Behaviour Research and Therapy. — Evidências para detecção precoce de deterioração em psicoterapia.</div>
       </div>
       <div class="ref-item">
         <div class="ref-author">Lambert, M. J. et al. (2003)</div>
-        <div class="ref-work">Is it time for clinicians to routinely track patient outcome? Clinical Psychology: Science and Practice. â€” Argumento clássico e empírico para feedback contínuo de desfechos.</div>
+        <div class="ref-work">Is it time for clinicians to routinely track patient outcome? Clinical Psychology: Science and Practice. — Argumento clássico e empírico para feedback contínuo de desfechos.</div>
       </div>
       <div class="ref-item">
         <div class="ref-author">Miller, S. D. & Duncan, B. L. (2000)</div>
-        <div class="ref-work">The Outcome and Session Rating Scales. ISTC Press. â€” Desenvolvimento e validação do ORS e SRS para uso clínico rotineiro.</div>
+        <div class="ref-work">The Outcome and Session Rating Scales. ISTC Press. — Desenvolvimento e validação do ORS e SRS para uso clínico rotineiro.</div>
       </div>
     </section>
 
