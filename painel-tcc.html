@@ -3201,9 +3201,7 @@ async function createApplication() {
       },
       body: JSON.stringify({
         p_patient_name: name,
-        p_patient_birth: null,
-        p_instrumento: instrument,
-        p_expires_at: null
+        p_instrumento: instrument
       })
     });
     const data = await res.json();
