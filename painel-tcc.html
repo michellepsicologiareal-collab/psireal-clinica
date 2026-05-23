@@ -1470,7 +1470,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
       <div>
         <div class="topbar-title">Dashboard</div>
       </div>
-      <span class="topbar-sub">Segunda, 17 de maio de 2026</span>
+      <span class="topbar-sub" id="topbarDate"></span>
       <div class="topbar-actions">
         <button class="btn btn-ghost">
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M12 12l3 3"/></svg>
@@ -1483,8 +1483,8 @@ body{background:var(--bg) !important;color:var(--ink) !important}
 
       <section class="dashboard-hero">
         <div class="hero-kicker">Psi Real</div>
-        <div class="hero-date">Terça-feira, 19 de maio de 2026</div>
-        <h1 class="hero-title">Bom dia, Michelle.</h1>
+        <div class="hero-date" id="heroDate"></div>
+        <h1 class="hero-title" id="heroGreeting">Olá, Michelle.</h1>
         <p class="hero-sub">Acompanhe aplicações, pacientes e respostas clínicas em um painel organizado para a prática real.</p>
       </section>
       <div class="stats-grid">
@@ -2410,6 +2410,40 @@ body{background:var(--bg) !important;color:var(--ink) !important}
 <script>
 const SB_URL = 'https://qpwjxacdjzzsyjbuuwsq.supabase.co';
 const SB_KEY = 'sb_publishable_hQclCJaEsVjcnGM4WAoYmA_r8H8NqAp';
+
+// ── DATA E SAUDAÇÃO DINÂMICA ──────────────────────────────────
+(function setLiveDates() {
+  const now = new Date();
+  const ptBR = { locale: 'pt-BR' };
+
+  // Topbar: "Sexta, 23 de maio de 2026"
+  const topbarFmt = now.toLocaleDateString('pt-BR', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+  });
+  // Capitaliza primeira letra
+  const topbarStr = topbarFmt.charAt(0).toUpperCase() + topbarFmt.slice(1);
+
+  // Hero date: "Sexta-feira, 23 de maio de 2026"
+  const heroFmt = now.toLocaleDateString('pt-BR', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+  });
+  const heroStr = heroFmt.charAt(0).toUpperCase() + heroFmt.slice(1);
+
+  // Saudação por hora
+  const h = now.getHours();
+  const greeting = h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const topbarEl = document.getElementById('topbarDate');
+    const heroDateEl = document.getElementById('heroDate');
+    const heroGreetEl = document.getElementById('heroGreeting');
+    if (topbarEl) topbarEl.textContent = topbarStr;
+    if (heroDateEl) heroDateEl.textContent = heroStr;
+    // pega o nome do usuário logado se disponível, senão usa Michelle
+    const userName = window._psiUserName || 'Michelle';
+    if (heroGreetEl) heroGreetEl.textContent = `${greeting}, ${userName}.`;
+  });
+})();
 const SUPPORT_WHATSAPP = '5511947388423';
 const KIWIFY_PLAN_URL = 'https://pay.kiwify.com.br/psireal-clinica';
 window.PSIREAL_BUILD = 'status-rpc-2026-05-20';
@@ -2563,6 +2597,14 @@ function renderPsiIdentity() {
   const initials = initialsFromName(name);
   const avatar = document.querySelector('.sidebar-user .user-avatar');
   if (avatar) avatar.textContent = initials;
+
+  // Atualiza saudação com nome real e hora atual
+  const firstName = name.split(' ')[0];
+  window._psiUserName = firstName;
+  const h = new Date().getHours();
+  const greeting = h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
+  const heroGreetEl = document.getElementById('heroGreeting');
+  if (heroGreetEl) heroGreetEl.textContent = `${greeting}, ${firstName}.`;
 }
 
 function renderSettings() {
