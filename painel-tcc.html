@@ -1443,6 +1443,13 @@ body{background:var(--bg) !important;color:var(--ink) !important}
       </a>
     </div>
 
+    <div class="nav-section" id="adminNavSection" style="display:none">
+      <div class="nav-label">Admin</div>
+      <div class="nav-item" onclick="showScreen('admin', this)">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L3 5v4c0 3.5 2.5 6.7 6 7.5 3.5-.8 6-4 6-7.5V5L9 2z"/></svg>
+        Admin
+      </div>
+    </div>
     <div class="nav-section">
       <div class="nav-label">Sistema</div>
       <div class="nav-item" onclick="showScreen('protocolos', this)">
@@ -2234,6 +2241,170 @@ body{background:var(--bg) !important;color:var(--ink) !important}
     </div>
   </div>
 
+  <!-- ADMIN -->
+  <div id="screen-admin" class="screen">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">Admin</div>
+        <span class="topbar-sub">Gestão de psicólogas e assinaturas</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-primary" onclick="openAdminAddModal()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+          Nova psicóloga
+        </button>
+      </div>
+    </div>
+    <div class="content">
+      <!-- Stats -->
+      <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card lilac">
+          <div class="stat-icon">👩‍⚕️</div>
+          <div class="stat-label">Total psis</div>
+          <div class="stat-value" id="adminStatTotal">—</div>
+          <div class="stat-note">cadastradas</div>
+        </div>
+        <div class="stat-card teal">
+          <div class="stat-icon">✅</div>
+          <div class="stat-label">Ativas</div>
+          <div class="stat-value" id="adminStatAtivas">—</div>
+          <div class="stat-note">com acesso</div>
+        </div>
+        <div class="stat-card amber">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-label">Trial</div>
+          <div class="stat-value" id="adminStatTrial">—</div>
+          <div class="stat-note">período grátis</div>
+        </div>
+        <div class="stat-card coral">
+          <div class="stat-icon">🚫</div>
+          <div class="stat-label">Inativas</div>
+          <div class="stat-value" id="adminStatInativas">—</div>
+          <div class="stat-note">sem acesso</div>
+        </div>
+      </div>
+
+      <!-- Filtros -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
+        <button class="cat-btn active" onclick="adminFilterPsis('todas', this)">Todas</button>
+        <button class="cat-btn" onclick="adminFilterPsis('ativa', this)">Ativas</button>
+        <button class="cat-btn" onclick="adminFilterPsis('trial', this)">Trial</button>
+        <button class="cat-btn" onclick="adminFilterPsis('inativa', this)">Inativas</button>
+        <input id="adminSearchInput" placeholder="Buscar nome ou e-mail..." oninput="adminRenderTable()"
+          style="flex:1;max-width:260px;padding:7px 14px;border:1.5px solid var(--border);border-radius:10px;background:#fff;font:inherit;outline:none;font-size:13px">
+      </div>
+
+      <!-- Tabela -->
+      <div class="card table-wrap">
+        <table class="table" style="width:100%">
+          <thead>
+            <tr>
+              <th>Psicóloga</th>
+              <th>Plano</th>
+              <th>Status</th>
+              <th>Trial até</th>
+              <th>Cadastro</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="adminPsiTableBody">
+            <tr><td colspan="6" class="empty">Carregando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Nova Psi (Admin) -->
+  <div class="modal-backdrop" id="adminAddModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-head-left">
+          <div class="modal-icon" style="background:var(--primary-subtle);color:var(--primary)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+          </div>
+          <div>
+            <div class="modal-title">Nova psicóloga</div>
+            <div class="modal-subtitle">Cria conta e perfil no sistema</div>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal('adminAddModal')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="field"><label>Nome completo</label><input id="adminNewNome" placeholder="Dra. Ana Silva"></div>
+          <div class="field"><label>E-mail</label><input id="adminNewEmail" type="email" placeholder="ana@email.com"></div>
+          <div class="field"><label>Senha inicial</label><input id="adminNewSenha" type="password" placeholder="mínimo 8 caracteres"></div>
+          <div class="field"><label>WhatsApp</label><input id="adminNewWhatsapp" placeholder="5511999999999"></div>
+          <div class="field">
+            <label>Plano</label>
+            <select id="adminNewPlano" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;background:#fff;font:inherit;outline:none">
+              <option value="trial">Trial 30 dias</option>
+              <option value="mensal">Mensal</option>
+              <option value="anual">Anual</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-error" id="adminAddError" style="display:none"></div>
+        <div id="adminAddSuccess" style="display:none;margin-top:10px;padding:10px 14px;background:var(--green3);border-radius:8px;color:var(--green);font-size:13px"></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal('adminAddModal')">Cancelar</button>
+        <button class="btn btn-primary" onclick="adminCreatePsi()">Criar conta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Editar Psi (Admin) -->
+  <div class="modal-backdrop" id="adminEditModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-head-left">
+          <div class="modal-icon" style="background:var(--primary-subtle);color:var(--primary)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <div>
+            <div class="modal-title">Editar psicóloga</div>
+            <div class="modal-subtitle" id="adminEditSubtitle"></div>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal('adminEditModal')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="adminEditUserId">
+        <div class="modal-grid">
+          <div class="field"><label>Nome</label><input id="adminEditNome"></div>
+          <div class="field"><label>WhatsApp</label><input id="adminEditWhatsapp"></div>
+          <div class="field">
+            <label>Plano</label>
+            <select id="adminEditPlano" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;background:#fff;font:inherit;outline:none">
+              <option value="trial">Trial</option>
+              <option value="mensal">Mensal</option>
+              <option value="anual">Anual</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Status</label>
+            <select id="adminEditAtiva" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;background:#fff;font:inherit;outline:none">
+              <option value="true">Ativa</option>
+              <option value="false">Inativa</option>
+            </select>
+          </div>
+          <div class="field"><label>Trial até</label><input id="adminEditTrialAte" type="date"></div>
+        </div>
+        <div class="modal-error" id="adminEditError" style="display:none"></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal('adminEditModal')">Cancelar</button>
+        <button class="btn btn-primary" onclick="adminSavePsi()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- PPPPPPPPPPPPPPP CONFIGURACOES PPPPPPPPPPPPPPP -->
   <div id="screen-configuracoes" class="screen">
     <div class="topbar">
@@ -2638,17 +2809,29 @@ async function supabaseSelect(path) {
 }
 
 async function bootstrapAuthenticatedApp() {
-  const [profiles, links, responses, pacientes] = await Promise.all([
+  const [profiles, links, responses, pacientes, adminCheck] = await Promise.all([
     supabaseSelect('psis?select=nome,plano,ativa'),
     supabaseSelect('patient_links?select=id,token,patient_name,instrumento,status,created_at,expires_at&order=created_at.desc'),
     supabaseSelect('respostas_clinicas?select=id,paciente_nome,instrumento,formulario,score_total,scores,status,created_at&order=created_at.desc'),
-    supabaseSelect('pacientes?select=id,nome,status&order=created_at.desc').catch(() => [])
+    supabaseSelect('pacientes?select=id,nome,status&order=created_at.desc').catch(() => []),
+    supabaseSelect('admin_users?select=user_id&limit=1').catch(() => [])
   ]);
   window.PACIENTES_DB = pacientes || [];
 
+  // Verifica se é admin
+  window.PSI_IS_ADMIN = adminCheck && adminCheck.length > 0;
+  if (window.PSI_IS_ADMIN) {
+    document.getElementById('adminNavSection').style.display = 'block';
+  }
+
   PSI_PROFILE = profiles[0];
   if (!PSI_PROFILE || !PSI_PROFILE.ativa) {
-    throw new Error('Conta inativa ou não cadastrada');
+    // Admin sem perfil de psi ainda consegue entrar
+    if (window.PSI_IS_ADMIN) {
+      PSI_PROFILE = { nome: 'Admin', plano: 'admin', ativa: true };
+    } else {
+      throw new Error('Conta inativa ou não cadastrada');
+    }
   }
 
   PATIENT_LINKS = links || [];
@@ -3624,6 +3807,176 @@ function filterBib(cat, el) {
       (cat === 'autoestima' && catText.includes('autoestima'));
     card.style.display = matches ? '' : 'none';
   });
+}
+
+// ── ADMIN ─────────────────────────────────────────────────────
+let ADMIN_PSIS = [];
+let ADMIN_FILTER = 'todas';
+
+async function loadAdminPsis() {
+  try {
+    const [psis, links] = await Promise.all([
+      supabaseSelect('psis?select=*&order=criado_em.desc'),
+      supabaseSelect('patient_links?select=psi_user_id')
+    ]);
+    const countMap = {};
+    (links||[]).forEach(l => { countMap[l.psi_user_id] = (countMap[l.psi_user_id]||0)+1; });
+    ADMIN_PSIS = (psis||[]).map(p => ({...p, pacientes: countMap[p.user_id]||0}));
+    adminUpdateStats();
+    adminRenderTable();
+  } catch(e) { showToast('Erro ao carregar psis: '+e.message, true); }
+}
+
+function adminUpdateStats() {
+  const ativas = ADMIN_PSIS.filter(p => p.ativa && p.plano !== 'trial').length;
+  const trial  = ADMIN_PSIS.filter(p => p.plano === 'trial' && p.ativa).length;
+  const inativas = ADMIN_PSIS.filter(p => !p.ativa).length;
+  const setText = (id,v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+  setText('adminStatTotal', ADMIN_PSIS.length);
+  setText('adminStatAtivas', ativas);
+  setText('adminStatTrial', trial);
+  setText('adminStatInativas', inativas);
+}
+
+function adminFilterPsis(f, btn) {
+  ADMIN_FILTER = f;
+  document.querySelectorAll('#screen-admin .cat-btn').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  adminRenderTable();
+}
+
+function adminRenderTable() {
+  const q = (document.getElementById('adminSearchInput')?.value||'').toLowerCase();
+  let list = ADMIN_PSIS;
+  if (ADMIN_FILTER==='ativa') list = list.filter(p => p.ativa && p.plano!=='trial');
+  else if (ADMIN_FILTER==='trial') list = list.filter(p => p.plano==='trial' && p.ativa);
+  else if (ADMIN_FILTER==='inativa') list = list.filter(p => !p.ativa);
+  if (q) list = list.filter(p => (p.nome||'').toLowerCase().includes(q)||(p.email||'').toLowerCase().includes(q));
+
+  const tbody = document.getElementById('adminPsiTableBody');
+  if (!list.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="empty">Nenhuma psicóloga encontrada</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = list.map(p => {
+    const statusEl = !p.ativa
+      ? `<span class="badge badge-inactive">Inativa</span>`
+      : p.plano==='trial'
+        ? `<span class="badge" style="background:var(--amber3);color:var(--amber)">Trial</span>`
+        : `<span class="badge badge-active">Ativa</span>`;
+    const trial = p.trial_ate ? new Date(p.trial_ate).toLocaleDateString('pt-BR') : '—';
+    const criado = p.criado_em ? new Date(p.criado_em).toLocaleDateString('pt-BR') : '—';
+    const initials = (p.nome||'?').trim().split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+
+    return `<tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="avatar" style="width:34px;height:34px;font-size:12px">${escapeHtml(initials)}</div>
+        <div><div style="font-weight:600;font-size:14px">${escapeHtml(p.nome||'—')}</div>
+        <div style="font-size:12px;color:var(--ink3)">${escapeHtml(p.email||'—')}</div></div>
+      </div></td>
+      <td><span style="font-size:12px;background:var(--primary-subtle);color:var(--primary);padding:2px 8px;border-radius:6px">${escapeHtml(p.plano||'—')}</span></td>
+      <td>${statusEl}</td>
+      <td style="font-size:12px;color:var(--ink3)">${trial}</td>
+      <td style="font-size:12px;color:var(--ink3)">${criado}</td>
+      <td><div style="display:flex;gap:6px">
+        <button class="btn btn-ghost btn-sm" onclick='adminOpenEdit(${JSON.stringify(p).replace(/'/g,"&#39;")})'>Editar</button>
+        <button class="btn btn-ghost btn-sm" onclick="adminToggleAtiva('${p.user_id}',${p.ativa})">${p.ativa?'Desativar':'Ativar'}</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+
+function openAdminAddModal() {
+  ['adminNewNome','adminNewEmail','adminNewSenha','adminNewWhatsapp'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('adminNewPlano').value='trial';
+  document.getElementById('adminAddError').style.display='none';
+  document.getElementById('adminAddSuccess').style.display='none';
+  openModal('adminAddModal');
+}
+
+async function adminCreatePsi() {
+  const nome = document.getElementById('adminNewNome').value.trim();
+  const email = document.getElementById('adminNewEmail').value.trim();
+  const password = document.getElementById('adminNewSenha').value.trim();
+  const whatsapp = document.getElementById('adminNewWhatsapp').value.trim();
+  const plano = document.getElementById('adminNewPlano').value;
+  const errEl = document.getElementById('adminAddError');
+  const succEl = document.getElementById('adminAddSuccess');
+  errEl.style.display='none'; succEl.style.display='none';
+
+  if (!nome||!email||!password) { errEl.textContent='Preencha nome, e-mail e senha.'; errEl.style.display='block'; return; }
+  if (password.length<8) { errEl.textContent='Senha deve ter ao menos 8 caracteres.'; errEl.style.display='block'; return; }
+
+  try {
+    const psiId = email.split('@')[0].replace(/[^a-z0-9]/gi,'').toLowerCase();
+    const res = await fetch(`${SB_URL}/functions/v1/create-psi-user`, {
+      method:'POST',
+      headers:{ Authorization:`Bearer ${SB_SESSION_TOKEN}`, 'Content-Type':'application/json' },
+      body: JSON.stringify({nome, email, password, psi_id:psiId, whatsapp, plano})
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error||'Erro ao criar conta');
+    succEl.textContent = `✅ Conta criada! E-mail: ${email}`;
+    succEl.style.display='block';
+    await loadAdminPsis();
+    setTimeout(()=>closeModal('adminAddModal'), 2000);
+  } catch(e) { errEl.textContent=e.message; errEl.style.display='block'; }
+}
+
+function adminOpenEdit(p) {
+  document.getElementById('adminEditUserId').value = p.user_id||'';
+  document.getElementById('adminEditNome').value = p.nome||'';
+  document.getElementById('adminEditWhatsapp').value = p.whatsapp||'';
+  document.getElementById('adminEditPlano').value = p.plano||'mensal';
+  document.getElementById('adminEditAtiva').value = String(p.ativa!==false);
+  document.getElementById('adminEditTrialAte').value = p.trial_ate ? p.trial_ate.split('T')[0] : '';
+  document.getElementById('adminEditSubtitle').textContent = p.email||'';
+  document.getElementById('adminEditError').style.display='none';
+  openModal('adminEditModal');
+}
+
+async function adminSavePsi() {
+  const userId = document.getElementById('adminEditUserId').value;
+  const nome = document.getElementById('adminEditNome').value.trim();
+  const whatsapp = document.getElementById('adminEditWhatsapp').value.trim();
+  const plano = document.getElementById('adminEditPlano').value;
+  const trialAte = document.getElementById('adminEditTrialAte').value||null;
+  const ativa = document.getElementById('adminEditAtiva').value==='true';
+  const errEl = document.getElementById('adminEditError');
+  try {
+    const res = await fetch(`${SB_URL}/rest/v1/psis?user_id=eq.${userId}`, {
+      method:'PATCH',
+      headers:{ apikey:SB_KEY, Authorization:`Bearer ${SB_SESSION_TOKEN}`,
+        'Content-Type':'application/json', Prefer:'return=minimal' },
+      body: JSON.stringify({nome, whatsapp, plano, trial_ate:trialAte, ativa})
+    });
+    if (!res.ok) throw new Error(await res.text());
+    closeModal('adminEditModal');
+    showToast('Salvo com sucesso!');
+    await loadAdminPsis();
+  } catch(e) { errEl.textContent=e.message; errEl.style.display='block'; }
+}
+
+async function adminToggleAtiva(userId, atual) {
+  try {
+    const res = await fetch(`${SB_URL}/rest/v1/psis?user_id=eq.${userId}`, {
+      method:'PATCH',
+      headers:{ apikey:SB_KEY, Authorization:`Bearer ${SB_SESSION_TOKEN}`,
+        'Content-Type':'application/json', Prefer:'return=minimal' },
+      body: JSON.stringify({ativa: !atual})
+    });
+    if (!res.ok) throw new Error(await res.text());
+    showToast(!atual ? 'Psicóloga ativada!' : 'Psicóloga desativada.');
+    await loadAdminPsis();
+  } catch(e) { showToast('Erro: '+e.message, true); }
+}
+
+// Carrega dados admin quando entra na tela
+const _origShowScreen = showScreen;
+function showScreen(id, el) {
+  _origShowScreen(id, el);
+  if (id==='admin' && window.PSI_IS_ADMIN) loadAdminPsis();
 }
 
 </script>
