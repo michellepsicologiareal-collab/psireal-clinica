@@ -709,6 +709,15 @@ UTILIZE: "os resultados podem sugerir", "recomenda-se investigar", "avaliar poss
 EVITE: "o paciente apresenta", "ha comprometimento funcional", "ha provavel transtorno", "o quadro e consistente com", "o dominio esta prejudicado".
 NUNCA confirme TAG, TOC, TEPT, depressao, prejuizo funcional ou assuma sintomas especificos sem dados clinicos adicionais.
 
+CONTEXTO DO INSTRUMENTO:
+${d.inst === 'GAD-7' ? `O instrumento atual é um rastreio de sintomas ansiosos. A análise deve focar: intensidade sintomática, preocupações, hiperativação ansiosa, impacto funcional possível, necessidade de investigação complementar. O instrumento não confirma diagnóstico isoladamente.` :
+  d.inst === 'PHQ-9' ? `O instrumento atual é um rastreio de sintomas depressivos. A interpretação deve focar: humor, energia, motivação, funcionamento emocional, necessidade de investigação complementar. Evite inferências diagnósticas fechadas.` :
+  d.inst === 'OASIS' ? `O instrumento atual avalia frequência, intensidade, evitação e impacto funcional da ansiedade. A análise deve focar: padrões de evitação, impacto no funcionamento, intensidade da ansiedade. O instrumento não confirma diagnóstico isoladamente.` :
+  d.inst === 'AAQ-II' ? `O instrumento atual avalia flexibilidade psicológica e evitação experiencial dentro do modelo ACT. A interpretação deve focar: rigidez psicológica, fusão cognitiva, evitação experiencial, dificuldade de contato com valores. Evite interpretações patologizantes.` :
+  d.inst === 'YSQ-S3' ? `O instrumento atual avalia modos esquemáticos inspirados na Terapia do Esquema. A interpretação deve focar: estados emocionais, estratégias de enfrentamento, padrões adaptativos e desadaptativos, funcionamento emocional atual. Evite: diagnóstico estrutural, inferências profundas sobre personalidade, interpretações biográficas sem dados adicionais.` :
+  `O instrumento atual é um rastreio clínico. A análise deve ser prudente e baseada nos dados disponíveis.`
+}
+
 DADOS DO INSTRUMENTO:
 - Instrumento: ${d.inst}
 - Score: ${d.latestScore} de ${d.cfg.max} pontos
