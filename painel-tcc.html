@@ -3263,7 +3263,7 @@ function normalizeWhatsappNumber(value = '') {
 }
 
 function buildWhatsappUrl(phone, patientName, link) {
-  const text = `Ol ${patientName}! Segue seu questionrio para responder antes da prxima sesso:\n${link}`;
+  const text = `Olá, ${patientName}! Segue seu questionário para responder antes da próxima sessão:\n${link}`;
   const number = normalizeWhatsappNumber(phone);
   return number
     ? `https://wa.me/${number}?text=${encodeURIComponent(text)}`
