@@ -28,7 +28,7 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);col
 .sidebar{width:var(--sidebar-w);min-height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100}
 .logo{padding:24px 20px 20px;border-bottom:1px solid var(--border)}
 .logo-mark{display:flex;align-items:center;gap:10px}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:url("logo-psicologia-real.png") center/contain no-repeat;flex:0 0 40px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:url("logo-psicologia-real.png") center/contain no-repeat;flex:0 0 32px}
 .logo-text{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1;font-family:'Syne',sans-serif;white-space:nowrap}
 .logo-sub{display:none}
 .nav{padding:16px 12px;flex:1}
@@ -185,7 +185,6 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);col
       <div class="logo-icon"></div>
       <div>
         <div class="logo-text">PsiReal Clínica</div>
-        <div class="logo-sub">Plataforma Clínica</div>
       </div>
     </div>
   </div>
@@ -196,20 +195,39 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);col
         <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="6" height="6" rx="1.5"/><rect x="10" y="2" width="6" height="6" rx="1.5"/><rect x="2" y="10" width="6" height="6" rx="1.5"/><rect x="10" y="10" width="6" height="6" rx="1.5"/></svg>
         Dashboard
       </a>
-      <a class="nav-item" href="painel-tcc.html#pacientes">
+      <a class="nav-item" href="painel-tcc.html">
         <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="6" r="3"/><path d="M3 15c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
         Pacientes
       </a>
     </div>
     <div class="nav-section">
       <div class="nav-label">Clínico</div>
-      <a class="nav-item" href="painel-tcc.html#biblioteca">
+      <a class="nav-item" href="painel-tcc.html">
         <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h8l3 3v11a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M12 2v4h3M6 9h6M6 12h4"/></svg>
-        Biblioteca PsiReal
+        Biblioteca Clínica
       </a>
-      <a class="nav-item" href="painel-tcc.html#aplicacoes">
+      <a class="nav-item" href="painel-tcc.html">
         <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2h6z"/><circle cx="9" cy="13" r="1"/><path d="M7 6h4M7 9h2"/></svg>
         Aplicações
+      </a>
+      <a class="nav-item" href="painel-tcc.html">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2 12 6 8 10 11 16 5"/></svg>
+        Evolução Emocional
+      </a>
+      <a class="nav-item" href="painel-tcc.html">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg>
+        Insights Terapêuticos
+      </a>
+      <a class="nav-item" href="painel-perfil-clinico.html">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14c3-7 9-7 12 0"/><path d="M5 9c1.5-4 6.5-4 8 0"/><circle cx="9" cy="6" r="2"/></svg>
+        Mapa de Ativação
+      </a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Sistema</div>
+      <a class="nav-item" href="painel-tcc.html">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12" rx="2"/><path d="M6 7h6M6 10h4"/></svg>
+        Protocolos
       </a>
     </div>
   </nav>
@@ -594,7 +612,7 @@ async function generateAnalysis() {
   const scoreHistory = d.scores.map((s,i)=>`Aplicacao ${i+1}: ${s} pontos`).join('; ');
   const trend = d.scores.length>1?(d.scores[d.scores.length-1]-d.scores[0]<0?'reducao':d.scores[d.scores.length-1]-d.scores[0]>0?'aumento':'estabilidade'):'primeira aplicacao';
 
-  const systemPrompt = `Voce e um assistente de apoio a formulacao clinica baseado em TCC, ACT e Terapia do Esquema.
+  const prompt = `Voce e um assistente de apoio a formulacao clinica baseado em TCC, ACT e Terapia do Esquema.
 
 PAPEL E LIMITES:
 - Seu papel NAO e diagnosticar, concluir ou substituir julgamento clinico.
@@ -603,23 +621,12 @@ PAPEL E LIMITES:
 - NAO assuma sintomas nao informados.
 - NAO conclua alteracoes de sono, evitacao, tracos de personalidade, risco psiquiatrico, trauma, TOC ou transtornos de personalidade a menos que existam dados explicitos.
 - Evite patologizacao excessiva.
-
-LINGUAGEM:
 - Sempre utilize linguagem probabilistica e investigativa: "investigar", "explorar", "avaliar", "considerar", "hipotese possivel".
 - Nunca afirme diagnosticos fechados com base apenas em escalas.
-- A analise deve soar tecnica, prudente, etica e compativel com pratica clinica baseada em evidencias.
 
 ANALISE FUNCIONAL (prioridade):
 - Priorize analise funcional sobre descricao psicopatologica.
 - Descreva: gatilhos provaveis, cognicoes associadas, emocoes, respostas fisiologicas, comportamentos de manutencao, evitacao e comportamentos de seguranca.
-- Priorize hipoteses funcionais, padroes cognitivos e fatores de vulnerabilidade.
-
-INTERVENCOES:
-- Sugira intervencoes iniciais de baixa inferencia e alta seguranca clinica.
-- Priorize: psicoeducacao, monitoramento, identificacao de padroes, manejo comportamental, estrategias baseadas em evidencias.
-- Evite protocolos complexos sem confirmacao clinica suficiente.`;
-
-  const prompt = `${systemPrompt}
 
 DADOS DO INSTRUMENTO (uso exclusivo da psicologa responsavel):
 - Instrumento: ${d.inst} (${d.cfg.field})
@@ -631,23 +638,25 @@ DADOS DO INSTRUMENTO (uso exclusivo da psicologa responsavel):
 
 IMPORTANTE: Escalas psicometricas sao instrumentos de rastreio. Este score indica nivel de sofrimento relatado, nao confirma diagnostico.
 
-Forneca uma formulacao clinica estruturada em cinco blocos. Use linguagem tecnica, prudente e investigativa. Paragrafo corrido por bloco, sem lista de topicos. Sem avisos genericos.
+Forneca uma formulacao clinica estruturada em cinco blocos. Use linguagem tecnica, prudente e investigativa. Paragrafo corrido por bloco. Sem lista de topicos. Sem avisos genericos.
 
 ## 1. LEITURA FUNCIONAL DO SCORE
-Interprete o score atual e tendencia em termos funcionais — nao diagnosticos. O que este nivel de sofrimento relatado sugere sobre o funcionamento atual? Quais dominios de vida merecem atencao prioritaria? Use linguagem investigativa.
+Interprete o score atual e tendencia em termos funcionais. O que este nivel de sofrimento relatado sugere sobre o funcionamento atual? Quais dominios de vida merecem atencao? Use linguagem investigativa, nao diagnostica.
 
 ## 2. ASPECTOS CLINICOS A INVESTIGAR
-Quais padroes cognitivos, comportamentais e emocionais merecem aprofundamento? Aponte hipoteses funcionais a explorar — gatilhos provaveis, cognicoes associadas, comportamentos de manutencao, evitacao. Evite nomear transtornos sem dados suficientes.
+Quais padroes cognitivos, comportamentais e emocionais merecem aprofundamento? Aponte hipoteses funcionais — gatilhos provaveis, cognicoes associadas, comportamentos de manutencao, evitacao. Evite nomear transtornos sem dados suficientes.
 
 ## 3. HIPOTESES A CONSIDERAR
-[Nivel de confianca: baixo / moderado / alto — indique para cada hipotese]
-Quais quadros clinicos sao possiveis dado este perfil de score? Use linguagem probabilistica. Diferencie o que e hipotese de rastreio (baixa confianca) do que tem suporte mais consistente (moderado/alto). Nunca afirme diagnostico fechado.
+Para cada hipotese, indique o nivel de confianca: baixo / moderado / alto.
+Quais quadros clinicos sao possiveis dado este perfil? Use linguagem probabilistica. Diferencie hipotese de rastreio (baixa confianca) do que tem suporte mais consistente. Nunca afirme diagnostico fechado.
 
 ## 4. DIRECOES DE INTERVENCAO
 Quais intervencoes iniciais de baixa inferencia sao indicadas? Priorize: psicoeducacao, monitoramento, identificacao de padroes, manejo comportamental, estrategias baseadas em evidencias. Conecte com TCC, ACT ou Terapia do Esquema quando houver indicacao clara.
 
 ## 5. PONTOS DE ATENCAO PARA AS PROXIMAS SESSOES
-O que merece observacao ativa? Quais sinais mudariam a hipotese atual? Quando considerar avaliacao complementar ou encaminhamento?`;
+O que merece observacao ativa? Quais sinais mudariam a hipotese atual? Quando considerar avaliacao complementar ou encaminhamento?
+
+Escreva em paragrafos corridos por secao. Tom tecnico, prudente e etico.`;
 
   try {
     const payload = {
