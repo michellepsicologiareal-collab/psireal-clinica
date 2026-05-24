@@ -222,9 +222,9 @@
 </nav>
 
 <section class="hero">
-  <div class="eyebrow">Ansiedade · Acompanhamento Clínico</div>
+  <div class="eyebrow">Ansiedade · Rastreio Clínico</div>
   <h1>OASIS</h1>
-  <p class="hero-sub">Nas últimas duas semanas, marque com que frequência cada sinal de ansiedade apareceu para você. Suas respostas ajudam sua psicóloga a acompanhar sua evolução com mais precisão.</p>
+  <p class="hero-sub">Na última semana, responda as perguntas abaixo. cada sinal de ansiedade apareceu para você. Suas respostas ajudam sua psicóloga a acompanhar sua evolução com mais precisão.</p>
 </section>
 
 <main class="wrap" id="mainWrap">
@@ -341,7 +341,7 @@
   <div class="actions">
     <div class="actions-inner">
       <div class="progress"><div id="bar"></div></div>
-      <div class="progress-text" id="progressText">0 / 7</div>
+      <div class="progress-text" id="progressText">0 / 5</div>
       <button id="submitBtn" disabled>Concluir</button>
     </div>
   </div>
@@ -482,7 +482,7 @@
           <div class="q-text">${item}</div>
         </div>
         <div class="options">
-          ${OPTIONS.map(opt => `
+          ${(OPTIONS_PER_ITEM[idx]||OPTIONS).map(opt => `
             <label class="option">
               <input type="radio" name="q${idx+1}" value="${opt.v}" onchange="answer(${idx+1},${opt.v})"/>
               <span>${opt.l}</span>
@@ -496,13 +496,13 @@
   function answer(n, v) {
     answers[n] = v;
     const done = Object.keys(answers).length;
-    const pct = Math.round(done / 7 * 100);
+    const pct = Math.round(done / ITEMS.length * 100);
     document.getElementById('bar').style.width = pct + '%';
     document.getElementById('progFill').style.width = pct + '%';
-    document.getElementById('progressText').textContent = `${done} / 7`;
+    document.getElementById('progressText').textContent = `${done} / ${ITEMS.length}`;
     document.getElementById('progLabel').textContent = `${done} de 7 respondidas`;
     document.getElementById('progPct').textContent = pct + '%';
-    document.getElementById('submitBtn').disabled = done < 7;
+    document.getElementById('submitBtn').disabled = done < ITEMS.length;
     document.getElementById(`qcard${n - 1}`).classList.add('answered');
   }
 
