@@ -29,8 +29,8 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);col
 .logo{padding:24px 20px 20px;border-bottom:1px solid var(--border)}
 .logo-mark{display:flex;align-items:center;gap:10px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:url("logo-psicologia-real.png") center/contain no-repeat;flex:0 0 40px}
-.logo-text{font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.3px;line-height:1.1}
-.logo-sub{font-size:10px;color:var(--ink3);letter-spacing:.08em;margin-top:2px}
+.logo-text{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1;font-family:'Syne',sans-serif;white-space:nowrap}
+.logo-sub{display:none}
 .nav{padding:16px 12px;flex:1}
 .nav-section{margin-bottom:24px}
 .nav-label{font-size:9px;font-weight:500;color:var(--ink3);text-transform:uppercase;letter-spacing:.12em;padding:0 8px;margin-bottom:6px}
@@ -594,31 +594,60 @@ async function generateAnalysis() {
   const scoreHistory = d.scores.map((s,i)=>`Aplicacao ${i+1}: ${s} pontos`).join('; ');
   const trend = d.scores.length>1?(d.scores[d.scores.length-1]-d.scores[0]<0?'reducao':d.scores[d.scores.length-1]-d.scores[0]>0?'aumento':'estabilidade'):'primeira aplicacao';
 
-  const prompt = `Voce e um assistente clinico especializado em psicologia baseada em evidencias, com dominio em TCC (Terapia Cognitivo-Comportamental), ACT (Acceptance and Commitment Therapy), Terapia do Esquema e DBT (Dialectical Behavior Therapy). Esta analise e exclusiva para uso da psicologa responsavel pelo caso.
+  const systemPrompt = `Voce e um assistente de apoio a formulacao clinica baseado em TCC, ACT e Terapia do Esquema.
 
-Dados do instrumento:
+PAPEL E LIMITES:
+- Seu papel NAO e diagnosticar, concluir ou substituir julgamento clinico.
+- Escalas psicometricas sao instrumentos de rastreio e NAO confirmam diagnostico isoladamente.
+- Evite inferencias categoricas sem dados suficientes.
+- NAO assuma sintomas nao informados.
+- NAO conclua alteracoes de sono, evitacao, tracos de personalidade, risco psiquiatrico, trauma, TOC ou transtornos de personalidade a menos que existam dados explicitos.
+- Evite patologizacao excessiva.
+
+LINGUAGEM:
+- Sempre utilize linguagem probabilistica e investigativa: "investigar", "explorar", "avaliar", "considerar", "hipotese possivel".
+- Nunca afirme diagnosticos fechados com base apenas em escalas.
+- A analise deve soar tecnica, prudente, etica e compativel com pratica clinica baseada em evidencias.
+
+ANALISE FUNCIONAL (prioridade):
+- Priorize analise funcional sobre descricao psicopatologica.
+- Descreva: gatilhos provaveis, cognicoes associadas, emocoes, respostas fisiologicas, comportamentos de manutencao, evitacao e comportamentos de seguranca.
+- Priorize hipoteses funcionais, padroes cognitivos e fatores de vulnerabilidade.
+
+INTERVENCOES:
+- Sugira intervencoes iniciais de baixa inferencia e alta seguranca clinica.
+- Priorize: psicoeducacao, monitoramento, identificacao de padroes, manejo comportamental, estrategias baseadas em evidencias.
+- Evite protocolos complexos sem confirmacao clinica suficiente.`;
+
+  const prompt = `${systemPrompt}
+
+DADOS DO INSTRUMENTO (uso exclusivo da psicologa responsavel):
 - Instrumento: ${d.inst} (${d.cfg.field})
 - Score atual: ${d.latestScore} de ${d.cfg.max} pontos
 - Nivel: ${d.latestLevel.label}
 - Numero de aplicacoes: ${d.filtered.length}
-- Historico: ${scoreHistory}
+- Historico de scores: ${scoreHistory}
 - Tendencia: ${trend}
 
-Forneca uma analise clinica estruturada em quatro partes:
+IMPORTANTE: Escalas psicometricas sao instrumentos de rastreio. Este score indica nivel de sofrimento relatado, nao confirma diagnostico.
 
-1. LEITURA CLINICA DO SCORE
-Interprete o score atual e sua tendencia no contexto clinico. O que este nivel indica funcionalmente? Quais dominios de vida podem estar mais comprometidos?
+Forneca uma formulacao clinica estruturada em cinco blocos. Use linguagem tecnica, prudente e investigativa. Paragrafo corrido por bloco, sem lista de topicos. Sem avisos genericos.
 
-2. HIPOTESES DIAGNOSTICAS A INVESTIGAR
-Quais transtornos ou padroes clinicos merecem investigacao com base neste score? Considere diagnosticos diferenciais relevantes (ex: TAG, TOC, fobia especifica, TEPT, depressao com ansiedade, esquemas desadaptativos). Seja especifica e tecnica.
+## 1. LEITURA FUNCIONAL DO SCORE
+Interprete o score atual e tendencia em termos funcionais — nao diagnosticos. O que este nivel de sofrimento relatado sugere sobre o funcionamento atual? Quais dominios de vida merecem atencao prioritaria? Use linguagem investigativa.
 
-3. DIRECIONAMENTO TERAPEUTICO
-Quais intervencoes sao prioritarias? Sugira estrategias de TCC, ACT, Terapia do Esquema ou DBT mais indicadas para este perfil. Inclua tecnicas especificas quando pertinente.
+## 2. ASPECTOS CLINICOS A INVESTIGAR
+Quais padroes cognitivos, comportamentais e emocionais merecem aprofundamento? Aponte hipoteses funcionais a explorar — gatilhos provaveis, cognicoes associadas, comportamentos de manutencao, evitacao. Evite nomear transtornos sem dados suficientes.
 
-4. ALERTAS CLINICOS
-Ha sinais de atencao para as proximas sessoes? Quando considerar encaminhamento psiquiatrico?
+## 3. HIPOTESES A CONSIDERAR
+[Nivel de confianca: baixo / moderado / alto — indique para cada hipotese]
+Quais quadros clinicos sao possiveis dado este perfil de score? Use linguagem probabilistica. Diferencie o que e hipotese de rastreio (baixa confianca) do que tem suporte mais consistente (moderado/alto). Nunca afirme diagnostico fechado.
 
-Escreva de forma tecnica e direta, em paragrafos corridos por secao. Sem marcadores de lista. Sem avisos genericos de "consulte um profissional" pois esta analise ja e para a profissional.`;
+## 4. DIRECOES DE INTERVENCAO
+Quais intervencoes iniciais de baixa inferencia sao indicadas? Priorize: psicoeducacao, monitoramento, identificacao de padroes, manejo comportamental, estrategias baseadas em evidencias. Conecte com TCC, ACT ou Terapia do Esquema quando houver indicacao clara.
+
+## 5. PONTOS DE ATENCAO PARA AS PROXIMAS SESSOES
+O que merece observacao ativa? Quais sinais mudariam a hipotese atual? Quando considerar avaliacao complementar ou encaminhamento?`;
 
   try {
     const payload = {
@@ -632,41 +661,23 @@ Escreva de forma tecnica e direta, em paragrafos corridos por secao. Sem marcado
       prompt
     };
 
-    let token = sessionStorage.getItem('sb_session_token') || SB_SESSION;
-    if (!token) throw new Error('expired-session');
-
-    let response = await fetchWithTimeout(
-      'https://qpwjxacdjzzsyjbuuwsq.supabase.co/functions/v1/smooth-responder',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
-        },
-        body: JSON.stringify(payload)
-      }
-    );
-
-    if (response.status === 401 || response.status === 403) {
-      token = await refreshSessionToken();
-      if (!token) throw new Error('expired-session');
-      response = await fetchWithTimeout(
-        'https://qpwjxacdjzzsyjbuuwsq.supabase.co/functions/v1/smooth-responder',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-          },
-          body: JSON.stringify(payload)
-        }
-      );
-    }
+    // Chama Claude via API Anthropic diretamente
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1500,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
 
     if (!response.ok) throw new Error('ai-request-failed');
     const result = await response.json();
     textEl.innerHTML = '';
-    const analysis = result.analysis || result.text || result.content || result.message || '';
+    const analysis = result.content?.[0]?.text || '';
     if (analysis) {
       // Render markdown-like formatting
       const html = analysis
