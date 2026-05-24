@@ -670,23 +670,25 @@ Escreva em paragrafos corridos por secao. Tom tecnico, prudente e etico.`;
       prompt
     };
 
-    // Chama Claude via API Anthropic diretamente
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1500,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
+    let token = sessionStorage.getItem('sb_session_token') || SB_SESSION;
+    if (!token) throw new Error('expired-session');
+
+    const response = await fetchWithTimeout(
+      'https://qpwjxacdjzzsyjbuuwsq.supabase.co/functions/v1/smooth-responder',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(payload)
+      }
+    );
 
     if (!response.ok) throw new Error('ai-request-failed');
     const result = await response.json();
     textEl.innerHTML = '';
-    const analysis = result.content?.[0]?.text || '';
+    const analysis = result.analysis || result.text || result.content || '';
     if (analysis) {
       // Render markdown-like formatting
       const html = analysis
