@@ -610,49 +610,78 @@ async function generateAnalysis() {
   textEl.innerHTML='<span class="ai-cursor"></span>';
 
   const scoreHistory = d.scores.map((s,i)=>`Aplicacao ${i+1}: ${s} pontos`).join('; ');
-  const trend = d.scores.length>1?(d.scores[d.scores.length-1]-d.scores[0]<0?'reducao':d.scores[d.scores.length-1]-d.scores[0]>0?'aumento':'estabilidade'):'primeira aplicacao';
+  const nAplicacoes = d.filtered.length;
+  const delta = nAplicacoes > 1
+    ? d.scores[d.scores.length-1] - d.scores[d.scores.length-2]
+    : null;
+  const deltaStr = delta !== null
+    ? (delta > 0 ? `+${delta}` : `${delta}`)
+    : null;
 
-  const prompt = `Voce e um assistente de apoio a formulacao clinica para psicologos, baseado em Terapia Cognitivo-Comportamental (TCC), ACT, Terapia do Esquema e principios de avaliacao baseada em evidencias.
+  // Prompt de análise de score atual (sempre presente)
+  const promptScore = `Voce e um assistente de apoio a formulacao clinica para psicologos, baseado em TCC, ACT e Terapia do Esquema.
 Seu papel e auxiliar o raciocinio clinico da profissional de forma prudente, etica e funcional.
 
 IMPORTANTE:
-- Voce NAO realiza diagnostico.
-- Voce NAO substitui julgamento clinico.
-- Voce NAO produz laudos psicologicos.
-- Voce NAO deve apresentar inferencias como fatos estabelecidos.
+- Voce NAO realiza diagnostico, NAO substitui julgamento clinico, NAO produz laudos.
 - Escalas psicometricas sao instrumentos de rastreio e NAO confirmam diagnosticos isoladamente.
+- Nunca apresente inferencias como fatos. Nunca crie sintomas nao informados.
+UTILIZE: "o score pode sugerir", "e importante investigar", "avaliar possivel impacto", "considerar hipotese".
+EVITE: "o paciente apresenta", "ha comprometimento", "ha provavel diagnostico", "transcende ansiedade normativa".
+NUNCA conclua TP, TEPT, TOC, depressao, risco psiquiatrico sem dados explicitos alem da escala.
 
-A analise deve: soar tecnica e profissional, evitar dramatizacao psicopatologica, evitar excesso de certeza clinica, priorizar analise funcional, utilizar linguagem prudente e investigativa.
-
-UTILIZE: "o score pode sugerir", "e importante investigar", "avaliar possivel impacto", "considerar hipotese", "os dados indicam", "recomenda-se explorar".
-EVITE: "o paciente apresenta", "ha comprometimento", "o dominio esta prejudicado", "ha provavel diagnostico", "transcende ansiedade normativa".
-NUNCA conclua transtornos de personalidade, TEPT, TOC, depressao, risco psiquiatrico ou prejuizo funcional sem dados explicitos alem da escala.
-
-DADOS DO INSTRUMENTO:
+DADOS:
 - Instrumento: ${d.inst}
 - Score: ${d.latestScore} de ${d.cfg.max} pontos
 - Nivel: ${d.latestLevel.label}
-- Aplicacoes: ${d.filtered.length}
-- Historico: ${scoreHistory}
-- Tendencia: ${trend}
+- Total de aplicacoes: ${nAplicacoes}
 
-Organize a resposta nesta estrutura exata:
+Estruture a resposta exatamente assim:
 
 ## 1. LEITURA CLINICA DO INSTRUMENTO
-Leitura objetiva e prudente do score. Explique o que o nivel pode sugerir clinicamente sem transformar em diagnostico.
+Leitura objetiva e prudente. O que o nivel pode sugerir clinicamente sem transformar em diagnostico.
 
 ## 2. ASPECTOS CLINICOS A INVESTIGAR
-Liste fatores que merecem investigacao complementar (sempre como hipoteses investigativas, nunca como fatos):
-duracao dos sintomas, prejuizo funcional, evitacao, sono, concentracao, comportamentos de seguranca, contexto de vida, estressores, comorbidades possiveis.
+Fatores que merecem investigacao complementar como hipoteses investigativas (nunca como fatos): duracao dos sintomas, prejuizo funcional, evitacao, sono, concentracao, comportamentos de seguranca, contexto de vida, estressores, comorbidades possiveis.
 
 ## 3. DIRECIONAMENTOS TERAPEUTICOS INICIAIS
-Intervencoes iniciais baseadas em evidencias e de baixa inferencia. Priorize: psicoeducacao, monitoramento emocional, identificacao de pensamentos automaticos, manejo comportamental, reducao de evitacao, regulacao emocional, TCC/ACT de forma funcional. Evite protocolos complexos sem confirmacao clinica.
+Intervencoes de baixa inferencia: psicoeducacao, monitoramento emocional, identificacao de pensamentos automaticos, manejo comportamental, reducao de evitacao, regulacao emocional. TCC/ACT de forma funcional. Sem protocolos complexos sem confirmacao clinica.
 
 ## 4. ALERTAS CLINICOS
-Apenas alertas prudentes e relevantes baseados nos dados. Exemplos: investigar risco se houver desesperanca, monitorar agravamento, avaliar suporte multiprofissional. Nunca alarmar desnecessariamente. Se nao houver indicadores, escreva: "Sem alertas clinicos nos dados disponíveis."
+Apenas alertas prudentes e baseados nos dados. Se nao houver indicadores: "Sem alertas clinicos nos dados disponíveis."
 
-ESTILO: linguagem clara, tecnica e objetiva. Sem tom de laudo. Sem linguagem academica excessiva. Sem romantizacao psicopatologica. Sem criar sintomas nao informados.
-A responsabilidade clinica permanece integralmente com a profissional habilitada.`;
+Linguagem clara, tecnica, objetiva. Sem laudo. Sem romantizacao. Sem criar sintomas.
+Responsabilidade clinica permanece com a profissional habilitada.`;
+
+  // Prompt longitudinal (apenas com 2+ aplicações)
+  const promptLongitudinal = nAplicacoes < 2
+    ? null
+    : `Voce e um assistente de apoio a formulacao clinica. Gere uma analise de evolucao longitudinal prudente e objetiva, baseada exclusivamente nos dados de aplicacoes anteriores e atuais do instrumento.
+
+REGRAS:
+- Nao gerar diagnostico. Nao inferir sintomas nao informados. Nao concluir eficacia terapeutica isoladamente.
+- Nao usar linguagem alarmista.
+- Utilizar: "melhora clinica provavel", "estabilidade relativa", "agravamento provavel", "oscilacao sintomatica".
+- Evitar: "remissao", "recaida", "recuperacao", "piora grave" sem contexto adicional.
+- Sempre informar variacao numerica (delta).
+- Focar em: intensidade sintomatica, tendencia temporal, necessidade de monitoramento.
+
+DADOS:
+- Instrumento: ${d.inst}
+- Score atual: ${d.latestScore} de ${d.cfg.max} (${d.latestLevel.label})
+- Historico completo: ${scoreHistory}
+- Variacao ultima aplicacao: Δ ${deltaStr} pontos
+
+Estruture assim:
+
+## EVOLUCAO LONGITUDINAL
+Descreva a tendencia observada entre as aplicacoes de forma objetiva e prudente. Informe o delta. Classifique a tendencia (melhora clinica provavel / estabilidade relativa / agravamento provavel / oscilacao sintomatica). Recomende monitoramento conforme indicado.
+
+Linguagem tecnica, objetiva e prudente. Sem tom de laudo. Sem dramatizacao.`;
+
+  const prompt = promptLongitudinal
+    ? promptScore + '\n\n' + promptLongitudinal
+    : promptScore;
 
   try {
     const payload = {
