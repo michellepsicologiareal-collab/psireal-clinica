@@ -273,10 +273,33 @@ const CONFIGS = {
       {min:15,max:21,label:'Grave',css:'level-grave',color:'#3d2b8a'}
     ],
     recos:{
-      'Mínima':['Manutenção de autocuidado e regulação emocional.','Continuidade do acompanhamento para consolidar ganhos.','Reaplicação periódica para monitoramento.'],
-      'Leve':['Psicoeducação sobre o ciclo da ansiedade.','Identificação de gatilhos e pensamentos precedentes.','Reestruturação cognitiva e ativação comportamental.','Reaplicar em 2 a 4 semanas.'],
-      'Moderada':['Avaliação clínica aprofundada e possível encaminhamento psiquiátrico.','Protocolo TCC para TAG: exposição e manejo de preocupações.','Registro de pensamentos e diários entre as sessões.','Discutir suporte farmacológico se indicado.'],
-      'Grave':['Avaliação imediata de suporte psiquiátrico.','Plano de crise e protocolo de segurança.','Intensificar frequência das sessões.','Avaliar rede de suporte social e familiar.']
+      'Mínima':[
+        'Manter monitoramento clínico conforme contexto do paciente.',
+        'Investigar fatores estressores recentes e estratégias atuais de enfrentamento.',
+        'Reforçar psicoeducação sobre ansiedade e regulação emocional.',
+        'Realizar acompanhamento longitudinal para observar possível evolução sintomática.'
+      ],
+      'Leve':[
+        'Explorar possíveis gatilhos associados às preocupações e sintomas ansiosos.',
+        'Investigar padrões iniciais de evitação e hipervigilância.',
+        'Utilizar estratégias básicas de psicoeducação e monitoramento emocional.',
+        'Considerar intervenções cognitivas e comportamentais de baixa complexidade.',
+        'Realizar acompanhamento longitudinal dos sintomas.'
+      ],
+      'Moderada':[
+        'Investigar possível impacto dos sintomas ansiosos na rotina e funcionalidade.',
+        'Explorar padrões de preocupação, evitação e comportamentos de segurança.',
+        'Utilizar estratégias iniciais de psicoeducação e monitoramento emocional.',
+        'Considerar intervenções cognitivas e comportamentais para manejo da ansiedade.',
+        'Realizar acompanhamento longitudinal para avaliação da evolução clínica.'
+      ],
+      'Grave':[
+        'Realizar investigação clínica da intensidade e frequência dos sintomas ansiosos.',
+        'Avaliar possível impacto funcional em áreas importantes da vida cotidiana.',
+        'Investigar presença de evitação significativa e sofrimento emocional intenso.',
+        'Utilizar estratégias estruturadas de manejo cognitivo-comportamental.',
+        'Monitorar evolução clínica e considerar suporte multiprofissional conforme necessidade.'
+      ]
     }
   },
   'PHQ-9': {
@@ -290,11 +313,37 @@ const CONFIGS = {
       {min:20,max:27,label:'Grave',css:'level-grave',color:'#3d2b8a'}
     ],
     recos:{
-      'Mínima':['Monitoramento periódico.','Manutenção de atividades prazerosas e autocuidado.'],
-      'Leve':['Psicoeducação sobre depressão e ciclo de evitação.','Ativação comportamental estruturada.'],
-      'Moderada':['Protocolo TCC para depressão.','Avaliar encaminhamento psiquiátrico.'],
-      'Moderadamente grave':['Encaminhamento psiquiátrico prioritário.','Plano de segurança preventivo.'],
-      'Grave':['Avaliação imediata de risco.','Encaminhamento psiquiátrico urgente.','Plano de crise detalhado.']
+      'Mínima':[
+        'Manter monitoramento clínico conforme contexto do paciente.',
+        'Investigar fatores estressores recentes e estratégias de enfrentamento.',
+        'Reforçar psicoeducação sobre humor e regulação emocional.',
+        'Acompanhamento longitudinal para observar possível evolução.'
+      ],
+      'Leve':[
+        'Explorar possíveis gatilhos associados ao humor rebaixado.',
+        'Investigar padrões iniciais de retraimento e evitação comportamental.',
+        'Utilizar psicoeducação e ativação comportamental de baixa complexidade.',
+        'Realizar acompanhamento longitudinal dos sintomas.'
+      ],
+      'Moderada':[
+        'Investigar possível impacto no funcionamento diário e relações sociais.',
+        'Explorar padrões de evitação, pensamentos negativos e comportamentos de manutenção.',
+        'Considerar intervenções cognitivas e ativação comportamental estruturada.',
+        'Avaliar necessidade de suporte complementar conforme evolução clínica.',
+        'Acompanhamento longitudinal para avaliação da trajetória dos sintomas.'
+      ],
+      'Moderadamente grave':[
+        'Investigar intensidade do sofrimento e impacto funcional.',
+        'Avaliar necessidade de suporte multiprofissional conforme evolução.',
+        'Utilizar intervenções estruturadas de TCC e ativação comportamental.',
+        'Monitorar de forma contínua e próxima.'
+      ],
+      'Grave':[
+        'Investigar intensidade do sofrimento psíquico e impacto funcional.',
+        'Avaliar necessidade de suporte multiprofissional conforme evolução clínica.',
+        'Utilizar intervenções estruturadas de manejo cognitivo-comportamental.',
+        'Monitorar evolução de forma contínua e próxima.'
+      ]
     }
   }
 };
@@ -506,7 +555,7 @@ function renderInstrument(inst, responses) {
     <div class="grid-2-1">
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Evolucao Longitudinal</div>
+          <div class="card-title">Acompanhamento Longitudinal</div>
           <span class="level-badge ${latestLevel.css}">${latestLevel.label}</span>
         </div>
         <div class="card-body">
@@ -549,7 +598,7 @@ function renderInstrument(inst, responses) {
         </div>
       </div>
       <div class="card">
-        <div class="card-header"><div class="card-title">Orientacoes — ${latestLevel.label}</div></div>
+        <div class="card-header"><div class="card-title">Sugestoes Clinicas Iniciais</div></div>
         <div class="card-body">
           <ul class="reco-list">
             ${recos.map(r=>`<li class="reco-item" style="border-left-color:${latestLevel.color}">${r}</li>`).join('')}
@@ -561,13 +610,13 @@ function renderInstrument(inst, responses) {
     <!-- AI ANALYSIS -->
     <div class="card">
       <div class="card-header">
-        <div class="card-title">Analise Clinica com IA</div>
+        <div class="card-title">Apoio a Formulacao Clinica</div>
         <span class="ai-badge">Beta · Uso exclusivo da psi</span>
       </div>
       <div class="card-body">
         <div class="ai-warning">
           <div class="ai-warning-title">Aviso de seguranca — leia antes de usar</div>
-          <strong>Esta funcionalidade utiliza inteligencia artificial generativa.</strong> A analise tem carater exclusivamente de apoio clinico e nao substitui o julgamento profissional da psicologa. Hipoteses diagnosticas e sugestoes de manejo devem ser avaliadas criticamente a luz da historia clinica completa. Nunca compartilhe esta analise diretamente com o paciente. A responsabilidade clinica permanece integralmente com a profissional habilitada.
+          Esta funcionalidade utiliza inteligencia artificial como apoio ao raciocinio clinico. As analises possuem carater auxiliar, nao substituem julgamento profissional e nao devem ser interpretadas como diagnostico, laudo psicologico ou definicao terapeutica. A interpretacao clinica permanece sob responsabilidade da profissional habilitada.
         </div>
         <div class="ai-disclaimer">
           Dados enviados: instrumento (${inst}), score atual (${latestScore}/${cfg.max}), nivel (${latestLevel.label}), aplicacoes (${filtered.length}), variacao (${variation>0?'+':''}${variation}). Nenhum dado de identificacao do paciente e enviado a IA.
@@ -582,6 +631,26 @@ function renderInstrument(inst, responses) {
           <div class="ai-text-wrap"><div class="ai-text" id="aiText"></div></div>
           <div class="ai-footer"><div class="ai-dot"></div>Gerado por Claude (Anthropic) · Baseado em TCC, ACT, Terapia do Esquema e DBT · Nao compartilhar com o paciente</div>
         </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Alerta Clinico</div></div>
+      <div class="card-body">
+        <div class="fonte-box" style="border-left:3px solid ${latestLevel.color};background:rgba(109,79,194,.04)">
+          ${latestLevel.label === 'Mínima' ? 'Monitorar persistência dos sintomas ao longo do acompanhamento clínico.' :
+            latestLevel.label === 'Leve' ? 'Monitorar persistência dos sintomas ao longo do acompanhamento clínico.' :
+            latestLevel.label === 'Moderada' ? 'Investigar possível impacto funcional, comportamentos de segurança e padrões de evitação associados.' :
+            latestLevel.label === 'Moderadamente grave' ? 'Avaliar intensidade do sofrimento, impacto funcional e necessidade de suporte multiprofissional conforme evolução clínica.' :
+            'Avaliar intensidade do sofrimento psíquico, impacto funcional e necessidade de suporte multiprofissional conforme evolução clínica.'
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border:1px solid var(--border);background:rgba(109,79,194,.03)">
+      <div class="card-body" style="font-size:12px;color:var(--ink3);line-height:1.6">
+        Este instrumento possui finalidade de rastreio clínico e deve ser interpretado em conjunto com entrevista clínica, avaliação funcional e contexto de vida do paciente. Os resultados não confirmam diagnóstico isoladamente.
       </div>
     </div>
 
@@ -619,39 +688,49 @@ async function generateAnalysis() {
     : null;
 
   // Prompt de análise de score atual (sempre presente)
-  const promptScore = `Voce e um assistente de apoio a formulacao clinica para psicologos, baseado em TCC, ACT e Terapia do Esquema.
-Seu papel e auxiliar o raciocinio clinico da profissional de forma prudente, etica e funcional.
+  const primeiraAplicacao = nAplicacoes === 1
+    ? 'Por se tratar da primeira aplicacao, ainda nao ha dados suficientes para analise longitudinal da evolucao sintomatica.'
+    : '';
+
+  const promptScore = `Voce e um assistente de apoio a formulacao clinica baseado em evidencias para psicologos clinicos.
+
+Sua funcao e auxiliar o raciocinio clinico de forma prudente, objetiva, funcional, etica e baseada em TCC, ACT e Terapia do Esquema.
 
 IMPORTANTE:
-- Voce NAO realiza diagnostico, NAO substitui julgamento clinico, NAO produz laudos.
-- Escalas psicometricas sao instrumentos de rastreio e NAO confirmam diagnosticos isoladamente.
-- Nunca apresente inferencias como fatos. Nunca crie sintomas nao informados.
-UTILIZE: "o score pode sugerir", "e importante investigar", "avaliar possivel impacto", "considerar hipotese".
-EVITE: "o paciente apresenta", "ha comprometimento", "ha provavel diagnostico", "transcende ansiedade normativa".
-NUNCA conclua TP, TEPT, TOC, depressao, risco psiquiatrico sem dados explicitos alem da escala.
+- Nao realizar diagnostico.
+- Nao transformar score em transtorno confirmado.
+- Nao inferir sintomas nao informados.
+- Nao produzir texto com tom de laudo psicologico.
+- Nao utilizar linguagem excessivamente academica ou dramatizada.
+- Nao extrapolar alem dos dados disponiveis.
+- Escalas psicometricas sao instrumentos de rastreio e NAO confirmam diagnostico isoladamente.
 
-DADOS:
+UTILIZE: "os resultados podem sugerir", "recomenda-se investigar", "avaliar possivel impacto", "considerar hipotese", "os dados indicam", "explorar padroes associados".
+EVITE: "o paciente apresenta", "ha comprometimento funcional", "ha provavel transtorno", "o quadro e consistente com", "o dominio esta prejudicado".
+NUNCA confirme TAG, TOC, TEPT, depressao, prejuizo funcional ou assuma sintomas especificos sem dados clinicos adicionais.
+
+DADOS DO INSTRUMENTO:
 - Instrumento: ${d.inst}
 - Score: ${d.latestScore} de ${d.cfg.max} pontos
 - Nivel: ${d.latestLevel.label}
-- Total de aplicacoes: ${nAplicacoes}
+- Aplicacoes: ${nAplicacoes}
+${primeiraAplicacao ? '- Observacao: ' + primeiraAplicacao : ''}
 
-Estruture a resposta exatamente assim:
+ESTRUTURA OBRIGATORIA — responda exatamente nesta ordem:
 
-## 1. LEITURA CLINICA DO INSTRUMENTO
-Leitura objetiva e prudente. O que o nivel pode sugerir clinicamente sem transformar em diagnostico.
+## 1. LEITURA CLINICA DO SCORE
+Leitura objetiva e prudente do resultado. Diga o que o score indica no instrumento e o que os resultados podem sugerir clinicamente, sem transformar em diagnostico. Se for primeira aplicacao, mencione que nao ha dados longitudinais ainda. NAO invente sintomas, impacto ocupacional, sono ou evitacao sem dados explicitos.
 
 ## 2. ASPECTOS CLINICOS A INVESTIGAR
-Fatores que merecem investigacao complementar como hipoteses investigativas (nunca como fatos): duracao dos sintomas, prejuizo funcional, evitacao, sono, concentracao, comportamentos de seguranca, contexto de vida, estressores, comorbidades possiveis.
+Liste hipoteses investigativas prudentes. Deixe claro que sao aspectos a investigar, nao fatos estabelecidos. Priorize: impacto funcional, frequencia dos sintomas, duracao, padroes de preocupacao, evitacao, comportamentos de seguranca, qualidade do sono, estressores atuais, funcionamento interpessoal. Evite listas DSM excessivas e linguagem patologizante.
 
-## 3. DIRECIONAMENTOS TERAPEUTICOS INICIAIS
-Intervencoes de baixa inferencia: psicoeducacao, monitoramento emocional, identificacao de pensamentos automaticos, manejo comportamental, reducao de evitacao, regulacao emocional. TCC/ACT de forma funcional. Sem protocolos complexos sem confirmacao clinica.
+## 3. SUGESTOES CLINICAS INICIAIS
+Sugestoes curtas, praticas e baseadas em evidencias. Priorize: psicoeducacao, monitoramento emocional, identificacao de pensamentos automaticos, manejo de preocupacao, reducao de evitacao, estrategias cognitivas e comportamentais iniciais. Evite protocolos complexos e indicacao psiquiatrica automatica.
 
 ## 4. ALERTAS CLINICOS
-Apenas alertas prudentes e baseados nos dados. Se nao houver indicadores: "Sem alertas clinicos nos dados disponíveis."
+Apenas alertas prudentes e necessarios. Exemplos: "monitorar evolucao dos sintomas", "avaliar possivel impacto funcional". Nunca alarmar sem justificativa clinica.
 
-Linguagem clara, tecnica, objetiva. Sem laudo. Sem romantizacao. Sem criar sintomas.
-Responsabilidade clinica permanece com a profissional habilitada.`;
+A resposta deve ser clara, objetiva, clinica, funcional e rapida de ler. Sem textos longos. Sem excesso de profundidade inferencial. Sem romantizacao psicopatologica. O objetivo e apoiar o raciocinio clinico, nao substituir avaliacao profissional.`;
 
   // Prompt longitudinal (apenas com 2+ aplicações)
   const promptLongitudinal = nAplicacoes < 2
@@ -674,7 +753,7 @@ DADOS:
 
 Estruture assim:
 
-## EVOLUCAO LONGITUDINAL
+## ACOMPANHAMENTO LONGITUDINAL
 Descreva a tendencia observada entre as aplicacoes de forma objetiva e prudente. Informe o delta. Classifique a tendencia (melhora clinica provavel / estabilidade relativa / agravamento provavel / oscilacao sintomatica). Recomende monitoramento conforme indicado.
 
 Linguagem tecnica, objetiva e prudente. Sem tom de laudo. Sem dramatizacao.`;
