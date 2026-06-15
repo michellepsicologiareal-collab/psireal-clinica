@@ -256,7 +256,7 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);col
 <script>
 const SB_URL = 'https://qpwjxacdjzzsyjbuuwsq.supabase.co';
 const SB_KEY = 'sb_publishable_hQclCJaEsVjcnGM4WAoYmA_r8H8NqAp';
-let SB_SESSI — Mapa de Modos e AtivaçãoON = sessionStorage.getItem('sb_session_token') || '';
+let SB_SESSION_TOKEN = sessionStorage.getItem('sb_session_token') || '';
 const PARAMS = new URLSearchParams(window.location.search);
 const INSTRUMENTO = PARAMS.get('instrumento') || 'GAD-7';
 const PACIENTE = PARAMS.get('paciente') ? decodeURIComponent(PARAMS.get('paciente')) : null;
@@ -379,7 +379,7 @@ async function refreshSessionToken() {
   if (!res.ok) return '';
   const data = await res.json();
   if (!data.access_token) return '';
-  SB_SESSI — Mapa de Modos e AtivaçãoON = data.access_token;
+  SB_SESSION_TOKEN = data.access_token;
   sessionStorage.setItem('sb_session_token', data.access_token);
   if (data.refresh_token) sessionStorage.setItem('sb_refresh_token', data.refresh_token);
   return data.access_token;
@@ -396,7 +396,7 @@ async function fetchWithTimeout(url, options = {}, timeout = 45000) {
 }
 
 async function sbFetch(path, useSession=true) {
-  const token = useSession ? SB_SESSI — Mapa de Modos e AtivaçãoON : SB_KEY;
+  const token = useSession ? SB_SESSION_TOKEN : SB_KEY;
   const res = await fetch(`${SB_URL}/rest/v1/${path}`, {
     headers:{apikey:SB_KEY, Authorization:'Bearer '+token}
   });
@@ -783,7 +783,7 @@ Linguagem tecnica, objetiva e prudente. Sem tom de laudo. Sem dramatizacao.`;
       prompt
     };
 
-    let token = sessionStorage.getItem('sb_session_token') || SB_SESSI — Mapa de Modos e AtivaçãoON;
+    let token = sessionStorage.getItem('sb_session_token') || SB_SESSION_TOKEN;
     if (!token) throw new Error('expired-session');
 
     const response = await fetchWithTimeout(
@@ -909,7 +909,7 @@ function switchInst(inst) {
 
 // ── INIT ─────────────────────────────────────────────────────────────────────
 async function init() {
-  if (!SB_SESSI — Mapa de Modos e AtivaçãoON) {
+  if (!SB_SESSION_TOKEN) {
     const refreshed = await refreshSessionToken();
     if (!refreshed) {
       sessionStorage.setItem('sb_redirect', window.location.href);

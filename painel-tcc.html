@@ -4037,7 +4037,7 @@ async function perfilGerarLink() {
     if (!res.ok || (!data?.token && !data?.[0]?.token)) throw new Error('Falha ao gerar link');
     const token = encodeURIComponent(data?.token || data?.[0]?.token);
     const page = instrumentPage(instrument);
-    const link = `${location.origin}/${page}?token=${token}&nome=${encodeURIComponent(PERFIL_PACIENTE_NOME)}`;
+    const link = `${location.origin}${location.pathname.replace(/painel-tcc\.html$/, '')}${page}.html?token=${token}&nome=${encodeURIComponent(PERFIL_PACIENTE_NOME)}`;
 
     document.getElementById('perfilLinkTexto').textContent = link;
     const wa = buildWhatsappUrl(PERFIL_PACIENTE_WHATSAPP, PERFIL_PACIENTE_NOME, link);
@@ -4247,4 +4247,3 @@ async function adminToggleAtiva(userId, atual) {
 </script>
 </body>
 </html>
-

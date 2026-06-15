@@ -606,7 +606,8 @@ async function restoreSession() {
   if (!SESSION_TOKEN) return;
   try {
     const check = await sbGet('admin_users?select=user_id&limit=1');
-    if (check && check.length >= 0) bootAdmin();
+    if (check && check.length > 0) bootAdmin();
+    else throw new Error('not admin');
   } catch(e) {
     SESSION_TOKEN = '';
     sessionStorage.removeItem('admin_token');
