@@ -52,7 +52,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -114,48 +114,48 @@
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      font-family: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
       background:var(--bg);
       color:var(--ink);
       line-height:1.55;
     }
 
     a{text-decoration:none;color:inherit}
-    .container{width:min(1160px,92vw);margin:0 auto}
+    .container{width:min(1120px,92vw);margin:0 auto}
     .pill{
       display:inline-flex;align-items:center;gap:8px;
       padding:8px 14px;border:1px solid var(--line);
       border-radius:999px;background:rgba(255,255,255,.68);
-      color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.04em;
+      color:var(--muted);font-size:13px;font-weight:700;letter-spacing:0;
       text-transform:uppercase;
     }
 
     header{
       position:sticky;top:0;z-index:40;
-      background:rgba(250,247,243,.86);
+      background:rgba(255,255,255,.92);
       backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(232,218,212,.8);
+      border-bottom:1px solid rgba(237,233,248,.88);
     }
     .nav{
-      min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px;
+      min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px;
     }
     .brand{display:flex;align-items:center;gap:14px}
 
     .real-logo{
-      width:54px;
-      height:54px;
+      width:46px;
+      height:46px;
       object-fit:contain;
       border-radius:50%;
     }
-    .brand strong{display:block;font-family:'Syne',sans-serif;font-size:18px;color:var(--ink)}
-    .brand span{display:block;font-size:13px;color:var(--muted);letter-spacing:.14em}
-    .navlinks{display:flex;align-items:center;gap:26px;color:#445653;font-size:15px}
+    .brand strong{display:block;font-family:'Inter Tight',sans-serif;font-size:17px;color:var(--ink);font-weight:700}
+    .brand span{display:block;font-size:13px;color:var(--muted);letter-spacing:0}
+    .navlinks{display:flex;align-items:center;gap:20px;color:#445653;font-size:14px}
     .navlinks a:hover{color:var(--ink)}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:48px;padding:0 24px;border-radius:15px;
+      min-height:46px;padding:0 22px;border-radius:14px;
       border:1px solid transparent;font-weight:700;cursor:pointer;
-      font-family:'Syne',sans-serif;
+      font-family:'Inter',sans-serif;
       transition:.18s ease;
     }
     .btn.primary{background:var(--violet);color:#fff;box-shadow:0 16px 30px rgba(109,79,194,.18)}
@@ -163,66 +163,64 @@
     .btn.secondary{background:#fff;color:var(--violet);border-color:var(--line)}
     .btn.secondary:hover{transform:translateY(-2px);border-color:var(--violet-soft)}
 
-    .hero{padding:84px 0 54px;position:relative;overflow:hidden}
+    .hero{padding:58px 0 40px;position:relative;overflow:hidden}
     .hero:before{
-      content:"";position:absolute;inset:-140px -120px auto auto;width:560px;height:560px;
-      background:radial-gradient(circle,rgba(109,79,194,.13),transparent 66%);
-      pointer-events:none;
+      content:none;
     }
-    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:54px;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
     h1{
-      font-family:'Syne',sans-serif;
-      font-size:clamp(42px,6vw,78px);
-      line-height:.95;
-      letter-spacing:-0.06em;
-      font-weight:800;
-      margin:22px 0;
+      font-family:'Inter Tight',sans-serif;
+      font-size:clamp(42px,5.2vw,72px);
+      line-height:.98;
+      letter-spacing:0;
+      font-weight:700;
+      margin:18px 0 16px;
       color:#202827;
     }
     
     h2,h3,h4,.mocktitle h3{
-      font-family:'Syne',sans-serif;
-      letter-spacing:-0.04em;
-      font-weight:800;
+      font-family:'Inter Tight',sans-serif;
+      letter-spacing:0;
+      font-weight:700;
     }
 
     .gradient{
       background:linear-gradient(100deg,var(--ink),var(--violet));
       -webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    .lead{font-size:20px;color:var(--muted);max-width:660px;margin-bottom:28px}
-    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
-    .trust{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px}
-    .trust span{padding:8px 12px;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:999px}
+    .lead{font-size:18px;color:var(--muted);max-width:600px;margin-bottom:24px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+    .trust{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+    .trust span{padding:7px 11px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:999px}
 
     .mockup{
-      background:#fff;border:1px solid var(--line);border-radius:34px;box-shadow:var(--shadow);overflow:hidden;
+      width:min(100%,500px);justify-self:end;background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);overflow:hidden;
     }
     .mockbar{
       height:42px;background:var(--ink);color:#fff;display:flex;align-items:center;gap:8px;padding:0 18px;
       font-family:ui-monospace, SFMono-Regular, Menlo, monospace;font-weight:700;font-size:13px;
     }
     .dot{width:9px;height:9px;border-radius:50%;background:#EBC1B7}.dot:nth-child(2){background:#E4C67E}.dot:nth-child(3){background:#9FB28F}
-    .mockbody{display:grid;grid-template-columns:190px 1fr;min-height:430px}
-    .mockside{background:#FBFAFC;padding:24px;border-right:1px solid var(--line)}
+    .mockbody{display:grid;grid-template-columns:155px 1fr;min-height:368px}
+    .mockside{background:#FBFAFC;padding:20px;border-right:1px solid var(--line)}
     .mocklogo{display:flex;gap:10px;align-items:center;margin-bottom:24px;font-weight:900}
     .mocklogo i{width:24px;height:24px;border-radius:50%;background:var(--beige);display:block}
     .mocknav{display:grid;gap:8px}
-    .mocknav span{padding:10px 12px;border-radius:10px;color:#5F5A6B;font-size:14px}
+    .mocknav span{padding:9px 10px;border-radius:10px;color:#5F5A6B;font-size:13px}
     .mocknav .active{background:var(--violet-bg);color:var(--violet);font-weight:800}
-    .mockmain{padding:24px;background:#fff}
-    .mocktitle{border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:18px;background:#FCFAFF}
-    .mocktitle small{color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
-    .mocktitle h3{font-size:26px;line-height:1.15;margin-top:8px}
+    .mockmain{padding:20px;background:#fff}
+    .mocktitle{border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;background:#FCFAFF}
+    .mocktitle small{color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:0}
+    .mocktitle h3{font-size:23px;line-height:1.14;margin-top:8px}
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
-    .stat{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
-    .stat small{color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-    .stat strong{display:block;font-size:24px;color:var(--ink);margin-top:5px}
-    .bars{border:1px solid var(--line);border-radius:18px;padding:16px;background:#fff}
-    .bar{height:12px;border-radius:999px;background:var(--bg-thumb-1);margin:12px 0;overflow:hidden}
+    .stat{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}
+    .stat small{color:var(--muted);text-transform:uppercase;letter-spacing:0}
+    .stat strong{display:block;font-size:22px;color:var(--ink);margin-top:5px}
+    .bars{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
+    .bar{height:10px;border-radius:999px;background:var(--bg-thumb-1);margin:10px 0;overflow:hidden}
     .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--violet-soft),var(--violet));border-radius:999px}
     .instrument-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
-    .chip{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff;font-size:13px}
+    .chip{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;font-size:13px}
     .chip b{display:block;color:var(--ink);font-size:15px}
 
 
@@ -251,7 +249,7 @@
       color:var(--muted);
       font-weight:900;
       text-transform:uppercase;
-      letter-spacing:.08em;
+      letter-spacing:0;
     }
     .ecosystem-card h3{
       font-size:26px;
@@ -282,9 +280,9 @@
     }
 
 
-    section{padding:74px 0}
+    section{padding:64px 0}
     .section-head{max-width:760px;margin:0 auto 34px;text-align:center}
-    .section-head h2{font-size:clamp(30px,4vw,48px);line-height:1.08;letter-spacing:-.04em;margin:14px 0}
+    .section-head h2{font-size:clamp(30px,4vw,48px);line-height:1.08;letter-spacing:0;margin:14px 0}
     .section-head p{font-size:18px;color:var(--muted)}
 
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -313,8 +311,8 @@
     .mini h3{font-size:18px;margin-bottom:6px}.mini p{font-size:14px;color:var(--muted)}
 
     .pricing{max-width:520px;margin:0 auto;text-align:center}
-    .price{font-size:58px;font-family:'Syne',sans-serif;color:var(--ink);line-height:1;margin:18px 0 8px}
-    .price span{font-size:20px;font-family:'Instrument Sans',sans-serif;color:var(--muted)}
+    .price{font-size:56px;font-family:'Inter Tight',sans-serif;font-weight:800;color:var(--ink);line-height:1;margin:18px 0 8px}
+    .price span{font-size:20px;font-family:'Inter',sans-serif;color:var(--muted)}
     .checks{margin:24px 0;display:grid;gap:10px;text-align:left}
     .checks div{padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:14px;color:#514B5E}
 
@@ -338,7 +336,7 @@ footer{
     }
     .footer-title{
       display:block;
-      font-family:'Syne',sans-serif;
+      font-family:'Inter Tight',sans-serif;
       font-size:22px;
       color:var(--ink);
       margin-bottom:10px;
@@ -379,6 +377,7 @@ footer{
     @media(max-width:900px){
       .navlinks{display:none}
       .hero-grid,.split{grid-template-columns:1fr}
+      .mockup{justify-self:stretch;width:100%}
       .steps,.benefits,.ecosystem{grid-template-columns:1fr}
       .mockbody{grid-template-columns:1fr}
       .mockside{display:none}
@@ -415,17 +414,18 @@ footer{
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="pill">Biblioteca clínica aplicada</span>
-          <h1>Aplicação de instrumentos clínicos com <span class="gradient">evolução emocional</span> em um só lugar.</h1>
-          <p class="lead">Envie GAD-7, PHQ-9, YSQ-S3 e outros instrumentos por link para o paciente e acompanhe os resultados ao longo do tratamento.</p>
+          <span class="pill">Transforme respostas em informação clínica útil</span>
+          <h1>Instrumentos clínicos com <span class="gradient">evolução emocional</span> em um só painel.</h1>
+          <p class="lead">Aplique GAD-7, PHQ-9, YSQ-S3, SMI e outros instrumentos por link, receba as respostas automaticamente e acompanhe a trajetória do paciente ao longo do tratamento.</p>
           <div class="actions">
             <a class="btn primary" href="#planos">Testar plataforma</a>
             <a class="btn secondary" href="#demo">Ver demonstração</a>
           </div>
           <div class="trust">
-            <span>Biblioteca gratuita</span>
-            <span>PsiReal Clínica</span>
-            <span>psireal.app separado</span>
+            <span>Sem app para o paciente</span>
+            <span>Aplicação por link</span>
+            <span>Histórico organizado</span>
+            <span>Evolução longitudinal</span>
           </div>
         </div>
 
@@ -476,8 +476,8 @@ footer{
       <div class="container">
         <div class="section-head">
           <span class="pill">Ecossistema PsiReal</span>
-          <h2>Três portas. Uma marca clínica.</h2>
-          <p>A página precisa mostrar o caminho completo: conteúdo gratuito, plataforma clínica aplicada e sistema administrativo separado.</p>
+          <h2>Conteúdo, aplicação clínica e gestão em caminhos separados.</h2>
+          <p>O ecossistema PsiReal organiza cada necessidade da rotina: materiais gratuitos, instrumentos clínicos e gestão administrativa.</p>
         </div>
 
         <div class="ecosystem">
