@@ -1387,6 +1387,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
 }
 </style>
   <link rel="stylesheet" href="visual-modern.css">
+  <link rel="stylesheet" href="./psireal-identity.css?v=20260618">
 </head>
 <body>
 <div class="toast" id="toast"></div>
@@ -3563,7 +3564,7 @@ function renderInsights() {
   }
 
   // 2. GAD-7 moderado/grave
-  const gadSevere = responses.filter(r => (r.instrumento||r.formulario||'').toUpperCase().includes('GAD') && Number(r.score_total??r.scores?.total??0) >= 10);
+  const gadSevere = responses.filter(r => (r.instrumento||r.formulario||'').toUpperCase().includes('GAD') && Number(r.score_total?r.scores?.total?0) >= 10);
   const gadNames = [...new Set(gadSevere.map(r => r.paciente_nome).filter(Boolean))];
   if (gadNames.length > 0) {
     insights.push({ id:'gad',
@@ -3577,7 +3578,7 @@ function renderInsights() {
   }
 
   // 3. PHQ-9 moderado/grave
-  const phqSevere = responses.filter(r => (r.instrumento||r.formulario||'').toUpperCase().includes('PHQ') && Number(r.score_total??r.scores?.total??0) >= 10);
+  const phqSevere = responses.filter(r => (r.instrumento||r.formulario||'').toUpperCase().includes('PHQ') && Number(r.score_total?r.scores?.total?0) >= 10);
   const phqNames = [...new Set(phqSevere.map(r => r.paciente_nome).filter(Boolean))];
   if (phqNames.length > 0) {
     insights.push({ id:'phq',
@@ -3591,7 +3592,7 @@ function renderInsights() {
   }
 
   // 4. Alerta item 9
-  const ideacao = responses.filter(r => (r.instrumento||r.formulario||'').toUpperCase().includes('PHQ') && Number(r.scores?.item9??0) > 0);
+  const ideacao = responses.filter(r => (r.instrumento||r.formulario||'').toUpperCase().includes('PHQ') && Number(r.scores?.item9?0) > 0);
   const ideacaoNames = [...new Set(ideacao.map(r => r.paciente_nome).filter(Boolean))];
   if (ideacaoNames.length > 0) {
     insights.push({ id:'ideacao',
@@ -3609,7 +3610,7 @@ function renderInsights() {
   responses.forEach(r => {
     const name = r.paciente_nome; if (!name) return;
     if (!byPatient[name]) byPatient[name] = [];
-    byPatient[name].push({ score: Number(r.score_total??r.scores?.total??0), date: new Date(r.created_at) });
+    byPatient[name].push({ score: Number(r.score_total?r.scores?.total?0), date: new Date(r.created_at) });
   });
   const improving = Object.entries(byPatient).filter(([,arr]) => {
     if (arr.length < 2) return false;
@@ -3776,8 +3777,8 @@ function renderEvolucao() {
       if (fill) fill.style.width = '0%';
       return;
     }
-    const latest = Number(rows[rows.length-1].score_total ?? rows[rows.length-1].scores?.total ?? 0);
-    const first = Number(rows[0].score_total ?? rows[0].scores?.total ?? 0);
+    const latest = Number(rows[rows.length-1].score_total ? rows[rows.length-1].scores?.total ? 0);
+    const first = Number(rows[0].score_total ? rows[0].scores?.total ? 0);
     const delta = latest - first;
     el.querySelector('.evo-measure-val').textContent = latest;
     el.querySelector('.evo-measure-delta').textContent = delta !== 0 ? `${delta > 0 ? '+' : ''}${delta}` : '=';
@@ -3801,8 +3802,8 @@ function renderEvolucao() {
         <div style="height:80px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink3)">Nenhuma resposta no período</div>
       </div>`;
     }
-    const latest = Number(rows[rows.length-1].score_total ?? rows[rows.length-1].scores?.total ?? 0);
-    const first = Number(rows[0].score_total ?? rows[0].scores?.total ?? 0);
+    const latest = Number(rows[rows.length-1].score_total ? rows[rows.length-1].scores?.total ? 0);
+    const first = Number(rows[0].score_total ? rows[0].scores?.total ? 0);
     const delta = latest - first;
     const pct = first > 0 ? Math.round(Math.abs(delta)/first*100) : 0;
     const deltaLabel = delta < 0 ? `— ${pct}%` : delta > 0 ? `+ ${pct}%` : '=';
@@ -3832,7 +3833,7 @@ function renderEvolucao() {
       const W = canvas.offsetWidth || 300, H = 80;
       canvas.width = W; canvas.height = H;
       ctx.clearRect(0,0,W,H);
-      const scores = rows.map(r => Number(r.score_total ?? r.scores?.total ?? 0));
+      const scores = rows.map(r => Number(r.score_total ? r.scores?.total ? 0));
       const maxVal = inst.max;
       if (scores.length === 1) {
         const x = W/2, y = H - (scores[0]/maxVal)*(H-16) + 8;
@@ -3958,7 +3959,7 @@ function openPerfilPaciente(nome, patient) {
   document.getElementById('perfilTotalApl').textContent = links.length;
   document.getElementById('perfilResp').textContent = respondidas;
   document.getElementById('perfilPend').textContent = pendentes;
-  document.getElementById('perfilScore').textContent = ultimaResp?.score_total ?? '—';
+  document.getElementById('perfilScore').textContent = ultimaResp?.score_total ? '—';
   document.getElementById('perfilScoreInstr').textContent = ultimaResp ? instrumentName(ultimaResp) : '—';
 
   const resumo = links.length === 0
