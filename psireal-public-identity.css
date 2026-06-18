@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --psi-paper: #faf8f5;
+  --psi-surface: #fffdf9;
+  --psi-ink: #2c2420;
+  --psi-text: #665b54;
+  --psi-line: #e5ddd3;
+  --psi-wine: #5c3d2e;
+  --psi-wine-2: #7b523e;
+  --psi-lavender: #8f7fb1;
+  --psi-lavender-soft: #eee9f6;
+  --psi-gold: #b8904b;
+  --psi-shadow: 0 18px 56px rgba(44, 36, 32, 0.09);
+}
+
+body {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(143, 127, 177, 0.13), transparent 34rem),
+    linear-gradient(180deg, #fffdf9 0%, var(--psi-paper) 58%, #f7f4ef 100%) !important;
+  color: var(--psi-ink) !important;
+  font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+h1,
+h2,
+.hero h1,
+.sec-title,
+.product-title,
+.stat-n {
+  color: var(--psi-ink) !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+}
+
+h1,
+.hero h1 {
+  font-size: clamp(44px, 6.2vw, 82px) !important;
+  line-height: 0.98 !important;
+}
+
+h2,
+.sec-title {
+  font-size: clamp(34px, 4.2vw, 56px) !important;
+  line-height: 1.02 !important;
+}
+
+h1 em,
+h2 em,
+.hero h1 em {
+  color: var(--psi-lavender) !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+}
+
+p,
+.hero-sub,
+.card-desc,
+.product-copy,
+.how-d,
+.sec-sub {
+  color: var(--psi-text) !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.72 !important;
+}
+
+header,
+.nav {
+  background: rgba(255, 253, 249, 0.94) !important;
+  border-bottom: 1px solid var(--psi-line) !important;
+  backdrop-filter: blur(18px) !important;
+}
+
+.nav-logo-text,
+.brand strong {
+  color: var(--psi-ink) !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.nav-logo-text span,
+.brand span {
+  color: var(--psi-lavender) !important;
+}
+
+.nav-links a {
+  color: #675b54 !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.nav-links a:hover {
+  background: var(--psi-lavender-soft) !important;
+  color: var(--psi-wine) !important;
+}
+
+.nav-cta,
+.btn-primary,
+.product-cta,
+.card:hover .card-cta {
+  background: linear-gradient(135deg, var(--psi-wine-2), var(--psi-lavender)) !important;
+  border: 1px solid rgba(92, 61, 46, 0.18) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 16px 36px rgba(92, 61, 46, 0.16) !important;
+  color: #fff !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.btn-ghost,
+.card-cta,
+.product-cta.secondary {
+  background: rgba(255, 253, 249, 0.86) !important;
+  border: 1px solid var(--psi-line) !important;
+  border-radius: 16px !important;
+  color: var(--psi-wine) !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.hero-tag,
+.sec-eyebrow,
+.product-flag,
+.card-thumb-label {
+  background: var(--psi-lavender-soft) !important;
+  border: 1px solid #ddd4eb !important;
+  border-radius: 999px !important;
+  color: var(--psi-wine) !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.card,
+.product-card,
+.how-step,
+.stat {
+  background: rgba(255, 253, 249, 0.94) !important;
+  border: 1px solid var(--psi-line) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--psi-shadow) !important;
+}
+
+.card-thumb {
+  background: linear-gradient(135deg, #f8f3ed, #e9dfef) !important;
+}
+
+.card-thumb-active {
+  background: linear-gradient(135deg, #5c3d2e 0%, #8f7fb1 100%) !important;
+  color: #fffdf9 !important;
+}
+
+.card-thumb-active svg {
+  stroke: rgba(255, 253, 249, 0.96) !important;
+  opacity: 1 !important;
+}
+
+.card-thumb-active .card-thumb-label,
+.label-rose {
+  background: rgba(255, 253, 249, 0.2) !important;
+  border-color: rgba(255, 253, 249, 0.34) !important;
+  color: #fffdf9 !important;
+}
+
+@media (max-width: 760px) {
+  h1,
+  .hero h1 {
+    font-size: clamp(38px, 13vw, 58px) !important;
+    line-height: 1.02 !important;
+  }
+
+  h2,
+  .sec-title {
+    font-size: clamp(30px, 10vw, 42px) !important;
+  }
+}

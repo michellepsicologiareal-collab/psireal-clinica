@@ -176,7 +176,6 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);col
 }
 </style>
   <link rel="stylesheet" href="visual-modern.css">
-  <link rel="stylesheet" href="./psireal-identity.css?v=20260618">
 </head>
 <body>
 
@@ -521,12 +520,12 @@ function renderInstrument(inst, responses) {
   }
 
   const latest = filtered[filtered.length-1];
-  const latestScore = Number(latest.score_total ? latest.scores?.total ? 0);
+  const latestScore = Number(latest.score_total ?? latest.scores?.total ?? 0);
   const latestLevel = levelFor(latestScore, cfg);
-  const firstScore = Number(filtered[0].score_total ? filtered[0].scores?.total ? 0);
+  const firstScore = Number(filtered[0].score_total ?? filtered[0].scores?.total ?? 0);
   const variation = latestScore - firstScore;
   const recos = cfg.recos[latestLevel.label] || [];
-  const scores = filtered.map(r=>Number(r.score_total?r.scores?.total?0));
+  const scores = filtered.map(r=>Number(r.score_total??r.scores?.total??0));
   const labels = filtered.map(r=>formatDate(r.created_at));
   const scaleSegs = cfg.levels.map(lv=>`<div class="scale-seg" style="background:${lv.color};flex:${lv.max-lv.min+1}"></div>`).join('');
   const scaleLabels = cfg.levels.map(lv=>`<span>${lv.min} ${lv.label}</span>`).join('')+`<span>${cfg.max}</span>`;
@@ -587,7 +586,7 @@ function renderInstrument(inst, responses) {
             <thead><tr><th>Data</th><th>Score</th><th>Nivel</th></tr></thead>
             <tbody>
               ${[...filtered].reverse().map(r=>{
-                const s=Number(r.score_total?r.scores?.total?0), lv=levelFor(s,cfg);
+                const s=Number(r.score_total??r.scores?.total??0), lv=levelFor(s,cfg);
                 return `<tr>
                   <td>${formatDateTime(r.created_at)}</td>
                   <td><span class="score-pill" style="background:${lv.color}">${s}</span></td>
