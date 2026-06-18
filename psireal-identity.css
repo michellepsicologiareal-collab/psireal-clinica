@@ -294,6 +294,33 @@ details,
   color: var(--psi-wine) !important;
 }
 
+.card-thumb-active,
+.card .card-thumb-active,
+.material-card .card-thumb-active {
+  background: linear-gradient(135deg, #5c3d2e 0%, #8f7fb1 100%) !important;
+  color: #fffdf9 !important;
+}
+
+.card-thumb-active svg,
+.card .card-thumb-active svg,
+.material-card .card-thumb-active svg {
+  stroke: rgba(255, 253, 249, 0.96) !important;
+  opacity: 1 !important;
+}
+
+.card-thumb-active .card-thumb-label,
+.label-rose {
+  background: rgba(255, 253, 249, 0.2) !important;
+  border-color: rgba(255, 253, 249, 0.34) !important;
+  color: #fffdf9 !important;
+}
+
+.label-rose-soft {
+  background: #efe8dd !important;
+  border-color: #dfd0c0 !important;
+  color: var(--psi-wine) !important;
+}
+
 .mockbar,
 .mock-header,
 .app-top,
@@ -345,6 +372,10 @@ textarea:focus {
 .section,
 main > section {
   background: transparent !important;
+}
+
+#lockScreen {
+  display: none !important;
 }
 
 @media (max-width: 760px) {
