@@ -655,7 +655,7 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
   <div class="tabs">
     <div class="tab active" onclick="showTab('ysq',this)">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h10v10H2z"/><path d="M5 5h4M5 8h2"/></svg>
-      YSQ-S3 · Esquemas
+      Mapa pessoal de esquemas
     </div>
     <div class="tab" onclick="showTab('smi',this)">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M7 4v3l2 2"/></svg>
@@ -672,18 +672,18 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
     </div>
   </div>
 
-  <!-- ═══════════════ YSQ-S3 ═══════════════ -->
+  <!-- ═══════════════ MAPA PESSOAL DE ESQUEMAS ═══════════════ -->
   <div id="tab-ysq" class="screen active">
     <div class="content">
       <div class="section-head">
-        <div class="section-title">Young Schema Questionnaire — S3</div>
-        <div class="section-sub">Avalie seus próprios esquemas. Para cada esquema, atribua um score de 1 (ausente) a 6 (muito elevado) baseado em sua percepção clínica de si mesma. Este é um instrumento de autoconhecimento — não um diagnóstico.</div>
+        <div class="section-title">Mapa pessoal de esquemas</div>
+        <div class="section-sub">Avalie seus próprios padrões. Para cada esquema, atribua uma nota de 1 (ausente) a 6 (muito elevado), baseada em sua percepção clínica de si. Este é um recurso autoral de reflexão e autoconhecimento, não o questionário YSQ-S3 e não um diagnóstico.</div>
       </div>
 
       <div class="aviso">
         <div class="aviso-icon">◎</div>
         <div class="aviso-text">
-          <strong>Uso clínico e confidencial.</strong> Esses dados são visíveis apenas para você. Eles alimentam a Ressonância Terapêutica — quando um paciente responde ao YSQ ou SMI, o sistema cruza os resultados com seu perfil para indicar possíveis zonas de ativação clínica e ressonância esquemática. Trate como hipóteses contratransferenciais, não como verdades absolutas.
+          <strong>Uso reflexivo e confidencial.</strong> Esses dados são visíveis apenas para você. Eles alimentam hipóteses de ressonância terapêutica quando existem dados clínicos compatíveis do paciente. O mapa não substitui avaliação psicológica, supervisão ou instrumentos validados.
         </div>
       </div>
 
@@ -997,7 +997,7 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
       </div>
 
       <div style="display:flex;justify-content:flex-end;margin-top:8px">
-        <button class="btn btn-primary" onclick="showTab('smi',document.querySelectorAll('.tab')[1])">Continuar para SMI →</button>
+        <button class="btn btn-primary" onclick="showTab('smi',document.querySelectorAll('.tab')[1])">Continuar para o mapa de modos →</button>
       </div>
     </div>
   </div>
@@ -1250,7 +1250,7 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
       </div>
 
       <div style="display:flex;justify-content:space-between;margin-top:8px">
-        <button class="btn btn-ghost" onclick="showTab('ysq',document.querySelectorAll('.tab')[0])">← Voltar ao YSQ</button>
+        <button class="btn btn-ghost" onclick="showTab('ysq',document.querySelectorAll('.tab')[0])">← Voltar aos esquemas</button>
         <button class="btn btn-primary" id="btnGerarPerfil" onclick="gerarPerfil()">Gerar meu perfil →</button>
       </div>
     </div>
@@ -1261,13 +1261,13 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
     <div class="content">
       <div class="section-head">
         <div class="section-title">Mapa de Esquemas</div>
-        <div class="section-sub">Formulação visual integrada a partir do YSQ-S3, do SMI e das notas clínicas. Preenchido em <span id="dataPreenchimento">—</span></div>
+        <div class="section-sub">Formulação visual integrada a partir do mapa pessoal de esquemas, do mapa de modos e das notas clínicas. Preenchido em <span id="dataPreenchimento">—</span></div>
       </div>
 
       <div id="emptyResultado" class="empty-state">
         <div class="empty-icon">◎</div>
         <div class="empty-title">Perfil ainda não gerado</div>
-        <div class="empty-sub">Preencha o YSQ-S3 e o SMI para visualizar seu perfil clínico e ativar a Ressonância Terapêutica com seus pacientes.</div>
+        <div class="empty-sub">Preencha o mapa pessoal de esquemas e o mapa de modos para visualizar seu perfil reflexivo.</div>
         <button class="btn btn-primary" onclick="showTab('ysq',document.querySelectorAll('.tab')[0])">Começar agora</button>
       </div>
 
@@ -1276,7 +1276,7 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
           <!-- YSQ por domínio -->
           <div class="resultado-card">
             <div class="resultado-card-head">
-              <span class="resultado-card-title">Esquemas — YSQ-S3</span>
+              <span class="resultado-card-title">Esquemas — mapa pessoal</span>
               <span style="font-size:11px;color:var(--ink3)">por domínio</span>
             </div>
             <div class="resultado-body" id="ysqResultadoBody"></div>
@@ -1378,7 +1378,7 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
 
         <div style="text-align:center;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)">
           <div style="font-family:'Instrument Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;color:var(--ink);margin-bottom:6px">Perfil salvo. Ressonância Terapêutica ativa.</div>
-          <div style="font-size:12px;color:var(--ink3);margin-bottom:16px">A partir de agora, quando seus pacientes responderem ao YSQ ou SMI, o sistema poderá indicar possíveis zonas de ressonância terapêutica para orientar sua observação clínica.</div>
+          <div style="font-size:12px;color:var(--ink3);margin-bottom:16px">Quando houver dados clínicos compatíveis do paciente, o sistema poderá sugerir hipóteses de ressonância para orientar sua observação e supervisão.</div>
           <button class="btn btn-primary" onclick="showTab('alertas',document.querySelectorAll('.tab')[3])">Ver Ressonância Clínica →</button>
         </div>
       </div>
@@ -1849,7 +1849,7 @@ function renderSchemaMap() {
     const [name,icon] = SCHEMA_MAP_LABELS[key] || [key.replace(/_/g,' '),'◌'];
     const [label,levelClass] = schemaIntensity(value);
     return `<div class="schema-card"><div class="schema-card-icon">${icon}</div><div class="schema-card-name">${name}</div><div class="schema-level ${levelClass}">${label}</div><div class="schema-score">${Number(value).toFixed(1)} / 6</div></div>`;
-  }).join('') || '<div class="schema-card"><div class="schema-card-name">Preencha o YSQ-S3</div></div>';
+  }).join('') || '<div class="schema-card"><div class="schema-card-name">Preencha seu mapa pessoal de esquemas</div></div>';
 
   const modes = Object.entries(smiScores)
     .filter(([key]) => key !== 'adulto_saudavel' && key !== 'crianca_feliz')
@@ -2277,7 +2277,7 @@ function renderResonanceForPatient(patientName) {
   if (!latestYsq) {
     host.innerHTML = '<div class="hypothesis-empty">Este paciente ainda não possui um YSQ-S3 respondido. A tela não produzirá hipóteses sem dados clínicos compatíveis.</div>';
   } else if (!therapistTop.length) {
-    host.innerHTML = '<div class="hypothesis-empty">Complete seu perfil YSQ-S3 para permitir o cruzamento com os dados do paciente.</div>';
+    host.innerHTML = '<div class="hypothesis-empty">Complete seu mapa pessoal de esquemas para permitir o cruzamento reflexivo com os dados do paciente.</div>';
   } else if (!hypotheses.length) {
     host.innerHTML = '<div class="hypothesis-empty">Não foram encontrados padrões simultaneamente elevados. Isso não exclui ressonância clínica; apenas indica que os dados atuais não sustentam uma hipótese automática.</div>';
   } else {

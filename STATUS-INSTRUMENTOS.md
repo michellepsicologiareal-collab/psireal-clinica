@@ -27,6 +27,12 @@ Fonte: https://www.pfizer.com/news/press-release/press-release-detail/pfizer_to_
 | Roda da Vida ACT | Conteúdo próprio em preparação | Liberar somente após concluir texto original, revisão clínica, pontuação e testes. |
 | CFQ, Rosenberg, PSS-10 e ISI | Revisão pendente | Permanecem fora da janela de aplicação até verificação individual de versão, tradução e uso comercial. |
 
+## Recursos autorais internos
+
+O `Mapa pessoal de esquemas` do perfil clínico pode permanecer disponível como recurso autoral de reflexão. Ele utiliza uma nota global para cada um dos 18 esquemas e descrições clínicas resumidas, sem reproduzir os 75 itens do YSQ-S3. A interface deve deixar explícito que não se trata do YSQ-S3, de teste psicológico, diagnóstico ou substituto de supervisão.
+
+O mesmo cuidado vale para o `Mapa de modos`: ele deve ser apresentado como mapa reflexivo autoral, e não como aplicação do SMI 1.1.
+
 ## Fontes regulatórias e de permissão
 
 - SATEPSI, lista completa: https://satepsi.cfp.org.br/lista_teste_completa.cfm
