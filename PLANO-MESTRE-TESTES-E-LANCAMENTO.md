@@ -5,6 +5,24 @@ Data: 30/06/2026
 Produto avaliado: pacote atual do PsiReal Clínica  
 Projeto Supabase correto: `psireal-hub` (`qpwjxacdjzzsyjbuuwsq`)
 
+## Módulo IC-TDAH — Investigação Clínica
+
+- [ ] Abrir o módulo pela tela Protocolos.
+- [ ] Selecionar um paciente e confirmar o preenchimento automático do nome.
+- [ ] Preencher parcialmente etapas diferentes, fechar e reabrir a tela.
+- [ ] Confirmar recuperação da etapa, respostas e síntese do mesmo paciente.
+- [ ] Trocar de paciente e confirmar que os rascunhos não se misturam.
+- [ ] Confirmar salvamento na conta em outro navegador ou dispositivo.
+- [ ] Testar campos livres, opções, caixas de seleção e escalas 0–10.
+- [ ] Gerar a síntese e conferir motivo, temporalidade, prejuízos, diferenciais e forças.
+- [ ] Editar os blocos da síntese e confirmar a persistência das alterações.
+- [ ] Concluir a investigação e confirmar o status `Concluído`.
+- [ ] Confirmar que nenhuma mensagem apresenta diagnóstico automático de TDAH.
+- [ ] Verificar que uma psicóloga não acessa investigações de outra conta.
+- [ ] Verificar o layout em celulares de 320 px, 375 px e 430 px.
+- [ ] Revisar o conteúdo com a psicóloga responsável antes do lançamento.
+- [ ] Validar consentimento, finalidade, retenção e exclusão conforme a LGPD.
+
 ## 1. Objetivo
 
 Validar o PsiReal Clínica de ponta a ponta e estabelecer critérios objetivos para decidir quando o produto está pronto para comercialização.
