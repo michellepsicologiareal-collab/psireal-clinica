@@ -473,6 +473,48 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
 @media(max-width:1100px){.res-grid,.zone-layout{grid-template-columns:1fr}.mid-link{min-height:auto}.reflection-row{grid-template-columns:1fr 1fr}.grid-2-1{grid-template-columns:1fr}}
 
 
+/* MAPA VISUAL DE ESQUEMAS */
+.schema-map{margin:28px 0 24px;padding:24px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 18px 48px rgba(42,35,49,.07)}
+.schema-map-head{text-align:center;margin-bottom:20px}
+.schema-map-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:700;color:var(--ink)}
+.schema-map-person{margin-top:4px;font-size:13px;color:var(--ink2)}
+.schema-map-row{display:grid;gap:14px;align-items:stretch}
+.schema-map-row.top{grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr)}
+.schema-map-row.middle{grid-template-columns:minmax(190px,.55fr) minmax(0,1.45fr)}
+.schema-map-row.lower{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)}
+.schema-panel{--panel:#6d4fc2;--tint:rgba(109,79,194,.06);overflow:hidden;border:1px solid color-mix(in srgb,var(--panel) 58%,#fff);border-radius:12px;background:linear-gradient(180deg,var(--tint),#fff 58%)}
+.schema-panel.teal{--panel:#168d90;--tint:rgba(22,141,144,.06)}
+.schema-panel.coral{--panel:#ce5860;--tint:rgba(206,88,96,.055)}
+.schema-panel.amber{--panel:#d18b20;--tint:rgba(209,139,32,.065)}
+.schema-panel.blue{--panel:#4f78bd;--tint:rgba(79,120,189,.055)}
+.schema-panel.green{--panel:#428b53;--tint:rgba(66,139,83,.055)}
+.schema-panel-head{display:flex;align-items:center;gap:9px;padding:10px 13px;border-bottom:1px solid color-mix(in srgb,var(--panel) 34%,#fff);color:var(--panel);font-size:12px;font-weight:800;text-transform:uppercase}
+.schema-panel-num{display:grid;place-items:center;width:23px;height:23px;border-radius:7px;background:var(--panel);color:#fff;font-size:11px;flex:0 0 auto}
+.schema-panel-body{padding:12px}
+.schema-map textarea{display:block;width:100%;min-height:112px;resize:vertical;border:0;background:transparent;color:var(--ink);font:12px/1.65 'Instrument Sans',system-ui,sans-serif;outline:none}
+.schema-map textarea::placeholder{color:var(--ink3)}
+.schema-needs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.schema-need{min-height:74px;padding:11px 8px;border-right:1px solid rgba(22,141,144,.19);border-bottom:1px solid rgba(22,141,144,.19);text-align:center;color:#126c70;font-size:10px;font-weight:700;line-height:1.25}
+.schema-need:nth-child(4n){border-right:0}.schema-need:nth-last-child(-n+4){border-bottom:0}
+.schema-need-ico{display:block;margin-bottom:6px;font-size:20px;line-height:1}
+.schema-flow{display:flex;justify-content:center;align-items:center;height:24px;color:#6d4fc2;font-size:22px;font-weight:800}
+.schema-cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.schema-card{min-height:145px;padding:11px 8px;border:1px solid rgba(206,88,96,.35);border-radius:10px;background:rgba(255,255,255,.82);text-align:center}
+.schema-card-icon{font-size:22px;line-height:1}.schema-card-name{min-height:34px;margin:7px 0 4px;font-size:11px;font-weight:800;line-height:1.25;color:var(--ink)}
+.schema-level{font-size:9px;font-weight:900;text-transform:uppercase}.schema-score{margin-top:5px;font-size:10px;color:var(--ink2)}
+.schema-level.very-high{color:#c33f47}.schema-level.high{color:#d76e35}.schema-level.moderate{color:#d18b20}.schema-level.low{color:#428b53}.schema-level.very-low{color:#4f78bd}
+.mode-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.mode-card{min-height:112px;padding:10px 8px;border:1px solid rgba(79,120,189,.3);border-radius:10px;background:#fff;text-align:center}
+.mode-card:nth-child(2){border-color:rgba(66,139,83,.35);background:rgba(66,139,83,.04)}.mode-card:nth-child(3){border-color:rgba(206,88,96,.35);background:rgba(206,88,96,.04)}.mode-card:nth-child(4){border-color:rgba(109,79,194,.32);background:rgba(109,79,194,.04)}.mode-card:nth-child(5){border-color:rgba(209,139,32,.38);background:rgba(209,139,32,.04)}
+.mode-card-icon{font-size:22px}.mode-card-name{margin:7px 0 5px;font-size:10px;font-weight:800;line-height:1.25;color:var(--ink)}.mode-card-score{font-size:10px;color:var(--ink2)}
+.schema-goals{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0}
+.schema-goal{min-height:88px;padding:12px 10px;border-right:1px solid rgba(109,79,194,.18);text-align:center}.schema-goal:last-child{border-right:0}
+.schema-goal-icon{display:block;margin-bottom:6px;font-size:21px}.schema-goal textarea{width:100%;min-height:38px;resize:none;border:0;background:transparent;text-align:center;color:var(--ink);font:700 10px/1.35 'Instrument Sans',system-ui,sans-serif;outline:none}
+.schema-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:14px;font-size:9px;color:var(--ink2)}
+.schema-legend span{display:inline-flex;align-items:center;gap:5px}.schema-legend i{display:block;width:7px;height:7px;border-radius:50%}
+@media(max-width:1100px){.schema-cards{grid-template-columns:repeat(3,1fr)}.mode-cards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.schema-map{margin:20px -4px;padding:14px;border-radius:10px}.schema-map-title{font-size:20px}.schema-map-row.top,.schema-map-row.middle,.schema-map-row.lower{grid-template-columns:1fr}.schema-needs{grid-template-columns:repeat(2,1fr)}.schema-need:nth-child(2n){border-right:0}.schema-need:nth-last-child(-n+4){border-bottom:1px solid rgba(22,141,144,.19)}.schema-need:nth-last-child(-n+2){border-bottom:0}.schema-cards,.mode-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.schema-goals{grid-template-columns:repeat(2,1fr)}.schema-goal{border-bottom:1px solid rgba(109,79,194,.18)}.schema-goal:nth-child(2n){border-right:0}.schema-goal:nth-last-child(-n+2){border-bottom:0}}
+@media(max-width:390px){.schema-cards,.mode-cards{grid-template-columns:1fr}.schema-card,.mode-card{min-height:0}}
 </style>
   <link rel="stylesheet" href="visual-modern.css">
 </head>
@@ -577,7 +619,7 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
     </div>
     <div class="tab" onclick="showTab('resultado',this)">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,10 5,6 7,8 10,3 12,5"/></svg>
-      Meu Perfil
+      Mapa de Esquemas
     </div>
     <div class="tab" onclick="showTab('alertas',this)">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1l1.5 4h4l-3.3 2.4 1.3 4L7 9 3.5 11.4l1.3-4L1.5 5h4z"/></svg>
@@ -1174,8 +1216,8 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
   <div id="tab-resultado" class="screen">
     <div class="content">
       <div class="section-head">
-        <div class="section-title">Meu Perfil Clínico</div>
-        <div class="section-sub">Hipóteses de autoconhecimento para manejo da ressonância terapêutica — não um diagnóstico. Preenchido em <span id="dataPreenchimento">—</span></div>
+        <div class="section-title">Mapa de Esquemas</div>
+        <div class="section-sub">Formulação visual integrada a partir do YSQ-S3, do SMI e das notas clínicas. Preenchido em <span id="dataPreenchimento">—</span></div>
       </div>
 
       <div id="emptyResultado" class="empty-state">
@@ -1215,6 +1257,80 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
             <div style="font-size:13px;color:var(--ink3);font-style:italic">Nenhum esquema elevado identificado.</div>
           </div>
         </div>
+
+        <section class="schema-map" id="schemaMap" aria-label="Mapa visual de esquemas">
+          <header class="schema-map-head">
+            <div class="schema-map-title">Mapa de Esquemas</div>
+            <div class="schema-map-person" id="schemaMapPerson">Perfil clínico</div>
+          </header>
+
+          <div class="schema-map-row top">
+            <article class="schema-panel">
+              <div class="schema-panel-head"><span class="schema-panel-num">1</span> História de origem</div>
+              <div class="schema-panel-body"><textarea data-map-field="origem" placeholder="Experiências precoces, vínculos, contexto familiar e eventos relevantes."></textarea></div>
+            </article>
+            <article class="schema-panel teal">
+              <div class="schema-panel-head"><span class="schema-panel-num">2</span> Necessidades emocionais</div>
+              <div class="schema-needs">
+                <div class="schema-need"><span class="schema-need-ico">♡</span>Vínculo seguro</div>
+                <div class="schema-need"><span class="schema-need-ico">♥</span>Afeto</div>
+                <div class="schema-need"><span class="schema-need-ico">◎</span>Validação</div>
+                <div class="schema-need"><span class="schema-need-ico">◇</span>Proteção</div>
+                <div class="schema-need"><span class="schema-need-ico">◯</span>Expressar emoções</div>
+                <div class="schema-need"><span class="schema-need-ico">↗</span>Autonomia</div>
+                <div class="schema-need"><span class="schema-need-ico">#</span>Limites saudáveis</div>
+                <div class="schema-need"><span class="schema-need-ico">☺</span>Espontaneidade</div>
+              </div>
+            </article>
+          </div>
+
+          <div class="schema-flow" aria-hidden="true">↓</div>
+          <article class="schema-panel coral">
+            <div class="schema-panel-head"><span class="schema-panel-num">3</span> Esquemas iniciais desadaptativos</div>
+            <div class="schema-panel-body"><div class="schema-cards" id="schemaMapSchemas"></div></div>
+          </article>
+
+          <div class="schema-flow" aria-hidden="true">↓</div>
+          <div class="schema-map-row middle">
+            <article class="schema-panel amber">
+              <div class="schema-panel-head"><span class="schema-panel-num">4</span> Gatilhos</div>
+              <div class="schema-panel-body"><textarea data-map-field="gatilhos" placeholder="Situações, conflitos, críticas, perdas ou sinais de rejeição."></textarea></div>
+            </article>
+            <article class="schema-panel blue">
+              <div class="schema-panel-head"><span class="schema-panel-num">5</span> Modos esquemáticos ativados</div>
+              <div class="schema-panel-body"><div class="mode-cards" id="schemaMapModes"></div></div>
+            </article>
+          </div>
+
+          <div class="schema-flow" aria-hidden="true">↓</div>
+          <div class="schema-map-row lower">
+            <article class="schema-panel green">
+              <div class="schema-panel-head"><span class="schema-panel-num">6</span> Comportamentos</div>
+              <div class="schema-panel-body"><textarea data-map-field="comportamentos" placeholder="Evitação, submissão, hipercompensação e estratégias observadas."></textarea></div>
+            </article>
+            <article class="schema-panel coral">
+              <div class="schema-panel-head"><span class="schema-panel-num">7</span> Consequências</div>
+              <div class="schema-panel-body"><textarea data-map-field="consequencias" placeholder="Efeitos emocionais, relacionais e padrões que acabam reforçados."></textarea></div>
+            </article>
+          </div>
+
+          <div class="schema-flow" aria-hidden="true">↓</div>
+          <article class="schema-panel">
+            <div class="schema-panel-head"><span class="schema-panel-num">8</span> Objetivos terapêuticos</div>
+            <div class="schema-goals">
+              <label class="schema-goal"><span class="schema-goal-icon">⌁</span><textarea data-map-field="objetivo_1" aria-label="Objetivo terapêutico 1">Fortalecer o Adulto Saudável</textarea></label>
+              <label class="schema-goal"><span class="schema-goal-icon">◉</span><textarea data-map-field="objetivo_2" aria-label="Objetivo terapêutico 2">Diferenciar culpa de responsabilidade</textarea></label>
+              <label class="schema-goal"><span class="schema-goal-icon">◇</span><textarea data-map-field="objetivo_3" aria-label="Objetivo terapêutico 3">Reduzir padrões desadaptativos</textarea></label>
+              <label class="schema-goal"><span class="schema-goal-icon">♡</span><textarea data-map-field="objetivo_4" aria-label="Objetivo terapêutico 4">Validar necessidades emocionais</textarea></label>
+              <label class="schema-goal"><span class="schema-goal-icon">•••</span><textarea data-map-field="objetivo_5" aria-label="Objetivo terapêutico 5">Desenvolver assertividade</textarea></label>
+              <label class="schema-goal"><span class="schema-goal-icon">↔</span><textarea data-map-field="objetivo_6" aria-label="Objetivo terapêutico 6">Construir relações mais recíprocas</textarea></label>
+            </div>
+          </article>
+
+          <div class="schema-legend" aria-label="Legenda de intensidade">
+            <span><i style="background:#c33f47"></i>Muito alto</span><span><i style="background:#d76e35"></i>Alto</span><span><i style="background:#d18b20"></i>Moderado</span><span><i style="background:#428b53"></i>Baixo</span><span><i style="background:#4f78bd"></i>Muito baixo</span>
+          </div>
+        </section>
 
         <div style="text-align:center;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)">
           <div style="font-family:'Instrument Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;color:var(--ink);margin-bottom:6px">Perfil salvo. Ressonância Terapêutica ativa.</div>
@@ -1567,7 +1683,99 @@ function renderResultado() {
         <div class="resultado-nivel" style="background:${v>=5?'var(--coral3)':'var(--amber3)'};color:${v>=5?'var(--coral)':'var(--amber)'}">
           ${v>=5?'Crítico':v>=4.5?'Alto':'Moderado'}
         </div>
-      </div>`).join('');
+        </div>`).join('');
+  }
+  renderSchemaMap();
+}
+
+const SCHEMA_MAP_LABELS = {
+  abandono:['Abandono / Instabilidade','♢'],
+  desconfianca_abuso:['Desconfiança / Abuso','⚠'],
+  privacao_emocional:['Privação Emocional','♡'],
+  defectividade:['Defectividade / Vergonha','●'],
+  isolamento_social:['Isolamento Social','○'],
+  dependencia:['Dependência / Incompetência','◌'],
+  vulnerabilidade_dano:['Vulnerabilidade ao Dano','△'],
+  emaranhamento:['Emaranhamento','∞'],
+  fracasso:['Fracasso','↘'],
+  arrogo:['Arrogo / Grandiosidade','♛'],
+  autocontrole_insuf:['Autocontrole Insuficiente','⚡'],
+  subjugacao:['Subjugação','⌄'],
+  autossacrificio:['Autossacrifício','♥'],
+  busca_aprovacao:['Busca de Aprovação','☆'],
+  negativismo:['Negativismo','−'],
+  inibicao_emocional:['Inibição Emocional','□'],
+  padroes_inflexiveis:['Padrões Inflexíveis','◆'],
+  postura_punitiva:['Postura Punitiva','⚖']
+};
+
+const MODE_MAP_LABELS = {
+  crianca_vulneravel:['Criança Vulnerável','◔'], crianca_zangada:['Criança Zangada','◉'],
+  crianca_raivosa:['Criança Raivosa','✦'], crianca_impulsiva:['Criança Impulsiva','⚡'],
+  crianca_indisciplinada:['Criança Indisciplinada','↯'], capitulador_complacente:['Capitulador Complacente','⌄'],
+  protetor_desligado:['Protetor Desligado','◒'], autoconfortador_desligado:['Autoconfortador','◍'],
+  autoengrandecedor:['Autoengrandecedor','♛'], intimidacao_ataque:['Intimidação e Ataque','▲'],
+  pai_punitivo:['Pai Punitivo','⚖'], pai_exigente:['Pai Exigente','◆'],
+  crianca_feliz:['Criança Feliz','☺'], adulto_saudavel:['Adulto Saudável','◎']
+};
+
+function schemaIntensity(value) {
+  if (value >= 5) return ['Muito alto','very-high'];
+  if (value >= 4) return ['Alto','high'];
+  if (value >= 3) return ['Moderado','moderate'];
+  if (value >= 2) return ['Baixo','low'];
+  return ['Muito baixo','very-low'];
+}
+
+function renderSchemaMap() {
+  const schemaHost = document.getElementById('schemaMapSchemas');
+  const modeHost = document.getElementById('schemaMapModes');
+  if (!schemaHost || !modeHost) return;
+
+  const schemas = Object.entries(ysqScores)
+    .sort(([,a],[,b]) => b - a)
+    .slice(0, 6);
+  schemaHost.innerHTML = schemas.map(([key,value]) => {
+    const [name,icon] = SCHEMA_MAP_LABELS[key] || [key.replace(/_/g,' '),'◌'];
+    const [label,levelClass] = schemaIntensity(value);
+    return `<div class="schema-card"><div class="schema-card-icon">${icon}</div><div class="schema-card-name">${name}</div><div class="schema-level ${levelClass}">${label}</div><div class="schema-score">${Number(value).toFixed(1)} / 6</div></div>`;
+  }).join('') || '<div class="schema-card"><div class="schema-card-name">Preencha o YSQ-S3</div></div>';
+
+  const modes = Object.entries(smiScores)
+    .filter(([key]) => key !== 'adulto_saudavel' && key !== 'crianca_feliz')
+    .sort(([,a],[,b]) => b - a)
+    .slice(0, 5);
+  modeHost.innerHTML = modes.map(([key,value]) => {
+    const [name,icon] = MODE_MAP_LABELS[key] || [key.replace(/_/g,' '),'◌'];
+    const [label] = schemaIntensity(value);
+    return `<div class="mode-card"><div class="mode-card-icon">${icon}</div><div class="mode-card-name">${name}</div><div class="mode-card-score">${label} · ${Number(value).toFixed(1)}</div></div>`;
+  }).join('') || '<div class="mode-card"><div class="mode-card-name">Preencha o SMI</div></div>';
+
+  const mapName = typeof PAC !== 'undefined' && PAC !== 'Paciente'
+    ? PAC
+    : (sessionStorage.getItem('psi_nome') || 'Perfil clínico');
+  document.getElementById('schemaMapPerson').textContent = mapName;
+}
+
+function getSchemaMapFields() {
+  const data = {};
+  document.querySelectorAll('[data-map-field]').forEach(field => { data[field.dataset.mapField] = field.value; });
+  return data;
+}
+
+function saveSchemaMapFields() {
+  localStorage.setItem('psireal_schema_map_rascunho', JSON.stringify(getSchemaMapFields()));
+}
+
+function restoreSchemaMapFields() {
+  try {
+    const data = JSON.parse(localStorage.getItem('psireal_schema_map_rascunho') || '{}');
+    document.querySelectorAll('[data-map-field]').forEach(field => {
+      if (Object.prototype.hasOwnProperty.call(data, field.dataset.mapField)) field.value = data[field.dataset.mapField];
+      field.addEventListener('input', saveSchemaMapFields);
+    });
+  } catch (e) {
+    document.querySelectorAll('[data-map-field]').forEach(field => field.addEventListener('input', saveSchemaMapFields));
   }
 }
 
@@ -1631,6 +1839,7 @@ document.getElementById('btnSalvarPerfil').addEventListener('click', async () =>
 document.getElementById('btnSalvarRascunho').addEventListener('click', () => {
   localStorage.setItem('psireal_ysq_rascunho', JSON.stringify(ysqScores));
   localStorage.setItem('psireal_smi_rascunho', JSON.stringify(smiScores));
+  saveSchemaMapFields();
   showToast('Rascunho salvo localmente.');
 });
 
@@ -1646,6 +1855,14 @@ function carregarRascunho() {
       // Simula clique no botão correto
       document.querySelectorAll(`[onclick*="setScore"][onclick*="${k}"][onclick*=",${v})"]`).forEach(btn => {
         setScore(btn, k, v);
+      });
+    });
+  }
+  if (smiR) {
+    const scores = JSON.parse(smiR);
+    Object.entries(scores).forEach(([k,v]) => {
+      document.querySelectorAll(`[onclick*="setSmiScore"][onclick*="${k}"][onclick*=",${v})"]`).forEach(btn => {
+        setSmiScore(btn, k, v);
       });
     });
   }
@@ -1679,6 +1896,8 @@ var RES_PARAMS=new URLSearchParams(location.search);var PAC=RES_PARAMS.get('paci
 function initials(n){return (n||'?').split(' ').filter(Boolean).slice(0,2).map(p=>p[0].toUpperCase()).join('')}
 document.getElementById('pacName').textContent=PAC;document.getElementById('pacAvatar').textContent=initials(PAC);
 const psiName=sessionStorage.getItem('psi_nome')||'Michelle';document.getElementById('psiName').textContent=psiName;document.getElementById('psiAvatar').textContent=initials(psiName);document.getElementById('sidebarName').textContent=psiName;document.getElementById('sidebarAvatar').textContent=initials(psiName);
+restoreSchemaMapFields();
+carregarRascunho();
 function drawRadar(){const c=document.getElementById('radar'),ctx=c.getContext('2d'),W=c.width,H=c.height,cx=W/2,cy=H/2+8,R=86;ctx.clearRect(0,0,W,H);const labels=['Resgate','Hipersensib. rejeição','Necessidade aprovação','Rigidez terapêutica','Dificuldade limites'];const vals=[4,3,4,5,3];const vals2=[2,4,5,2,4];function pt(i,r){let a=-Math.PI/2+i*2*Math.PI/labels.length;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}for(let k=1;k<=5;k++){ctx.beginPath();for(let i=0;i<labels.length;i++){let [x,y]=pt(i,R*k/5);i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath();ctx.strokeStyle='rgba(128,112,168,.18)';ctx.stroke()}labels.forEach((l,i)=>{let [x,y]=pt(i,R+30);ctx.fillStyle='#6a5880';ctx.font='11px Instrument Sans';ctx.textAlign=i===0?'center':(x<cx?'right':'left');ctx.fillText(l,x,y)});function poly(values,color,fill,dash){ctx.beginPath();values.forEach((v,i)=>{let [x,y]=pt(i,R*v/5);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.strokeStyle=color;ctx.lineWidth=2;if(dash)ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=fill;ctx.fill()}poly(vals,'#854f0b','rgba(133,79,11,.18)',false);poly(vals2,'#6d4fc2','rgba(109,79,194,.08)',true);ctx.fillStyle='#1a1030';ctx.font='12px Instrument Sans';ctx.fillText('Você',cx-46,H-12);ctx.fillText('Paciente',cx+26,H-12)}drawRadar();
 </script>
 </body>
