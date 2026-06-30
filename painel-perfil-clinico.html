@@ -490,6 +490,12 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
 .schema-panel.green{--panel:#428b53;--tint:rgba(66,139,83,.055)}
 .schema-panel-head{display:flex;align-items:center;gap:9px;padding:10px 13px;border-bottom:1px solid color-mix(in srgb,var(--panel) 34%,#fff);color:var(--panel);font-size:12px;font-weight:800;text-transform:uppercase}
 .schema-panel-num{display:grid;place-items:center;width:23px;height:23px;border-radius:7px;background:var(--panel);color:#fff;font-size:11px;flex:0 0 auto}
+.autosave-status{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 12px;color:var(--ink3);font-size:12px;font-weight:650;white-space:nowrap}
+.autosave-dot{width:8px;height:8px;border-radius:50%;background:#80a894;box-shadow:0 0 0 3px rgba(128,168,148,.14)}
+.autosave-status.saving .autosave-dot{background:var(--amber);box-shadow:0 0 0 3px rgba(215,158,74,.14);animation:autosavePulse 1s ease-in-out infinite}
+.autosave-status.error{color:var(--coral)}
+.autosave-status.error .autosave-dot{background:var(--coral);box-shadow:0 0 0 3px rgba(215,102,95,.14)}
+@keyframes autosavePulse{50%{opacity:.4}}
 .schema-panel-body{padding:12px}
 .schema-map textarea{display:block;width:100%;min-height:112px;resize:vertical;border:0;background:transparent;color:var(--ink);font:12px/1.65 'Instrument Sans',system-ui,sans-serif;outline:none}
 .schema-map textarea::placeholder{color:var(--ink3)}
@@ -603,7 +609,10 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
       <div class="topbar-title">Meu Perfil Clínico</div>
       <div class="topbar-sub">Autoconhecimento estruturado para leitura da ressonância terapêutica</div>
     </div>
-    <button class="btn btn-ghost" id="btnSalvarRascunho">Salvar rascunho</button>
+    <div class="autosave-status" id="autosaveStatus" role="status" aria-live="polite">
+      <span class="autosave-dot" aria-hidden="true"></span>
+      <span id="autosaveText">Salvamento automático ativo</span>
+    </div>
     <button class="btn btn-primary" id="btnSalvarPerfil" disabled>Salvar perfil</button>
   </div>
 
@@ -1419,10 +1428,43 @@ const SB_URL = 'https://qpwjxacdjzzsyjbuuwsq.supabase.co';
 const SB_KEY = 'sb_publishable_hQclCJaEsVjcnGM4WAoYmA_r8H8NqAp';
 let SB_SESSION_TOKEN = sessionStorage.getItem('sb_session_token') || '';
 
+function currentDraftOwner() {
+  try {
+    let payload = SB_SESSION_TOKEN.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    payload += '='.repeat((4 - payload.length % 4) % 4);
+    return JSON.parse(atob(payload)).sub || 'anonymous';
+  } catch (error) {
+    return 'anonymous';
+  }
+}
+
+function draftStorageKey(name) {
+  return `${name}:${currentDraftOwner()}`;
+}
+
+function migrateLegacyDrafts() {
+  const owner = currentDraftOwner();
+  if (owner === 'anonymous' || localStorage.getItem('psireal_drafts_migrated')) return;
+  ['psireal_ysq_rascunho', 'psireal_smi_rascunho', 'psireal_schema_map_rascunho', 'psireal_perfil_autosave_at'].forEach(name => {
+    const legacy = localStorage.getItem(name);
+    if (legacy !== null && localStorage.getItem(draftStorageKey(name)) === null) {
+      localStorage.setItem(draftStorageKey(name), legacy);
+    }
+    localStorage.removeItem(name);
+  });
+  localStorage.setItem('psireal_drafts_migrated', owner);
+}
+
 let ysqScores = {};
 let smiScores = {};
 let totalYsq  = 0;
 let totalSmi  = 0;
+let autosaveTimer = null;
+let restoringDraft = false;
+let authenticatedUserId = '';
+let profileFillCount = 0;
+let serverSaveInFlight = false;
+let serverSaveQueued = false;
 
 const YSQ_TOTAL = 18;
 const SMI_TOTAL = 14;
@@ -1449,8 +1491,13 @@ async function tryLogin() {
     if (!res.ok || !data.access_token) throw new Error('login');
 
     SB_SESSION_TOKEN = data.access_token;
+    authenticatedUserId = data.user?.id || '';
     sessionStorage.setItem('sb_session_token', data.access_token);
+    migrateLegacyDrafts();
+    restoreSchemaMapFields();
+    carregarRascunho();
     document.getElementById('lockScreen').style.display = 'none';
+    await loadProfileFromSupabase();
   } catch (e) {
     error.style.display = 'block';
   }
@@ -1469,7 +1516,10 @@ async function restoreAuth() {
       }
     });
     if (!res.ok) throw new Error('expired');
+    const user = await res.json();
+    authenticatedUserId = user.id || '';
     document.getElementById('lockScreen').style.display = 'none';
+    await loadProfileFromSupabase();
   } catch (e) {
     SB_SESSION_TOKEN = '';
     sessionStorage.removeItem('sb_session_token');
@@ -1528,6 +1578,7 @@ function setScore(btn, key, val) {
   if (wasEmpty) totalYsq++;
   updateYsqProgress();
   checkSaveReady();
+  queueAutosave();
 }
 
 function updateYsqProgress() {
@@ -1563,6 +1614,7 @@ function setSmiScore(btn, key, val) {
   if (wasEmpty) totalSmi++;
   updateSmiProgress();
   checkSaveReady();
+  queueAutosave();
 }
 
 function updateSmiProgress() {
@@ -1764,18 +1816,170 @@ function getSchemaMapFields() {
 }
 
 function saveSchemaMapFields() {
-  localStorage.setItem('psireal_schema_map_rascunho', JSON.stringify(getSchemaMapFields()));
+  localStorage.setItem(draftStorageKey('psireal_schema_map_rascunho'), JSON.stringify(getSchemaMapFields()));
+}
+
+function setAutosaveStatus(state, text) {
+  const status = document.getElementById('autosaveStatus');
+  const label = document.getElementById('autosaveText');
+  if (!status || !label) return;
+  status.classList.remove('saving', 'error');
+  if (state) status.classList.add(state);
+  label.textContent = text;
+}
+
+function saveDraftAutomatically() {
+  try {
+    localStorage.setItem(draftStorageKey('psireal_ysq_rascunho'), JSON.stringify(ysqScores));
+    localStorage.setItem(draftStorageKey('psireal_smi_rascunho'), JSON.stringify(smiScores));
+    saveSchemaMapFields();
+    localStorage.setItem(draftStorageKey('psireal_perfil_autosave_at'), new Date().toISOString());
+    setAutosaveStatus('', 'Salvo neste dispositivo');
+    saveDraftToSupabase();
+  } catch (error) {
+    setAutosaveStatus('error', 'Não foi possível salvar');
+  }
+}
+
+async function getAuthenticatedUserId() {
+  if (authenticatedUserId) return authenticatedUserId;
+  const token = SB_SESSION_TOKEN || sessionStorage.getItem('sb_session_token');
+  if (!token) return '';
+  const response = await fetch(`${SB_URL}/auth/v1/user`, {
+    headers: { apikey: SB_KEY, Authorization: `Bearer ${token}` }
+  });
+  if (!response.ok) return '';
+  const user = await response.json();
+  authenticatedUserId = user.id || '';
+  return authenticatedUserId;
+}
+
+async function saveDraftToSupabase() {
+  if (restoringDraft) return;
+  if (serverSaveInFlight) {
+    serverSaveQueued = true;
+    return;
+  }
+
+  const token = SB_SESSION_TOKEN || sessionStorage.getItem('sb_session_token');
+  if (!token) return;
+  serverSaveInFlight = true;
+
+  try {
+    const userId = await getAuthenticatedUserId();
+    if (!userId) throw new Error('auth');
+    const response = await fetch(`${SB_URL}/rest/v1/perfil_psi_clinico?on_conflict=psi_user_id`, {
+      method: 'POST',
+      headers: {
+        apikey: SB_KEY,
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Prefer: 'resolution=merge-duplicates,return=minimal'
+      },
+      body: JSON.stringify({
+        psi_user_id: userId,
+        ysq_scores: ysqScores,
+        smi_scores: smiScores,
+        mapa_esquemas: getSchemaMapFields(),
+        preenchido_em: new Date().toISOString(),
+        n_preenchimentos: profileFillCount
+      })
+    });
+    if (!response.ok) throw new Error(await response.text());
+    setAutosaveStatus('', 'Salvo na sua conta');
+  } catch (error) {
+    setAutosaveStatus('error', 'Salvo apenas neste dispositivo');
+  } finally {
+    serverSaveInFlight = false;
+    if (serverSaveQueued) {
+      serverSaveQueued = false;
+      saveDraftToSupabase();
+    }
+  }
+}
+
+function applyProfileData(data) {
+  if (!data) return;
+  restoringDraft = true;
+
+  if (data.ysq_scores && Object.keys(data.ysq_scores).length) {
+    ysqScores = {};
+    totalYsq = 0;
+    document.querySelectorAll('[onclick*="setScore"]').forEach(button => button.classList.remove('selected'));
+    Object.entries(data.ysq_scores).forEach(([key, value]) => {
+      document.querySelectorAll(`[onclick*="setScore"][onclick*="${key}"][onclick*=",${value})"]`).forEach(button => setScore(button, key, Number(value)));
+    });
+  }
+
+  if (data.smi_scores && Object.keys(data.smi_scores).length) {
+    smiScores = {};
+    totalSmi = 0;
+    document.querySelectorAll('[onclick*="setSmiScore"]').forEach(button => button.classList.remove('selected'));
+    Object.entries(data.smi_scores).forEach(([key, value]) => {
+      document.querySelectorAll(`[onclick*="setSmiScore"][onclick*="${key}"][onclick*=",${value})"]`).forEach(button => setSmiScore(button, key, Number(value)));
+    });
+  }
+
+  if (data.mapa_esquemas && Object.keys(data.mapa_esquemas).length) {
+    document.querySelectorAll('[data-map-field]').forEach(field => {
+      if (Object.prototype.hasOwnProperty.call(data.mapa_esquemas, field.dataset.mapField)) {
+        field.value = data.mapa_esquemas[field.dataset.mapField];
+      }
+    });
+  }
+
+  profileFillCount = Number(data.n_preenchimentos || 0);
+  restoringDraft = false;
+  updateYsqProgress();
+  updateSmiProgress();
+  checkSaveReady();
+  renderSchemaMap();
+  saveDraftAutomatically();
+}
+
+async function loadProfileFromSupabase() {
+  const token = SB_SESSION_TOKEN || sessionStorage.getItem('sb_session_token');
+  const userId = await getAuthenticatedUserId();
+  if (!token || !userId) return;
+
+  try {
+    setAutosaveStatus('saving', 'Recuperando mapa...');
+    const response = await fetch(`${SB_URL}/rest/v1/perfil_psi_clinico?psi_user_id=eq.${encodeURIComponent(userId)}&select=ysq_scores,smi_scores,mapa_esquemas,n_preenchimentos&limit=1`, {
+      headers: { apikey: SB_KEY, Authorization: `Bearer ${token}` }
+    });
+    if (!response.ok) throw new Error(await response.text());
+    const rows = await response.json();
+    if (rows[0]) applyProfileData(rows[0]);
+    else setAutosaveStatus('', 'Salvamento automático ativo');
+  } catch (error) {
+    setAutosaveStatus('error', 'Usando cópia deste dispositivo');
+  }
+}
+
+function queueAutosave() {
+  if (restoringDraft) return;
+  setAutosaveStatus('saving', 'Salvando...');
+  clearTimeout(autosaveTimer);
+  autosaveTimer = setTimeout(saveDraftAutomatically, 450);
 }
 
 function restoreSchemaMapFields() {
   try {
-    const data = JSON.parse(localStorage.getItem('psireal_schema_map_rascunho') || '{}');
+    const data = JSON.parse(localStorage.getItem(draftStorageKey('psireal_schema_map_rascunho')) || '{}');
     document.querySelectorAll('[data-map-field]').forEach(field => {
       if (Object.prototype.hasOwnProperty.call(data, field.dataset.mapField)) field.value = data[field.dataset.mapField];
-      field.addEventListener('input', saveSchemaMapFields);
+      if (field.dataset.autosaveBound !== 'true') {
+        field.addEventListener('input', queueAutosave);
+        field.dataset.autosaveBound = 'true';
+      }
     });
   } catch (e) {
-    document.querySelectorAll('[data-map-field]').forEach(field => field.addEventListener('input', saveSchemaMapFields));
+    document.querySelectorAll('[data-map-field]').forEach(field => {
+      if (field.dataset.autosaveBound !== 'true') {
+        field.addEventListener('input', queueAutosave);
+        field.dataset.autosaveBound = 'true';
+      }
+    });
   }
 }
 
@@ -1806,12 +2010,14 @@ document.getElementById('btnSalvarPerfil').addEventListener('click', async () =>
       }
     });
     const currentRows = currentRes.ok ? await currentRes.json() : [];
+    profileFillCount = (currentRows[0]?.n_preenchimentos || profileFillCount || 0) + 1;
     const body = {
       psi_user_id: user.id,
       ysq_scores: ysqScores,
       smi_scores: smiScores,
+      mapa_esquemas: getSchemaMapFields(),
       preenchido_em: new Date().toISOString(),
-      n_preenchimentos: (currentRows[0]?.n_preenchimentos || 0) + 1
+      n_preenchimentos: profileFillCount
     };
     const res = await fetch(`${SB_URL}/rest/v1/perfil_psi_clinico?on_conflict=psi_user_id`, {
       method: 'POST',
@@ -1836,17 +2042,11 @@ document.getElementById('btnSalvarPerfil').addEventListener('click', async () =>
   }
 });
 
-document.getElementById('btnSalvarRascunho').addEventListener('click', () => {
-  localStorage.setItem('psireal_ysq_rascunho', JSON.stringify(ysqScores));
-  localStorage.setItem('psireal_smi_rascunho', JSON.stringify(smiScores));
-  saveSchemaMapFields();
-  showToast('Rascunho salvo localmente.');
-});
-
 // Carregar rascunho ao abrir
 function carregarRascunho() {
-  const ysqR = localStorage.getItem('psireal_ysq_rascunho');
-  const smiR = localStorage.getItem('psireal_smi_rascunho');
+  restoringDraft = true;
+  const ysqR = localStorage.getItem(draftStorageKey('psireal_ysq_rascunho'));
+  const smiR = localStorage.getItem(draftStorageKey('psireal_smi_rascunho'));
   if (ysqR) {
     const scores = JSON.parse(ysqR);
     Object.entries(scores).forEach(([k,v]) => {
@@ -1866,7 +2066,12 @@ function carregarRascunho() {
       });
     });
   }
+  restoringDraft = false;
+  const savedAt = localStorage.getItem(draftStorageKey('psireal_perfil_autosave_at'));
+  setAutosaveStatus('', savedAt ? 'Rascunho recuperado' : 'Salvamento automático ativo');
 }
+
+window.addEventListener('beforeunload', saveDraftAutomatically);
 
 // ── UI HELPERS ────────────────────────────────────────────
 function showLoading(txt) {
@@ -1896,6 +2101,7 @@ var RES_PARAMS=new URLSearchParams(location.search);var PAC=RES_PARAMS.get('paci
 function initials(n){return (n||'?').split(' ').filter(Boolean).slice(0,2).map(p=>p[0].toUpperCase()).join('')}
 document.getElementById('pacName').textContent=PAC;document.getElementById('pacAvatar').textContent=initials(PAC);
 const psiName=sessionStorage.getItem('psi_nome')||'Michelle';document.getElementById('psiName').textContent=psiName;document.getElementById('psiAvatar').textContent=initials(psiName);document.getElementById('sidebarName').textContent=psiName;document.getElementById('sidebarAvatar').textContent=initials(psiName);
+migrateLegacyDrafts();
 restoreSchemaMapFields();
 carregarRascunho();
 function drawRadar(){const c=document.getElementById('radar'),ctx=c.getContext('2d'),W=c.width,H=c.height,cx=W/2,cy=H/2+8,R=86;ctx.clearRect(0,0,W,H);const labels=['Resgate','Hipersensib. rejeição','Necessidade aprovação','Rigidez terapêutica','Dificuldade limites'];const vals=[4,3,4,5,3];const vals2=[2,4,5,2,4];function pt(i,r){let a=-Math.PI/2+i*2*Math.PI/labels.length;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}for(let k=1;k<=5;k++){ctx.beginPath();for(let i=0;i<labels.length;i++){let [x,y]=pt(i,R*k/5);i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath();ctx.strokeStyle='rgba(128,112,168,.18)';ctx.stroke()}labels.forEach((l,i)=>{let [x,y]=pt(i,R+30);ctx.fillStyle='#6a5880';ctx.font='11px Instrument Sans';ctx.textAlign=i===0?'center':(x<cx?'right':'left');ctx.fillText(l,x,y)});function poly(values,color,fill,dash){ctx.beginPath();values.forEach((v,i)=>{let [x,y]=pt(i,R*v/5);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.strokeStyle=color;ctx.lineWidth=2;if(dash)ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=fill;ctx.fill()}poly(vals,'#854f0b','rgba(133,79,11,.18)',false);poly(vals2,'#6d4fc2','rgba(109,79,194,.08)',true);ctx.fillStyle='#1a1030';ctx.font='12px Instrument Sans';ctx.fillText('Você',cx-46,H-12);ctx.fillText('Paciente',cx+26,H-12)}drawRadar();
