@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Instrument+Sans:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  --vm-font-display: "Syne", system-ui, sans-serif;
-  --vm-font-body: "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --vm-font-display: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --vm-font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --vm-bg: #ffffff;
   --vm-surface: #f7faf9;
   --vm-thumb-1: #eef6f4;
@@ -1139,4 +1139,53 @@ textarea:focus {
 
 footer {
   background: #20242a !important;
+}
+
+/* Tipografia única para as superfícies clínicas. */
+html,
+body,
+body div,
+body span,
+body p,
+body a,
+body button,
+body input,
+body select,
+body textarea,
+body label,
+body table,
+body th,
+body td,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+body h1,
+body h2,
+body h3,
+.hero-title,
+.section-title,
+.topbar-title,
+.logo-text,
+.person-name,
+.schema-map-title {
+  font-weight: 600 !important;
+}
+
+#tab-alertas .hero-title {
+  font-size: 34px !important;
+  line-height: 1.16 !important;
+  max-width: 760px;
+}
+
+@media (max-width: 700px) {
+  #tab-alertas .hero-title {
+    font-size: 28px !important;
+  }
 }
