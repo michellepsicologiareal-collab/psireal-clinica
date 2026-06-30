@@ -853,3 +853,290 @@ button[type="submit"],
 footer {
   background: #153f42 !important;
 }
+
+/* PsiReal 2026: paleta clínica clara e multicolorida. */
+:root {
+  --vm-bg: #f6f7f9;
+  --vm-surface: #ffffff;
+  --vm-thumb-1: #f1effa;
+  --vm-thumb-2: #e9f5f1;
+  --vm-thumb-3: #fbeeed;
+  --vm-border: #e1e4e9;
+  --vm-border-2: #d4d9e0;
+  --vm-violet: #6847c6;
+  --vm-violet-dark: #5033a2;
+  --vm-body: #5c6470;
+  --vm-secondary: #6f7884;
+  --vm-muted: #8a929d;
+  --vm-nav: #59616c;
+  --vm-title: #20242a;
+  --vm-gold: #d99a3d;
+  --vm-gold-dark: #8b5b16;
+  --vm-gold-light: #f1c778;
+  --vm-gold-bg: #fff6e8;
+  --vm-gold-border: #f0d39f;
+  --vm-accent: #6847c6;
+  --vm-accent-dark: #5033a2;
+  --vm-accent-soft: #efebfa;
+  --vm-accent-line: #d8cff2;
+  --vm-shadow: 0 1px 2px rgba(32, 36, 42, 0.04), 0 5px 18px rgba(32, 36, 42, 0.05);
+  --vm-shadow-deep: 0 12px 32px rgba(32, 36, 42, 0.10);
+
+  --bg: #f6f7f9;
+  --bg-surface: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-thumb-1: #f1effa;
+  --bg-thumb-2: #e9f5f1;
+  --bg-thumb-3: #fbeeed;
+  --bg2: #f1f3f6;
+  --bg3: #e9ecf1;
+  --surface: #ffffff;
+  --border: #e1e4e9;
+  --border2: #d4d9e0;
+  --primary: #6847c6;
+  --primary-dark: #5033a2;
+  --primary-hover: #5938b2;
+  --primary-subtle: #efebfa;
+  --primary-border: #d8cff2;
+  --lilac: #6847c6;
+  --lilac2: #8064d2;
+  --lilac3: #d8cff2;
+  --lilac4: #f4f1fb;
+  --brown: #5033a2;
+  --brown2: #6847c6;
+  --brown3: #77698f;
+  --ink: #20242a;
+  --ink2: #5c6470;
+  --ink3: #7b8490;
+  --ink4: #a2a9b2;
+  --nav-link: #626b76;
+  --teal: #2f8a78;
+  --teal2: #69b5a4;
+  --teal3: #e8f5f1;
+  --green: #2f8a78;
+  --green2: #69b5a4;
+  --green3: #e8f5f1;
+  --amber: #d99a3d;
+  --amber2: #f1c778;
+  --amber3: #fff6e8;
+  --gold: #d99a3d;
+  --gold-dark: #8b5b16;
+  --gold-light: #f1c778;
+  --gold-bg: #fff6e8;
+  --gold-border: #f0d39f;
+  --coral: #d8665f;
+  --coral2: #eb948f;
+  --coral3: #fbeeed;
+  --radius: 6px;
+  --radius-lg: 8px;
+  --shadow: 0 1px 2px rgba(32,36,42,.04), 0 5px 18px rgba(32,36,42,.05);
+  --shadow-md: 0 12px 32px rgba(32,36,42,.10);
+}
+
+html,
+body {
+  background: #f6f7f9 !important;
+  color: #20242a !important;
+}
+
+.hero,
+.hero-section,
+.hero-wrap,
+.landing-hero {
+  background: #ffffff !important;
+}
+
+header,
+nav,
+.topbar,
+.site-header,
+.sidebar {
+  background: rgba(255,255,255,.97) !important;
+  border-color: #e1e4e9 !important;
+  box-shadow: none !important;
+}
+
+.nav-item,
+.menu-item {
+  color: #626b76 !important;
+  border-radius: 6px !important;
+}
+
+.nav-item:hover,
+.menu-item:hover {
+  background: #f1f3f6 !important;
+  color: #20242a !important;
+}
+
+.nav-item.active,
+.menu-item.active {
+  background: #efebfa !important;
+  color: #5033a2 !important;
+  box-shadow: inset 3px 0 0 #6847c6 !important;
+}
+
+.btn,
+.btn-primary,
+.btn-cta,
+.nav-cta,
+button[type="submit"],
+.button-primary {
+  background: #6847c6 !important;
+  border-color: #6847c6 !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-cta:hover,
+.nav-cta:hover,
+button[type="submit"]:hover,
+.button-primary:hover {
+  background: #5938b2 !important;
+  border-color: #5938b2 !important;
+  box-shadow: 0 5px 14px rgba(80,51,162,.16) !important;
+}
+
+.btn-ghost,
+.btn-white,
+.secondary,
+.outline,
+.product-cta.secondary {
+  background: #ffffff !important;
+  border-color: #d4d9e0 !important;
+  color: #5033a2 !important;
+  box-shadow: none !important;
+}
+
+.card,
+.stat-card,
+.material-card,
+.product-card,
+.feature-card,
+.metric-card,
+.panel-card,
+.demo-card,
+.bridge-card,
+.pricing-card,
+.faq-item,
+.form-card,
+.insight-card,
+.patient-row,
+.app-card,
+.mockup,
+.demo-shell,
+.product-mock,
+.mini-screen,
+.install-bar,
+.inv-card,
+.evo-card,
+.table-wrap,
+.schema-panel {
+  background: #ffffff !important;
+  border-color: #e1e4e9 !important;
+  border-radius: 8px !important;
+  box-shadow: var(--vm-shadow) !important;
+}
+
+.stat-card::after,
+.chart-bar,
+.bar,
+.progress-bar,
+.progress-fill,
+.switch-on,
+.toggle-on {
+  background: #6847c6 !important;
+}
+
+.stat-card.lilac::after { background: #6847c6 !important; }
+.stat-card.brown::after { background: #d8665f !important; }
+.stat-card.teal::after { background: #2f8a78 !important; }
+.stat-card.amber::after { background: #d99a3d !important; }
+
+.badge,
+.pill,
+.chip,
+.tag,
+.product-tags span,
+.badge-soft {
+  background: #efebfa !important;
+  border-color: #d8cff2 !important;
+  color: #5033a2 !important;
+}
+
+.success,
+.status-success,
+.badge-success,
+.autosave-status:not(.error) {
+  color: #276f61 !important;
+}
+
+.warning,
+.status-warning,
+.badge-warning {
+  background: #fff6e8 !important;
+  border-color: #f0d39f !important;
+  color: #8b5b16 !important;
+}
+
+.danger,
+.error,
+.status-danger,
+.badge-danger,
+.alert-danger {
+  color: #a94742 !important;
+}
+
+input,
+select,
+textarea {
+  background: #ffffff !important;
+  border-color: #d4d9e0 !important;
+  border-radius: 6px !important;
+  color: #20242a !important;
+  box-shadow: none !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #6847c6 !important;
+  box-shadow: 0 0 0 3px rgba(104,71,198,.12) !important;
+  outline: none !important;
+}
+
+.schema-panel { --tint: #ffffff !important; }
+.schema-panel.teal { --panel: #2f8a78 !important; }
+.schema-panel.coral { --panel: #d8665f !important; }
+.schema-panel.amber { --panel: #d99a3d !important; }
+.schema-panel.blue { --panel: #4f78bd !important; }
+.schema-panel.green { --panel: #2f8a78 !important; }
+.schema-panel-head { background: color-mix(in srgb, var(--panel) 8%, #fff) !important; }
+
+#lockScreen,
+.modal-overlay,
+.overlay {
+  background: rgba(32,36,42,.56) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.lock-card,
+.modal,
+.modal-card {
+  background: #ffffff !important;
+  border: 1px solid #e1e4e9 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 48px rgba(32,36,42,.18) !important;
+}
+
+.demo-topbar,
+.mock-topbar,
+.window-bar {
+  background: #20242a !important;
+}
+
+footer {
+  background: #20242a !important;
+}
