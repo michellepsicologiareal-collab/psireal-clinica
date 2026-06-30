@@ -712,10 +712,12 @@ body {
   font-weight:600;
   cursor:pointer;
 }
+.lock-btn:disabled{cursor:wait;opacity:.68}
 .lock-error{
   display:none;
   color:var(--coral);
   font-size:12px;
+  line-height:1.5;
   margin-top:12px;
 }
 
@@ -1504,10 +1506,10 @@ body{background:var(--bg) !important;color:var(--ink) !important}
     <div class="lock-logo"></div>
     <div class="lock-title">Entrar no PsiReal Clínica</div>
     <div class="lock-sub">Acesso restrito para psicólogas assinantes.</div>
-    <input id="lockEmail" class="lock-input" type="email" placeholder="E-mail">
-    <input id="lockPassword" class="lock-input" type="password" placeholder="Senha">
-    <button class="lock-btn" onclick="tryLogin()">Entrar</button>
-    <div id="lockError" class="lock-error">Não foi possível entrar. Verifique e-mail e senha.</div>
+    <input id="lockEmail" class="lock-input" type="email" placeholder="E-mail" autocomplete="email">
+    <input id="lockPassword" class="lock-input" type="password" placeholder="Senha" autocomplete="current-password">
+    <button class="lock-btn" id="lockSubmit" type="button" onclick="tryLogin()">Entrar</button>
+    <div id="lockError" class="lock-error" role="alert" aria-live="polite">Não foi possível entrar. Verifique e-mail e senha.</div>
   </div>
 </div>
 
@@ -2797,7 +2799,16 @@ async function tryLogin() {
   const email = document.getElementById('lockEmail');
   const password = document.getElementById('lockPassword');
   const error = document.getElementById('lockError');
-  error.style.display = 'none';
+  const submit = document.getElementById('lockSubmit');
+  hideLoginError();
+
+  if (!email.value.trim() || !password.value) {
+    showLoginError('Preencha seu e-mail e sua senha.');
+    return;
+  }
+
+  submit.disabled = true;
+  submit.textContent = 'Entrando...';
   try {
     const res = await fetch(`${SB_URL}/auth/v1/token?grant_type=password`, {
       method: 'POST',
@@ -2810,14 +2821,19 @@ async function tryLogin() {
         password: password.value
       })
     });
-    if (!res.ok) throw new Error('login failed');
-    const data = await res.json();
+    if (!res.ok) throw await responseError(res, 'Falha na autenticação.');
+    const data = await res.json().catch(() => ({}));
+    if (!data.access_token || !data.user?.id) throw new Error('Sessão inválida retornada pelo servidor.');
     SB_SESSION_TOKEN = data.access_token;
     sessionStorage.setItem('sb_session_token', SB_SESSION_TOKEN);
     if (data.refresh_token) sessionStorage.setItem('sb_refresh_token', data.refresh_token);
-    await bootstrapAuthenticatedApp();
+    await bootstrapAuthenticatedApp(data.user);
   } catch (e) {
-    error.style.display = 'block';
+    clearLocalSession();
+    showLoginError(loginErrorMessage(e));
+  } finally {
+    submit.disabled = false;
+    submit.textContent = 'Entrar';
   }
 }
 
@@ -2830,12 +2846,53 @@ async function restoreAuth() {
         Authorization: 'Bearer ' + SB_SESSION_TOKEN
       }
     });
-    if (!res.ok) throw new Error('invalid session');
-    await bootstrapAuthenticatedApp();
+    if (!res.ok) throw await responseError(res, 'Sessão expirada.');
+    const user = await res.json();
+    await bootstrapAuthenticatedApp(user);
   } catch (e) {
-    SB_SESSION_TOKEN = '';
-    sessionStorage.removeItem('sb_session_token');
+    clearLocalSession();
+    document.getElementById('lockScreen').style.display = 'grid';
+    if (e.code === 'PROFILE_MISSING' || e.code === 'PROFILE_INACTIVE' || e.code === 'PROFILE_DENIED') {
+      showLoginError(loginErrorMessage(e));
+    }
   }
+}
+
+function hideLoginError() {
+  const error = document.getElementById('lockError');
+  error.style.display = 'none';
+  error.textContent = '';
+}
+
+function showLoginError(message) {
+  const error = document.getElementById('lockError');
+  error.textContent = message;
+  error.style.display = 'block';
+}
+
+function clearLocalSession() {
+  SB_SESSION_TOKEN = '';
+  sessionStorage.removeItem('sb_session_token');
+  sessionStorage.removeItem('sb_refresh_token');
+}
+
+async function responseError(response, fallback) {
+  const payload = await response.json().catch(() => ({}));
+  const error = new Error(payload.msg || payload.message || payload.error_description || payload.error || fallback);
+  error.status = response.status;
+  error.code = payload.error_code || payload.code || `HTTP_${response.status}`;
+  return error;
+}
+
+function loginErrorMessage(error) {
+  const message = String(error?.message || '').toLowerCase();
+  if (error?.code === 'PROFILE_MISSING') return 'Login confirmado, mas este usuário ainda não está vinculado a um cadastro de psicóloga. Peça à administradora para ativar a conta.';
+  if (error?.code === 'PROFILE_INACTIVE') return 'Seu login está correto, mas a assinatura ou o cadastro está inativo. Fale com o suporte para reativar o acesso.';
+  if (error?.code === 'PROFILE_DENIED') return 'Login confirmado, mas o perfil não pôde ser lido. Verifique as permissões RLS da tabela psis.';
+  if (message.includes('email not confirmed')) return 'Confirme seu e-mail antes de entrar.';
+  if (message.includes('invalid login credentials') || error?.status === 400) return 'E-mail ou senha incorretos.';
+  if (message.includes('failed to fetch') || message.includes('network')) return 'Não foi possível conectar ao servidor. Verifique a internet e tente novamente.';
+  return 'Não foi possível concluir a entrada. Tente novamente ou fale com o suporte.';
 }
 
 document.getElementById('lockEmail').addEventListener('keydown', e => {
@@ -2903,39 +2960,51 @@ async function supabaseSelect(path) {
       Authorization: 'Bearer ' + SB_SESSION_TOKEN
     }
   });
-  if (!res.ok) throw new Error(`Falha ao carregar ${path}`);
+  if (!res.ok) throw await responseError(res, `Falha ao carregar ${path}`);
   return res.json();
 }
 
-async function bootstrapAuthenticatedApp() {
-  const [profiles, links, responses, pacientes] = await Promise.all([
-    supabaseSelect('psis?select=nome,plano,ativa'),
-    supabaseSelect('patient_links?select=id,token,patient_name,instrumento,status,created_at,expires_at&order=created_at.desc'),
-    supabaseSelect('respostas_clinicas?select=id,paciente_nome,instrumento,formulario,score_total,scores,status,created_at&order=created_at.desc'),
-    supabaseSelect('pacientes?select=id,nome,status&order=created_at.desc').catch(() => [])
+async function bootstrapAuthenticatedApp(authUser) {
+  if (!authUser?.id) throw new Error('Usuário autenticado inválido.');
+  const userId = encodeURIComponent(authUser.id);
+  const optionalSelect = path => supabaseSelect(path).catch(error => {
+    console.warn('Módulo opcional indisponível:', path, error.message);
+    return [];
+  });
+
+  const [profiles, links, responses, pacientes, adminCheck] = await Promise.all([
+    supabaseSelect(`psis?user_id=eq.${userId}&select=user_id,nome,plano,ativa&limit=1`).catch(error => {
+      const profileError = new Error(error.message);
+      profileError.code = error.status === 401 || error.status === 403 ? 'PROFILE_DENIED' : 'PROFILE_MISSING';
+      throw profileError;
+    }),
+    optionalSelect('patient_links?select=id,token,patient_name,instrumento,status,created_at,expires_at&order=created_at.desc'),
+    optionalSelect('respostas_clinicas?select=id,paciente_nome,instrumento,formulario,score_total,scores,status,created_at&order=created_at.desc'),
+    optionalSelect('pacientes?select=id,nome,status&order=created_at.desc'),
+    optionalSelect(`admin_users?user_id=eq.${userId}&select=user_id&limit=1`)
   ]);
   window.PACIENTES_DB = pacientes || [];
 
-  // Verifica se é admin
-  let adminCheck = [];
-  try {
-    adminCheck = await supabaseSelect('admin_users?select=user_id&limit=1');
-  } catch(e) { adminCheck = []; }
-  
   window.PSI_IS_ADMIN = Array.isArray(adminCheck) && adminCheck.length > 0 
-    && adminCheck[0].user_id !== undefined;
+    && adminCheck[0].user_id === authUser.id;
     
   if (window.PSI_IS_ADMIN) {
     document.getElementById('adminNavSection').style.display = 'block';
   }
 
   PSI_PROFILE = profiles[0];
-  if (!PSI_PROFILE || !PSI_PROFILE.ativa) {
-    if (window.PSI_IS_ADMIN) {
-      PSI_PROFILE = { nome: 'Admin', plano: 'admin', ativa: true };
-    } else {
-      throw new Error('Conta inativa ou não cadastrada');
-    }
+  if (!PSI_PROFILE && window.PSI_IS_ADMIN) {
+    PSI_PROFILE = { nome: authUser.email?.split('@')[0] || 'Admin', plano: 'admin', ativa: true };
+  }
+  if (!PSI_PROFILE) {
+    const error = new Error('Perfil da psicóloga não encontrado.');
+    error.code = 'PROFILE_MISSING';
+    throw error;
+  }
+  if (!PSI_PROFILE.ativa) {
+    const error = new Error('Perfil da psicóloga inativo.');
+    error.code = 'PROFILE_INACTIVE';
+    throw error;
   }
 
   PATIENT_LINKS = links || [];
