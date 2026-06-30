@@ -472,6 +472,41 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
 .ethic-box{border:1px solid rgba(201,168,76,.35);background:rgba(201,168,76,.08);border-radius:var(--radius-lg);padding:14px 16px;font-size:12px;color:var(--ink2);line-height:1.65;margin-top:16px}.ethic-box strong{color:var(--brown);font-weight:800}
 @media(max-width:1100px){.res-grid,.zone-layout{grid-template-columns:1fr}.mid-link{min-height:auto}.reflection-row{grid-template-columns:1fr 1fr}.grid-2-1{grid-template-columns:1fr}}
 
+/* Hipóteses de Ressonância */
+.resonance-page{max-width:1320px;margin:0 auto}
+.resonance-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:20px}
+.resonance-eyebrow{margin-bottom:8px;color:var(--primary);font-size:11px;font-weight:800;text-transform:uppercase}
+.patient-picker{width:min(360px,100%);padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.patient-picker label{display:block;margin-bottom:7px;color:var(--ink2);font-size:11px;font-weight:700;text-transform:uppercase}
+.patient-picker select{width:100%;min-height:42px;padding:0 12px;border:1px solid var(--border2);background:var(--surface);color:var(--ink);font:inherit}
+.patient-picker span{display:block;margin-top:7px;color:var(--ink3);font-size:11px}
+.resonance-tabs{display:flex;gap:4px;margin-bottom:18px;padding:4px;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
+.resonance-tab{min-height:38px;padding:0 16px;border:0;border-radius:6px;background:transparent;color:var(--ink2);font:600 12px/1 'Instrument Sans',sans-serif;cursor:pointer}
+.resonance-tab.active{background:var(--surface);color:var(--primary-dark);box-shadow:0 1px 4px rgba(32,36,42,.08)}
+.resonance-empty{display:grid;place-items:center;min-height:360px;padding:40px;text-align:center;background:var(--surface);border:1px dashed var(--border2);border-radius:8px}
+.resonance-empty-icon{display:grid;place-items:center;width:54px;height:54px;margin-bottom:8px;border-radius:50%;background:var(--primary-subtle);color:var(--primary);font-size:27px}
+.resonance-empty h2{margin:0 0 8px;font-size:20px}.resonance-empty p{max-width:520px;margin:0;color:var(--ink3);font-size:13px;line-height:1.6}
+.resonance-summary{display:grid;grid-template-columns:1fr 84px 1fr;gap:12px;align-items:stretch;margin-bottom:18px}
+.summary-person{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow)}
+.summary-person-head{display:flex;align-items:center;gap:11px}.summary-person-head span{display:block;color:var(--ink3);font-size:10px;font-weight:800;text-transform:uppercase}.summary-person-head strong{display:block;margin-top:2px;color:var(--ink);font-size:17px}
+.summary-person p{margin:14px 0 9px;color:var(--ink3);font-size:11px}.summary-chips{display:flex;flex-wrap:wrap;gap:7px}
+.summary-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid var(--primary-border);border-radius:99px;background:var(--primary-subtle);color:var(--primary-dark);font-size:11px;font-weight:700}
+.summary-chip em{font-style:normal;color:var(--ink3);font-weight:600}.summary-chip.green{background:var(--green3);border-color:rgba(47,138,120,.2);color:var(--green)}.summary-chip.amber{background:var(--amber3);border-color:var(--gold-border);color:var(--gold-dark)}
+.summary-link{display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ink3);text-align:center}.summary-link span{display:grid;place-items:center;width:36px;height:36px;margin-bottom:6px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--primary);font-size:20px}.summary-link small{font-size:9px;line-height:1.25;text-transform:uppercase}
+.resonance-view{display:none;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow)}.resonance-view.active{display:block}
+.resonance-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.resonance-section-head h2{margin:0;color:var(--ink);font-size:18px}.resonance-section-head p{margin:5px 0 0;color:var(--ink3);font-size:12px}
+.hypothesis-label{padding:6px 9px;border:1px solid var(--green3);border-radius:99px;background:var(--green3);color:var(--green);font-size:10px;font-weight:800;white-space:nowrap}
+.hypothesis-list{display:grid;gap:10px}.hypothesis-card{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(260px,1.4fr) minmax(230px,1fr);gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--surface)}
+.hypothesis-cell{padding:15px;border-right:1px solid var(--border)}.hypothesis-cell:last-child{border-right:0}.hypothesis-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.hypothesis-title{color:var(--ink);font-size:14px;font-weight:800}.hypothesis-level{padding:4px 7px;border-radius:99px;background:var(--amber3);color:var(--gold-dark);font-size:9px;font-weight:800;text-transform:uppercase}.hypothesis-level.high{background:var(--coral3);color:var(--coral)}
+.hypothesis-caption{margin-top:8px;color:var(--ink3);font-size:10px;text-transform:uppercase}.hypothesis-evidence{margin-top:4px;color:var(--ink2);font-size:12px;line-height:1.5}.hypothesis-question{color:var(--primary-dark);font-size:12px;font-weight:700;line-height:1.5}.hypothesis-resource{margin-top:8px;color:var(--green);font-size:11px;line-height:1.45}
+.hypothesis-empty{padding:28px;text-align:center;background:var(--bg2);border-radius:8px;color:var(--ink2);font-size:13px;line-height:1.6}
+.protective-strip{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:14px;padding:14px 16px;background:var(--green3);border:1px solid rgba(47,138,120,.18);border-radius:8px}.protective-strip strong{display:block;color:var(--green);font-size:11px;text-transform:uppercase}.protective-strip span{display:block;margin-top:3px;color:var(--ink2);font-size:12px}
+.res-field{display:block;margin-bottom:16px}.res-field>span{display:block;margin-bottom:7px;color:var(--ink2);font-size:12px;font-weight:700}.res-field textarea{width:100%;min-height:132px;padding:12px 13px;resize:vertical;font:13px/1.55 'Instrument Sans',sans-serif}
+.management-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.res-save-note{padding:10px 12px;background:var(--green3);border-radius:6px;color:var(--green);font-size:11px;font-weight:700}
+@media(max-width:980px){.resonance-header{align-items:stretch;flex-direction:column}.patient-picker{width:100%}.resonance-summary{grid-template-columns:1fr}.summary-link{min-height:54px}.hypothesis-card{grid-template-columns:1fr}.hypothesis-cell{border-right:0;border-bottom:1px solid var(--border)}.hypothesis-cell:last-child{border-bottom:0}.management-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.resonance-tabs{overflow-x:auto}.resonance-tab{white-space:nowrap}.resonance-view{padding:14px}.resonance-section-head,.protective-strip{align-items:stretch;flex-direction:column}.ethic-box{font-size:11px}}
+
 
 /* MAPA VISUAL DE ESQUEMAS */
 .schema-map{margin:28px 0 24px;padding:24px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 18px 48px rgba(42,35,49,.07)}
@@ -1352,73 +1387,93 @@ html, body, button, input, select, textarea, a, div, span, p, h1, h2, h3, h4, h5
 
   <!-- ═══════════════ RESSONÂNCIA CLÍNICA ═══════════════ -->
   <div id="tab-alertas" class="screen">
-    <div class="content">
-<div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:24px;flex-wrap:wrap">
-      <div>
-        <h1 class="hero-title">Zonas de Ressonância Clínica</h1>
-        <p class="hero-sub">Cruzamento prudente entre seu mapa de esquemas/modos e os dados do paciente para apoiar autoconsciência clínica, diferenciação emocional e manejo terapêutico.</p>
-      </div>
-      <a class="action-btn" href="painel-perfil-clinico.html">Abrir meu Mapa de Ativação</a>
-    </div>
-
-    <section class="res-grid">
-      <div class="person-card">
-        <div class="card-kicker">Terapeuta</div>
-        <div class="person-head"><div class="circle-avatar" id="psiAvatar">M</div><div><div class="person-name" id="psiName">Michelle</div><div class="person-role">Panorama dos seus padrões atuais</div></div></div>
-        <div class="stat-label">Maior ativação atual</div>
-        <div class="pill-row"><span class="soft-pill amber">Padrões Inflexíveis</span><span class="soft-pill amber">Autossacrifício</span><span class="soft-pill">Busca de Aprovação</span></div>
-        <div style="margin-top:18px;font-size:12px;color:var(--ink2)">● Adulto Saudável: parcialmente ativo</div>
-      </div>
-      <div class="mid-link">
-        <div class="link-orb"></div>
-        <div style="font-family:'Syne';font-size:18px;text-align:center;color:var(--ink);line-height:1.2">Análise de<br>Ressonância Clínica</div>
-        <div class="sync-badge">● Hipótese reflexiva</div>
-      </div>
-      <div class="person-card">
-        <div class="card-kicker">Paciente</div>
-        <div class="person-head"><div class="circle-avatar" id="pacAvatar">P</div><div><div class="person-name" id="pacName">Paciente</div><div class="person-role">Resumo dos dados mais relevantes</div></div></div>
-        <div class="grid-1-1" style="margin:0;gap:8px">
-          <div class="pstat" style="text-align:left"><div class="stat-label">YSQ</div><div style="font-size:13px;color:var(--ink)">Abandono / Instabilidade</div><span class="level-badge level-moderada" style="margin-top:6px">Elevado</span></div>
-          <div class="pstat" style="text-align:left"><div class="stat-label">GAD-7</div><div class="pstat-val" id="gadVal">—</div><div class="pstat-label" id="gadLevel">sem dados</div></div>
+    <div class="content resonance-page">
+      <header class="resonance-header">
+        <div>
+          <div class="resonance-eyebrow">Apoio à reflexão clínica</div>
+          <h1 class="hero-title">Hipóteses de Ressonância</h1>
+          <p class="hero-sub">Cruze seu perfil com resultados reais do paciente para identificar pontos de atenção, recursos e perguntas para supervisão.</p>
         </div>
-        <div class="pill-row" style="margin-top:12px"><span class="soft-pill">Modo predominante: Criança Vulnerável</span><span class="soft-pill green">Vulnerabilidade + Ansiedade</span></div>
-      </div>
-    </section>
-
-    <section class="zone-layout">
-      <div class="card">
-        <div class="card-header"><div><div class="card-title">Possíveis Zonas de Ressonância</div><div style="font-size:12px;color:var(--ink3);margin-top:4px">Áreas em que seus padrões podem ressoar com os temas do paciente.</div></div></div>
-        <div class="card-body">
-          <div class="zone-item"><div><div class="zone-title">Hiperresponsabilização</div><div class="zone-desc">Tendência a assumir responsabilidade excessiva pelo bem-estar do paciente.</div></div><div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
-          <div class="zone-item"><div><div class="zone-title">Necessidade de aprovação</div><div class="zone-desc">Busca por reconhecimento ou validação através do cuidado ao paciente.</div></div><div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div></div>
-          <div class="zone-item"><div><div class="zone-title">Medo de rejeição</div><div class="zone-desc">Sensibilidade aumentada a sinais de desaprovação ou distanciamento.</div></div><div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div></div>
-          <div class="zone-item"><div><div class="zone-title">Tendência ao resgate</div><div class="zone-desc">Impulso de solucionar ou aliviar sofrimento rapidamente, antes da formulação completa.</div></div><div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
-          <div class="radar-wrap"><canvas id="radar" width="420" height="240"></canvas></div>
+        <div class="patient-picker">
+          <label for="resPatientSelect">Paciente analisado</label>
+          <select id="resPatientSelect" aria-label="Selecionar paciente">
+            <option value="">Selecione um paciente</option>
+          </select>
+          <span id="resPatientMeta">Nenhum paciente selecionado</span>
         </div>
-      </div>
-      <div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Recursos Preservados</div></div>
-          <div class="card-body">
-            <div class="resource-card"><div class="resource-ico">✓</div><div><div class="resource-title">Adulto Saudável parcialmente ativo</div><div class="resource-desc">Capacidade de reflexão e autorregulação preservada.</div></div></div>
-            <div class="resource-card"><div class="resource-ico">◌</div><div><div class="resource-title">Boa capacidade reflexiva</div><div class="resource-desc">Consciência dos próprios processos emocionais.</div></div></div>
-            <div class="resource-card"><div class="resource-ico">↔</div><div><div class="resource-title">Empatia funcional</div><div class="resource-desc">Conexão emocional sem perda total de diferenciação.</div></div></div>
-            <div class="resource-card"><div class="resource-ico">＋</div><div><div class="resource-title">Flexibilidade terapêutica</div><div class="resource-desc">Abertura para novas perspectivas e intervenções.</div></div></div>
+      </header>
+
+      <nav class="resonance-tabs" aria-label="Seções da ressonância">
+        <button class="resonance-tab active" type="button" data-res-view="hypotheses">Hipóteses</button>
+        <button class="resonance-tab" type="button" data-res-view="observations">Observações clínicas</button>
+        <button class="resonance-tab" type="button" data-res-view="management">Plano de manejo</button>
+      </nav>
+
+      <section id="resonanceEmpty" class="resonance-empty">
+        <div class="resonance-empty-icon">◎</div>
+        <h2>Selecione um paciente</h2>
+        <p>A análise só será exibida quando houver dados reais do paciente e um perfil clínico preenchido pela terapeuta.</p>
+      </section>
+
+      <div id="resonanceWorkspace" hidden>
+        <section class="resonance-summary">
+          <article class="summary-person">
+            <div class="summary-person-head">
+              <div class="circle-avatar" id="psiAvatar">M</div>
+              <div><span>Terapeuta</span><strong id="psiName">Michelle</strong></div>
+            </div>
+            <p>Padrões mais ativados no perfil atual</p>
+            <div class="summary-chips" id="therapistPatternChips"></div>
+          </article>
+          <div class="summary-link" aria-hidden="true"><span>×</span><small>cruzamento<br>reflexivo</small></div>
+          <article class="summary-person">
+            <div class="summary-person-head">
+              <div class="circle-avatar" id="pacAvatar">P</div>
+              <div><span>Paciente</span><strong id="pacName">Paciente</strong></div>
+            </div>
+            <p>Dados clínicos mais recentes disponíveis</p>
+            <div class="summary-chips" id="patientPatternChips"></div>
+          </article>
+        </section>
+
+        <section class="resonance-view active" data-res-panel="hypotheses">
+          <div class="resonance-section-head">
+            <div><h2>Hipóteses para observação</h2><p id="resonanceBasis">Baseadas nos dados disponíveis.</p></div>
+            <span class="hypothesis-label">Não são diagnóstico</span>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Lembre-se</div></div>
-          <div class="card-body" style="font-size:13px;color:var(--ink2);line-height:1.8">Ressonância não significa incapacidade. Consciência clínica gera liberdade, escolha e manejo mais alinhado.</div>
-        </div>
+          <div id="resonanceHypotheses" class="hypothesis-list"></div>
+          <aside class="protective-strip">
+            <div><strong>Recurso protetivo</strong><span id="healthyAdultResource">Adulto Saudável e capacidade reflexiva podem apoiar diferenciação e escolha clínica.</span></div>
+            <button type="button" class="action-btn" data-open-res-view="management">Registrar manejo</button>
+          </aside>
+        </section>
+
+        <section class="resonance-view" data-res-panel="observations">
+          <div class="resonance-section-head"><div><h2>Observações clínicas</h2><p>Registre o que ocorreu na relação terapêutica, sem transformar hipótese em conclusão.</p></div></div>
+          <label class="res-field">
+            <span>O que observei na sessão</span>
+            <textarea id="resObservation" data-map-field="res_pending_observation" placeholder="Ex.: percebi urgência em aliviar o desconforto e reduzi o espaço para exploração..."></textarea>
+          </label>
+          <label class="res-field">
+            <span>Evidências e contexto</span>
+            <textarea id="resEvidence" data-map-field="res_pending_evidence" placeholder="Comportamentos, falas, momento da sessão e outras explicações possíveis."></textarea>
+          </label>
+          <div class="res-save-note">As anotações são salvas automaticamente na sua conta.</div>
+        </section>
+
+        <section class="resonance-view" data-res-panel="management">
+          <div class="resonance-section-head"><div><h2>Plano de manejo</h2><p>Transforme a reflexão em uma decisão clínica revisável.</p></div></div>
+          <div class="management-grid">
+            <label class="res-field"><span>O que quero monitorar</span><textarea id="resMonitor" data-map-field="res_pending_monitor" placeholder="Sinais internos, decisões e momentos de maior ativação."></textarea></label>
+            <label class="res-field"><span>Como pretendo manejar</span><textarea id="resManagement" data-map-field="res_pending_management" placeholder="Intervenções, limites, ritmo e checagem colaborativa."></textarea></label>
+            <label class="res-field"><span>Levar para supervisão</span><textarea id="resSupervision" data-map-field="res_pending_supervision" placeholder="Pergunta clínica que merece uma segunda perspectiva."></textarea></label>
+            <label class="res-field"><span>Revisar na próxima sessão</span><textarea id="resReview" data-map-field="res_pending_review" placeholder="O que será revisto e qual mudança será observada."></textarea></label>
+          </div>
+          <div class="res-save-note">O plano fica vinculado ao paciente selecionado e é salvo automaticamente.</div>
+        </section>
       </div>
-    </section>
 
-    <section class="card">
-      <div class="card-header"><div class="card-title">Sugestões Reflexivas</div></div>
-      <div class="card-body"><div class="reflection-row"><div class="reflection">Observar impulsos de resgate.</div><div class="reflection">Monitorar necessidade de aprovação.</div><div class="reflection">Fortalecer limites terapêuticos.</div><div class="reflection">Manter diferenciação entre histórias.</div><div class="reflection">Utilizar supervisão como apoio.</div></div></div>
-    </section>
-
-    <div class="ethic-box"><strong>Aviso ético:</strong> as interpretações representam hipóteses reflexivas de apoio à autoconsciência clínica e não devem ser interpretadas como avaliação psicológica da terapeuta. Recomenda-se integração com supervisão clínica, experiência profissional e contexto terapêutico.</div>
+      <div class="ethic-box"><strong>Uso clínico responsável:</strong> estas hipóteses apoiam autoconsciência e supervisão. Elas não avaliam a competência da terapeuta, não substituem formulação clínica e devem ser confrontadas com contexto, aliança e outras explicações possíveis.</div>
     </div>
   </div>
 
@@ -1465,6 +1520,7 @@ let authenticatedUserId = '';
 let profileFillCount = 0;
 let serverSaveInFlight = false;
 let serverSaveQueued = false;
+let serverMapData = {};
 
 const YSQ_TOTAL = 18;
 const SMI_TOTAL = 14;
@@ -1498,6 +1554,7 @@ async function tryLogin() {
     carregarRascunho();
     document.getElementById('lockScreen').style.display = 'none';
     await loadProfileFromSupabase();
+    await loadResonancePatients();
   } catch (e) {
     error.style.display = 'block';
   }
@@ -1520,6 +1577,7 @@ async function restoreAuth() {
     authenticatedUserId = user.id || '';
     document.getElementById('lockScreen').style.display = 'none';
     await loadProfileFromSupabase();
+    await loadResonancePatients();
   } catch (e) {
     SB_SESSION_TOKEN = '';
     sessionStorage.removeItem('sb_session_token');
@@ -1810,13 +1868,14 @@ function renderSchemaMap() {
 }
 
 function getSchemaMapFields() {
-  const data = {};
+  const data = { ...serverMapData };
   document.querySelectorAll('[data-map-field]').forEach(field => { data[field.dataset.mapField] = field.value; });
   return data;
 }
 
 function saveSchemaMapFields() {
-  localStorage.setItem(draftStorageKey('psireal_schema_map_rascunho'), JSON.stringify(getSchemaMapFields()));
+  serverMapData = getSchemaMapFields();
+  localStorage.setItem(draftStorageKey('psireal_schema_map_rascunho'), JSON.stringify(serverMapData));
 }
 
 function setAutosaveStatus(state, text) {
@@ -1921,6 +1980,7 @@ function applyProfileData(data) {
   }
 
   if (data.mapa_esquemas && Object.keys(data.mapa_esquemas).length) {
+    serverMapData = { ...serverMapData, ...data.mapa_esquemas };
     document.querySelectorAll('[data-map-field]').forEach(field => {
       if (Object.prototype.hasOwnProperty.call(data.mapa_esquemas, field.dataset.mapField)) {
         field.value = data.mapa_esquemas[field.dataset.mapField];
@@ -1966,6 +2026,7 @@ function queueAutosave() {
 function restoreSchemaMapFields() {
   try {
     const data = JSON.parse(localStorage.getItem(draftStorageKey('psireal_schema_map_rascunho')) || '{}');
+    serverMapData = { ...serverMapData, ...data };
     document.querySelectorAll('[data-map-field]').forEach(field => {
       if (Object.prototype.hasOwnProperty.call(data, field.dataset.mapField)) field.value = data[field.dataset.mapField];
       if (field.dataset.autosaveBound !== 'true') {
@@ -2096,15 +2157,198 @@ document.querySelectorAll('.tema-chip').forEach(chip => {
 });
 
 
-/* Ressonância Clínica integrada */
-var RES_PARAMS=new URLSearchParams(location.search);var PAC=RES_PARAMS.get('paciente')?decodeURIComponent(RES_PARAMS.get('paciente')):'Paciente';
-function initials(n){return (n||'?').split(' ').filter(Boolean).slice(0,2).map(p=>p[0].toUpperCase()).join('')}
-document.getElementById('pacName').textContent=PAC;document.getElementById('pacAvatar').textContent=initials(PAC);
-const psiName=sessionStorage.getItem('psi_nome')||'Michelle';document.getElementById('psiName').textContent=psiName;document.getElementById('psiAvatar').textContent=initials(psiName);document.getElementById('sidebarName').textContent=psiName;document.getElementById('sidebarAvatar').textContent=initials(psiName);
+/* Hipóteses de Ressonância com dados reais */
+const RES_PARAMS = new URLSearchParams(location.search);
+const RES_REQUESTED_PATIENT = RES_PARAMS.get('paciente') ? decodeURIComponent(RES_PARAMS.get('paciente')) : '';
+let resonanceResponses = [];
+
+const RES_SCHEMAS = {
+  privacao_emocional:{patient:'PA',label:'Privação Emocional',impact:'Pode surgir urgência em oferecer acolhimento além do enquadre ou dificuldade de sustentar frustração terapêutica.',question:'Estou respondendo à necessidade clínica atual ou tentando reparar algo que também me mobiliza?',resource:'Usar enquadre e validação sem substituir a autonomia do paciente.'},
+  abandono:{patient:'AB',label:'Abandono / Instabilidade',impact:'Rupturas, faltas e oscilações podem ganhar intensidade emocional maior na relação terapêutica.',question:'A mudança de proximidade está sendo compreendida clinicamente ou vivida como rejeição?',resource:'Nomear a aliança e manter consistência sem buscar garantia afetiva.'},
+  desconfianca_abuso:{patient:'MA',label:'Desconfiança / Abuso',impact:'Pode haver maior vigilância a sinais de hostilidade, controle ou quebra de confiança.',question:'Que evidências sustentam minha leitura e que outras explicações ainda são possíveis?',resource:'Checagem colaborativa e ritmo respeitoso reduzem conclusões antecipadas.'},
+  isolamento_social:{patient:'SI',label:'Isolamento Social',impact:'A sensação de distância pode favorecer esforço excessivo para criar conexão ou retirada emocional.',question:'Estou ajustando a proximidade ao paciente ou reagindo ao desconforto da distância?',resource:'Regular proximidade com presença estável e curiosidade.'},
+  defectividade:{patient:'DS',label:'Defectividade / Vergonha',impact:'Críticas, silêncio ou pouca resposta podem ser percebidos como avaliação negativa da terapeuta.',question:'Minha intervenção está guiada pela formulação ou pela necessidade de não falhar?',resource:'Separar resultado clínico de valor pessoal e usar supervisão.'},
+  fracasso:{patient:'SF',label:'Fracasso',impact:'Estagnação do tratamento pode aumentar autocobrança e mudanças prematuras de estratégia.',question:'Estou revisando a formulação com método ou tentando provar rapidamente que o tratamento funciona?',resource:'Definir indicadores pequenos de progresso e tolerar incerteza.'},
+  dependencia:{patient:'DI',label:'Dependência / Incompetência',impact:'Pode ocorrer alternância entre assumir tarefas pelo paciente e frustrar-se com baixa autonomia.',question:'Minha ajuda está ampliando competência ou substituindo uma tarefa que o paciente pode construir?',resource:'Graduar suporte e devolver escolhas ao paciente.'},
+  vulnerabilidade_dano:{patient:'VH',label:'Vulnerabilidade ao Dano',impact:'Riscos e incertezas podem ser superestimados, levando a cautela ou proteção excessiva.',question:'O nível de proteção corresponde aos dados atuais e ao risco real?',resource:'Usar avaliação objetiva de risco e plano compartilhado.'},
+  emaranhamento:{patient:'EM',label:'Emaranhamento',impact:'Pode ficar mais difícil diferenciar emoções, responsabilidades e objetivos entre terapeuta e paciente.',question:'Consigo distinguir o que pertence à minha história, à do paciente e à relação atual?',resource:'Nomear limites de responsabilidade e observar o corpo antes de agir.'},
+  subjugacao:{patient:'SB',label:'Subjugação',impact:'Confrontos necessários podem ser evitados para preservar harmonia e reduzir tensão na sessão.',question:'Estou sendo colaborativa ou evitando uma intervenção necessária por medo de conflito?',resource:'Usar assertividade compassiva e contrato terapêutico.'},
+  autossacrificio:{patient:'SS',label:'Autossacrifício',impact:'Pode aparecer hiperresponsabilização, disponibilidade excessiva ou impulso de resgate.',question:'Este cuidado fortalece a autonomia do paciente ou alivia minha urgência em ajudar?',resource:'Manter limites terapêuticos e transformar resgate em colaboração.'},
+  inibicao_emocional:{patient:'AS',label:'Inibição Emocional',impact:'Emoções intensas podem ser intelectualizadas ou conduzidas rapidamente para uma técnica.',question:'Há espaço suficiente para experiência emocional antes de organizar ou intervir?',resource:'Desacelerar, validar e acompanhar a janela de tolerância.'},
+  padroes_inflexiveis:{patient:'UP',label:'Padrões Inflexíveis',impact:'Pode haver rigidez com tarefas, ritmo, metas ou desempenho terapêutico.',question:'Minha estrutura está servindo ao caso ou o caso está sendo forçado a caber na estrutura?',resource:'Manter método com flexibilidade e revisar metas em conjunto.'},
+  arrogo:{patient:'EP',label:'Arrogo / Grandiosidade',impact:'Limites e acordos podem gerar disputa, irritação ou tentativa de controle da sessão.',question:'Estou respondendo ao comportamento atual sem entrar em uma disputa por autoridade?',resource:'Limites claros, neutros e consistentes.'},
+  autocontrole_insuf:{patient:'IS',label:'Autocontrole Insuficiente',impact:'Impulsividade ou baixa adesão podem gerar urgência, cobrança ou intervenções excessivas.',question:'O plano considera capacidade atual, motivação e barreiras reais?',resource:'Dividir tarefas, pactuar escolhas e monitorar adesão sem moralização.'},
+  busca_aprovacao:{patient:'BL',label:'Busca de Aprovação',impact:'Decisões clínicas podem ser influenciadas pelo desejo de ser validada ou percebida como boa terapeuta.',question:'Eu manteria esta decisão se o paciente demonstrasse frustração ou discordância?',resource:'Usar feedback direto e sustentar divergências produtivas.'},
+  negativismo:{patient:'NP',label:'Negativismo / Pessimismo',impact:'Dificuldades podem dominar a leitura e reduzir atenção a recursos, exceções e progresso.',question:'Estou incluindo dados de dificuldade e também evidências de capacidade e mudança?',resource:'Equilibrar validação de risco com busca ativa de recursos.'},
+  postura_punitiva:{patient:'PU',label:'Punição',impact:'Erros, recaídas ou baixa adesão podem ativar crítica, impaciência ou responsabilização rígida.',question:'Minha resposta favorece responsabilização com aprendizagem ou reforça vergonha?',resource:'Combinar limites com reparação, contexto e autocompaixão.'}
+};
+
+function initials(name) {
+  return (name || '?').split(' ').filter(Boolean).slice(0, 2).map(part => part[0].toUpperCase()).join('');
+}
+
+function resEscape(value) {
+  return String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+}
+
+function parseClinicalScores(value) {
+  if (!value) return {};
+  if (typeof value === 'object') return value;
+  try { return JSON.parse(value); } catch (error) { return {}; }
+}
+
+function resonancePatientKey(name) {
+  let hash = 0;
+  for (const char of String(name).trim().toLowerCase()) hash = ((hash << 5) - hash + char.charCodeAt(0)) | 0;
+  return Math.abs(hash).toString(36);
+}
+
+function setResonanceView(view) {
+  document.querySelectorAll('.resonance-tab').forEach(button => button.classList.toggle('active', button.dataset.resView === view));
+  document.querySelectorAll('.resonance-view').forEach(panel => panel.classList.toggle('active', panel.dataset.resPanel === view));
+}
+
+document.querySelectorAll('[data-res-view]').forEach(button => button.addEventListener('click', () => setResonanceView(button.dataset.resView)));
+document.querySelectorAll('[data-open-res-view]').forEach(button => button.addEventListener('click', () => setResonanceView(button.dataset.openResView)));
+
+function configureResonanceFields(patientName) {
+  const prefix = `res_${resonancePatientKey(patientName)}`;
+  const fields = {
+    resObservation:'observation', resEvidence:'evidence', resMonitor:'monitor',
+    resManagement:'management', resSupervision:'supervision', resReview:'review'
+  };
+  Object.entries(fields).forEach(([id, suffix]) => {
+    const field = document.getElementById(id);
+    const key = `${prefix}_${suffix}`;
+    field.dataset.mapField = key;
+    field.value = serverMapData[key] || '';
+  });
+}
+
+function responseInstrument(response) {
+  return String(response.instrumento || response.formulario || '').toUpperCase();
+}
+
+function patientResponsesByName(name) {
+  return resonanceResponses.filter(response => String(response.paciente_nome || '').trim().toLowerCase() === String(name).trim().toLowerCase());
+}
+
+function renderSummaryChips(host, items, variant) {
+  host.innerHTML = items.length
+    ? items.map(item => `<span class="summary-chip ${variant || ''}">${resEscape(item.label)} <em>${resEscape(item.value)}</em></span>`).join('')
+    : '<span class="summary-chip">Sem dados suficientes</span>';
+}
+
+function renderResonanceForPatient(patientName) {
+  const responses = patientResponsesByName(patientName);
+  const latestYsq = responses.find(response => responseInstrument(response).includes('YSQ'));
+  const patientScores = parseClinicalScores(latestYsq?.scores);
+  const therapistTop = Object.entries(ysqScores).sort(([,a],[,b]) => Number(b) - Number(a)).slice(0, 3);
+  const patientLabels = Object.fromEntries(Object.values(RES_SCHEMAS).map(config => [config.patient, config.label]));
+  const patientTop = Object.entries(patientScores).sort(([,a],[,b]) => Number(b) - Number(a)).slice(0, 3);
+
+  document.getElementById('resonanceEmpty').hidden = true;
+  document.getElementById('resonanceWorkspace').hidden = false;
+  document.getElementById('pacName').textContent = patientName;
+  document.getElementById('pacAvatar').textContent = initials(patientName);
+
+  renderSummaryChips(document.getElementById('therapistPatternChips'), therapistTop.map(([key,value]) => ({label:RES_SCHEMAS[key]?.label || key.replace(/_/g,' '),value:`${Number(value).toFixed(1)}/6`})), '');
+  renderSummaryChips(document.getElementById('patientPatternChips'), patientTop.map(([key,value]) => ({label:patientLabels[key] || key,value:`${Number(value).toFixed(1)}/6`})), 'green');
+
+  const otherLatest = [];
+  ['GAD-7','PHQ-9','OASIS','AAQ'].forEach(instrument => {
+    const item = responses.find(response => responseInstrument(response).includes(instrument));
+    if (item) otherLatest.push(`${instrument}: ${item.score_total ?? 'respondido'}`);
+  });
+  const date = latestYsq?.created_at ? new Date(latestYsq.created_at).toLocaleDateString('pt-BR') : '';
+  document.getElementById('resPatientMeta').textContent = latestYsq
+    ? `YSQ-S3 de ${date}${otherLatest.length ? ' · ' + otherLatest.join(' · ') : ''}`
+    : `Sem YSQ-S3${otherLatest.length ? ' · ' + otherLatest.join(' · ') : ''}`;
+
+  const hypotheses = Object.entries(RES_SCHEMAS).map(([therapistKey,config]) => ({
+    ...config,
+    therapistKey,
+    therapistScore:Number(ysqScores[therapistKey] || 0),
+    patientScore:Number(patientScores[config.patient] || 0)
+  })).filter(item => item.therapistScore >= 4 && item.patientScore >= 4)
+    .sort((a,b) => Math.min(b.therapistScore,b.patientScore) - Math.min(a.therapistScore,a.patientScore));
+
+  const host = document.getElementById('resonanceHypotheses');
+  if (!latestYsq) {
+    host.innerHTML = '<div class="hypothesis-empty">Este paciente ainda não possui um YSQ-S3 respondido. A tela não produzirá hipóteses sem dados clínicos compatíveis.</div>';
+  } else if (!therapistTop.length) {
+    host.innerHTML = '<div class="hypothesis-empty">Complete seu perfil YSQ-S3 para permitir o cruzamento com os dados do paciente.</div>';
+  } else if (!hypotheses.length) {
+    host.innerHTML = '<div class="hypothesis-empty">Não foram encontrados padrões simultaneamente elevados. Isso não exclui ressonância clínica; apenas indica que os dados atuais não sustentam uma hipótese automática.</div>';
+  } else {
+    host.innerHTML = hypotheses.map(item => {
+      const high = Math.min(item.therapistScore,item.patientScore) >= 5;
+      return `<article class="hypothesis-card">
+        <div class="hypothesis-cell"><div class="hypothesis-title-row"><div class="hypothesis-title">${resEscape(item.label)}</div><span class="hypothesis-level ${high ? 'high' : ''}">${high ? 'maior atenção' : 'atenção'}</span></div><div class="hypothesis-caption">Evidências usadas</div><div class="hypothesis-evidence">Terapeuta: ${item.therapistScore.toFixed(1)}/6<br>Paciente: ${item.patientScore.toFixed(1)}/6</div></div>
+        <div class="hypothesis-cell"><div class="hypothesis-caption">Possível impacto na relação</div><div class="hypothesis-evidence">${resEscape(item.impact)}</div></div>
+        <div class="hypothesis-cell"><div class="hypothesis-caption">Pergunta para reflexão</div><div class="hypothesis-question">${resEscape(item.question)}</div><div class="hypothesis-resource">Recurso: ${resEscape(item.resource)}</div></div>
+      </article>`;
+    }).join('');
+  }
+
+  document.getElementById('resonanceBasis').textContent = latestYsq
+    ? `${hypotheses.length} hipótese(s) baseada(s) na interseção de escores ≥ 4 no YSQ-S3.`
+    : 'Aguardando um YSQ-S3 do paciente.';
+  document.getElementById('alertaCount').textContent = hypotheses.length;
+  configureResonanceFields(patientName);
+}
+
+async function loadResonancePatients() {
+  const token = SB_SESSION_TOKEN || sessionStorage.getItem('sb_session_token');
+  if (!token) return;
+  const select = 'id,paciente_nome,instrumento,formulario,score_total,scores,status,created_at';
+  try {
+    const response = await fetch(`${SB_URL}/rest/v1/respostas_clinicas?select=${select}&order=created_at.desc&limit=500`, {
+      headers:{apikey:SB_KEY,Authorization:`Bearer ${token}`}
+    });
+    if (!response.ok) throw new Error(await response.text());
+    resonanceResponses = await response.json();
+    const patientNames = [...new Map(resonanceResponses.filter(item => item.paciente_nome).map(item => [String(item.paciente_nome).trim().toLowerCase(), String(item.paciente_nome).trim()])).values()];
+    const selectEl = document.getElementById('resPatientSelect');
+    selectEl.innerHTML = '<option value="">Selecione um paciente</option>';
+    patientNames.forEach(name => {
+      const option = document.createElement('option');
+      option.value = name;
+      option.textContent = name;
+      selectEl.appendChild(option);
+    });
+    if (RES_REQUESTED_PATIENT && patientNames.some(name => name.toLowerCase() === RES_REQUESTED_PATIENT.toLowerCase())) {
+      selectEl.value = patientNames.find(name => name.toLowerCase() === RES_REQUESTED_PATIENT.toLowerCase());
+      renderResonanceForPatient(selectEl.value);
+    }
+  } catch (error) {
+    document.getElementById('resPatientMeta').textContent = 'Não foi possível carregar os pacientes.';
+  }
+}
+
+document.getElementById('resPatientSelect').addEventListener('change', event => {
+  const previousPatient = document.getElementById('pacName').textContent;
+  if (previousPatient && previousPatient !== 'Paciente') saveDraftAutomatically();
+  const patientName = event.target.value;
+  if (!patientName) {
+    document.getElementById('resonanceEmpty').hidden = false;
+    document.getElementById('resonanceWorkspace').hidden = true;
+    document.getElementById('resPatientMeta').textContent = 'Nenhum paciente selecionado';
+    document.getElementById('alertaCount').textContent = '0';
+    return;
+  }
+  renderResonanceForPatient(patientName);
+});
+
+const psiName = sessionStorage.getItem('psi_nome') || 'Psicóloga';
+document.getElementById('psiName').textContent = psiName;
+document.getElementById('psiAvatar').textContent = initials(psiName);
+document.getElementById('sidebarName').textContent = psiName;
+document.getElementById('sidebarAvatar').textContent = initials(psiName);
+document.getElementById('alertaCount').textContent = '0';
 migrateLegacyDrafts();
 restoreSchemaMapFields();
 carregarRascunho();
-function drawRadar(){const c=document.getElementById('radar'),ctx=c.getContext('2d'),W=c.width,H=c.height,cx=W/2,cy=H/2+8,R=86;ctx.clearRect(0,0,W,H);const labels=['Resgate','Hipersensib. rejeição','Necessidade aprovação','Rigidez terapêutica','Dificuldade limites'];const vals=[4,3,4,5,3];const vals2=[2,4,5,2,4];function pt(i,r){let a=-Math.PI/2+i*2*Math.PI/labels.length;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}for(let k=1;k<=5;k++){ctx.beginPath();for(let i=0;i<labels.length;i++){let [x,y]=pt(i,R*k/5);i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath();ctx.strokeStyle='rgba(128,112,168,.18)';ctx.stroke()}labels.forEach((l,i)=>{let [x,y]=pt(i,R+30);ctx.fillStyle='#6a5880';ctx.font='11px Instrument Sans';ctx.textAlign=i===0?'center':(x<cx?'right':'left');ctx.fillText(l,x,y)});function poly(values,color,fill,dash){ctx.beginPath();values.forEach((v,i)=>{let [x,y]=pt(i,R*v/5);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.strokeStyle=color;ctx.lineWidth=2;if(dash)ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=fill;ctx.fill()}poly(vals,'#854f0b','rgba(133,79,11,.18)',false);poly(vals2,'#6d4fc2','rgba(109,79,194,.08)',true);ctx.fillStyle='#1a1030';ctx.font='12px Instrument Sans';ctx.fillText('Você',cx-46,H-12);ctx.fillText('Paciente',cx+26,H-12)}drawRadar();
 </script>
 </body>
 </html>
