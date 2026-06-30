@@ -1,5 +1,7 @@
 ﻿# Roteiro de testes - PsiReal Clínica
 
+> **Documento legado:** alguns nomes de telas abaixo não existem mais no pacote atual. Para homologação e lançamento comercial, use `PLANO-MESTRE-TESTES-E-LANCAMENTO.md` como fonte principal.
+
 Use este roteiro depois de publicar os arquivos e depois de qualquer mudanca no Supabase.
 
 ## 1. Testes como psicologa assinante
