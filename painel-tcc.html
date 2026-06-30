@@ -511,6 +511,11 @@ body {
 
 /*  INVENTORY CARDS  */
 .inv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.library-group-head{grid-column:1/-1;display:flex;align-items:end;justify-content:space-between;gap:16px;padding:4px 0 2px}
+.library-group-head h2{margin:0;font-size:18px;color:var(--ink)}
+.library-group-head p{margin:3px 0 0;font-size:12px;color:var(--ink3)}
+.library-group-head span{font-size:11px;font-weight:700;color:var(--green);background:var(--green3);border-radius:99px;padding:6px 9px}
+.library-group-head.available{order:0}.inv-card[data-availability="active"]{order:1}.library-group-head.future{order:2;margin-top:10px;padding-top:20px;border-top:1px solid var(--border)}.inv-card[data-availability="future"]{order:3;opacity:.78}
 .inv-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 20px;
@@ -1900,7 +1905,12 @@ body{background:var(--bg) !important;color:var(--ink) !important}
       </div>
       <div class="inv-grid">
 
-        <div class="inv-card">
+        <div class="library-group-head available" id="availableInstrumentsHeading">
+          <div><h2>Disponíveis agora</h2><p>Instrumentos com formulário e envio ao paciente funcionando.</p></div>
+          <span>5 instrumentos</span>
+        </div>
+
+        <div class="inv-card" data-availability="active" data-cat="esquema">
           <div class="inv-card-top">
             <span class="inv-cat badge-lilac" style="background:var(--lilac4);color:var(--lilac)">Terapia do Esquema</span>
             <span class="inv-time">20–30 min</span>
@@ -1908,12 +1918,12 @@ body{background:var(--bg) !important;color:var(--ink) !important}
           <div class="inv-name">YSQ-S3 — Young Schema Questionnaire</div>
           <div class="inv-desc">Avalia 18 Esquemas Iniciais Desadaptativos distribuídos em 5 domínios. Instrumento central para formulação de caso em Terapia do Esquema.</div>
           <div class="inv-footer">
-            <span class="inv-items">90 itens — Likert 1–6</span>
+            <span class="inv-items">75 itens — Likert 1–6</span>
             <button class="btn-apply" data-instrument="YSQ-S3">Aplicar →</button>
           </div>
         </div>
 
-        <div class="inv-card">
+        <div class="inv-card" data-availability="future" data-cat="esquema">
           <div class="inv-card-top">
             <span class="inv-cat badge-lilac" style="background:var(--lilac4);color:var(--lilac)">Terapia do Esquema</span>
             <span class="inv-time">25–35 min</span>
@@ -1926,7 +1936,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
           </div>
         </div>
 
-        <div class="inv-card">
+        <div class="inv-card" data-availability="active" data-cat="ansiedade">
           <div class="inv-card-top">
             <span class="inv-cat" style="background:var(--primary-subtle);color:var(--primary)">Ansiedade</span>
             <span class="inv-time">5–10 min</span>
@@ -1939,8 +1949,20 @@ body{background:var(--bg) !important;color:var(--ink) !important}
           </div>
         </div>
 
+        <div class="inv-card" data-availability="active" data-cat="ansiedade">
+          <div class="inv-card-top">
+            <span class="inv-cat" style="background:var(--green3);color:var(--green)">Ansiedade</span>
+            <span class="inv-time">3–5 min</span>
+          </div>
+          <div class="inv-name">OASIS — Severidade e Prejuízo da Ansiedade</div>
+          <div class="inv-desc">Avalia frequência, intensidade, evitação e interferência funcional da ansiedade de forma breve e transdiagnóstica.</div>
+          <div class="inv-footer">
+            <span class="inv-items">5 itens — Likert 0–4</span>
+            <button class="btn-apply" data-instrument="OASIS">Aplicar →</button>
+          </div>
+        </div>
 
-        <div class="inv-card">
+        <div class="inv-card" data-availability="active" data-cat="depressao">
           <div class="inv-card-top">
             <span class="inv-cat" style="background:var(--coral3);color:var(--coral)">Depressão</span>
             <span class="inv-time">5–10 min</span>
@@ -1953,7 +1975,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
           </div>
         </div>
 
-        <div class="inv-card">
+        <div class="inv-card" data-availability="active" data-cat="act">
           <div class="inv-card-top">
             <span class="inv-cat" style="background:rgba(59,109,17,.10);color:var(--green)">ACT</span>
             <span class="inv-time">5-8 min</span>
@@ -1966,7 +1988,11 @@ body{background:var(--bg) !important;color:var(--ink) !important}
           </div>
         </div>
 
-        <div class="inv-card">
+        <div class="library-group-head future" id="futureInstrumentsHeading">
+          <div><h2>Em preparação</h2><p>Não podem ser enviados aos pacientes nesta versão.</p></div>
+        </div>
+
+        <div class="inv-card" data-availability="future" data-cat="act">
           <div class="inv-card-top">
             <span class="inv-cat" style="background:rgba(59,109,17,.10);color:var(--green)">ACT</span>
             <span class="inv-time">8-12 min</span>
@@ -1979,7 +2005,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
           </div>
         </div>
 
-        <div class="inv-card">
+        <div class="inv-card" data-availability="future" data-cat="depressao">
           <div class="inv-card-top">
             <span class="inv-cat" style="background:var(--coral3);color:var(--coral)">Depressão</span>
             <span class="inv-time">10–15 min</span>
@@ -1992,7 +2018,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
           </div>
         </div>
 
-        <div class="inv-card">
+        <div class="inv-card" data-availability="future" data-cat="dbt">
           <div class="inv-card-top">
             <span class="inv-cat" style="background:var(--amber3);color:var(--amber)">DBT</span>
             <span class="inv-time">8–12 min</span>
@@ -2005,7 +2031,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
           </div>
         </div>
 
-        <div class="inv-card">
+        <div class="inv-card" data-availability="future" data-cat="tdah">
           <div class="inv-card-top">
             <span class="inv-cat" style="background:var(--bg3);color:var(--ink3)">TDAH</span>
             <span class="inv-time">3–5 min</span>
@@ -2729,7 +2755,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
             <div class="instr-option" data-value="ISI" data-cat="sono" data-page="formulario-isi" onclick="selectInstr(this)"><span class="instr-dot"></span>ISI — Severidade da Insônia</div>
           </div>
           <div id="instrHelpText" class="instr-help">GAD-7 — 7 itens — Ansiedade Generalizada — Domínio público</div>
-          <div class="field-help">Beta: YSQ-S3, GAD-7 e PHQ-9 disponíveis.</div>
+          <div class="field-help">Disponíveis: YSQ-S3, GAD-7, PHQ-9, OASIS e AAQ-II.</div>
         </div>
       </div>
     </div>
@@ -3984,6 +4010,10 @@ function filterBib(cat, el) {
       (cat === 'autoestima' && catText.includes('autoestima'));
     card.style.display = matches ? '' : 'none';
   });
+  const hasActive = [...document.querySelectorAll('.inv-card[data-availability="active"]')].some(card => card.style.display !== 'none');
+  const hasFuture = [...document.querySelectorAll('.inv-card[data-availability="future"]')].some(card => card.style.display !== 'none');
+  document.getElementById('availableInstrumentsHeading').style.display = hasActive ? '' : 'none';
+  document.getElementById('futureInstrumentsHeading').style.display = hasFuture ? '' : 'none';
 }
 
 // ── PERFIL DO PACIENTE ────────────────────────────────────────
