@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <script>
+    if (location.hash.includes('type=recovery') && location.hash.includes('access_token=')) {
+      location.replace('reset-password.html' + location.hash);
+    }
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PsiReal Clínica | Plataforma clínica para psicólogos — TCC e Terapia do Esquema</title>
