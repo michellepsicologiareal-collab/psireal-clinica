@@ -718,6 +718,8 @@ body {
   cursor:pointer;
 }
 .lock-btn:disabled{cursor:wait;opacity:.68}
+.lock-recovery{display:inline-block;margin-top:14px;border:0;background:transparent;color:var(--primary);font:600 12px Inter,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.lock-recovery:disabled{cursor:wait;opacity:.6}
 .lock-error{
   display:none;
   color:var(--coral);
@@ -1116,12 +1118,18 @@ body{background:var(--bg) !important;color:var(--ink) !important}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 
 /* Login */
-#lockScreen{background:linear-gradient(135deg,rgba(61,43,138,.96),rgba(109,79,194,.88)) !important}
-.lock-card{border-radius:16px !important;border:1px solid var(--border) !important}
-.lock-title{font-family:'Syne',sans-serif !important;color:var(--ink) !important;font-size:26px !important;font-weight:700 !important}
-.lock-btn{background:var(--primary) !important;border-radius:10px !important}
-.lock-btn:hover{background:var(--primary-hover) !important}
-.lock-input{border-radius:10px !important;border:1px solid var(--border2) !important;background:var(--bg-surface) !important}
+#lockScreen{background:linear-gradient(180deg,#FCFBFF 0%,#F7F3FF 100%) !important}
+.lock-card{width:min(560px,100%) !important;padding:44px !important;border-radius:16px !important;border:1px solid #E8E2F4 !important;box-shadow:0 24px 70px rgba(60,43,110,.10) !important}
+.lock-logo{width:76px !important;height:76px !important;margin-bottom:22px !important}
+.lock-title{font-family:'Syne',sans-serif !important;color:var(--ink) !important;font-size:46px !important;line-height:1.1 !important;font-weight:700 !important;letter-spacing:-.035em !important;margin-bottom:12px !important}
+.lock-sub{font-size:16px !important;color:#6B7280 !important;margin-bottom:28px !important}
+.lock-btn{height:56px !important;background:#6D4FC2 !important;border-radius:14px !important;font-size:18px !important;font-weight:600 !important}
+.lock-btn:hover{background:#5F42B3 !important}
+.lock-input{height:54px !important;border-radius:12px !important;border:1px solid #DAD4E8 !important;background:#FFF !important;font-size:17px !important;color:#1F2937 !important;padding:0 16px !important}
+.lock-input::placeholder{color:#6B7280 !important;opacity:1 !important}
+.lock-input:focus{outline:none !important;border-color:#6D4FC2 !important;box-shadow:0 0 0 4px rgba(109,79,194,.12) !important}
+.lock-recovery{color:#6D4FC2 !important;margin-top:18px !important}
+@media(max-width:640px){.lock-card{padding:30px 22px !important}.lock-title{font-size:34px !important}.lock-logo{width:72px !important;height:72px !important}.lock-sub{font-size:15px !important}}
 
 /* Campos */
 .field input,.field select{border-radius:10px !important;border:1px solid var(--border2) !important}
@@ -1512,10 +1520,11 @@ body{background:var(--bg) !important;color:var(--ink) !important}
   <div class="lock-card">
     <div class="lock-logo"></div>
     <div class="lock-title">Entrar no PsiReal Clínica</div>
-    <div class="lock-sub">Acesso restrito para psicólogas assinantes.</div>
+    <div class="lock-sub">Acesse sua plataforma clínica.</div>
     <input id="lockEmail" class="lock-input" type="email" placeholder="E-mail" autocomplete="email">
     <input id="lockPassword" class="lock-input" type="password" placeholder="Senha" autocomplete="current-password">
     <button class="lock-btn" id="lockSubmit" type="button" onclick="tryLogin()">Entrar</button>
+    <button class="lock-recovery" id="lockRecovery" type="button" onclick="requestPasswordReset()">Esqueci minha senha</button>
     <div id="lockError" class="lock-error" role="alert" aria-live="polite">Não foi possível entrar. Verifique e-mail e senha.</div>
   </div>
 </div>
@@ -2865,6 +2874,35 @@ async function tryLogin() {
   }
 }
 
+async function requestPasswordReset() {
+  const email = document.getElementById('lockEmail');
+  const button = document.getElementById('lockRecovery');
+  hideLoginError();
+  if (!email.value.trim()) {
+    showLoginError('Informe seu e-mail para receber o link de redefinição.');
+    email.focus();
+    return;
+  }
+  button.disabled = true;
+  button.textContent = 'Enviando...';
+  try {
+    const redirectTo = new URL('reset-password.html', location.href).href;
+    const res = await fetch(`${SB_URL}/auth/v1/recover`, {
+      method: 'POST',
+      headers: { apikey: SB_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email.value.trim(), redirect_to: redirectTo })
+    });
+    if (!res.ok) throw await responseError(res, 'Não foi possível solicitar a redefinição.');
+    showLoginError('Se este e-mail estiver cadastrado, você receberá um link para criar uma nova senha.');
+    document.getElementById('lockError').style.color = 'var(--teal)';
+  } catch (error) {
+    showLoginError(loginErrorMessage(error));
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Esqueci minha senha';
+  }
+}
+
 async function restoreAuth() {
   if (!SB_SESSION_TOKEN) return;
   try {
@@ -2890,6 +2928,7 @@ function hideLoginError() {
   const error = document.getElementById('lockError');
   error.style.display = 'none';
   error.textContent = '';
+  error.style.color = '';
 }
 
 function showLoginError(message) {
