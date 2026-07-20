@@ -1,0 +1,106 @@
+/* PsiReal Professional Design System — alinhado ao PsiReal Hub */
+:root {
+  --clinical-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --clinical-page: #F7F8FC;
+  --clinical-sidebar: #FFFFFF;
+  --clinical-surface: #FFFFFF;
+  --clinical-border: #E4E7EC;
+  --clinical-text: #1F2937;
+  --clinical-muted: #667085;
+  --clinical-purple: #6D4FC2;
+  --clinical-purple-hover: #5A3EB0;
+  --clinical-purple-soft: #F0EDFA;
+  --clinical-gold: #C9962A;
+  --bg: #F7F8FC;
+  --bg2: #F2F3F7;
+  --bg3: #F0EDFA;
+  --surface: #FFFFFF;
+  --border: #E4E7EC;
+  --ink: #1F2937;
+  --ink2: #667085;
+  --primary: #6D4FC2;
+  --primary-dark: #5A3EB0;
+  --primary-subtle: #F0EDFA;
+  --violet: #6D4FC2;
+  --violet-hover: #5A3EB0;
+  --gold: #C9962A;
+}
+
+html, body, body *, button, input, select, textarea { font-family: var(--clinical-font) !important; }
+body { background: #F7F8FC !important; color: #1F2937 !important; }
+
+.sidebar {
+  width: 256px !important;
+  background: #FFFFFF !important;
+  border-right: 1px solid #E4E7EC !important;
+  box-shadow: none !important;
+}
+.sidebar .logo { min-height: 96px !important; padding: 22px 20px !important; border-bottom: 1px solid #F0F1F4 !important; }
+.logo-mark { align-items: center !important; }
+.logo-icon {
+  width: 38px !important; height: 38px !important; flex: 0 0 38px !important;
+  display: grid !important; place-items: center !important;
+  border: 0 !important; border-radius: 11px !important;
+  background: #6D4FC2 !important; color: #fff !important;
+  box-shadow: none !important;
+}
+.logo-icon::before { content: "⬢" !important; color: #fff !important; font-size: 18px !important; line-height: 1 !important; }
+.logo-icon::after, .logo-icon svg, .logo-icon img { display: none !important; }
+.logo-text { color: #1F2937 !important; font-size: 17px !important; font-weight: 750 !important; }
+.logo-sub { margin-top: 3px !important; color: #667085 !important; font-size: 9px !important; letter-spacing: .15em !important; }
+
+.nav { padding: 16px 12px 132px !important; }
+.nav-label { color: #98A2B3 !important; font-size: 9px !important; letter-spacing: .13em !important; }
+.nav-item { min-height: 43px !important; margin: 2px 0 !important; padding: 0 12px !important; border-radius: 8px !important; color: #667085 !important; font-size: 13px !important; font-weight: 500 !important; }
+.nav-item:hover { background: #F7F8FC !important; color: #1F2937 !important; }
+.nav-item.active { background: #F0EDFA !important; color: #6D4FC2 !important; box-shadow: none !important; font-weight: 650 !important; }
+.nav-item.active::before { display: none !important; }
+.nav-badge { background: #6D4FC2 !important; }
+.sidebar-user { background: #fff !important; border-top-color: #E4E7EC !important; }
+.user-avatar { background: #F0EDFA !important; color: #6D4FC2 !important; }
+.account-btn { border-radius: 8px !important; background: #F7F8FC !important; }
+.account-btn.primary { background: #6D4FC2 !important; color: #fff !important; }
+
+.main { margin-left: 256px !important; background: #F7F8FC !important; }
+.topbar { min-height: 68px !important; padding: 14px 36px !important; background: rgba(255,255,255,.95) !important; border-bottom: 1px solid #E4E7EC !important; backdrop-filter: blur(14px); }
+.topbar-title { color: #1F2937 !important; font-size: 17px !important; }
+.topbar-sub { color: #667085 !important; }
+.content { padding: 30px 36px 60px !important; max-width: 1440px !important; }
+
+.dashboard-hero { min-height: auto !important; padding: 4px 0 24px !important; margin-bottom: 10px !important; }
+.hero-kicker, .eyebrow { color: #6D4FC2 !important; }
+.hero-title { color: #1F2937 !important; font-size: clamp(30px,3vw,40px) !important; letter-spacing: -.025em !important; }
+.hero-sub { color: #667085 !important; }
+
+.card, .stat-card, .inv-card, .evo-card, .settings-panel, .resultado-card, .person-card, .schema-panel,
+.panel, .patient-bar, .metric-card, .table-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E4E7EC !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 2px rgba(16,24,40,.025) !important;
+}
+.card:hover, .stat-card:hover, .inv-card:hover { box-shadow: 0 6px 18px rgba(16,24,40,.055) !important; }
+.card-title, .section-title, .page-title { color: #1F2937 !important; }
+.card-action, a.card-action { color: #6D4FC2 !important; }
+
+.btn, button.btn { border-radius: 8px !important; }
+.btn-primary, .button-primary, .lock-btn, .btn-gerar {
+  background: #6D4FC2 !important; border-color: #6D4FC2 !important; color: #fff !important; box-shadow: none !important;
+}
+.btn-primary:hover, .button-primary:hover, .lock-btn:hover, .btn-gerar:hover { background: #5A3EB0 !important; border-color: #5A3EB0 !important; }
+.filter-tab.active, .cat-btn.active, .tab.active { color: #6D4FC2 !important; }
+.filter-tab.active, .cat-btn.active { background: #6D4FC2 !important; color: #fff !important; }
+input, select, textarea { background: #fff !important; border: 1px solid #D0D5DD !important; border-radius: 8px !important; }
+input:focus, select:focus, textarea:focus { border-color: #6D4FC2 !important; box-shadow: 0 0 0 3px rgba(109,79,194,.11) !important; }
+
+.stat-card.lilac .stat-value, .metric-value { color: #6D4FC2 !important; }
+.stat-card.amber .stat-value, .gold, [class*="gold"] { color: #C9962A !important; }
+#lockScreen { background: #F7F8FC !important; }
+.lock-card { background: #fff !important; border: 1px solid #E4E7EC !important; border-radius: 16px !important; box-shadow: 0 20px 55px rgba(31,41,55,.08) !important; }
+
+@media (max-width: 760px) {
+  .main { margin-left: 0 !important; }
+  .sidebar { width: min(88vw, 310px) !important; }
+  .topbar { padding: 14px 16px !important; }
+  .content { padding: 20px 14px 82px !important; }
+}
