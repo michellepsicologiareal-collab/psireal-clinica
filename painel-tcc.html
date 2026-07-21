@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PsiReal Clínica — Plataforma clínica</title>
+<title>PsiReal Instrumentos — Plataforma clínica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   /* — Fundos — */
@@ -1413,7 +1413,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
   </button>
   <div class="mobile-title">
     <div class="logo-icon" aria-hidden="true"></div>
-    <span>PsiReal Clínica</span>
+    <span>PsiReal Instrumentos</span>
   </div>
   <button class="mobile-menu-btn" type="button" onclick="showScreen('dashboard', document.querySelector('[onclick*=dashboard]'))" aria-label="Ir para o painel">
     <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>
@@ -1427,11 +1427,15 @@ body{background:var(--bg) !important;color:var(--ink) !important}
     <div class="logo-mark">
       <div class="logo-icon" aria-hidden="true"></div>
       <div>
-        <div class="logo-text">PsiReal Clínica</div>
-        <div class="logo-sub">Plataforma clínica</div>
+        <div class="logo-text">PsiReal</div>
+        <div class="logo-sub">Instrumentos clínicos</div>
       </div>
     </div>
   </div>
+  <a class="ecosystem-back" href="index.html" aria-label="Voltar ao ecossistema PsiReal">
+    <span aria-hidden="true">←</span>
+    <span>Ecossistema PsiReal</span>
+  </a>
 
   <nav class="nav"><!-- stale profile link moved
       <a class="nav-item" href="painel-perfil-clinico.html">
@@ -1519,8 +1523,8 @@ body{background:var(--bg) !important;color:var(--ink) !important}
 <div id="lockScreen">
   <div class="lock-card">
     <div class="lock-logo"></div>
-    <div class="lock-title">Entrar no PsiReal Clínica</div>
-    <div class="lock-sub">Acesse sua plataforma clínica.</div>
+    <div class="lock-title">Entrar no PsiReal Instrumentos</div>
+    <div class="lock-sub">Acesse seus instrumentos, aplicações e resultados.</div>
     <input id="lockEmail" class="lock-input" type="email" placeholder="E-mail" autocomplete="email">
     <input id="lockPassword" class="lock-input" type="password" placeholder="Senha" autocomplete="current-password">
     <button class="lock-btn" id="lockSubmit" type="button" onclick="tryLogin()">Entrar</button>
@@ -1549,7 +1553,7 @@ body{background:var(--bg) !important;color:var(--ink) !important}
     <div class="content">
 
       <section class="dashboard-hero">
-        <div class="hero-kicker">Psi Real</div>
+        <div class="hero-kicker">PsiReal Instrumentos</div>
         <div class="hero-date" id="heroDate"></div>
         <h1 class="hero-title" id="heroGreeting">Olá, Michelle.</h1>
         <p class="hero-sub">Acompanhe aplicações, pacientes e respostas clínicas em um painel organizado para a prática real.</p>
@@ -2988,7 +2992,7 @@ function closeSupportModal() {
 }
 
 function openReferral() {
-  const message = encodeURIComponent('Olá, Michelle. Quero indicar uma psicóloga para o PsiReal Clínica e entender como funciona o indique e ganhe.');
+  const message = encodeURIComponent('Olá, Michelle. Quero indicar uma psicóloga para o PsiReal Instrumentos e entender como funciona o indique e ganhe.');
   openExternal(`https://wa.me/${SUPPORT_WHATSAPP}?text=${message}`);
 }
 
