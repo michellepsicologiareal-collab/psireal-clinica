@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Questionamento Socrático & Descoberta Guiada | Biblioteca Psi Real</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --rose: #8B3A4A;
+      --rose-2: #C4607A;
+      --rose-3: #E8899E;
+      --grad: linear-gradient(135deg, #8B3A4A 0%, #C4607A 55%, #E8899E 100%);
+      --grad-subtle: linear-gradient(135deg, #FDF0F3 0%, #FBE8EE 50%, #F7DCE6 100%);
+      --rose-light: #FCEEF1;
+      --rose-hover: #FDF5F7;
+      --rose-border: #F2DCE1;
+      --rose-mid: #C4607A;
+      --ink: #1C0F13;
+      --ink-2: #5C3A44;
+      --ink-muted: #9E7882;
+      --ink-faint: #C9ADB4;
+      --bg: #FAF6F7;
+      --white: #FFFFFF;
+      --border: #EDE0E4;
+      --surface: #F5EEF1;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,246,247,0.92); backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--rose-border);
+      padding: 0 2.5rem; height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-back { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-back:hover { color: var(--rose); }
+    .nav-back-icon { width: 28px; height: 28px; background: var(--rose-light); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+    .nav-back-icon svg { width: 14px; height: 14px; stroke: var(--rose); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .nav-title { font-size: 13px; color: var(--ink-faint); max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .layout { display: flex; max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; gap: 3rem; }
+
+    .sidebar {
+      width: 220px; min-width: 220px; flex-shrink: 0;
+      position: sticky; top: 68px;
+      height: calc(100vh - 76px); overflow-y: auto;
+      padding: 2.5rem 0;
+    }
+    .sidebar::-webkit-scrollbar { width: 3px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .toc-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.75rem; padding: 0 10px; }
+    .toc-list { list-style: none; }
+    .toc-list a {
+      display: block; font-size: 13px; color: var(--ink-muted);
+      text-decoration: none; padding: 7px 12px; border-radius: var(--radius-sm);
+      transition: all 0.15s; line-height: 1.35; margin-bottom: 2px; font-weight: 300;
+    }
+    .toc-list a:hover { color: var(--ink); background: var(--rose-hover); }
+    .toc-list a.active { color: var(--rose); background: var(--rose-light); font-weight: 500; }
+    .toc-num { font-size: 10px; color: var(--ink-faint); margin-right: 6px; }
+
+    .content { flex: 1; min-width: 0; padding: 2.5rem 0 6rem; }
+
+    .doc-header { margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+    .breadcrumb { font-size: 12px; color: var(--ink-faint); margin-bottom: 1rem; font-weight: 300; }
+    .breadcrumb a { color: var(--rose); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .doc-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .doc-tag {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 99px;
+    }
+    .tag-tcc { background: var(--rose-light); color: var(--rose); border: 1px solid var(--rose-border); }
+    .tag-new { background: linear-gradient(135deg,#8B3A4A,#C4607A); color: #fff; }
+    .tag-tecnica { background: #F0F0FF; color: #4A3A9B; border: 1px solid #DDDAF5; }
+    .tag-supervisao { background: #F0FAF3; color: #2E6B40; border: 1px solid #B8DFC4; }
+
+    h1.doc-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 400;
+      line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 1rem;
+    }
+    .doc-intro { font-size: 15.5px; color: var(--ink-muted); line-height: 1.8; max-width: 620px; font-weight: 300; }
+    .doc-meta { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .doc-meta-item { font-size: 12px; color: var(--ink-faint); font-weight: 300; }
+    .doc-meta-item strong { color: var(--ink-muted); font-weight: 500; }
+
+    .doc-section { margin-bottom: 4rem; scroll-margin-top: 80px; }
+    .sec-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.3rem; }
+    h2.sec-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(20px, 3vw, 28px); font-weight: 400; letter-spacing: -0.01em;
+      color: var(--ink); margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+    }
+    h3.sub-title { font-size: 15.5px; font-weight: 600; color: var(--ink); margin: 2rem 0 0.75rem; }
+    p.body { font-size: 15px; line-height: 1.85; color: var(--ink); margin-bottom: 1rem; font-weight: 300; }
+
+    .callout {
+      border-left: 3px solid var(--rose-mid);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      background: var(--rose-light); padding: 1rem 1.4rem; margin: 1.5rem 0;
+    }
+    .callout p { font-size: 14px; line-height: 1.75; color: var(--rose); margin: 0; font-weight: 400; }
+    .callout strong { font-weight: 600; }
+    .callout-warm { background: #FFF6F0; border-left-color: #D4A882; }
+    .callout-warm p { color: #7A4020; }
+    .callout-blue { background: #F0F0FF; border-left-color: #7A7AD4; }
+    .callout-blue p { color: #2A2A70; }
+    .callout-green { background: #F0FAF3; border-left-color: #6BB885; }
+    .callout-green p { color: #1E5230; }
+    .callout-purple { background: #F5F0FF; border-left-color: #9A7AD4; }
+    .callout-purple p { color: #3A1A70; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.25rem 0; }
+    @media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+
+    .info-box {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem 1.35rem;
+      box-shadow: 0 1px 6px rgba(139,58,74,0.05);
+    }
+    .info-box-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rose); margin-bottom: 0.6rem; }
+    .info-box p, .info-box li { font-size: 13px; line-height: 1.7; color: var(--ink-muted); font-weight: 300; }
+    .info-box ul { padding-left: 1.1rem; }
+    .info-box li { margin-bottom: 0.3rem; }
+
+    .scale-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 2px 10px rgba(139,58,74,0.06);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .scale-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(139,58,74,0.12); }
+    .scale-card-header {
+      background: var(--grad);
+      padding: 1rem 1.35rem; display: flex; align-items: center; gap: 10px;
+    }
+    .scale-card-header-purple { background: linear-gradient(135deg, #6A3A8B 0%, #9A60C4 100%); }
+    .scale-card-header-blue { background: linear-gradient(135deg, #3A5A8B 0%, #6090C4 100%); }
+    .scale-card-header-green { background: linear-gradient(135deg, #2E6B40 0%, #5CA870 100%); }
+    .scale-card-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.18); border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .scale-card-icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; }
+    .scale-card-name { font-size: 14px; font-weight: 500; color: #fff; }
+    .scale-card-full { font-size: 11px; color: rgba(255,255,255,0.72); font-weight: 300; }
+    .scale-card-body { padding: 1.1rem 1.35rem; }
+    .scale-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.7; margin-bottom: 0.9rem; font-weight: 300; }
+    .scale-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .scale-tag { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 99px; }
+    .stag-rose { background: var(--rose-light); color: var(--rose); }
+    .stag-freq { background: #FFF7E0; color: #8B6400; }
+    .stag-pts { background: var(--surface); color: var(--ink-2); }
+
+    .step-list { counter-reset: step; list-style: none; }
+    .step-item { display: flex; gap: 14px; margin-bottom: 1.25rem; align-items: flex-start; }
+    .step-num {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--grad); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 12px; font-weight: 600;
+      box-shadow: 0 3px 10px rgba(139,58,74,0.3);
+      margin-top: 1px;
+    }
+    .step-title { font-size: 14.5px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .step-text { font-size: 13px; color: var(--ink-muted); line-height: 1.7; font-weight: 300; }
+
+    .ref-item { border-left: 3px solid var(--rose-border); padding: 0.6rem 1.1rem; margin-bottom: 0.9rem; }
+    .ref-item:hover { border-left-color: var(--rose-3); }
+    .ref-author { font-size: 13.5px; font-weight: 500; color: var(--ink-2); }
+    .ref-work { font-size: 12px; color: var(--ink-muted); line-height: 1.6; margin-top: 2px; font-weight: 300; }
+
+    .badge-new {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: var(--grad); color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 99px; margin-left: 8px; vertical-align: middle;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .layout { padding: 0 1.5rem; }
+    }
+  </style>
+  <link rel="manifest" href="../../manifest.json" />
+  <meta name="theme-color" content="#8B3A4A" />
+  <link rel="apple-touch-icon" href="../../icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../../icons/icon-192.png" />
+
+<style id="psireal-layout-refresh">
+  :root{
+    --ps-bg:#FAF8F5;
+    --ps-surface:#FFFFFF;
+    --ps-ink:#171321;
+    --ps-muted:#686174;
+    --ps-soft:#A090C8;
+    --ps-border:#E8E2EC;
+    --ps-violet:#5B3DF5;
+    --ps-violet-dark:#2C1A69;
+    --ps-violet-soft:#EEE9FF;
+    --ps-shadow:0 18px 48px rgba(23,19,33,.08);
+    --ps-radius:22px;
+  }
+
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ps-bg)!important;
+    color:var(--ps-ink)!important;
+    font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif!important;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4,
+  .hero-title,.section-title,.material-title,.review-title,
+  .nav-logo-text,.card-title{
+    font-family:'Manrope', system-ui, sans-serif!important;
+    letter-spacing:-.045em!important;
+    color:var(--ps-ink)!important;
+  }
+
+  p,li,.subtitle,.description,.lead{
+    color:var(--ps-muted)!important;
+  }
+
+  nav,header,.topbar,.navbar{
+    background:rgba(250,248,245,.9)!important;
+    border-bottom:1px solid var(--ps-border)!important;
+    backdrop-filter:blur(18px)!important;
+  }
+
+  .nav-logo img,
+  .nav-real-logo{
+    width:42px!important;
+    height:42px!important;
+    border-radius:50%!important;
+    object-fit:contain!important;
+  }
+
+  .nav-logo-icon{
+    display:none!important;
+  }
+
+  .nav-logo{
+    gap:12px!important;
+  }
+
+  a{
+    color:inherit;
+  }
+
+  a:hover{
+    color:var(--ps-violet)!important;
+  }
+
+  .btn,
+  .button,
+  .cta,
+  .primary,
+  .btn-primary,
+  .hero-cta,
+  button,
+  a[class*="btn"]{
+    border-radius:14px!important;
+    font-weight:800!important;
+  }
+
+  .btn-primary,
+  .primary,
+  .cta,
+  .hero-cta,
+  button.primary,
+  a.primary,
+  a.btn-primary{
+    background:var(--ps-violet)!important;
+    color:#fff!important;
+    border-color:var(--ps-violet)!important;
+    box-shadow:0 16px 34px rgba(91,61,245,.18)!important;
+  }
+
+  .btn-primary:hover,
+  .primary:hover,
+  .cta:hover,
+  .hero-cta:hover,
+  a.primary:hover,
+  a.btn-primary:hover{
+    background:#4B30DA!important;
+    color:#fff!important;
+    transform:translateY(-1px);
+  }
+
+  .btn-secondary,
+  .secondary,
+  a.secondary{
+    background:#fff!important;
+    color:var(--ps-ink)!important;
+    border:1px solid var(--ps-border)!important;
+  }
+
+  .pill,.badge,.tag,.category,.label{
+    background:var(--ps-violet-soft)!important;
+    color:var(--ps-violet-dark)!important;
+    border:1px solid var(--ps-border)!important;
+    border-radius:999px!important;
+    font-weight:800!important;
+    letter-spacing:.06em!important;
+  }
+
+  .card,
+  .material-card,
+  .resource-card,
+  .review-card,
+  article,
+  .content-card,
+  .panel{
+    background:#fff!important;
+    border:1px solid var(--ps-border)!important;
+    border-radius:var(--ps-radius)!important;
+    box-shadow:0 8px 26px rgba(23,19,33,.045)!important;
+  }
+
+  .card:hover,
+  .material-card:hover,
+  .resource-card:hover,
+  .review-card:hover{
+    box-shadow:var(--ps-shadow)!important;
+    border-color:#D8D0E5!important;
+  }
+
+  .material-card .card-visual,
+  .card-visual,
+  .visual,
+  .gradient-card,
+  .cover{
+    background:linear-gradient(135deg,#171321 0%,#5B3DF5 100%)!important;
+  }
+
+  .toc,
+  .sidebar,
+  aside{
+    background:transparent!important;
+  }
+
+  .toc a.active,
+  .toc .active,
+  .sidebar .active,
+  .nav-links .active,
+  .active{
+    background:var(--ps-violet-soft)!important;
+    color:var(--ps-violet-dark)!important;
+    border-radius:12px!important;
+  }
+
+  hr,.divider{
+    border-color:var(--ps-border)!important;
+  }
+
+  #install-prompt,
+  .install-prompt,
+  .pwa-install,
+  .pwa-prompt,
+  .install-banner,
+  .app-install-banner,
+  [data-install-prompt]{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="../../index.html">
+    <div class="nav-back-icon">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </div>
+    Biblioteca Psi Real
+  </a>
+  <span class="nav-title">Questionamento Socrático & Descoberta Guiada</span>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="toc-label">Neste material</div>
+    <ul class="toc-list">
+      <li><a href="#introducao" class="active"><span class="toc-num">01</span>Por que perguntar?</a></li>
+      <li><a href="#materiais"><span class="toc-num">02</span>Materiais essenciais</a></li>
+      <li><a href="#descoberta"><span class="toc-num">03</span>Descoberta guiada</a></li>
+      <li><a href="#roleplay"><span class="toc-num">04</span>Role-play</a></li>
+      <li><a href="#checklist"><span class="toc-num">05</span>Checklist prático</a></li>
+      <li><a href="#armadilhas"><span class="toc-num">06</span>Armadilhas</a></li>
+      <li><a href="#referencias"><span class="toc-num">07</span>Referências</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <div class="doc-header">
+      <div class="breadcrumb">
+        <a href="../../index.html">Biblioteca Psi Real</a> › Questionamento Socrático
+      </div>
+      <div class="doc-tags">
+        <span class="doc-tag tag-tcc">TCC</span>
+        <span class="doc-tag tag-tecnica">Técnica</span>
+        <span class="doc-tag tag-supervisao">Supervisão</span>
+        <span class="doc-tag tag-new">✦ Novo</span>
+      </div>
+      <h1 class="doc-title">Questionamento Socrático<br>& Descoberta Guiada</h1>
+      <p class="doc-intro">A arte de fazer boas perguntas — a base colaborativa da reestruturação cognitiva. Materiais essenciais para desenvolver o questionamento socrático na prática clínica, com o role-play como ferramenta de treino de habilidades.</p>
+      <div class="doc-meta">
+        <div class="doc-meta-item"><strong>Base:</strong> Beck, Padesky, Greenberger, Leahy</div>
+        <div class="doc-meta-item"><strong>Atualizado:</strong> 2026</div>
+        <div class="doc-meta-item"><strong>Leitura:</strong> ~12 min</div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 1: POR QUE PERGUNTAR -->
+    <section class="doc-section" id="introducao">
+      <div class="sec-eyebrow">01 · Fundamentação</div>
+      <h2 class="sec-title">Por que perguntar em vez de explicar?</h2>
+
+      <p class="body">Na TCC, a mudança duradoura não vem das explicações do terapeuta — vem das conclusões que o próprio paciente alcança. Padesky chama esse processo de <strong>descoberta guiada</strong> (<em>guided discovery</em>): o terapeuta guia por meio de perguntas, e o paciente descobre por conta própria. É isso que diferencia a reestruturação cognitiva colaborativa da simples persuasão.</p>
+
+      <div class="callout">
+        <p><strong>Padesky (1993):</strong> O objetivo do questionamento socrático não é "mudar a mente" do paciente por argumentação — é guiá-lo a examinar as próprias conclusões. O que o paciente descobre sozinho convence mais e dura mais do que qualquer explicação pronta.</p>
+      </div>
+
+      <ul class="step-list" style="margin-top:1.5rem;">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Empirismo colaborativo (Beck)</div>
+            <div class="step-text">Terapeuta e paciente trabalham como investigadores juntos: o terapeuta não é o detentor das respostas, e o paciente não é um receptor passivo. As hipóteses do paciente são examinadas como dados, não como verdades.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Curiosidade genuína</div>
+            <div class="step-text">Uma boa pergunta socrática é aquela cuja resposta o terapeuta ainda não sabe. Quando a pergunta já carrega a resposta esperada, deixa de ser descoberta e vira retórica — e o paciente percebe.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Aprendizado ativo</div>
+            <div class="step-text">O paciente se convence examinando as próprias evidências: a favor e contra, alternativas, implicações. Conclusões construídas assim são incorporadas com muito mais força do que conclusões recebidas.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Autonomia progressiva</div>
+            <div class="step-text">O objetivo final é que o paciente aprenda a se perguntar sozinho — o questionamento socrático vira uma ferramenta interna de autoavaliação que permanece depois do fim da terapia.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="two-col" style="margin-top:2rem;">
+        <div class="info-box">
+          <div class="info-box-label">O que é</div>
+          <ul>
+            <li>Perguntas <strong>abertas</strong>, que ampliam a exploração</li>
+            <li>Exame de <strong>evidências</strong> a favor e contra</li>
+            <li>Busca de <strong>alternativas e perspectivas</strong> novas</li>
+            <li>Respeito ao <strong>ritmo e ao silêncio</strong> do paciente</li>
+            <li>Postura de <strong>curiosidade genuína</strong></li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <div class="info-box-label">O que não é</div>
+          <ul>
+            <li><strong>Interrogatório</strong> — perguntas em rajada, sem acolher a resposta</li>
+            <li><strong>Retórica</strong> — perguntas com a resposta embutida</li>
+            <li><strong>Persuasão disfarçada</strong> — levar o paciente a concordar</li>
+            <li><strong>Quiz</strong> — testar se o paciente "acertou"</li>
+            <li><strong>Preenchimento de silêncio</strong> — falar quando a pausa incomoda</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: MATERIAIS ESSENCIAIS -->
+    <section class="doc-section" id="materiais">
+      <div class="sec-eyebrow">02 · Materiais</div>
+      <h2 class="sec-title">Os 4 materiais essenciais</h2>
+
+      <p class="body">Quatro materiais formam a base para o desenvolvimento dessa competência — do manual que estrutura a técnica ao artigo que define o método, passando pelo livro de exercícios e pelo manual de consulta rápida. Juntos, cobrem teoria, exemplos prontos e roteiros práticos.</p>
+
+      <div class="two-col">
+        <div class="scale-card">
+          <div class="scale-card-header">
+            <div class="scale-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div>
+              <div class="scale-card-name">Beck, J. S.</div>
+              <div class="scale-card-full">Terapia Cognitivo-Comportamental: Teoria e Prática (Artmed)</div>
+            </div>
+          </div>
+          <div class="scale-card-body">
+            <p class="scale-card-desc">O manual clássico de Judith Beck — a referência estruturante da TCC. Traz os capítulos centrais sobre descoberta guiada e questionamento socrático, além das técnicas comportamentais (incluindo o role-play / ensaio comportamental). Define a postura colaborativa e as perguntas-chave de cada etapa da sessão. Indicação exata dos capítulos na supervisão.</p>
+            <div class="scale-tags">
+              <span class="scale-tag stag-pts">Manual</span>
+              <span class="scale-tag stag-freq">Capítulos-chave</span>
+              <span class="scale-tag stag-rose">Estruturante</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-card">
+          <div class="scale-card-header scale-card-header-purple">
+            <div class="scale-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="12" y2="11"/></svg>
+            </div>
+            <div>
+              <div class="scale-card-name">Padesky, C. A.</div>
+              <div class="scale-card-full">Socratic Questioning: Changing Minds or Guiding Discovery?</div>
+            </div>
+          </div>
+          <div class="scale-card-body">
+            <p class="scale-card-desc">O artigo clássico de 1993, gratuito, que define a diferença entre "mudar mentes" (persuasão) e "descoberta guiada" (colaboração). Organiza a família de perguntas socráticas: coleta de informações, questões empáticas, de significado, de evidências e de implicações/alternativas. Leitura fundacional, curta e transformadora.</p>
+            <div class="scale-tags">
+              <span class="scale-tag stag-pts">Artigo</span>
+              <span class="scale-tag stag-freq">Gratuito</span>
+              <span class="scale-tag stag-rose">Fundacional</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-card">
+          <div class="scale-card-header scale-card-header-blue">
+            <div class="scale-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div>
+              <div class="scale-card-name">Greenberger & Padesky</div>
+              <div class="scale-card-full">A Mente Vencendo o Humor (Artmed)</div>
+            </div>
+          </div>
+          <div class="scale-card-body">
+            <p class="scale-card-desc">O livro de exercícios mais usado da TCC. Traz exemplos prontos de perguntas e planilhas (registro de pensamentos) em linguagem acessível. Duplo uso: treinar a formulação de perguntas na prática e servir de material de psicoeducação para o paciente entre as sessões.</p>
+            <div class="scale-tags">
+              <span class="scale-tag stag-pts">Livro</span>
+              <span class="scale-tag stag-freq">Planilhas</span>
+              <span class="scale-tag stag-rose">Exemplos prontos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-card">
+          <div class="scale-card-header scale-card-header-green">
+            <div class="scale-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="scale-card-name">Leahy, R. L.</div>
+              <div class="scale-card-full">Técnicas de Terapia Cognitiva: Manual do Terapeuta (Artmed)</div>
+            </div>
+          </div>
+          <div class="scale-card-body">
+            <p class="scale-card-desc">Manual de consulta rápida com dezenas de técnicas estruturadas e roteiros de perguntas prontos (exame de evidências, análise custo-benefício, seta descendente). Perfeito para a hora da dúvida: abre, encontra a técnica, adapta a pergunta ao caso.</p>
+            <div class="scale-tags">
+              <span class="scale-tag stag-pts">Manual</span>
+              <span class="scale-tag stag-freq">Roteiros prontos</span>
+              <span class="scale-tag stag-rose">Consulta rápida</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1.5rem;">
+        <p><strong>Como usar:</strong> A supervisão é o ensaio, o consultório é o palco. Leia o material, pratique as perguntas em role-play na supervisão e só então leve para a sessão. Errar no ensaio é parte do caminho — errar no palco, sem rede, é o que queremos evitar.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: DESCOBERTA GUIADA -->
+    <section class="doc-section" id="descoberta">
+      <div class="sec-eyebrow">03 · Descoberta guiada</div>
+      <h2 class="sec-title">Como estruturar as perguntas</h2>
+
+      <p class="body">O questionamento socrático não é improviso — é uma sequência que se aprende. O caminho vai do concreto ao abstrato, do fato à crença, sempre no ritmo do paciente.</p>
+
+      <ul class="step-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Do concreto ao abstrato</div>
+            <div class="step-text">Comece pelos fatos e situações específicas ("O que aconteceu exatamente?") e suba aos poucos: pensamento automático → regra → crença central. Subir degraus demais de uma vez perde o paciente.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Perguntas abertas</div>
+            <div class="step-text">"O que passou pela sua cabeça quando isso aconteceu?" abre espaço; "Você não acha que exagerou?" fecha. Se a pergunta cabe responder com sim ou não, há uma pergunta aberta melhor esperando para ser feita.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Evidências a favor e contra</div>
+            <div class="step-text">"O que fala a favor dessa ideia? O que fala contra?" — sempre as duas direções, com o mesmo rigor. Examinar só o que desconfirma é tão incompleto quanto examinar só o que confirma.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Perspectivas alternativas</div>
+            <div class="step-text">"O que você diria a uma amiga na mesma situação?" ou "Como outra pessoa, que você respeita, veria isso?" afasta o paciente da própria visão para enxergar a situação de fora.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <div class="step-title">Implicações e significados</div>
+            <div class="step-text">"Se isso for verdade, o que significa para você?" e "E se o pior acontecer — e daí?" levam a exploração até as crenças que sustentam o pensamento, onde a mudança estrutural acontece.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <div class="step-title">Respeitar o silêncio e o "não sei"</div>
+            <div class="step-text">O silêncio é o paciente pensando — espere. E o "não sei" não é parede, é porta: "Se você soubesse, o que diria?" ou "O que faz mais sentido, se você tivesse que chutar?".</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="callout callout-blue">
+        <p><strong>Perguntas de apoio para o "não sei":</strong> "Se você soubesse, o que diria?" · "O que você diria a uma amiga?" · "Se isso acontecesse com outra pessoa, o que você acharia?" · "Qual a pior resposta possível — e a mais provável?"</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: ROLE-PLAY -->
+    <section class="doc-section" id="roleplay">
+      <div class="sec-eyebrow">04 · Treino de habilidades</div>
+      <h2 class="sec-title">Role-play: o ensaio antes do palco</h2>
+
+      <p class="body">O role-play é uma ferramenta de <strong>treino de habilidades</strong> (<em>skill training</em>): praticar em ambiente seguro antes de levar para o consultório. Na supervisão, a supervisora faz o papel de paciente e o terapeuta treina as perguntas — errando, ajustando e reformulando sem custo clínico. Em sessão, o mesmo recurso vira técnica terapêutica (ensaio comportamental) para o paciente praticar respostas e comportamentos novos.</p>
+
+      <ul class="step-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Escolher a cena</div>
+            <div class="step-text">Objetivo claro antes de começar: treinar perguntas de evidências? Praticar um momento difícil da sessão? Reproduzir uma situação temida do paciente? Sem objetivo, o role-play vira conversa.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Combinar os papéis</div>
+            <div class="step-text">Quem faz o quê, por quanto tempo, com qual cenário. Na supervisão, a supervisora pode começar interpretando um paciente com respostas difíceis ("não sei", silêncio, respostas curtas) — justamente o que mais precisa ser treinado.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Conduzir com licença para pausar</div>
+            <div class="step-text">O role-play permite "congelar" a cena: "Para aqui — que pergunta você poderia ter feito?" ajustar e retomar. É o único lugar da clínica onde se pode voltar no tempo e tentar de novo.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Debrief estruturado</div>
+            <div class="step-text">Depois da cena: o que funcionou? Que pergunta abriu caminho? Onde a resposta pronta apareceu? Como reformular? O debrief é onde o aprendizado se consolida — nunca pule.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="two-col" style="margin-top:1.5rem;">
+        <div class="info-box">
+          <div class="info-box-label">Tipos de role-play</div>
+          <ul>
+            <li><strong>Ensaio comportamental:</strong> praticar uma resposta nova em situação temida</li>
+            <li><strong>Inversão de papéis:</strong> o terapeuta vive o paciente e vice-versa — desenvolve empatia e revela crenças</li>
+            <li><strong>Role-play imaginativo:</strong> ensaiar mentalmente uma cena futura (exposição imaginada)</li>
+            <li><strong>Treino do terapeuta:</strong> praticar perguntas e técnicas em supervisão</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <div class="info-box-label">Boa prática</div>
+          <p>Explique ao paciente o objetivo antes do role-play ("vamos praticar uma resposta para essa situação"), conduza com acolhimento e faça o debrief ("como foi fazer isso?"). Role-play sem contexto parece teatro; com contexto, vira ferramenta terapêutica.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: CHECKLIST -->
+    <section class="doc-section" id="checklist">
+      <div class="sec-eyebrow">05 · Orientação prática</div>
+      <h2 class="sec-title">Checklist pós-sessão</h2>
+
+      <p class="body">Um check-in rápido de 2 minutos depois de cada sessão transforma a prática em aprendizado consciente. Estas são as perguntas-guia:</p>
+
+      <div class="info-box" style="margin:1.25rem 0;">
+        <div class="info-box-label">Auto-observação</div>
+        <ul>
+          <li>☐ Quantas <strong>perguntas abertas</strong> eu fiz nesta sessão?</li>
+          <li>☐ Em quantos momentos eu <strong>ofereci resposta pronta</strong> em vez de perguntar?</li>
+          <li>☐ Eu <strong>escalonei</strong> do concreto (fatos) para o abstrato (crenças)?</li>
+          <li>☐ Eu examinei <strong>evidências dos dois lados</strong> (a favor e contra)?</li>
+          <li>☐ Eu <strong>esperei o silêncio</strong> — ou preenchi a pausa com a minha fala?</li>
+          <li>☐ Diante de um "não sei", eu usei uma <strong>pergunta de apoio</strong>?</li>
+          <li>☐ Eu reformulei alguma pergunta que <strong>já carregava a resposta</strong>?</li>
+          <li>☐ Se a sessão tivesse um role-play: eu <strong>planejei a cena e fiz o debrief</strong>?</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-green">
+        <p><strong>Diário de supervisão:</strong> anote as perguntas que funcionaram (e as que você reformularia). Em poucas semanas, esse caderno vira seu repertório pessoal — o material mais valioso que você terá.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 6: ARMADILHAS -->
+    <section class="doc-section" id="armadilhas">
+      <div class="sec-eyebrow">06 · Riscos & Armadilhas</div>
+      <h2 class="sec-title">O que evitar no questionamento</h2>
+
+      <div class="two-col">
+        <div class="callout callout-warm">
+          <p><strong>Pergunta fechada:</strong> "Você ficou ansioso?" encerra a exploração com um sim ou não. A versão aberta — "O que você sentiu nesse momento?" — abre a porta que a pergunta fechada tranca.</p>
+        </div>
+        <div class="callout callout-warm">
+          <p><strong>Pergunta de dupla finalidade:</strong> "Você não acha que foi um exagero?" já carrega a resposta esperada. O paciente percebe a direção e concorda — sem descobrir nada. Colaboração vira convencimento.</p>
+        </div>
+        <div class="callout callout-warm">
+          <p><strong>Responder pelo paciente:</strong> diante de um pensamento difícil, a tentação é explicar, tranquilizar, dar a alternativa pronta. É a resposta que vem do cuidado — e é exatamente ela que rouba do paciente a descoberta.</p>
+        </div>
+        <div class="callout callout-warm">
+          <p><strong>Medo do silêncio:</strong> pausas de 5–10 segundos parecem eternas para o terapeuta iniciante. Preencher a pausa com a própria fala ensina o paciente que não precisa pensar — alguém sempre responde por ele.</p>
+        </div>
+        <div class="callout callout-warm">
+          <p><strong>Interrogatório:</strong> perguntas em rajada, sem acolher a resposta anterior, transformam a descoberta guiada em depoimento. Cada resposta do paciente deve ser reconhecida antes da próxima pergunta.</p>
+        </div>
+        <div class="callout callout-warm">
+          <p><strong>Abandonar cedo demais:</strong> quando a primeira pergunta não produz resultado imediato, a tentação é voltar ao modo explicativo. O questionamento é um processo — a primeira resposta quase nunca é a final.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 7: REFERÊNCIAS -->
+    <section class="doc-section" id="referencias">
+      <div class="sec-eyebrow">07 · Referências</div>
+      <h2 class="sec-title">Base bibliográfica</h2>
+
+      <div class="ref-item">
+        <div class="ref-author">Beck, J. S. (2022)</div>
+        <div class="ref-work">Terapia Cognitivo-Comportamental: Teoria e Prática (3ª ed.). Artmed. — Base estruturante: descoberta guiada, questionamento socrático e técnicas comportamentais (role-play).</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-author">Padesky, C. A. (1993)</div>
+        <div class="ref-work">Socratic Questioning: Changing Minds or Guiding Discovery? Comunicação apresentada no European Congress of Behavioural and Cognitive Therapies, Londres. — Definição do método e da família de perguntas socráticas.</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-author">Greenberger, D. & Padesky, C. A. (2016)</div>
+        <div class="ref-work">A Mente Vencendo o Humor: Mude como você se sente, modificando o modo como você pensa. Artmed. — Exemplos de perguntas e planilhas de registro de pensamentos para prática e psicoeducação.</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-author">Leahy, R. L. (2018)</div>
+        <div class="ref-work">Técnicas de Terapia Cognitiva: Manual do Terapeuta. Artmed. — Roteiros estruturados de perguntas e técnicas para consulta rápida na prática clínica.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Sidebar active state on scroll
+const sections = document.querySelectorAll('.doc-section[id]');
+const tocLinks = document.querySelectorAll('.toc-list a');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(link => link.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-15% 0px -70% 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
